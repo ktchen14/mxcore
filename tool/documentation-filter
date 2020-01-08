@@ -1,0 +1,35 @@
+#! /usr/bin/perl -p
+
+use strict;
+use warnings;
+
+our $appearance;
+
+BEGIN { $appearance = ''; }
+
+# Append each line with the //= prefix to $appearance
+if (m[\A\s*//=]) {
+  chomp($appearance .= $');
+}
+
+if ($appearance && /\A\s*#define\s+/) {
+  my $define = $';
+  my $length;
+  for ($length = 1; $define =~ /\\\Z/; $length++) {
+    my $next = <>;
+    $_ .= $next;
+
+    # Remove the / and NL suffix and concatenate the next line of the define
+    chomp($define);
+    chop($define);
+    $define .= $next;
+  }
+
+  # Skip unless the definition is determinate
+  next unless $define =~ /\A(\w+)(?:\([^)]*\))?\s+/;
+  chomp(my $rest = $');
+
+  $appearance =~ s/^\s+|\s+$//g;
+  $_ = "$appearance { $rest; }" . ("\n" x $length);
+  $appearance = '';
+}
