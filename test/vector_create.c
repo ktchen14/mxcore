@@ -26,6 +26,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 
   // When malloc() is unsuccessful it returns NULL with errno retained
   malloc_return = ENOMEM;
+  errno = 0;
 
   assert(mx_vector_create() == NULL);
   assert(errno == ENOMEM);
