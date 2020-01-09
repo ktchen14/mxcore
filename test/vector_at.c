@@ -2,30 +2,29 @@
 
 #include "../source/vector.h"
 
-static int number = 0;
-#define increment_return(x) ({ number++; x; })
+// Increment number by 1 and return x
+#define increment_return(x, number) ({ number++; x; })
 
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused))) {
-  int *vector = mx_vector_define(int, 1, 2, 3, 4);
+int main() {
+  int *vector = mx_vector_define(int, 1, 2, 3, 4, 5, 6, 7, 8);
+  int number = 0;
 
   // Its result is equivalent to pointer addition on the vector
   assert(mx_vector_at(vector, 0, sizeof(int)) == vector + 0);
-  assert(mx_vector_at(vector, 2, sizeof(int)) == vector + 2);
+  assert(mx_vector_at(vector, 4, sizeof(int)) == vector + 4);
+  assert(mx_vector_at(vector, 8, sizeof(int)) == vector + 8);
 
   // It evalutes its vector argument once
-  number = 0;
-  mx_vector_at(increment_return(vector), 1, sizeof(int));
+  mx_vector_at(increment_return(vector, number), 1, sizeof(int));
   assert(number == 1);
 
   // It evalutes its index argument once
-  number = 0;
-  mx_vector_at(vector, increment_return(1), sizeof(int));
-  assert(number == 1);
+  mx_vector_at(vector, increment_return(1, number), sizeof(int));
+  assert(number == 2);
 
   // It evalutes its element size argument once
-  number = 0;
-  mx_vector_at(vector, 1, increment_return(sizeof(int)));
-  assert(number == 1);
+  mx_vector_at(vector, 1, increment_return(sizeof(int), number));
+  assert(number == 3);
 
   mx_vector_delete(vector);
 
