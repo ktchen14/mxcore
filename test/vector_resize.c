@@ -57,4 +57,9 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
   volume = 6;
   vector = mx_vector_resize(vector, volume);
   assert(mx_vector_length(vector) == volume);
+
+#ifdef MAKE_TEST_WILL_FAIL
+  // It emits a compiler warning if its result is unused
+  mx_vector_resize(vector, 20);
+#endif /* MAKE_TEST_WILL_FAIL */
 }
