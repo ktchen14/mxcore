@@ -20,6 +20,7 @@ target_compile_options(mxcore PRIVATE -Wall -Wextra)
 # Install
 include(GNUInstallDirs)
 install(TARGETS mxcore
+  LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
   PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/mxcore")
 
 # Documentation
