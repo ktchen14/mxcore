@@ -13,7 +13,7 @@ endif ()
 function(define_test name)
   add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
   target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror)
-  target_link_libraries(test_${name} mxcore dl)
+  target_link_libraries(test_${name} PRIVATE mxcore dl)
 
   add_test(make_${name}
     "${CMAKE_COMMAND}"

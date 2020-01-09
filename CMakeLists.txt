@@ -7,7 +7,8 @@ project("MX Core"
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 
-# Test
+# If this project is the top level project then include CTest. If testing is on
+# then create shared libraries and specify the Debug build type.
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   include(CTest)
   if (BUILD_TESTING)
