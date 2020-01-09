@@ -1,5 +1,6 @@
 /// @file vector.c
 
+#include <errno.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -166,9 +167,9 @@ mx_vector_t mx_vector_resize_z(mx_vector_t vector, size_t volume, size_t z) {
 
   // calculate size and test for overflow
   if (__builtin_mul_overflow(volume, z, &size))
-    return NULL;
+    return errno = ENOMEM, NULL;
   if (__builtin_add_overflow(size, sizeof(header_t), &size))
-    return NULL;
+    return errno = ENOMEM, NULL;
 
   if ((header = realloc(header, size)) == NULL)
     return NULL;

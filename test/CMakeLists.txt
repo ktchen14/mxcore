@@ -1,6 +1,8 @@
 function(define_test name)
-  add_executable(test_${name} EXCLUDE_FROM_ALL
-    ${name}.c $<TARGET_PROPERTY:mxcore,SOURCES>)
+  # add_executable(test_${name} EXCLUDE_FROM_ALL
+  #   ${name}.c $<TARGET_PROPERTY:mxcore,SOURCES>)
+  add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
+  target_link_libraries(test_${name} PRIVATE mxcore)
   target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror)
 
   add_test(make_${name}
@@ -31,3 +33,4 @@ add_test(make_vector_at_fail
 set_tests_properties(make_vector_at_fail PROPERTIES WILL_FAIL true)
 
 define_test(vector_access)
+define_test(vector_resize)
