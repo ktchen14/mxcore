@@ -1,8 +1,6 @@
 function(define_test name)
-  # add_executable(test_${name} EXCLUDE_FROM_ALL
-  #   ${name}.c $<TARGET_PROPERTY:mxcore,SOURCES>)
-  add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
-  target_link_libraries(test_${name} PRIVATE mxcore)
+  add_executable(test_${name} EXCLUDE_FROM_ALL
+    ${name}.c $<TARGET_PROPERTY:mxcore,SOURCES>)
   target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror)
 
   add_test(make_${name}
