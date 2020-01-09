@@ -128,13 +128,11 @@ size_t mx_vector_index(mx_vector_c vector, const void *elmt, size_t z) {
   return (size_t) ((const char *) elmt - (const char *) vector) / z;
 }
 
-void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z) {
-  memcpy(elmt, mx_vector_at(vector, i, z), z);
-}
+extern inline
+void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z);
 
-void mx_vector_set(mx_vector_t vector, size_t i, const void *elmt, size_t z) {
-  memcpy(mx_vector_at(vector, i, z), elmt, z);
-}
+extern inline
+void mx_vector_set(mx_vector_t vector, size_t i, const void *elmt, size_t z);
 
 void mx_vector_swap_z(mx_vector_t vector, size_t i, size_t j, size_t z) {
   char *a = mx_vector_at(vector, i, z);

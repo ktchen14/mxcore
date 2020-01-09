@@ -262,9 +262,10 @@ size_t mx_vector_index(mx_vector_c vector, const void *elmt, size_t z)
  *
  * @see mx_vector_set()
  */
-
-void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z)
-  __attribute__((nonnull));
+inline __attribute__((nonnull))
+void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z) {
+  memcpy(elmt, mx_vector_at(vector, i, z), z);
+}
 
 /**
  * @brief Copy the data at @a elmt into the @a vector at index @a i
@@ -279,8 +280,10 @@ void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z)
  *
  * @see mx_vector_get()
  */
-void mx_vector_set(mx_vector_t vector, size_t i, const void *elmt, size_t z)
-  __attribute__((nonnull));
+inline __attribute__((nonnull))
+void mx_vector_set(mx_vector_t vector, size_t i, const void *elmt, size_t z) {
+  memcpy(mx_vector_at(vector, i, z), elmt, z);
+}
 
 /**
  * @brief Swap the element at index @a i with the element at index @a j in the
