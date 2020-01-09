@@ -5,6 +5,17 @@ project("MX Core"
   HOMEPAGE_URL https://github.com/ktchen14/mxcore
   LANGUAGES C)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
+
+# Test
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  include(CTest)
+  if (BUILD_TESTING)
+    set(BUILD_SHARED_LIBS true)
+    set(CMAKE_BUILD_TYPE Debug)
+  endif ()
+endif ()
+
 # Library
 add_library(mxcore
   "${CMAKE_CURRENT_SOURCE_DIR}/source/common.h"
@@ -30,10 +41,6 @@ if (DOXYGEN_FOUND)
 endif ()
 
 # Test
-if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  include(CTest)
-  if (BUILD_TESTING)
-    set(CMAKE_BUILD_TYPE Debug)
-    add_subdirectory(test)
-  endif ()
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
+  add_subdirectory(test)
 endif ()

@@ -1,8 +1,19 @@
+# On macOS with `dyld`: Alters how symbols are resolved at build time and
+# runtime. With -flat_namespace, the linker searches all dylibs on the command
+# line and all dylibs those original dylibs depend on. The linker does not
+# record which dylib an external symbol came from, so at runtime dyld again
+# searches all images and uses the first definition it finds.
+include(CheckLinkerFlag)
+check_linker_flag(-flat_namespace FLAT_NAMESPACE_FLAG)
+if (FLAT_NAMESPACE_FLAG)
+  target_link_options(mxcore PRIVATE -flat_namespace)
+endif ()
+
+# Define a test `name` from the file test/`name`.c
 function(define_test name)
-  add_executable(test_${name} EXCLUDE_FROM_ALL
-    ${name}.c $<TARGET_PROPERTY:mxcore,SOURCES>)
+  add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
   target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror)
-  target_link_libraries(test_${name} dl)
+  target_link_libraries(test_${name} mxcore dl)
 
   add_test(make_${name}
     "${CMAKE_COMMAND}"
