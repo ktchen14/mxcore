@@ -19,26 +19,13 @@ void *malloc(size_t size) {
   return real_malloc(size);
 }
 
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused))) {
-  // int x;
+static size_t last_z;
+mx_vector_t mx_vector_duplicate_z(mx_vector_c source, size_t z) {
+  typeof(mx_vector_duplicate_z) *real_mx_vector_duplicate_z = dlsym(RTLD_NEXT, "mx_vector_duplicate_z");
+  return real_mx_vector_duplicate_z(source, last_z = z);
+}
 
-  // int *source = mx_vector_create();
-
-  // x = 1;
-  // source = mx_vector_append(source, &x);
-  // x = 2;
-  // source = mx_vector_append(source, &x);
-  // source = mx_vector_ensure(source, 20);
-  // assert(mx_vector_volume(source) > mx_vector_length(source));
-
-  // int *source_shrunk = mx_vector_create();
-  // x = 1;
-  // source_shrunk = mx_vector_append(source_shrunk, &x);
-  // x = 2;
-  // source_shrunk = mx_vector_append(source_shrunk, &x);
-  // source_shrunk = mx_vector_shrink(source_shrunk);
-  // assert(mx_vector_volume(source_shrunk) == mx_vector_length(source_shrunk));
-
+int main() {
   int *source = mx_vector_define(int, 1, 2, 3, 4);
   source = mx_vector_ensure(source, 20);
 
@@ -46,6 +33,10 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
   source_shrunk = mx_vector_shrink(source_shrunk);
 
   int *result;
+
+  // It passes the element size of the vector to mx_vector_duplicate_z()
+  result = mx_vector_duplicate(source);
+  assert(last_z == sizeof(int));
 
   // When malloc() with the source's volume is unsuccessful, and the source's
   // length is the same as its volume, it returns NULL with errno = ENOMEM
