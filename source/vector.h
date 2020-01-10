@@ -144,12 +144,21 @@ mx_vector_t mx_vector_create_with_z(const void *data, size_t length, size_t z)
  * argument in ... has a type that's incompatible with @a type then the behavior
  * is undefined.
  *
- * @param type a complete type name
+ * @param type a complete object type
  * @param ... a sequence of elements to initialize the vector with
  * @return the new vector on success; otherwise @c NULL
  */
 #define mx_vector_define(type, ...) ({ \
-  type __data[] = { __VA_ARGS__ }; \
+  /* Fail unless type is an actual type before we declare __data with
+   * typeof(type). Otherwise the compiler is silent on this kind of mistake:
+   *   mx_vector_define(1, 2, 3, 4)       => (int[])    { 2, 3, 4 }
+   * When this was intended:
+   *   mx_vector_define(int, 1, 2, 3, 4)  => (int[]) { 1, 2, 3, 4 }
+   */ \
+  (void) __builtin_types_compatible_p(type, void); \
+  /* We must take the typeof(type) here so that a strange type like int[2] or
+   * void (*)(void) is syntactically acceptable. */ \
+  __typeof__(type) __data[] = { __VA_ARGS__ }; \
   mx_vector_create_with(__data, sizeof(__data) / sizeof(__data[0])); \
 })
 
@@ -212,8 +221,8 @@ size_t mx_vector_length(mx_vector_c vector) __attribute__((nonnull, pure));
  */
 //= void *mx_vector_at(mx_vector_t vector, size_t i, size_t z)
 #define mx_vector_at(vector, i, z) ({ \
-  /* Warn or fail if vector isn't a pointer. When absent if vector is a */ \
-  /* scalar no warning is issued due to the explicit cast to char *. */ \
+  /* Warn or fail if vector isn't a pointer. When this is absent if vector is a
+   * scalar no warning is issued due to the explicit cast to char *. */ \
   const void *__vector = (vector); \
   _Pragma("GCC diagnostic push") \
   _Pragma("GCC diagnostic ignored \"-Wcast-align\"") \

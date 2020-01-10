@@ -12,8 +12,9 @@ endif ()
 # Define a test `name` from the file test/`name`.c
 function(define_test name)
   add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
-  target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror)
+  target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror -fsanitize=address)
   target_link_libraries(test_${name} PRIVATE mxcore dl)
+  target_link_options(test_${name} PRIVATE -fsanitize=address)
 
   add_test(make_${name}
     "${CMAKE_COMMAND}"
@@ -55,3 +56,14 @@ add_test(make_vector_resize_fail
   --config "$<CONFIG>"
   --target test_vector_resize_fail)
 set_tests_properties(make_vector_resize_fail PROPERTIES WILL_FAIL true)
+
+add_executable(test_vector_create_fail EXCLUDE_FROM_ALL vector_create.c)
+target_compile_options(test_vector_create_fail PRIVATE -Wall -Wextra -Werror)
+target_compile_definitions(test_vector_create_fail PRIVATE MAKE_TEST_WILL_FAIL)
+target_link_libraries(test_vector_create_fail mxcore dl)
+add_test(make_vector_create_fail
+  "${CMAKE_COMMAND}"
+  --build "${CMAKE_BINARY_DIR}"
+  --config "$<CONFIG>"
+  --target test_vector_create_fail)
+set_tests_properties(make_vector_create_fail PROPERTIES WILL_FAIL true)
