@@ -21,8 +21,8 @@ void *malloc(size_t size) {
 
 static size_t last_z;
 mx_vector_t mx_vector_duplicate_z(mx_vector_c source, size_t z) {
-  typeof(mx_vector_duplicate_z) *real_mx_vector_duplicate_z = dlsym(RTLD_NEXT, "mx_vector_duplicate_z");
-  return real_mx_vector_duplicate_z(source, last_z = z);
+  typeof(mx_vector_duplicate_z) *mx_vector_duplicate_z = dlsym(RTLD_NEXT, "mx_vector_duplicate_z");
+  return mx_vector_duplicate_z(source, last_z = z);
 }
 
 int main() {
@@ -35,7 +35,7 @@ int main() {
   int *result;
 
   // It passes the element size of the vector to mx_vector_duplicate_z()
-  result = mx_vector_duplicate(source);
+  mx_vector_delete(mx_vector_duplicate(source));
   assert(last_z == sizeof(int));
 
   // When malloc() with the source's volume is unsuccessful, and the source's
@@ -64,6 +64,8 @@ int main() {
   for (size_t i = 0; i < mx_vector_length(source); i++)
     assert(result[i] == source[i]);
 
+  mx_vector_delete(result);
+
   // When malloc() with the source's volume is successful it returns a duplicate
   // vector with the same length and volume as the source
   malloc_return = (int[]) { 0 };
@@ -74,4 +76,6 @@ int main() {
   assert(mx_vector_volume(result) == mx_vector_volume(source));
   for (size_t i = 0; i < mx_vector_length(source); i++)
     assert(result[i] == source[i]);
+
+  mx_vector_delete(result);
 }
