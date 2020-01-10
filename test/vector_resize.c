@@ -5,6 +5,9 @@
 
 #include "../source/vector.h"
 
+// Increment number by 1 and return x
+#define increment_return(x, number) ({ number++; x; })
+
 static int realloc_return = 0;
 
 void *realloc(void *ptr, size_t size) {
@@ -15,17 +18,36 @@ void *realloc(void *ptr, size_t size) {
   return real_realloc(ptr, size);
 }
 
+static size_t last_z;
 mx_vector_t mx_vector_resize_z(mx_vector_t vector, size_t volume, size_t z) {
   typeof(mx_vector_resize_z) *real_mx_vector_resize_z = dlsym(RTLD_NEXT, "mx_vector_resize_z");
-  return real_mx_vector_resize_z(vector, volume, z);
+  return real_mx_vector_resize_z(vector, volume, last_z = z);
 }
 
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused))) {
+int main() {
   int *vector = mx_vector_define(int, 1, 2, 3, 4, 5, 6, 7, 8);
+  int number = 0;
   size_t length;
   size_t volume;
 
+  // It evaluates its vector argument once
+  vector = mx_vector_resize(increment_return(vector, number), 10);
+  assert(number == 1);
+
+  // It evaluates its volume argument once
+  vector = mx_vector_resize(vector, increment_return(12, number));
+  assert(number == 2);
+
   // It calls mx_vector_resize() with the element size of the vector
+  struct {
+    long a; int b; short c; void *e; char n[256];
+  } *struct_vector = mx_vector_create();
+  struct_vector = mx_vector_resize(struct_vector, 10);
+  assert(last_z == sizeof(struct_vector[0]));
+
+  int (*vec)[2] = mx_vector_define(int[2], { 0, 1 }, { 2, 3 });
+  vec = mx_vector_resize(vec, 4);
+  assert(last_z == sizeof(vec[0]));
 
   // When volume overflows it returns NULL with errno = ENOMEM
   volume = SIZE_MAX / sizeof(int) + 1;
