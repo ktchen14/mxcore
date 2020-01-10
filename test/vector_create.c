@@ -8,11 +8,11 @@
 static int malloc_errno = 0;
 
 void *malloc(size_t size) {
-  typeof(malloc) *real_malloc = dlsym(RTLD_NEXT, "malloc");
+  typeof(malloc) *malloc = dlsym(RTLD_NEXT, "malloc");
 
   if (malloc_errno != 0)
     return errno = malloc_errno, NULL;
-  return real_malloc(size);
+  return malloc(size);
 }
 
 void test_vector_create(void) {

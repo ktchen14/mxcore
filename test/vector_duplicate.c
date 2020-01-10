@@ -5,18 +5,15 @@
 
 #include "../source/vector.h"
 
-static int *malloc_return = NULL;
+static int *malloc_errno = NULL;
 
 void *malloc(size_t size) {
-  typeof(malloc) *real_malloc = dlsym(RTLD_NEXT, "malloc");
-
-  if (malloc_return == NULL)
-    return real_malloc(size);
+  typeof(malloc) *malloc = dlsym(RTLD_NEXT, "malloc");
 
   int e;
-  if ((e = *malloc_return++) != 0)
-    return errno = e, NULL;
-  return real_malloc(size);
+  if (malloc_errno == NULL || (e = *malloc_errno++) == 0)
+    return malloc(size);
+  return errno = e, NULL;
 }
 
 static size_t last_z;
@@ -40,14 +37,14 @@ int main() {
 
   // When malloc() with the source's volume is unsuccessful, and the source's
   // length is the same as its volume, it returns NULL with errno = ENOMEM
-  malloc_return = (int[]) { ENOMEM };
+  malloc_errno = (int[]) { ENOMEM };
   assert(mx_vector_duplicate(source_shrunk) == NULL);
   assert(errno == ENOMEM);
 
   // When malloc() with the source's volume is unsuccessful, and the source's
   // length is different from its volume, and malloc() with the source's length
   // is unsuccessful, it returns NULL
-  malloc_return = (int[]) { ENOMEM, ENOMEM };
+  malloc_errno = (int[]) { ENOMEM, ENOMEM };
   assert(mx_vector_duplicate(source) == NULL);
   assert(errno == ENOMEM);
 
@@ -55,7 +52,7 @@ int main() {
   // length is different from its volume, and malloc() with the source's length
   // is successful, it returns a duplicate vector with the same length as the
   // source and volume = length
-  malloc_return = (int[]) { ENOMEM, 0 };
+  malloc_errno = (int[]) { ENOMEM, 0 };
   result = mx_vector_duplicate(source);
 
   assert(result != NULL);
@@ -68,7 +65,7 @@ int main() {
 
   // When malloc() with the source's volume is successful it returns a duplicate
   // vector with the same length and volume as the source
-  malloc_return = (int[]) { 0 };
+  malloc_errno = (int[]) { 0 };
   result = mx_vector_duplicate(source);
 
   assert(result != NULL);
