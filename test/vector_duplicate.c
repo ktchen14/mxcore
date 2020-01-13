@@ -5,6 +5,9 @@
 
 #include "../source/vector.h"
 
+// Increment number by 1 and return x
+#define increment_return(x, number) ({ number++; x; })
+
 static int *malloc_errno = NULL;
 
 void *malloc(size_t size) {
@@ -31,7 +34,13 @@ int main() {
 
   int *result;
 
-  // It passes the element size of the vector to mx_vector_duplicate_z()
+  // It evaluates its vector argument once
+  int number = 0;
+  result = mx_vector_duplicate(increment_return(source, number));
+  assert(number == 1);
+  mx_vector_delete(result);
+
+  // It calls mx_vector_duplicate_z() with the element size of the vector
   mx_vector_delete(mx_vector_duplicate(source));
   assert(last_z == sizeof(int));
 
