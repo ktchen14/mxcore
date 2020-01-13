@@ -12,7 +12,8 @@ endif ()
 # Define a test `name` from the file test/`name`.c
 function(define_test name)
   add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
-  target_compile_options(test_${name} PRIVATE -Wall -Wextra -Werror -fsanitize=address)
+  target_compile_options(test_${name} PRIVATE
+    -Wall -Wextra -Werror -fsanitize=address)
   target_link_libraries(test_${name} PRIVATE mxcore dl)
   target_link_options(test_${name} PRIVATE -fsanitize=address)
 
@@ -25,9 +26,34 @@ function(define_test name)
 
   add_test(${name} test_${name})
   set_tests_properties(${name} PROPERTIES FIXTURES_REQUIRED ${name})
+  set_tests_properties(${name} PROPERTIES
+    ENVIRONMENT "ASAN_OPTIONS=allocator_may_return_null=1")
 endfunction(define_test)
 
+function(define_compilation_test name symbol)
+  add_executable(test_${name}_compilation_${symbol} EXCLUDE_FROM_ALL "${name}.c")
+  target_compile_definitions(test_${name}_compilation PRIVATE MAKE_TEST_WILL_FAIL)
+  add_test(make_${name}_compilation
+    "${CMAKE_COMMAND}"
+    --build "${CMAKE_BINARY_DIR}"
+    --config "$<CONFIG>"
+    --target test_${name}_compilation_${symbol})
+  set_tests_properties(test_${name}_compilation PROPERTIES WILL_FAIL true)
+endfunction(define_compilation_test)
+
 define_test(vector_create)
+define_test(vector_create_with)
+define_test(vector_define)
+add_executable(test_vector_define_fail EXCLUDE_FROM_ALL vector_define.c)
+target_compile_options(test_vector_define_fail PRIVATE -Wall -Wextra -Werror)
+target_compile_definitions(test_vector_define_fail PRIVATE MAKE_TEST_WILL_FAIL)
+target_link_libraries(test_vector_define_fail mxcore dl)
+add_test(make_vector_define_fail
+  "${CMAKE_COMMAND}"
+  --build "${CMAKE_BINARY_DIR}"
+  --config "$<CONFIG>"
+  --target test_vector_define_fail)
+set_tests_properties(make_vector_define_fail PROPERTIES WILL_FAIL true)
 define_test(vector_duplicate)
 define_test(vector_delete)
 define_test(vector_at)
@@ -56,14 +82,3 @@ add_test(make_vector_resize_fail
   --config "$<CONFIG>"
   --target test_vector_resize_fail)
 set_tests_properties(make_vector_resize_fail PROPERTIES WILL_FAIL true)
-
-add_executable(test_vector_create_fail EXCLUDE_FROM_ALL vector_create.c)
-target_compile_options(test_vector_create_fail PRIVATE -Wall -Wextra -Werror)
-target_compile_definitions(test_vector_create_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_create_fail mxcore dl)
-add_test(make_vector_create_fail
-  "${CMAKE_COMMAND}"
-  --build "${CMAKE_BINARY_DIR}"
-  --config "$<CONFIG>"
-  --target test_vector_create_fail)
-set_tests_properties(make_vector_create_fail PROPERTIES WILL_FAIL true)
