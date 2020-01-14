@@ -72,6 +72,9 @@ CMakeDoxyfile.in
 CMakeDoxygenDefaults.cmake
 Doxyfile.documentation
 
+# CTest
+DartConfiguration.tcl
+
 # Doxygen
 
 /html
