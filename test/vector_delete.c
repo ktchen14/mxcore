@@ -11,7 +11,7 @@ void free(void *object) {
   real_free(free_object = object);
 }
 
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused))) {
+int main() {
   int *vector;
 
   // It deallocates the vector
