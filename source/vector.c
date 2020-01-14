@@ -172,21 +172,22 @@ mx_vector_t mx_vector_shrink_z(mx_vector_t vector, size_t z) {
 }
 
 mx_vector_t mx_vector_ensure_z(mx_vector_t vector, size_t length, size_t z) {
-  if (length > mx_vector_volume(vector)) {
-    // just volume = (length * 8 + 3) / 5 avoiding intermediate overflow
-    size_t volume = length / 5 * 8 + ((length % 5) * 8 + 3) / 5;
+  if (length <= mx_vector_volume(vector))
+    return vector;
 
-    // if the volume doesn't overflow then attempt to allocate it
-    if (volume > length) {
-      mx_vector_t resize;
-      if ((resize = mx_vector_resize_z(vector, volume, z)) != NULL)
-        return resize;
-    }
+  // just volume = (length * 8 + 3) / 5 avoiding intermediate overflow
+  size_t volume = length / 5 * 8 + ((length % 5) * 8 + 3) / 5;
 
-    // if either the volume overflows or the allocation failed then attempt to
-    // resize to just the length
-    return mx_vector_resize_z(vector, length, z);
-  } else return vector;
+  // if the volume doesn't overflow then attempt to allocate it
+  if (volume > length) {
+    mx_vector_t resize;
+    if ((resize = mx_vector_resize_z(vector, volume, z)) != NULL)
+      return resize;
+  }
+
+  // if either the volume overflows or the allocation failed then attempt to
+  // resize to just the length
+  return mx_vector_resize_z(vector, length, z);
 }
 
 mx_vector_t
