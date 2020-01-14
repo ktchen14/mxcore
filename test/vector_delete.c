@@ -7,8 +7,8 @@
 
 static void *free_object = NULL;
 void free(void *object) {
-  typeof(free) *real_free = dlsym(RTLD_NEXT, "free");
-  real_free(free_object = object);
+  typeof(free) *free = dlsym(RTLD_NEXT, "free");
+  free(free_object = object);
 }
 
 int main() {

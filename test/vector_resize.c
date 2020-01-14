@@ -9,17 +9,18 @@
 static int realloc_return = 0;
 
 void *realloc(void *ptr, size_t size) {
-  typeof(realloc) *real_realloc = dlsym(RTLD_NEXT, "realloc");
+  typeof(realloc) *realloc = dlsym(RTLD_NEXT, "realloc");
 
   if (realloc_return != 0)
     return errno = realloc_return, NULL;
-  return real_realloc(ptr, size);
+  return realloc(ptr, size);
 }
 
 static size_t last_z;
 mx_vector_t mx_vector_resize_z(mx_vector_t vector, size_t volume, size_t z) {
-  typeof(mx_vector_resize_z) *real_mx_vector_resize_z = dlsym(RTLD_NEXT, "mx_vector_resize_z");
-  return real_mx_vector_resize_z(vector, volume, last_z = z);
+  typeof(mx_vector_resize_z) *mx_vector_resize_z =
+    dlsym(RTLD_NEXT, "mx_vector_resize_z");
+  return mx_vector_resize_z(vector, volume, last_z = z);
 }
 
 int main() {
