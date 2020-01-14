@@ -4,9 +4,7 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
-
-// Increment number by 1 and return x
-#define increment_return(x, number) ({ number++; x; })
+#include "test.h"
 
 static int realloc_return = 0;
 

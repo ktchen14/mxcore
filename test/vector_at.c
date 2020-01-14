@@ -1,9 +1,7 @@
 #include <assert.h>
 
 #include "../source/vector.h"
-
-// Increment number by 1 and return x
-#define increment_return(x, number) ({ number++; x; })
+#include "test.h"
 
 int main() {
   int *vector = mx_vector_define(int, 1, 2, 3, 4, 5, 6, 7, 8);

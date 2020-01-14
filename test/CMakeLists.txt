@@ -11,7 +11,9 @@ endif ()
 
 # Define a test `name` from the file test/`name`.c
 function(define_test name)
-  add_executable(test_${name} EXCLUDE_FROM_ALL ${name}.c)
+  add_executable(test_${name} EXCLUDE_FROM_ALL
+    "${CMAKE_CURRENT_SOURCE_DIR}/test.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/${name}.c")
   target_compile_options(test_${name} PRIVATE
     -Wall -Wextra -Werror -fsanitize=address)
   target_link_libraries(test_${name} PRIVATE mxcore dl)
