@@ -44,7 +44,6 @@ function(define_compilation_test name symbol)
 endfunction(define_compilation_test)
 
 define_test(vector_create)
-define_test(vector_create_with)
 define_test(vector_define)
 add_executable(test_vector_define_fail EXCLUDE_FROM_ALL vector_define.c)
 target_compile_options(test_vector_define_fail PRIVATE -Wall -Wextra -Werror)

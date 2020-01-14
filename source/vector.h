@@ -85,15 +85,9 @@ mx_vector_t mx_vector_create(void) __attribute__((malloc));
 /**
  * @brief Allocate and initialize a vector from @a length elements of @a data
  *
- * If @a data is not @c NULL this will create and return a vector containing
- * @a length elements from @a data.
- *
- * If @a data is @c NULL this will create and return a vector with a volume
- * that's at least @a length. Note that in this case the length of the created
- * vector will be zero.
- *
- * If @a data is @c NULL and @a length is @c NULL then this is identical to
- * mx_vector_create(); in this case that function should be used instead.
+ * This will create and return a vector containing @a length elements from
+ * @a data. If @a data is @c NULL and @a length is @c 0 then this is identical
+ * to mx_vector_create(); in this case that function should be used instead.
  *
  * On failure this will retain the value of @c errno set by malloc().
  *
@@ -102,11 +96,11 @@ mx_vector_t mx_vector_create(void) __attribute__((malloc));
  * @param z the element size of the @a data
  * @return the new vector on success; otherwise @c NULL
  *
- * @see mx_vector_create_with() - The implicit interface analogue
- * @see mx_vector_create_with_z() - The explicit interface analogue
+ * @see mx_vector_create_as() - The implicit interface analogue
+ * @see mx_vector_create_as_z() - The explicit interface analogue
  */
-mx_vector_t mx_vector_create_with_z(const void *data, size_t length, size_t z)
-  __attribute__((malloc));
+mx_vector_t mx_vector_create_as_z(const void *data, size_t length, size_t z)
+  __attribute__((malloc, nonnull));
 
 /**
  * @brief Allocate and initialize a vector from @a length elements of @a data
@@ -127,17 +121,17 @@ mx_vector_t mx_vector_create_with_z(const void *data, size_t length, size_t z)
  * @param length the number of elements from @a data
  * @return the new vector on success; otherwise @c NULL
  *
- * @see mx_vector_create_with() - The implicit interface analogue
- * @see mx_vector_create_with_z() - The explicit interface analogue
+ * @see mx_vector_create_as() - The implicit interface analogue
+ * @see mx_vector_create_as_z() - The explicit interface analogue
  */
-//= mx_vector_t mx_vector_create_with(const void *data, size_t length)
-#define mx_vector_create_with(data, length) \
-  mx_vector_create_with_z((data), (length), MX_VECTOR_Z((data)))
+//= mx_vector_t mx_vector_create_as(const void *data, size_t length)
+#define mx_vector_create_as(data, length) \
+  mx_vector_create_as_z((data), (length), MX_VECTOR_Z((data)))
 
 /**
  * @brief Allocate and initialize a vector from the argument list
  *
- * This is just mx_vector_create_with() with @a data constructed and @a length
+ * This is just mx_vector_create_as() with @a data constructed and @a length
  * calculated from the argument list.
  *
  * On failure this will retain the value of @c errno set by malloc(). If an
@@ -159,7 +153,7 @@ mx_vector_t mx_vector_create_with_z(const void *data, size_t length, size_t z)
   /* We must take the typeof(type) here so that a strange type like int[2] or
    * void (*)(void) is syntactically acceptable. */ \
   __typeof__(type) __data[] = { __VA_ARGS__ }; \
-  mx_vector_create_with(__data, sizeof(__data) / sizeof(__data[0])); \
+  mx_vector_create_as(__data, sizeof(__data) / sizeof(__data[0])); \
 })
 
 /**

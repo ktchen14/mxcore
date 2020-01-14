@@ -52,38 +52,23 @@ mx_vector_t mx_vector_create() {
   return header_to_vector(header);
 }
 
-mx_vector_t mx_vector_create_with_z(const void *data, size_t length, size_t z) {
+mx_vector_t mx_vector_create_as_z(const void *data, size_t length, size_t z) {
   header_t *header;
-  size_t size;
 
-  // just volume = (length * 8 + 3) / 5 avoiding intermediate overflow
-  size_t volume = length / 5 * 8 + ((length % 5) * 8 + 3) / 5;
-
-  // Although length * z doesn't overflow (this is data's size) we have no such
-  // guarantee on volume * z
-  if (__builtin_mul_overflow(volume, z, &size))
-    goto allocate_length;
+  // Doesn't overflow because this is the size of data
+  size_t size = length * z;
   if (__builtin_add_overflow(size, sizeof(header_t), &size))
-    goto allocate_length;
-  if ((header = malloc(size)) == NULL)
-    goto allocate_length;
-
-  header->volume = volume;
-  header->length = length;
-  memcpy(header->data, data, length * z);
-
-  return header_to_vector(header);
-
-allocate_length:
-  size = length * z;
-  if (__builtin_add_overflow(size, sizeof(header_t), &size))
-    return NULL;
+    return errno = ENOMEM, NULL;
   if ((header = malloc(size)) == NULL)
     return NULL;
 
   header->volume = length;
-  header->length = length;
-  memcpy(header->data, data, length * z);
+
+  if (data != NULL) {
+    header->length = length;
+    memcpy(header->data, data, length * z);
+  } else
+    header->length = 0;
 
   return header_to_vector(header);
 }
