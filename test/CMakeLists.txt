@@ -86,3 +86,5 @@ add_test(make_vector_resize_fail
 set_tests_properties(make_vector_resize_fail PROPERTIES WILL_FAIL true)
 
 define_test(vector_shrink)
+define_test(vector_swap)
+define_test(vector_move)

@@ -19,7 +19,8 @@ void *malloc(size_t size) {
 
 static size_t last_z;
 mx_vector_t mx_vector_duplicate_z(mx_vector_c source, size_t z) {
-  typeof(mx_vector_duplicate_z) *mx_vector_duplicate_z = dlsym(RTLD_NEXT, "mx_vector_duplicate_z");
+  typeof(mx_vector_duplicate_z) *mx_vector_duplicate_z =
+    dlsym(RTLD_NEXT, "mx_vector_duplicate_z");
   return mx_vector_duplicate_z(source, last_z = z);
 }
 
