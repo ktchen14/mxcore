@@ -68,6 +68,7 @@ CTestTestfile.cmake
 _deps
 
 # CMake Doxygen
+CMakeDoxyfile.tpl.bak
 CMakeDoxyfile.in
 CMakeDoxygenDefaults.cmake
 Doxyfile.documentation
