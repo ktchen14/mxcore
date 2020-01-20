@@ -17,22 +17,23 @@ int main() {
   int number = 0;
 
   // It evaluates its vector argument once
-  mx_vector_swap(increment_return(vector, number), 0, 3);
+  mx_vector_swap((number++, vector), 0, 3);
   assert(number == 1);
 
   // It evaluates its index i argument once
-  mx_vector_swap(vector, increment_return(0, number), 3);
+  mx_vector_swap(vector, (number++, 0), 3);
   assert(number == 2);
 
   // It evaluates its index j argument once
-  mx_vector_swap(vector, 0, increment_return(3, number));
+  mx_vector_swap(vector, 0, (number++, 3));
   assert(number == 3);
 
   // It calls mx_vector_swap_z() with the element size of the vector
   mx_vector_swap(vector, 0, 3);
   assert(last_z == sizeof(int));
 
-  // It swaps the element at index i with the element at index j in the vector
+  // It swaps the element at index i with the element at index j in the vector.
+  // No other elements in the vector are modified.
   mx_vector_swap(vector, 1, 2);
   assert(vector[0] == 0);
   assert(vector[1] == 2);
