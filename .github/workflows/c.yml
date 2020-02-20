@@ -9,7 +9,7 @@ jobs:
     
     steps:
     - name: Install CMake
-      run: apt-get install cmake
+      run: sudo apt-get install cmake
     - uses: actions/checkout@v2
     - name: cmake
       run: cmake .
