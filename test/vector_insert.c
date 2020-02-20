@@ -34,14 +34,47 @@ mx_vector_t mx_vector_ensure_z(mx_vector_t vector, size_t length, size_t z) {
   return mx_vector_ensure_z(vector, length, z);
 }
 
+void test_vector_insert(void) {
+  int *vector = mx_vector_define(int, 0, 1, 2, 3, 4, 5);
+  int data = 9;
+  int number = 0;
+
+  // It evaluates its vector argument once
+  vector = mx_vector_insert((number++, vector), 2, &data);
+  assert(number == 1);
+
+  // It evaluates its index argument once
+  vector = mx_vector_insert(vector, (number++, 2), &data);
+  assert(number == 2);
+
+  // It evaluates its element argument once
+  vector = mx_vector_insert(vector, 2, (number++, &data));
+  assert(number == 3);
+
+  // It calls mx_vector_insert_z() with the element size of the vector
+  vector = mx_vector_insert(vector, 2, &data);
+  assert(last_z == sizeof(int));
+
+  mx_vector_delete(vector);
+}
+
 int main() {
   int *vector = mx_vector_define(int, 0, 1, 2, 3, 4, 5, 6, 7);
+  int data = 9;
   int number = 0;
   size_t volume;
 
   // It evaluates its vector argument once
-  vector = mx_vector_ensure((number++, vector), 10);
+  vector = mx_vector_insert((number++, vector), 2, &data);
   assert(number == 1);
+
+  // It evaluates its index argument once
+  vector = mx_vector_insert(vector, (number++, 2), &data);
+  assert(number == 2);
+
+  // It evaluates its element argument once
+  vector = mx_vector_insert(vector, 2, (number++, &data));
+  assert(number == 3);
 
   // It evaluates its index argument once
   // It evaluates its element argument once
@@ -94,4 +127,6 @@ int main() {
   assert(mx_vector_volume(vector) == 80);
 
   mx_vector_delete(vector);
+
+  test_vector_insert();
 }
