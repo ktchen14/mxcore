@@ -14,6 +14,9 @@ function(define_test name)
   add_executable(test_${name} EXCLUDE_FROM_ALL
     "${CMAKE_CURRENT_SOURCE_DIR}/test.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/${name}.c")
+  # The _GNU_SOURCE feature test macro must be defined in order to obtain the
+  # definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>
+  target_compile_definitions(test_${name} PRIVATE -D_GNU_SOURCE)
   target_compile_options(test_${name} PRIVATE
     -Wall -Wextra -Werror -fsanitize=address)
   target_link_libraries(test_${name} PRIVATE mxcore dl)
