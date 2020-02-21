@@ -4,10 +4,8 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
-#include "test.h"
 
 static int *malloc_errno = NULL;
-
 void *malloc(size_t size) {
   typeof(malloc) *malloc = dlsym(RTLD_NEXT, "malloc");
 
@@ -28,6 +26,7 @@ int main() {
   int *source = mx_vector_define(int, 1, 2, 3, 4);
   source = mx_vector_ensure(source, 20);
 
+  // TODO: review
   int *source_shrunk = mx_vector_define(int, 1, 2, 3, 4);
   source_shrunk = mx_vector_shrink(source_shrunk);
 
@@ -35,7 +34,7 @@ int main() {
 
   // It evaluates its vector argument once
   int number = 0;
-  result = mx_vector_duplicate(increment_return(source, number));
+  result = mx_vector_duplicate((number++, source));
   assert(number == 1);
   mx_vector_delete(result);
 
