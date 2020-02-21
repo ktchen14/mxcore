@@ -1,7 +1,6 @@
 #include <assert.h>
 
 #include "../source/vector.h"
-#include "test.h"
 
 int main() {
   int *vector = mx_vector_define(int, 1, 2, 3, 4, 5, 6, 7, 8);
@@ -13,15 +12,15 @@ int main() {
   assert(mx_vector_at(vector, 8, sizeof(int)) == vector + 8);
 
   // It evalutes its vector argument once
-  mx_vector_at(increment_return(vector, number), 1, sizeof(int));
+  mx_vector_at((number++, vector), 1, sizeof(int));
   assert(number == 1);
 
   // It evalutes its index argument once
-  mx_vector_at(vector, increment_return(1, number), sizeof(int));
+  mx_vector_at(vector, (number++, 1), sizeof(int));
   assert(number == 2);
 
   // It evalutes its element size argument once
-  mx_vector_at(vector, 1, increment_return(sizeof(int), number));
+  mx_vector_at(vector, 1, (number++, sizeof(int)));
   assert(number == 3);
 
   mx_vector_delete(vector);
