@@ -38,15 +38,8 @@ int main() {
   assert(number == 2);
 
   // It calls mx_vector_resize() with the element size of the vector
-  struct {
-    long a; int b; short c; void *e; char n[256];
-  } *struct_vector = mx_vector_create();
-  struct_vector = mx_vector_resize(struct_vector, 10);
-  assert(last_z == sizeof(struct_vector[0]));
-
-  int (*vec)[2] = mx_vector_define(int[2], { 0, 1 }, { 2, 3 });
-  vec = mx_vector_resize(vec, 4);
-  assert(last_z == sizeof(vec[0]));
+  vector = mx_vector_resize(vector, 10);
+  assert(last_z == sizeof(int));
 
   // When volume overflows it returns NULL with errno = ENOMEM
   volume = SIZE_MAX / sizeof(int) + 1;
@@ -78,6 +71,8 @@ int main() {
   volume = 6;
   vector = mx_vector_resize(vector, volume);
   assert(mx_vector_length(vector) == volume);
+
+  mx_vector_delete(vector);
 
 #ifdef MAKE_TEST_WILL_FAIL
   // It emits a compiler warning if its result is unused
