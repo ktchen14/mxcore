@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
-#include "test.h"
 
 static size_t last_z;
 void mx_vector_swap_z(mx_vector_t vector, size_t i, size_t j, size_t z) {
