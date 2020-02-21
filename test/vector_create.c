@@ -6,7 +6,6 @@
 #include "../source/vector.h"
 
 static int malloc_errno = 0;
-
 void *malloc(size_t size) {
   typeof(malloc) *malloc = dlsym(RTLD_NEXT, "malloc");
 
@@ -41,6 +40,8 @@ void test_vector_create(void) {
   mx_vector_delete(vector);
 }
 
+// TODO: vector_import?
+
 void test_vector_create_as(void) {
   int data[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
   int *vector;
@@ -63,12 +64,9 @@ void test_vector_create_as(void) {
 
   // With a length that causes the vector's data size, when added to the header
   // size, to overflow a size_t; it returns NULL with errno = ENOMEM.
-  length = SIZE_MAX / sizeof(int) - 1;
   errno = 0;
-  assert(mx_vector_create_as(data, length) == NULL);
+  assert(mx_vector_create_as(data, SIZE_MAX / sizeof(int) - 1) == NULL);
   assert(errno == ENOMEM);
-
-  length = sizeof(data) / sizeof(data[0]);
 
   // When the allocation is unsuccessful it returns NULL with errno retained
   // from malloc()
