@@ -4,7 +4,6 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
-#include "test.h"
 
 static int malloc_errno = 0;
 
@@ -49,12 +48,12 @@ void test_vector_create_as(void) {
   int number = 0;
 
   // It evaluates its data argument once
-  vector = mx_vector_create_as(increment_return(data, number), length);
+  vector = mx_vector_create_as((number++, data), length);
   assert(number == 1);
   mx_vector_delete(vector);
 
   // It evaluates its length argument once
-  vector = mx_vector_create_as(data, increment_return(length, number));
+  vector = mx_vector_create_as(data, (number++, length));
   assert(number == 2);
   mx_vector_delete(vector);
 
