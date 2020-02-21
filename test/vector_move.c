@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
-#include "test.h"
 
 static size_t last_z;
 void mx_vector_move_z(mx_vector_t vector, size_t target, size_t source, size_t z) {
@@ -17,15 +16,15 @@ int main() {
   int number = 0;
 
   // It evaluates its vector argument once
-  mx_vector_move(increment_return(vector, number), 0, 3);
+  mx_vector_move((number++, vector), 0, 3);
   assert(number == 1);
 
   // It evaluates its index i argument once
-  mx_vector_move(vector, increment_return(0, number), 3);
+  mx_vector_move(vector, (number++, 0), 3);
   assert(number == 2);
 
   // It evaluates its index j argument once
-  mx_vector_move(vector, 0, increment_return(3, number));
+  mx_vector_move(vector, 0, (number++, 3));
   assert(number == 3);
 
   // It calls mx_vector_move_z() with the element size of the vector
