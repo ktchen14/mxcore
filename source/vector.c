@@ -52,7 +52,7 @@ mx_vector_t mx_vector_create() {
   return header_to_vector(header);
 }
 
-mx_vector_t mx_vector_create_as_z(const void *data, size_t length, size_t z) {
+mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z) {
   header_t *header;
 
   // Doesn't overflow because this is the size of data
@@ -63,12 +63,8 @@ mx_vector_t mx_vector_create_as_z(const void *data, size_t length, size_t z) {
     return NULL;
 
   header->volume = length;
-
-  if (data != NULL) {
-    header->length = length;
-    memcpy(header->data, data, length * z);
-  } else
-    header->length = 0;
+  header->length = length;
+  memcpy(header->data, data, length * z);
 
   return header_to_vector(header);
 }
