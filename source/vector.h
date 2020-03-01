@@ -339,13 +339,18 @@ void mx_vector_swap_z(mx_vector_t vector, size_t i, size_t j, size_t z)
  * the @a vector is unchanged. For example:
  *
  * \code{.c}
- * int *sample = { 2, 4, 6, 8, 10, 12 };
+ * int *sample = mx_vector_define(int, 2, 4, 6, 8, 10, 12);
  * mx_vector_move(sample, 4, 2);
  * sample == { 2, 4, 10, 6, 8, 12 };
  * \endcode
  *
  * If @a target or @a source isn't an index in the @a vector then the behavior
  * is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param target the index in the @a vector to move the element to
+ * @param source the index of the element in the @a vector to move
+ * @param z the element size of the @a vector
  *
  * @see mx_vector_move() - The implicit interface analogue
  */
@@ -357,8 +362,25 @@ mx_vector_move_z(mx_vector_t vector, size_t target, size_t source, size_t z)
  * @brief Move the element at index @a source to index @a target in the
  * @a vector
  *
+ * This will move the element at index @a source to be at index @a target, the
+ * element previously at index @a target to index <code>target + 1</code>, and
+ * so on. When complete the length of the @a vector is unchanged and (with the
+ * exception of the element at @a source) the relative order of each element in
+ * the @a vector is unchanged. For example:
+ *
+ * \code{.c}
+ * int *sample = mx_vector_define(int, 2, 4, 6, 8, 10, 12);
+ * mx_vector_move(sample, 4, 2);
+ * sample == { 2, 4, 10, 6, 8, 12 };
+ * \endcode
+ *
  * If @a target or @a source isn't an index in the @a vector then the behavior
  * is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param target the index in the @a vector to move the element to
+ * @param source the index of the element in the @a vector to move
+ * @param z the element size of the @a vector
  *
  * @see mx_vector_move_z() - The explicit interface analogue
  */
