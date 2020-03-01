@@ -53,7 +53,7 @@ int main() {
   assert(mx_vector_volume(vector) == volume);
 
   // When the volume calculation overflows it returns the result of a resize to
-  // the length (with errno retained if relevant)
+  // the length, with errno retained if relevant.
   resize_errno = (int[]) { ENOENT };
   assert(mx_vector_ensure(vector, SIZE_MAX - 1) == NULL);
   resize_errno = NULL;

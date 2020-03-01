@@ -5,8 +5,9 @@
 
 #include "../source/vector.h"
 
-static int malloc_errno = 0;
+// TODO: review
 
+static int malloc_errno = 0;
 void *malloc(size_t size) {
   typeof(malloc) *malloc = dlsym(RTLD_NEXT, "malloc");
 

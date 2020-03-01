@@ -59,15 +59,15 @@ int main() {
   assert(mx_vector_resize(vector, 40) == NULL);
   assert(errno == ENOENT);
 
-  // With a volume greater than or equal to the length the length is unchanged
   realloc_return = 0;
+
+  // With a volume greater than or equal to the length the length is unchanged
   volume = 80;
   length = mx_vector_length(vector);
   vector = mx_vector_resize(vector, volume);
   assert(mx_vector_length(vector) == length);
 
   // With a volume less than the length the length is truncated
-  realloc_return = 0;
   volume = 6;
   vector = mx_vector_resize(vector, volume);
   assert(mx_vector_length(vector) == volume);
