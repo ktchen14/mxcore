@@ -94,7 +94,6 @@ mx_vector_t mx_vector_create(void) __attribute__((malloc));
  * @return the new vector on success; otherwise @c NULL
  *
  * @see mx_vector_import() - The implicit interface analogue
- * @see mx_vector_import_z() - The explicit interface analogue
  */
 mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
   __attribute__((malloc, nonnull));
@@ -109,7 +108,6 @@ mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
  * @param length the number of elements to copy from @a data
  * @return the new vector on success; otherwise @c NULL
  *
- * @see mx_vector_import() - The implicit interface analogue
  * @see mx_vector_import_z() - The explicit interface analogue
  */
 //= mx_vector_t mx_vector_import(const void *data, size_t length)
