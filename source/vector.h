@@ -429,33 +429,36 @@ mx_vector_t mx_vector_resize_z(mx_vector_t vector, size_t volume, size_t z)
   mx_vector_resize_z((vector), (volume), MX_VECTOR_Z((vector)))
 
 /**
- * @brief Resize the volume of the @a vector to its length
+ * @brief Reduce the volume of the @a vector to its length
  *
- * This is similar to <code>mx_vector_resize_z(vector, mx_vector_length(vector),
- * z)</code>. However if the mx_vector_resize_z() fails then the @a vector will
- * be returned umodified.
+ * This is similar to a mx_vector_resize_z() to the vector's length. However if
+ * the resize fails then the @a vector will be returned umodified and the value
+ * of @c errno set by realloc() will be retained.
  *
+ * @param vector the vector to operate on
+ * @param z the element size of the @a vector
  * @return the shrunk vector on success; otherwise the unmodified vector
  *
- * @see mx_vector_shrink()
+ * @see mx_vector_shrink() - the implicit interface analogue
  */
 mx_vector_t mx_vector_shrink_z(mx_vector_t vector, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
 
 /**
- * @brief Resize the volume of the @a vector to its length
+ * @brief Reduce the volume of the @a vector to its length
  *
- * This is similar to <code>mx_vector_resize(vector,
- * mx_vector_length(vector))</code>. However if the mx_vector_resize() fails
- * then the @a vector will be returned umodified.
+ * This is similar to a mx_vector_resize() to the vector's length. However if
+ * the resize fails then the @a vector will be returned umodified and the value
+ * of @c errno set by realloc() will be retained.
  *
+ * @param vector the vector to operate on
  * @return the shrunk vector on success; otherwise the unmodified vector
  *
- * @see mx_vector_shrink_z()
+ * @see mx_vector_shrink_z() - the explicit interface analogue
  */
 //= mx_vector_t mx_vector_shrink(mx_vector_t vector)
 #define mx_vector_shrink(vector) \
-  mx_vector_shrink_z((vector), sizeof((vector)[0]))
+  mx_vector_shrink_z((vector), MX_VECTOR_Z((vector)))
 
 /**
  * @brief Ensure that the volume of the @a vector is at least @a length

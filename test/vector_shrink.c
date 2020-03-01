@@ -28,14 +28,12 @@ int main() {
   int number = 0;
 
   // It evaluates its vector argument once
-  vector = mx_vector_shrink(increment_return(vector, number));
+  vector = mx_vector_shrink((number++, vector));
   assert(number == 1);
 
   // It calls mx_vector_shrink_z() with the element size of the vector
-  struct { int x; } (*vector_s)[4] = mx_vector_create();
-  vector_s = mx_vector_shrink(vector_s);
-  assert(last_z == sizeof(vector_s[0]));
-  mx_vector_delete(vector_s);
+  vector = mx_vector_shrink(vector);
+  assert(last_z == sizeof(vector[0]));
 
   // When the resize is unsuccessful the vector is unmodified with errno
   // retained from the resize operation
