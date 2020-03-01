@@ -130,15 +130,15 @@ mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
  * @return the new vector on success; otherwise @c NULL
  */
 #define mx_vector_define(type, ...) ({ \
-  /* Fail unless type is an actual type before we declare __data with
-   * typeof(type). Otherwise the compiler is silent on this kind of mistake:
-   *   mx_vector_define(1, 2, 3, 4)       => (int[])    { 2, 3, 4 }
-   * When this was intended:
-   *   mx_vector_define(int, 1, 2, 3, 4)  => (int[]) { 1, 2, 3, 4 }
-   */ \
+  /* Fail unless type is an actual type before we declare __data with */ \
+  /* __typeof__(type). Otherwise the compiler is silent on this kind of */ \
+  /* mistake: */ \
+  /*   mx_vector_define(1, 2, 3, 4)       => (int[])    { 2, 3, 4 } */ \
+  /* When this was intended: */ \
+  /*   mx_vector_define(int, 1, 2, 3, 4)  => (int[]) { 1, 2, 3, 4 } */ \
   (void) __builtin_types_compatible_p(type, void); \
-  /* We must take the __typeof__(type) here so that a strange type like int[2]
-   * or void (*)(void) is syntactically acceptable. */ \
+  /* We must take the __typeof__(type) here so that a strange type like */ \
+  /* int[2] or void (*)(void) is syntactically acceptable. */ \
   __typeof__(type) __data[] = { __VA_ARGS__ }; \
   mx_vector_import(__data, sizeof(__data) / sizeof(__data[0])); \
 })
@@ -370,20 +370,40 @@ mx_vector_move_z(mx_vector_t vector, size_t target, size_t source, size_t z)
  * @brief Resize the volume of the @a vector to @a volume
  *
  * This will fail if realloc() returns @c NULL. The C standard <b>doesn't</b>
- * guarantee that realloc() to a smaller size will be successful. Therefore this
- * can fail even if the requested @a volume is less than the current volume of
- * the @a vector. If the realloc() fails then the @a vector will be unmodified.
+ * guarantee that realloc() to a smaller size will be successful so this can
+ * fail even if the requested @a volume is less than the current volume of the
+ * @a vector. If the realloc() fails then the @a vector will be unmodified.
  *
  * If @a volume is less than the length of the @a vector then the @a vector will
  * be truncated and have its length reduced to @a volume.
  *
  * If this fails then it will set @c errno to @c ENOMEM.
  *
+ * @param vector the vector to operate on
+ * @param volume the volume to resize the @a vector to
+ * @param z the element size of the @a vector
  * @return the resized vector on success; otherwise @c NULL
  */
 mx_vector_t mx_vector_resize_z(mx_vector_t vector, size_t volume, size_t z)
   __attribute__((nonnull, warn_unused_result));
 
+/**
+ * @brief Resize the volume of the @a vector to @a volume
+ *
+ * This will fail if realloc() returns @c NULL. The C standard <b>doesn't</b>
+ * guarantee that realloc() to a smaller size will be successful so this can
+ * fail even if the requested @a volume is less than the current volume of the
+ * @a vector. If the realloc() fails then the @a vector will be unmodified.
+ *
+ * If @a volume is less than the length of the @a vector then the @a vector will
+ * be truncated and have its length reduced to @a volume.
+ *
+ * If this fails then it will set @c errno to @c ENOMEM.
+ *
+ * @param vector the vector to operate on
+ * @param volume the volume to resize the @a vector to
+ * @return the resized vector on success; otherwise @c NULL
+ */
 //= mx_vector_t mx_vector_resize(mx_vector_t vector, size_t volume)
 #define mx_vector_resize(vector, volume) \
   mx_vector_resize_z((vector), (volume), MX_VECTOR_Z((vector)))
