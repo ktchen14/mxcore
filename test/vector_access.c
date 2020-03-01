@@ -10,11 +10,6 @@ void test_vector_get(void) {
   mx_vector_get(vector, 2, &elmt, sizeof(int));
   assert(elmt == 2);
 
-  // When elmt is itself an element in the vector, it copies the element at the
-  // index in the vector to elmt
-  mx_vector_get(vector, 3, vector + 1, sizeof(int));
-  assert(vector[1] == 3);
-
   mx_vector_delete(vector);
 }
 
@@ -29,14 +24,6 @@ void test_vector_set(void) {
   assert(vector[1] == 1);
   assert(vector[2] == 9);
   assert(vector[3] == 3);
-
-  // When elmt is itself an element in the vector, it copies elmt to the element
-  // at the index in the vector. No other elements in the vector are modified.
-  mx_vector_set(vector, 3, vector + 1, sizeof(int));
-  assert(vector[0] == 0);
-  assert(vector[1] == 1);
-  assert(vector[2] == 9);
-  assert(vector[3] == 1);
 
   mx_vector_delete(vector);
 }

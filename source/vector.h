@@ -248,12 +248,22 @@ size_t mx_vector_index(mx_vector_c vector, const void *elmt, size_t z)
  * compile time as it's identical to <code>*elmt = vector[i]</code>.
  *
  * If @a i isn't an index in the @a vector then the behavior is undefined. If
- * @a elmt is @c NULL then the behavior is undefined.
+ * @a elmt is @c NULL then the behavior is undefined. If @a elmt is an element
+ * or a location in the @a vector then the behavior is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param i the index of the element in the @a vector to copy from
+ * @param elmt the location to copy the element to
+ * @param z the element size of the @a vector
  *
  * @see mx_vector_set()
  */
 inline __attribute__((nonnull))
-void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z) {
+void mx_vector_get(
+    restrict mx_vector_c vector,
+    size_t i,
+    void * restrict elmt,
+    size_t z) {
   memcpy(elmt, mx_vector_at(vector, i, z), z);
 }
 
@@ -266,12 +276,22 @@ void mx_vector_get(mx_vector_c vector, size_t i, void *elmt, size_t z) {
  * compile time as it's identical to <code>vector[i] = *elmt</code>.
  *
  * If @a i isn't an index in the @a vector then the behavior is undefined. If
- * @a elmt is @c NULL then the behavior is undefined.
+ * @a elmt is @c NULL then the behavior is undefined. If @a elmt is an element
+ * or a location in the @a vector then the behavior is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param i the index of the element in the @a vector to copy to
+ * @param elmt the location to copy the element from
+ * @param z the element size of the @a vector
  *
  * @see mx_vector_get()
  */
 inline __attribute__((nonnull))
-void mx_vector_set(mx_vector_t vector, size_t i, const void *elmt, size_t z) {
+void mx_vector_set(
+    restrict mx_vector_t vector,
+    size_t i,
+    const void * restrict elmt,
+    size_t z) {
   memcpy(mx_vector_at(vector, i, z), elmt, z);
 }
 
