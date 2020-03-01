@@ -41,7 +41,7 @@ void test_vector_create(void) {
 }
 
 void test_vector_import(void) {
-  int data[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21 };
+  int data[] = { 1, 2, 3, 5, 8, 13, 21, 34 };
   int *vector;
   size_t length = sizeof(data) / sizeof(data[0]);
   int number = 0;

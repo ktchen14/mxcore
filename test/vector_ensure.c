@@ -25,7 +25,7 @@ mx_vector_t mx_vector_ensure_z(mx_vector_t vector, size_t length, size_t z) {
 }
 
 int main() {
-  int *vector = mx_vector_define(int, 0, 1, 2, 3, 4, 5, 6, 7);
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
   int number = 0;
   size_t volume;
 

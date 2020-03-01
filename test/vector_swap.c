@@ -12,7 +12,7 @@ void mx_vector_swap_z(mx_vector_t vector, size_t i, size_t j, size_t z) {
 }
 
 int main() {
-  int *vector = mx_vector_define(int, 0, 1, 2, 3);
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13);
   int number = 0;
 
   // It evaluates its vector argument once
@@ -33,11 +33,13 @@ int main() {
 
   // It swaps the element at index i with the element at index j in the vector.
   // No other elements in the vector are modified.
-  mx_vector_swap(vector, 1, 2);
-  assert(vector[0] == 0);
-  assert(vector[1] == 2);
-  assert(vector[2] == 1);
-  assert(vector[3] == 3);
+  mx_vector_swap(vector, 1, 4);
+  assert(vector[0] == 1);
+  assert(vector[1] == 8);
+  assert(vector[2] == 3);
+  assert(vector[3] == 5);
+  assert(vector[4] == 2);
+  assert(vector[5] == 13);
 
   mx_vector_delete(vector);
 }

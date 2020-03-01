@@ -12,7 +12,7 @@ void mx_vector_move_z(mx_vector_t vector, size_t target, size_t source, size_t z
 }
 
 int main() {
-  int *vector = mx_vector_define(int, 0, 1, 2, 3);
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13);
   int number = 0;
 
   // It evaluates its vector argument once
@@ -32,20 +32,24 @@ int main() {
   assert(last_z == sizeof(int));
 
   // When the source index is before the target index, it moves the element at
-  // the source index to the target index in the vector
-  mx_vector_move(vector, 1, 3);
-  assert(vector[0] == 0);
+  // the source index to the target index in the vector.
+  mx_vector_move(vector, 2, 0);
+  assert(vector[0] == 2);
   assert(vector[1] == 3);
   assert(vector[2] == 1);
-  assert(vector[3] == 2);
+  assert(vector[3] == 5);
+  assert(vector[4] == 8);
+  assert(vector[5] == 13);
 
   // When the source index is after the target index, it moves the element at
-  // the source index to the target index in the vector
-  mx_vector_move(vector, 2, 0);
-  assert(vector[0] == 3);
-  assert(vector[1] == 1);
-  assert(vector[2] == 0);
-  assert(vector[3] == 2);
+  // the source index to the target index in the vector.
+  mx_vector_move(vector, 1, 4);
+  assert(vector[0] == 2);
+  assert(vector[1] == 8);
+  assert(vector[2] == 3);
+  assert(vector[3] == 1);
+  assert(vector[4] == 5);
+  assert(vector[5] == 13);
 
   mx_vector_delete(vector);
 }
