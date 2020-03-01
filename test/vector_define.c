@@ -41,13 +41,13 @@ int main() {
   // It accepts an array of constant known size as its type argument, and type
   // and size compatible array literals (brace enclosed lists of initializers)
   // as its variadic arguments.
-  int (*vector_a)[2] = mx_vector_define(int[2], { 1, 2 }, { 3, 4 });
+  int (*vector_a)[2] = mx_vector_define(int[2], { 2, 3 }, { 5, 8 });
 
   assert(vector_a != NULL);
   assert(mx_vector_volume(vector_a) >= mx_vector_length(vector_a));
   assert(mx_vector_length(vector_a) == 2);
-  assert(vector_a[0][0] == 1 && vector_a[0][1] == 2);
-  assert(vector_a[1][0] == 3 && vector_a[1][1] == 4);
+  assert(vector_a[0][0] == 2 && vector_a[0][1] == 3);
+  assert(vector_a[1][0] == 5 && vector_a[1][1] == 8);
 
   mx_vector_delete(vector_a);
 
@@ -71,27 +71,27 @@ int main() {
   // It accepts a struct declaration as its type argument and compatible struct
   // literals (brace enclosed lists of initializers) as its variadic arguments
   struct { long a; int b; } *vector_s = mx_vector_define(
-    struct { long a; int b; }, { .a = 1, .b = 2 }, { .a = 3, .b = 4 },
+    struct { long a; int b; }, { .a = 2, .b = 3 }, { .a = 5, .b = 8 },
   );
 
   assert(vector_s != NULL);
   assert(mx_vector_volume(vector_s) >= mx_vector_length(vector_s));
   assert(mx_vector_length(vector_s) == 2);
-  assert(vector_s[0].a == 1 && vector_s[0].b == 2);
-  assert(vector_s[1].a == 3 && vector_s[1].b == 4);
+  assert(vector_s[0].a == 2 && vector_s[0].b == 3);
+  assert(vector_s[1].a == 5 && vector_s[1].b == 8);
 
   mx_vector_delete(vector_s);
 
   // It accepts a union declaration as its type argument and compatible union
   // literals (brace enclosed lists of initializers) as its variadic arguments
   union { long a; void *b; } *vector_u = mx_vector_define(
-    union { long a; void *b; }, { .a = 1 }, { .b = &vector_u },
+    union { long a; void *b; }, { .a = 8 }, { .b = &vector_u },
   );
 
   assert(vector_u != NULL);
   assert(mx_vector_volume(vector_u) >= mx_vector_length(vector_u));
   assert(mx_vector_length(vector_u) == 2);
-  assert(vector_u[0].a == 1);
+  assert(vector_u[0].a == 8);
   assert(vector_u[1].b == &vector_u);
 
   mx_vector_delete(vector_u);
