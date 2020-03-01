@@ -4,7 +4,6 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
-#include "test.h"
 
 static int realloc_return = 0;
 
@@ -30,29 +29,32 @@ int main() {
   size_t volume;
 
   // It evaluates its vector argument once
-  vector = mx_vector_resize(increment_return(vector, number), 10);
+  vector = mx_vector_resize((number++, vector), 10);
   assert(number == 1);
 
   // It evaluates its volume argument once
-  vector = mx_vector_resize(vector, increment_return(12, number));
+  vector = mx_vector_resize(vector, (number++, 12));
   assert(number == 2);
 
   // It calls mx_vector_resize() with the element size of the vector
   vector = mx_vector_resize(vector, 10);
-  assert(last_z == sizeof(int));
+  assert(last_z == sizeof(vector[0]));
 
-  // When volume overflows it returns NULL with errno = ENOMEM
+  // With a volume that causes the data size to overflow a size_t, it returns
+  // NULL with errno = ENOMEM
   volume = SIZE_MAX / sizeof(int) + 1;
   errno = 0;
   assert(mx_vector_resize(vector, volume) == NULL);
   assert(errno == ENOMEM);
 
+  // With a volume that causes the vector size to overflow a size_t, it returns
+  // NULL with errno = ENOMEM
   volume = SIZE_MAX / sizeof(int);
   errno = 0;
   assert(mx_vector_resize(vector, volume) == NULL);
   assert(errno == ENOMEM);
 
-  // When the allocation is unsuccessful it returns NULL with errno retained
+  // When the reallocation is unsuccessful it returns NULL with errno retained
   // from realloc()
   realloc_return = ENOENT;
   errno = 0;
@@ -61,16 +63,16 @@ int main() {
 
   realloc_return = 0;
 
-  // With a volume greater than or equal to the length the length is unchanged
-  volume = 80;
+  // With a volume greater than or equal to the vector's length, the vector's
+  // length is unchanged
   length = mx_vector_length(vector);
-  vector = mx_vector_resize(vector, volume);
+  vector = mx_vector_resize(vector, length + 2);
   assert(mx_vector_length(vector) == length);
 
-  // With a volume less than the length the length is truncated
-  volume = 6;
-  vector = mx_vector_resize(vector, volume);
-  assert(mx_vector_length(vector) == volume);
+  // With a volume less than the vector's length it truncates the vector to the
+  // volume
+  vector = mx_vector_resize(vector, length - 2);
+  assert(mx_vector_length(vector) == mx_vector_volume(vector));
 
   mx_vector_delete(vector);
 
