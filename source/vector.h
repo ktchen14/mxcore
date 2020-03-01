@@ -120,14 +120,13 @@ mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
  * @brief Allocate and initialize a vector from the argument list
  *
  * This is just mx_vector_import() with @a data constructed and @a length
- * calculated from the argument list.
+ * calculated from the argument list. If an argument in ... is incompatible with
+ * @a type then the behavior is undefined.
  *
- * On failure this will retain the value of @c errno set by malloc(). If an
- * argument in ... has a type that's incompatible with @a type then the behavior
- * is undefined.
+ * On failure this will retain the value of @c errno set by malloc().
  *
  * @param type a complete object type
- * @param ... a sequence of elements to initialize the vector with
+ * @param ... a sequence of elements to initialize the vector from
  * @return the new vector on success; otherwise @c NULL
  */
 #define mx_vector_define(type, ...) ({ \
@@ -138,8 +137,8 @@ mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
    *   mx_vector_define(int, 1, 2, 3, 4)  => (int[]) { 1, 2, 3, 4 }
    */ \
   (void) __builtin_types_compatible_p(type, void); \
-  /* We must take the typeof(type) here so that a strange type like int[2] or
-   * void (*)(void) is syntactically acceptable. */ \
+  /* We must take the __typeof__(type) here so that a strange type like int[2]
+   * or void (*)(void) is syntactically acceptable. */ \
   __typeof__(type) __data[] = { __VA_ARGS__ }; \
   mx_vector_import(__data, sizeof(__data) / sizeof(__data[0])); \
 })
