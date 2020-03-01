@@ -86,13 +86,10 @@ mx_vector_t mx_vector_create(void) __attribute__((malloc));
  * @brief Allocate and initialize a vector from @a length elements of @a data
  *
  * This will create and return a vector containing @a length elements from
- * @a data. If @a data is @c NULL and @a length is @c 0 then this is identical
- * to mx_vector_create(); in this case that function should be used instead.
- *
- * On failure this will retain the value of @c errno set by malloc().
+ * @a data. On failure this will retain the value of @c errno set by malloc().
  *
  * @param data the data to initialize the vector from
- * @param length the number of elements from @a data
+ * @param length the number of elements to copy from @a data
  * @param z the element size of the @a data
  * @return the new vector on success; otherwise @c NULL
  *
@@ -105,20 +102,11 @@ mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
 /**
  * @brief Allocate and initialize a vector from @a length elements of @a data
  *
- * If @a data is not @c NULL this will create and return a vector containing
- * @a length elements from @a data.
- *
- * If @a data is @c NULL this will create and return a vector with a volume
- * that's at least @a length. Note that in this case the length of the created
- * vector will be zero.
- *
- * If @a data is @c NULL and @a length is @c NULL then this is identical to
- * mx_vector_create(); in this case that function should be used instead.
- *
- * On failure this will retain the value of @c errno set by malloc().
+ * This will create and return a vector containing @a length elements from
+ * @a data. On failure this will retain the value of @c errno set by malloc().
  *
  * @param data the data to initialize the vector from
- * @param length the number of elements from @a data
+ * @param length the number of elements to copy from @a data
  * @return the new vector on success; otherwise @c NULL
  *
  * @see mx_vector_import() - The implicit interface analogue
