@@ -70,7 +70,7 @@
  */
 typedef void * mx_vector_t;
 
-/// An @ref mx_vector_t with a @c const element type
+/// A @ref mx_vector_t with a @c const element type
 typedef const void * mx_vector_c;
 
 /**
