@@ -60,8 +60,8 @@ void test_vector_import(void) {
   mx_vector_delete(mx_vector_import(data, length));
   assert(last_z == sizeof(int));
 
-  // With a length that causes the vector's data size, when added to the header
-  // size, to overflow a size_t; it returns NULL with errno = ENOMEM.
+  // With a length that causes the vector size, when added to the header size,
+  // to overflow a size_t; it returns NULL with errno = ENOMEM.
   errno = 0;
   assert(mx_vector_import(data, SIZE_MAX / sizeof(int) - 1) == NULL);
   assert(errno == ENOMEM);
@@ -81,7 +81,7 @@ void test_vector_import(void) {
   vector = mx_vector_import(data, length);
   assert(mx_vector_length(vector) == length);
   for (size_t i = 0; i < mx_vector_length(vector); i++)
-    assert(vector[i] == (int) i);
+    assert(vector[i] == data[i]);
   assert(mx_vector_volume(vector) == length);
 
   mx_vector_delete(vector);
