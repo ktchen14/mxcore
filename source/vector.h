@@ -202,8 +202,8 @@ size_t mx_vector_length(mx_vector_c vector) __attribute__((nonnull, pure));
  */
 //= void *mx_vector_at(mx_vector_t vector, size_t i, size_t z)
 #define mx_vector_at(vector, i, z) ({ \
-  /* Warn or fail if vector isn't a pointer. When this is absent if vector is a
-   * scalar no warning is issued due to the explicit cast to char *. */ \
+  /* Warn or fail if vector isn't a pointer. When this is absent if vector */ \
+  /* is a scalar no warning is issued due to the explicit cast to char *. */ \
   const void *__vector = (vector); \
   _Pragma("GCC diagnostic push") \
   _Pragma("GCC diagnostic ignored \"-Wcast-align\"") \
