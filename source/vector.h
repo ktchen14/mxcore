@@ -492,8 +492,11 @@ mx_vector_t mx_vector_ensure_z(mx_vector_t vector, size_t length, size_t z)
 
 /// @copybrief mx_vector_insert()
 /// @see mx_vector_insert()
-mx_vector_t
-mx_vector_insert_z(mx_vector_t vector, size_t i, const void *elmt, size_t z)
+mx_vector_t mx_vector_insert_z(
+    restrict mx_vector_t vector,
+    size_t i,
+    const void * restrict elmt,
+    size_t z)
   __attribute__((nonnull(1), warn_unused_result));
 
 /**
@@ -520,7 +523,11 @@ mx_vector_insert_z(mx_vector_t vector, size_t i, const void *elmt, size_t z)
 /// @copydoc mx_vector_inject()
 /// @see mx_vector_inject()
 mx_vector_t mx_vector_inject_z(
-    mx_vector_t vector, size_t i, const void *elmt, size_t n, size_t z)
+    restrict mx_vector_t vector,
+    size_t i,
+    const void * restrict elmt,
+    size_t n,
+    size_t z)
   __attribute__((nonnull(1), warn_unused_result));
 
 /**
