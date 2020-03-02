@@ -579,7 +579,7 @@ mx_vector_t mx_vector_excise_z(mx_vector_t vector, size_t i, size_t n, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
 
 #define mx_vector_excise(vector, i, n) \
-  mx_vector_excise((vector), (i), (n), sizeof((vector)[0]))
+  mx_vector_excise_z((vector), (i), (n), MX_VECTOR_Z((vector)))
 
 /**
  * @brief Reduce the length of the @a vector to @a length

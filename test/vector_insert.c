@@ -64,7 +64,7 @@ mx_vector_t mx_vector_extend_z(
 }
 
 void test_vector_insert(void) {
-  int *vector = mx_vector_define(int, 1, 1, 2, 3, 5, 8);
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13);
   int data = 13;
   int number = 0;
 
@@ -168,7 +168,7 @@ void test_vector_inject(void) {
 }
 
 void test_vector_append(void) {
-  int *vector = mx_vector_define(int, 1, 1, 2, 3, 5, 8);
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13);
   int data = 13;
   int number = 0;
 
@@ -199,7 +199,7 @@ void test_vector_append(void) {
 }
 
 void test_vector_extend(void) {
-  int *vector = mx_vector_define(int, 1, 1, 2, 3, 5, 8);
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13);
   int data[] = { 9, 11 };
   size_t data_length = sizeof(data) / sizeof(data[0]);
   int number = 0;
