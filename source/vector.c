@@ -196,7 +196,7 @@ mx_vector_t mx_vector_inject_z(
   size_t length = mx_vector_length(vector);
 
   if (__builtin_add_overflow(length, n, &length))
-    return NULL;
+    return errno = ENOMEM, NULL;
 
   if ((vector = mx_vector_ensure_z(vector, length, z)) == NULL)
     return NULL;

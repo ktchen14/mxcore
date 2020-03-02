@@ -4,4 +4,19 @@
 // Increment number by 1 and return x
 #define increment_return(x, number) ((number)++, (x))
 
+#include "../source/vector.h"
+
+// Assert that the data in and length of the vector is the same as the sequence
+// of elements specified in the argument list. This uses memcmp() on the vector
+// to determine equivalance.
+#define assert_vector_data(vector, ...) do { \
+  __typeof__((vector)) __vector = (vector); \
+  \
+  __typeof__(__vector[0]) __data[] = { __VA_ARGS__ }; \
+  size_t __length = sizeof(__data) / sizeof(__data[0]); \
+  \
+  assert(mx_vector_length(__vector) == __length); \
+  assert(!memcmp(__vector, __data, sizeof(__data))); \
+} while (0)
+
 #endif /* TEST_H */
