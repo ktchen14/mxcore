@@ -15,6 +15,15 @@ mx_vector_t mx_vector_ensure_z(mx_vector_t vector, size_t length, size_t z) {
   return mx_vector_ensure_z(vector, length, z);
 }
 
+static size_t last_insert_z;
+mx_vector_t mx_vector_insert_z(
+    mx_vector_t vector, size_t i, const void *elmt, size_t z) {
+  typeof(mx_vector_insert_z) *mx_vector_insert_z =
+    dlsym(RTLD_NEXT, "mx_vector_insert_z");
+  last_insert_z = z;
+  return mx_vector_insert_z(vector, i, elmt, z);
+}
+
 static mx_vector_t last_vector;
 static size_t last_i;
 static const void *last_elmt;
@@ -37,21 +46,21 @@ mx_vector_t mx_vector_inject_z(
   return last_result;
 }
 
-static size_t last_insert_z;
-mx_vector_t mx_vector_insert_z(
-    mx_vector_t vector, size_t i, const void *elmt, size_t z) {
-  typeof(mx_vector_insert_z) *mx_vector_insert_z =
-    dlsym(RTLD_NEXT, "mx_vector_insert_z");
-  last_insert_z = z;
-  return mx_vector_insert_z(vector, i, elmt, z);
-}
-
 static size_t last_append_z;
 mx_vector_t mx_vector_append_z(mx_vector_t vector, const void *elmt, size_t z) {
   typeof(mx_vector_append_z) *mx_vector_append_z =
     dlsym(RTLD_NEXT, "mx_vector_append_z");
   last_append_z = z;
   return mx_vector_append_z(vector, elmt, z);
+}
+
+static size_t last_extend_z;
+mx_vector_t mx_vector_extend_z(
+    mx_vector_t vector, const void *elmt, size_t n, size_t z) {
+  typeof(mx_vector_extend_z) *mx_vector_extend_z =
+    dlsym(RTLD_NEXT, "mx_vector_extend_z");
+  last_extend_z = z;
+  return mx_vector_extend_z(vector, elmt, n, z);
 }
 
 void test_vector_insert(void) {
@@ -91,27 +100,27 @@ void test_vector_inject(void) {
   int *vector = mx_vector_define(int, 0, 1, 2, 3, 4, 5, 6, 7);
   int *result;
   int data[] = { 9, 11 };
-  size_t length = sizeof(data) / sizeof(data[0]);
+  size_t data_length = sizeof(data) / sizeof(data[0]);
   int number = 0;
 
   // It evaluates its vector argument once
-  vector = mx_vector_inject((number++, vector), 2, &data, length);
+  vector = mx_vector_inject((number++, vector), 2, &data, data_length);
   assert(number == 1);
 
   // It evaluates its index argument once
-  vector = mx_vector_inject(vector, (number++, 2), &data, length);
+  vector = mx_vector_inject(vector, (number++, 2), &data, data_length);
   assert(number == 2);
 
   // It evaluates its element argument once
-  vector = mx_vector_inject(vector, 2, (number++, &data), length);
+  vector = mx_vector_inject(vector, 2, (number++, &data), data_length);
   assert(number == 3);
 
   // It evaluates its length argument once
-  vector = mx_vector_inject(vector, 2, &data, (number++, length));
+  vector = mx_vector_inject(vector, 2, &data, (number++, data_length));
   assert(number == 4);
 
   // It calls mx_vector_inject_z() with the element size of the vector
-  vector = mx_vector_inject(vector, 2, &data, length);
+  vector = mx_vector_inject(vector, 2, &data, data_length);
   assert(last_inject_z == sizeof(vector[0]));
 
   mx_vector_delete(vector);
@@ -132,7 +141,7 @@ void test_vector_inject(void) {
   // retained from mx_vector_ensure(). The vector is unmodified.
   ensure_errno = ENOENT;
   errno = 0;
-  result = mx_vector_inject(vector, 2, &data, length);
+  result = mx_vector_inject(vector, 2, &data, data_length);
   ensure_errno = 0;
 
   assert(result == NULL);
@@ -142,7 +151,7 @@ void test_vector_inject(void) {
 
   // When the element isn't NULL it injects length elements into the vector at
   // the index from the element location
-  vector = mx_vector_inject(vector, 2, &data, length);
+  vector = mx_vector_inject(vector, 2, &data, data_length);
   assert_vector_data(vector, 1, 2, 9, 11, 3, 5);
 
   // When the element is NULL it injects length uninitialized elements into the
@@ -175,10 +184,8 @@ void test_vector_append(void) {
   vector = mx_vector_append(vector, &data);
   assert(last_append_z == sizeof(vector[0]));
 
-  // TODO: call inject directly
-
-  // It delegates to mx_vector_inject_z() (through mx_vector_insert_z() through
-  // mx_vector_append_z()) with the length and element size of the vector.
+  // It delegates to mx_vector_inject_z() with the length and element size of
+  // the vector
   size_t length = mx_vector_length(vector);
   int *result = mx_vector_append(vector, &data);
   assert(last_vector == vector);
@@ -191,8 +198,45 @@ void test_vector_append(void) {
   mx_vector_delete(vector);
 }
 
+void test_vector_extend(void) {
+  int *vector = mx_vector_define(int, 1, 1, 2, 3, 5, 8);
+  int data[] = { 9, 11 };
+  size_t data_length = sizeof(data) / sizeof(data[0]);
+  int number = 0;
+
+  // It evaluates its vector argument once
+  vector = mx_vector_extend((number++, vector), &data, data_length);
+  assert(number == 1);
+
+  // It evaluates its element argument once
+  vector = mx_vector_extend(vector, (number++, &data), data_length);
+  assert(number == 2);
+
+  // It evaluates its length argument once
+  vector = mx_vector_extend(vector, &data, (number++, data_length));
+  assert(number == 3);
+
+  // It calls mx_vector_extend_z() with the element size of the vector
+  vector = mx_vector_extend(vector, &data, data_length);
+  assert(last_extend_z == sizeof(vector[0]));
+
+  // It delegates to mx_vector_inject_z() with the length and element size of
+  // the vector
+  size_t length = mx_vector_length(vector);
+  int *result = mx_vector_extend(vector, &data, data_length);
+  assert(last_vector == vector);
+  assert(last_i == length);
+  assert(last_elmt == &data);
+  assert(last_n == data_length);
+  assert(last_inject_z == sizeof(vector[0]));
+  assert(result == last_result);
+
+  mx_vector_delete(vector);
+}
+
 int main() {
   test_vector_insert();
   test_vector_inject();
   test_vector_append();
+  test_vector_extend();
 }

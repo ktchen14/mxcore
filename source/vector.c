@@ -250,7 +250,7 @@ mx_vector_t mx_vector_truncate_z(mx_vector_t vector, size_t length, size_t z) {
 }
 
 mx_vector_t mx_vector_append_z(mx_vector_t vector, const void *elmt, size_t z) {
-  return mx_vector_insert_z(vector, mx_vector_length(vector), elmt, z);
+  return mx_vector_inject_z(vector, mx_vector_length(vector), elmt, 1, z);
 }
 
 mx_vector_t
