@@ -3,15 +3,14 @@ name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
+    os_image: ubuntu1804
   containers:
-  - name: main
-    image: kaitingc/debian-test
+    - name: main
+      image: ktchen14/vector-ci-debian
 blocks:
-- name: Build
-  task:
-    jobs:
-    - name: cmake
-      commands:
-      - checkout
-      - cmake .
-      - ctest
+  - name: 'Block #1'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - checkout
