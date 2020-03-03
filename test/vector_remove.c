@@ -6,6 +6,14 @@
 #include "../source/vector.h"
 #include "test.h"
 
+static size_t last_remove_z;
+mx_vector_t mx_vector_remove_z(mx_vector_t vector, size_t i, size_t z) {
+  typeof(mx_vector_remove_z) *mx_vector_remove_z =
+    dlsym(RTLD_NEXT, "mx_vector_remove_z");
+  last_remove_z = z;
+  return mx_vector_remove_z(vector, i, z);
+}
+
 static mx_vector_t last_vector;
 static size_t last_i;
 static size_t last_n;
@@ -24,6 +32,33 @@ mx_vector_t mx_vector_excise_z(
   last_result = mx_vector_excise_z(vector, i, n, z);
 
   return last_result;
+}
+
+void test_vector_remove(void) {
+  int *vector = mx_vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
+  int number = 0;
+
+  // It evaluates its vector argument once
+  vector = mx_vector_remove((number++, vector), 2);
+  assert(number == 1);
+
+  // It evaluates its index argument once
+  vector = mx_vector_remove(vector, (number++, 2));
+  assert(number == 2);
+
+  // It calls mx_vector_remove_z() with the element size of the vector
+  vector = mx_vector_remove(vector, 2);
+  assert(last_remove_z == sizeof(vector[0]));
+
+  // It delegates to mx_vector_excise_z() with length as 1
+  int *result = mx_vector_remove(vector, 2);
+  assert(last_vector == vector);
+  assert(last_i == 2);
+  assert(last_n == 1);
+  assert(last_excise_z == sizeof(vector[0]));
+  assert(result == last_result);
+
+  mx_vector_delete(vector);
 }
 
 void test_vector_excise(void) {
@@ -80,5 +115,6 @@ void test_vector_excise(void) {
 }
 
 int main() {
+  test_vector_remove();
   test_vector_excise();
 }
