@@ -36,9 +36,12 @@ blocks:
 
 - name: Compile and Test
   task:
+    env_vars:
+    - name: CTEST_PARALLEL_LEVEL
+      value: 4
     jobs:
     - name: Compile and Test
       commands:
       - checkout
       - cmake .
-      - ctest --output-on-failure --parallel 4
+      - ctest --output-on-failure
