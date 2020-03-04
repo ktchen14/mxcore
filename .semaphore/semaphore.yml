@@ -20,6 +20,11 @@ blocks:
       commands:
       - checkout
       - docker build ci -f ci/Dockerfile.debian -t ktchen14/vector-ci-debian
+      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+      - docker push ktchen14/vector-ci-debian
+      - docker logout
+    secrets:
+    - name: Vector CI
   run:
     when: change_in('ci/Dockerfile.debian')
 - name: 'Block #1'
