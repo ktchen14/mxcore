@@ -32,7 +32,10 @@ blocks:
     secrets:
     - name: Vector CI Docker Authentication
   run:
-    when: change_in('ci/Dockerfile.debian')
+    when: <
+      change_in('ci/Dockerfile.debian', {
+        on_tags: false, pipeline_file: ignore, branch_range: $SEMAPHORE_GIT_COMMIT_RANGE,
+      })
 
 - name: Compile and Test
   task:
