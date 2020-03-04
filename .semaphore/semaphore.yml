@@ -9,6 +9,7 @@ agent:
     image: ktchen14/vector-ci-debian
 blocks:
 - name: Build Docker Image
+  dependencies: []
   task:
     agent:
       machine:
