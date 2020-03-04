@@ -13,6 +13,12 @@ RUN apt-get update && \
 
 FROM debian:buster-slim
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends ca-certificates gcc git make openssh-client && \
+  apt-get install -y --no-install-recommends \
+    ca-certificates \
+    gcc \
+    git \
+    libc6-dev \
+    make \
+    openssh-client && \
   rm -rf /var/lib/apt/lists/*
 COPY --from=downloader installation /usr/local
