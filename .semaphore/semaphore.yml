@@ -21,7 +21,7 @@ blocks:
       - checkout
       - docker build ci -f ci/Dockerfile.debian -t ktchen14/vector-ci-debian
   run:
-    when: change_in("ci/Dockerfile.debian")
+    when: change_in('ci/Dockerfile.debian')
 - name: 'Block #1'
   dependencies: ["Build Docker Image"]
   task:
