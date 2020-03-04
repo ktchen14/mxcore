@@ -1,38 +1,44 @@
 version: v1.0
 name: Initial Pipeline
+
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
   containers:
   - name: main
     image: ktchen14/vector-ci-debian
+
 blocks:
-- name: Build Docker Image
-  dependencies: []
+
+- name: Update Docker Image
   task:
-    agent:
-      machine:
-        type: e1-standard-2
-        os_image: ubuntu1804
+    agent: { machine: { type: e1-standard-2 } }
+    env_vars:
+    - name: DOCKER_NAME
+      value: ktchen14/vector-ci-debian
+    prologue:
+      commands:
+      - docker login -u "$DOCKER_USERNAME" --password-stdin <<< "$DOCKER_PASSWORD"
+    epilogue:
+      always:
+        commands:
+        - docker logout
     jobs:
-    - name: "docker build"
+    - name: Build and Push Docker Image
       commands:
       - checkout
-      - docker build ci -f ci/Dockerfile.debian -t ktchen14/vector-ci-debian
-      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-      - docker push ktchen14/vector-ci-debian
-      - docker logout
+      - docker build ci -f ci/Dockerfile.debian -t "$DOCKER_NAME"
+      - docker push "$DOCKER_NAME"
     secrets:
-    - name: Vector CI
+    - name: Vector CI Docker Authentication
   run:
     when: change_in('ci/Dockerfile.debian')
-- name: 'Block #1'
-  dependencies: ["Build Docker Image"]
+
+- name: Compile and Test
   task:
     jobs:
-    - name: 'Job #1'
+    - name: Compile and Test
       commands:
       - checkout
       - cmake .
-      - ctest --output-on-failure
+      - ctest --output-on-failure --parallel 4
