@@ -34,7 +34,7 @@ blocks:
   run:
     when: >
       change_in('ci/Dockerfile.debian', {
-        on_tags: false, pipeline_file: ignore, branch_range: "$SEMAPHORE_GIT_COMMIT_RANGE",
+        on_tags: false, pipeline_file: ignore, branch_range: '$SEMAPHORE_GIT_COMMIT_RANGE',
       })
 
 - name: Compile and Test
