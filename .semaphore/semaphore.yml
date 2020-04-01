@@ -25,4 +25,4 @@ blocks:
       - ctest --output-on-failure
       matrix:
       - env_var: CC
-        values: ["gcc-5"]
+        values: ["gcc-5", "gcc-6", "gcc-7", "gcc-8"]
