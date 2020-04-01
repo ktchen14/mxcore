@@ -11,22 +11,15 @@ blocks:
     env_vars:
     - name: CMAKE_VERSION
       value: "3.16.4"
-    jobs:
-    - name: Install CMake
-      commands:
-      - cache restore "cmake-tarball-$CMAKE_VERSION"
-      - wget -N "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
-      - cache store "cmake-tarball-$CMAKE_VERSION" "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
-      - sudo tar -C /usr/local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" --strip-components=1
-
-- name: Compile and Test
-  task:
-    env_vars:
     - name: CTEST_PARALLEL_LEVEL
       value: "4"
     jobs:
     - name: Compile and Test
       commands:
+      - cache restore "cmake-tarball-$CMAKE_VERSION"
+      - wget -N "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
+      - cache store "cmake-tarball-$CMAKE_VERSION" "cmake-$CMAKE_VERSION-Linux-x87_64.tar.gz"
+      - sudo tar -C /usr/local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" --strip-components=1
       - checkout
       - cmake .
       - ctest --output-on-failure
