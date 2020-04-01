@@ -5,6 +5,9 @@ project("MX Core"
   HOMEPAGE_URL https://github.com/ktchen14/mxcore
   LANGUAGES C)
 
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED true)
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 
 # If this project is the top level project then include CTest. If testing is on
