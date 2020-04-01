@@ -23,13 +23,7 @@ mx_vector_t mx_vector_duplicate_z(mx_vector_c source, size_t z) {
 }
 
 int main() {
-  int *source = mx_vector_define(int, 1, 2, 3, 4);
-  source = mx_vector_ensure(source, 20);
-
-  // TODO: review
-  int *source_shrunk = mx_vector_define(int, 1, 2, 3, 4);
-  source_shrunk = mx_vector_shrink(source_shrunk);
-
+  int *source = mx_vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
   int *result;
 
   // It evaluates its vector argument once
@@ -44,9 +38,12 @@ int main() {
 
   // When malloc() with the source's volume is unsuccessful, and the source's
   // length is the same as its volume, it returns NULL with errno = ENOMEM
+  source = mx_vector_shrink(source);
   malloc_errno = (int[]) { ENOMEM };
-  assert(mx_vector_duplicate(source_shrunk) == NULL);
+  assert(mx_vector_duplicate(source) == NULL);
   assert(errno == ENOMEM);
+
+  source = mx_vector_ensure(source, 20);
 
   // When malloc() with the source's volume is unsuccessful, and the source's
   // length is different from its volume, and malloc() with the source's length
@@ -82,4 +79,6 @@ int main() {
     assert(result[i] == source[i]);
 
   mx_vector_delete(result);
+
+  mx_vector_delete(source);
 }
