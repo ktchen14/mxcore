@@ -6,11 +6,10 @@ agent:
     type: e1-standard-2
 
 blocks:
-- name: Install CMake
+- name: Compile and Test
   task:
     jobs:
-    - name: Compile and Test
-      env_vars:
+    - env_vars:
       - name: CMAKE_VERSION
         value: "3.16.4"
       commands:
