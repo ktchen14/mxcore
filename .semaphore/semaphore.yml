@@ -13,8 +13,6 @@ blocks:
       env_vars:
       - name: CMAKE_VERSION
         value: "3.16.4"
-      - name: CTEST_PARALLEL_LEVEL
-        value: "4"
       commands:
       - cache restore "cmake-tarball-$CMAKE_VERSION"
       - wget -N "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
