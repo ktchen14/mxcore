@@ -80,7 +80,7 @@ typedef const void * mx_vector_c;
  *
  * @return the new vector on success; otherwise @c NULL
  */
-mx_vector_t mx_vector_create(void) __attribute__((malloc));
+mx_vector_t mx_vector_create(void) __attribute__((__malloc__));
 
 /**
  * @brief Allocate and initialize a vector from @a length elements of @a data
@@ -96,7 +96,7 @@ mx_vector_t mx_vector_create(void) __attribute__((malloc));
  * @see mx_vector_import() - The implicit interface analogue
  */
 mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
-  __attribute__((malloc, nonnull));
+  __attribute__((__malloc__, nonnull));
 
 /**
  * @brief Allocate and initialize a vector from @a length elements of @a data
@@ -159,7 +159,7 @@ mx_vector_t mx_vector_import_z(const void *data, size_t length, size_t z)
  * @see mx_vector_duplicate_z() - The explicit interface analogue
  */
 mx_vector_t mx_vector_duplicate_z(mx_vector_c source, size_t z)
-  __attribute__((malloc, nonnull));
+  __attribute__((__malloc__, nonnull));
 
 /// @asimplicit{mx_vector_duplicate_z()}
 //= mx_vector_t mx_vector_duplicate(mx_vector_c source)

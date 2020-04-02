@@ -8,9 +8,7 @@
 // TODO: review
 
 static int malloc_errno = 0;
-void *malloc(size_t size) {
-  typeof(malloc) *malloc = dlsym(RTLD_NEXT, "malloc");
-
+void *stub_malloc(size_t size) {
   if (malloc_errno != 0)
     return errno = malloc_errno, NULL;
   return malloc(size);

@@ -6,8 +6,7 @@
 #include "../source/vector.h"
 
 static void *free_object = NULL;
-void free(void *object) {
-  typeof(free) *free = dlsym(RTLD_NEXT, "free");
+void stub_free(void *object) {
   free(free_object = object);
 }
 
