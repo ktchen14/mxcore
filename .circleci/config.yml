@@ -13,7 +13,8 @@ jobs:
     environment:
       CC: "<<parameters.cc>>"
     steps:
-    - run: apt-get install "$CC"
+    - run: apt-get update
+    - run: apt-get install -y --no-install-recommends "$CC"
     - checkout
     - run: cmake .
     - run: ctest --output-on-failure
@@ -33,6 +34,10 @@ workflows:
         matrix:
           parameters:
             cc:
+            - gcc-5
+            - gcc-6
+            - gcc-8
+            - clang-6.0
             - clang-7
             - clang-8
             - clang-9
