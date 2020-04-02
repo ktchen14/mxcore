@@ -7,12 +7,10 @@
 
 static int realloc_return = 0;
 
-void *realloc(void *ptr, size_t size) {
-  typeof(realloc) *realloc = dlsym(RTLD_NEXT, "realloc");
-
+void *stub_realloc(void *data, size_t size) {
   if (realloc_return != 0)
     return errno = realloc_return, NULL;
-  return realloc(ptr, size);
+  return realloc(data, size);
 }
 
 static size_t last_z;

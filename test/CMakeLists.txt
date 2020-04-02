@@ -9,14 +9,15 @@ if (FLAT_NAMESPACE_FLAG)
   target_link_options(mxcore PRIVATE -flat_namespace)
 endif ()
 
-# Replace malloc and free with stub_malloc and stub_free. Then link the stub
-# library into the test target.
-add_library(vector_stub EXCLUDE_FROM_ALL
-  "${CMAKE_CURRENT_SOURCE_DIR}/stub.c")
+# Replace malloc, realloc, and free with stub_malloc, stub_realloc, and
+# stub_free. Then link the stub into the test target.
+add_library(stub EXCLUDE_FROM_ALL "${CMAKE_CURRENT_SOURCE_DIR}/stub.c")
 target_compile_definitions(mxcore PRIVATE
-  malloc=stub_malloc free=stub_free)
+  malloc=stub_malloc
+  realloc=stub_realloc
+  free=stub_free)
 cmake_policy(SET CMP0079 NEW)
-target_link_libraries(mxcore vector_stub)
+target_link_libraries(mxcore PRIVATE stub)
 
 # Define a test `name` from the file test/`name`.c
 function(define_test name)
