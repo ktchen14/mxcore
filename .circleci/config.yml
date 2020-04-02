@@ -2,6 +2,22 @@
 version: 2.1
 
 jobs:
+  clang-test:
+    parameters:
+      cc:
+        description: The value of the CC environment variable
+        type: string
+        default: clang-7
+    docker:
+    - image: kaitingc/debian-test
+    environment:
+      CC: "<<parameters.cc>>"
+    steps:
+    - run: apt-get install "$CC"
+    - checkout
+    - run: cmake .
+    - run: ctest --output-on-failure
+
   test:
     docker:
     - image: kaitingc/debian-test
@@ -13,4 +29,10 @@ jobs:
 workflows:
   test:
     jobs:
-    - test
+    - clang-test:
+        matrix:
+          parameters:
+            cc:
+            - clang-7
+            - clang-8
+            - clang-9
