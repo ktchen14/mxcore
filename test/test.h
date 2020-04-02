@@ -1,9 +1,6 @@
 #ifndef TEST_H
 #define TEST_H
 
-// Increment number by 1 and return x
-#define increment_return(x, number) ((number)++, (x))
-
 #include "../source/vector.h"
 
 // Assert that the data in and length of the vector is the same as the sequence
