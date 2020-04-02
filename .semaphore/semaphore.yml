@@ -33,7 +33,7 @@ blocks:
 - name: Unit Test
   task:
     jobs:
-    - name: Unit Test
+    - name: Unit Test 1
       matrix:
       - env_var: CC
         values:
@@ -55,7 +55,7 @@ blocks:
       - cmake .
       - ctest --output-on-failure
 
-    - name: Unit Test
+    - name: Unit Test 2
       matrix:
       - env_var: CMAKE_VERSION
         values:
