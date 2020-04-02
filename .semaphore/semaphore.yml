@@ -9,12 +9,14 @@ global_job_config:
   env_vars:
   - name: CMAKE_VERSION
     value: "3.16.5"
+  - name: CC
+    value: gcc-8
 
 blocks:
 - name: Download CMake
   task:
     jobs:
-    - name: Download CMake
+    - name: Download
       matrix:
       - env_var: CMAKE_VERSION
         values:
@@ -33,7 +35,7 @@ blocks:
 - name: Unit Test
   task:
     jobs:
-    - name: Unit Test 1
+    - name: Test 1
       matrix:
       - env_var: CC
         values:
@@ -55,20 +57,16 @@ blocks:
       - cmake .
       - ctest --output-on-failure
 
-    - name: Unit Test 2
+    - name: Test 2
       matrix:
       - env_var: CMAKE_VERSION
         values:
-        - "3.12.4"
         - "3.13.5"
         - "3.13.5"
         - "3.14.7"
         - "3.15.6"
         - "3.16.5"
         - "3.17.0"
-      env_vars:
-      - name: CC
-        value: gcc-8
       commands:
       - if [[ $CC = clang-* ]]; then sudo install-package "$CC"; fi
       - cache restore "CMake-$CMAKE_VERSION-Linux-x86_64"
