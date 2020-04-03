@@ -1,3 +1,5 @@
+option(CODE_COVERAGE "Generate code coverage report" OFF)
+
 # On macOS with `dyld`: Alters how symbols are resolved at build time and
 # runtime. With -flat_namespace, the linker searches all dylibs on the command
 # line and all dylibs those original dylibs depend on. The linker does not
@@ -12,12 +14,18 @@ endif ()
 # Replace malloc, realloc, and free with stub_malloc, stub_realloc, and
 # stub_free. Then link the stub into the test target.
 add_library(stub EXCLUDE_FROM_ALL "${CMAKE_CURRENT_SOURCE_DIR}/stub.c")
-target_compile_definitions(mxcore PRIVATE
+target_compile_definitions(stub INTERFACE
   malloc=stub_malloc
   realloc=stub_realloc
   free=stub_free)
 cmake_policy(SET CMP0079 NEW)
 target_link_libraries(mxcore PRIVATE stub)
+
+# Add the --coverage option if code coverage is on
+if (CODE_COVERAGE)
+  target_compile_options(mxcore PRIVATE --coverage)
+  target_link_options(mxcore PUBLIC --coverage)
+endif ()
 
 # Define a test `name` from the file test/`name`.c
 function(define_test name)
@@ -28,9 +36,8 @@ function(define_test name)
   # definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>
   target_compile_definitions(test_${name} PRIVATE -D_GNU_SOURCE)
   target_compile_options(test_${name} PRIVATE
-    -Wall -Wextra -Werror -fsanitize=address)
+    -Wall -Wextra -Werror)
   target_link_libraries(test_${name} PRIVATE mxcore dl)
-  target_link_options(test_${name} PRIVATE -fsanitize=address)
 
   add_test(make_${name}
     "${CMAKE_COMMAND}"
