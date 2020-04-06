@@ -1,6 +1,4 @@
-/**
- * @file vector/access.h
- */
+/// @file vector/access.h
 
 #include <stddef.h>
 #include <string.h>

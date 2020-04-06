@@ -1,6 +1,4 @@
-/**
- * @file vector/create.h
- */
+/// @file vector/create.h
 
 #include <stddef.h>
 
@@ -27,22 +25,27 @@ vector_t vector_create(void) __attribute__((__malloc__));
  * @return the new vector on success; otherwise @c NULL
  *
  * @see vector_import_z() - The explicit interface analogue
+ * @see vector_import() - The implicit interface analogue
  */
 //= vector_t vector_import(const void *data, size_t length)
 #define vector_import(data, length) \
   vector_import_z((data), (length), VECTOR_Z((data)))
 
 /// @copydoc vector_import()
-/// @see vector_import() - The implicit interface analogue
 vector_t vector_import_z(const void *data, size_t length, size_t z)
   __attribute__((__malloc__, nonnull));
 
 /**
  * @brief Allocate and initialize a vector from the argument list
  *
- * This is just vector_import() with @a data constructed and @a length
- * calculated from the argument list. If an argument in ... is incompatible with
- * @a type then the behavior is undefined.
+ * This is vector_import() with @a data constructed and @a length calculated
+ * from the argument list. The element type of the created vector will be
+ * @a type. If an argument in ... is incompatible with @a type then the behavior
+ * is undefined.
+ *
+ * For example: @code{.c}
+ *   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
+ * @endcode
  *
  * On failure this will retain the value of @c errno set by malloc().
  *
