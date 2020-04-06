@@ -12,7 +12,7 @@
   __typeof__(__vector[0]) __data[] = { __VA_ARGS__ }; \
   size_t __length = sizeof(__data) / sizeof(__data[0]); \
   \
-  assert(mx_vector_length(__vector) == __length); \
+  assert(vector_length(__vector) == __length); \
   assert(!memcmp(__vector, __data, sizeof(__data))); \
 } while (0)
 

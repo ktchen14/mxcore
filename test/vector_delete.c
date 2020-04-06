@@ -14,13 +14,13 @@ int main() {
   int *vector;
 
   // It deallocates the vector
-  vector = mx_vector_create();
-  mx_vector_delete(vector);
+  vector = vector_create();
+  vector_delete(vector);
   assert(free_object != NULL);
 
   // It doesn't affect errno
-  vector = mx_vector_create();
+  vector = vector_create();
   errno = ENOENT;
-  mx_vector_delete(vector);
+  vector_delete(vector);
   assert(errno == ENOENT);
 }

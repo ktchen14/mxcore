@@ -23,8 +23,8 @@
  * An function of this type must return @c 0 if @a a and @a b aren't equivalent
  * and any @c int other than @c 0 if @a a and @a b are equivalent.
  */
-typedef int (*mx_eq_f)(const void *a, const void *b);
+typedef int (*eq_f)(const void *a, const void *b);
 
-typedef int (*mx_cmp_f)(const void *a, const void *b);
+typedef int (*cmp_f)(const void *a, const void *b);
 
 #endif /* MX_COMMON_H */
