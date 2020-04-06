@@ -2,6 +2,11 @@
  * @file vector/create.h
  */
 
+#include <stddef.h>
+
+/// @addtogroup vector
+/// @{
+
 /**
  * @brief Allocate and initialize a zero length vector
  *
@@ -58,3 +63,5 @@ vector_t vector_import_z(const void *data, size_t length, size_t z)
   __typeof__(type) __data[] = { __VA_ARGS__ }; \
   vector_import(__data, sizeof(__data) / sizeof(__data[0])); \
 })
+
+/// @}

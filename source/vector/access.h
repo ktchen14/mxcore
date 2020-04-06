@@ -2,6 +2,12 @@
  * @file vector/access.h
  */
 
+#include <stddef.h>
+#include <string.h>
+
+/// @addtogroup vector
+/// @{
+
 /**
  * @brief Copy the element at index @a i in the @a vector into @a elmt
  *
@@ -57,3 +63,5 @@ void vector_set(
     size_t z) {
   memcpy(vector_at(vector, i, z), elmt, z);
 }
+
+/// @}
