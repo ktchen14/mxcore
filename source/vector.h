@@ -73,73 +73,7 @@ typedef void * vector_t;
 /// A @ref vector_t with a @c const element type
 typedef void const * vector_c;
 
-/**
- * @brief Allocate and initialize a zero length vector
- *
- * On failure this will retain the value of @c errno set by malloc().
- *
- * @return the new vector on success; otherwise @c NULL
- */
-vector_t vector_create(void) __attribute__((__malloc__));
-
-/**
- * @brief Allocate and initialize a vector from @a length elements of @a data
- *
- * This will create and return a vector containing @a length elements from
- * @a data. On failure this will retain the value of @c errno set by malloc().
- *
- * @param data the data to initialize the vector from
- * @param length the number of elements to copy from @a data
- * @param z the element size of the @a data
- * @return the new vector on success; otherwise @c NULL
- *
- * @see vector_import() - The implicit interface analogue
- */
-vector_t vector_import_z(const void *data, size_t length, size_t z)
-  __attribute__((__malloc__, nonnull));
-
-/**
- * @brief Allocate and initialize a vector from @a length elements of @a data
- *
- * This will create and return a vector containing @a length elements from
- * @a data. On failure this will retain the value of @c errno set by malloc().
- *
- * @param data the data to initialize the vector from
- * @param length the number of elements to copy from @a data
- * @return the new vector on success; otherwise @c NULL
- *
- * @see vector_import_z() - The explicit interface analogue
- */
-//= vector_t vector_import(const void *data, size_t length)
-#define vector_import(data, length) \
-  vector_import_z((data), (length), VECTOR_Z((data)))
-
-/**
- * @brief Allocate and initialize a vector from the argument list
- *
- * This is just vector_import() with @a data constructed and @a length
- * calculated from the argument list. If an argument in ... is incompatible with
- * @a type then the behavior is undefined.
- *
- * On failure this will retain the value of @c errno set by malloc().
- *
- * @param type a complete object type
- * @param ... a sequence of elements to initialize the vector from
- * @return the new vector on success; otherwise @c NULL
- */
-#define vector_define(type, ...) ({ \
-  /* Fail unless type is an actual type before we declare __data with */ \
-  /* __typeof__(type). Otherwise the compiler is silent on this kind of */ \
-  /* mistake: */ \
-  /*   vector_define(1, 2, 3, 4)       => (int[])    { 2, 3, 4 } */ \
-  /* When this was intended: */ \
-  /*   vector_define(int, 1, 2, 3, 4)  => (int[]) { 1, 2, 3, 4 } */ \
-  (void) __builtin_types_compatible_p(type, void); \
-  /* We must take the __typeof__(type) here so that a strange type like */ \
-  /* int[2] or void (*)(void) is syntactically acceptable. */ \
-  __typeof__(type) __data[] = { __VA_ARGS__ }; \
-  vector_import(__data, sizeof(__data) / sizeof(__data[0])); \
-})
+#include "vector/create.h"
 
 /**
  * @brief Allocate and initialize a vector by duplicating @a source
@@ -237,61 +171,7 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 size_t vector_index(vector_c vector, const void *elmt, size_t z)
   __attribute__((nonnull));
 
-/**
- * @brief Copy the element at index @a i in the @a vector into @a elmt
- *
- * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
- * the explicit interface and takes the element size of the @a vector as @a z.
- * This operation is redundant if the element type of the @a vector is known at
- * compile time as it's identical to <code>*elmt = vector[i]</code>.
- *
- * If @a i isn't an index in the @a vector then the behavior is undefined. If
- * @a elmt is @c NULL then the behavior is undefined. If @a elmt is an element
- * or a location in the @a vector then the behavior is undefined.
- *
- * @param vector the vector to operate on
- * @param i the index of the element in the @a vector to copy from
- * @param elmt the location to copy the element to
- * @param z the element size of the @a vector
- *
- * @see vector_set()
- */
-inline __attribute__((nonnull))
-void vector_get(
-    restrict vector_c vector,
-    size_t i,
-    void * restrict elmt,
-    size_t z) {
-  memcpy(elmt, vector_at(vector, i, z), z);
-}
-
-/**
- * @brief Copy the data at @a elmt into the @a vector at index @a i
- *
- * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
- * the explicit interface and takes the element size of the @a vector as @a z.
- * This operation is redundant if the element type of the @a vector is known at
- * compile time as it's identical to <code>vector[i] = *elmt</code>.
- *
- * If @a i isn't an index in the @a vector then the behavior is undefined. If
- * @a elmt is @c NULL then the behavior is undefined. If @a elmt is an element
- * or a location in the @a vector then the behavior is undefined.
- *
- * @param vector the vector to operate on
- * @param i the index of the element in the @a vector to copy to
- * @param elmt the location to copy the element from
- * @param z the element size of the @a vector
- *
- * @see vector_get()
- */
-inline __attribute__((nonnull))
-void vector_set(
-    restrict vector_t vector,
-    size_t i,
-    const void * restrict elmt,
-    size_t z) {
-  memcpy(vector_at(vector, i, z), elmt, z);
-}
+#include "vector/access.h"
 
 /**
  * @brief Swap the element at index @a i with the element at index @a j in the
