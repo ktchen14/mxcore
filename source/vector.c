@@ -185,7 +185,7 @@ vector_t vector_ensure_z(vector_t vector, size_t length, size_t z) {
 }
 
 vector_t
-vector_insert_z(vector_t vector, size_t i, const void *elmt, size_t z) {
+vector_insert_z(restrict vector_t vector, size_t i, const void * restrict elmt, size_t z) {
   return vector_inject_z(vector, i, elmt, 1, z);
 }
 
