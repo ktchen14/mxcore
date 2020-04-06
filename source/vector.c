@@ -109,11 +109,9 @@ size_t vector_index(vector_c vector, const void *elmt, size_t z) {
   return (size_t) ((const char *) elmt - (const char *) vector) / z;
 }
 
-extern inline
-void vector_get(vector_c vector, size_t i, void *elmt, size_t z);
-
-extern inline
-void vector_set(vector_t vector, size_t i, const void *elmt, size_t z);
+// Access
+extern inline __typeof__(vector_get) vector_get;
+extern inline __typeof__(vector_set) vector_set;
 
 void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
   char *a = vector_at(vector, i, z);
