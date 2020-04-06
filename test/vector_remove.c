@@ -8,10 +8,7 @@
 
 static size_t last_remove_z;
 vector_t vector_remove_z(vector_t vector, size_t i, size_t z) {
-  typeof(vector_remove_z) *vector_remove_z =
-    dlsym(RTLD_NEXT, "vector_remove_z");
-  last_remove_z = z;
-  return vector_remove_z(vector, i, z);
+  return REAL(vector_remove_z)(vector, i, last_remove_z = z);
 }
 
 static vector_t last_vector;
@@ -19,19 +16,12 @@ static size_t last_i;
 static size_t last_n;
 static size_t last_excise_z;
 static vector_t last_result;
-vector_t vector_excise_z(
-    vector_t vector, size_t i, size_t n, size_t z) {
-  typeof(vector_excise_z) *vector_excise_z =
-    dlsym(RTLD_NEXT, "vector_excise_z");
-
+vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z) {
   last_vector = vector;
   last_i = i;
   last_n = n;
   last_excise_z = z;
-
-  last_result = vector_excise_z(vector, i, n, z);
-
-  return last_result;
+  return last_result = REAL(vector_excise_z)(vector, i, n, z);
 }
 
 void test_vector_remove(void) {

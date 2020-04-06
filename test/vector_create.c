@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
 static int malloc_errno = 0;
 void *stub_malloc(size_t size) {
@@ -14,9 +15,7 @@ void *stub_malloc(size_t size) {
 
 static size_t last_z = 0;
 vector_t vector_import_z(const void *data, size_t length, size_t z) {
-  typeof(vector_import_z) *vector_import_z =
-    dlsym(RTLD_NEXT, "vector_import_z");
-  return vector_import_z(data, length, last_z = z);
+  return REAL(vector_import_z)(data, length, last_z = z);
 }
 
 void test_vector_create(void) {

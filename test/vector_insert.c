@@ -8,20 +8,15 @@
 
 static int ensure_errno = 0;
 vector_t vector_ensure_z(vector_t vector, size_t length, size_t z) {
-  typeof(vector_ensure_z) *vector_ensure_z =
-    dlsym(RTLD_NEXT, "vector_ensure_z");
   if (ensure_errno != 0)
     return errno = ensure_errno, NULL;
-  return vector_ensure_z(vector, length, z);
+  return REAL(vector_ensure_z)(vector, length, z);
 }
 
 static size_t last_insert_z;
 vector_t vector_insert_z(
     vector_t vector, size_t i, const void *elmt, size_t z) {
-  typeof(vector_insert_z) *vector_insert_z =
-    dlsym(RTLD_NEXT, "vector_insert_z");
-  last_insert_z = z;
-  return vector_insert_z(vector, i, elmt, z);
+  return REAL(vector_insert_z)(vector, i, elmt, last_insert_z = z);
 }
 
 static vector_t last_vector;
@@ -32,35 +27,24 @@ static size_t last_inject_z;
 static vector_t last_result;
 vector_t vector_inject_z(
     vector_t vector, size_t i, const void *elmt, size_t n, size_t z) {
-  typeof(vector_inject_z) *vector_inject_z =
-    dlsym(RTLD_NEXT, "vector_inject_z");
-
   last_vector = vector;
   last_i = i;
   last_elmt = elmt;
   last_n = n;
   last_inject_z = z;
 
-  last_result = vector_inject_z(vector, i, elmt, n, z);
-
-  return last_result;
+  return last_result = REAL(vector_inject_z)(vector, i, elmt, n, z);
 }
 
 static size_t last_append_z;
 vector_t vector_append_z(vector_t vector, const void *elmt, size_t z) {
-  typeof(vector_append_z) *vector_append_z =
-    dlsym(RTLD_NEXT, "vector_append_z");
-  last_append_z = z;
-  return vector_append_z(vector, elmt, z);
+  return REAL(vector_append_z)(vector, elmt, last_append_z = z);
 }
 
 static size_t last_extend_z;
 vector_t vector_extend_z(
     vector_t vector, const void *elmt, size_t n, size_t z) {
-  typeof(vector_extend_z) *vector_extend_z =
-    dlsym(RTLD_NEXT, "vector_extend_z");
-  last_extend_z = z;
-  return vector_extend_z(vector, elmt, n, z);
+  return REAL(vector_extend_z)(vector, elmt, n, last_extend_z = z);
 }
 
 void test_vector_insert(void) {

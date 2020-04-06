@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
 static int realloc_return = 0;
 
@@ -15,9 +16,7 @@ void *stub_realloc(void *data, size_t size) {
 
 static size_t last_z;
 vector_t vector_resize_z(vector_t vector, size_t volume, size_t z) {
-  typeof(vector_resize_z) *vector_resize_z =
-    dlsym(RTLD_NEXT, "vector_resize_z");
-  return vector_resize_z(vector, volume, last_z = z);
+  return REAL(vector_resize_z)(vector, volume, last_z = z);
 }
 
 int main() {

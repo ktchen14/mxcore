@@ -4,24 +4,20 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
 static size_t last_z;
 
 static int *resize_errno = NULL;
 vector_t vector_resize_z(vector_t vector, size_t volume, size_t z) {
-  typeof(vector_resize_z) *vector_resize_z =
-    dlsym(RTLD_NEXT, "vector_resize_z");
-
   int e;
   if (resize_errno != NULL && (e = *resize_errno++) != 0)
     return errno = e, NULL;
-  return vector_resize_z(vector, volume, last_z = z);
+  return REAL(vector_resize_z)(vector, volume, last_z = z);
 }
 
 vector_t vector_ensure_z(vector_t vector, size_t length, size_t z) {
-  typeof(vector_ensure_z) *vector_ensure_z =
-    dlsym(RTLD_NEXT, "vector_ensure_z");
-  return vector_ensure_z(vector, length, z);
+  return REAL(vector_ensure_z)(vector, length, z);
 }
 
 int main() {

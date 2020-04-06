@@ -3,6 +3,8 @@
 
 #include "../source/vector.h"
 
+#define REAL(name) ((__typeof__((name)) *) dlsym(RTLD_NEXT, #name))
+
 // Assert that the data in and length of the vector is the same as the sequence
 // of elements specified in the argument list. This uses memcmp() on the vector
 // to determine equivalance.

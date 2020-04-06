@@ -7,19 +7,14 @@
 
 static int resize_errno = 0;
 vector_t vector_resize_z(vector_t vector, size_t volume, size_t z) {
-  typeof(vector_resize_z) *vector_resize_z =
-    dlsym(RTLD_NEXT, "vector_resize_z");
-
   if (resize_errno != 0)
     return errno = resize_errno, NULL;
-  return vector_resize_z(vector, volume, z);
+  return REAL(vector_resize_z)(vector, volume, z);
 }
 
 static size_t last_z;
 vector_t vector_shrink_z(vector_t vector, size_t z) {
-  typeof(vector_shrink_z) *vector_shrink_z =
-    dlsym(RTLD_NEXT, "vector_shrink_z");
-  return vector_shrink_z(vector, last_z = z);
+  return REAL(vector_shrink_z)(vector, last_z = z);
 }
 
 int main() {

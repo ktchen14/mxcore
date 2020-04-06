@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
 static int *malloc_errno = NULL;
 void *stub_malloc(size_t size) {
@@ -15,9 +16,7 @@ void *stub_malloc(size_t size) {
 
 static size_t last_z;
 vector_t vector_duplicate_z(vector_c source, size_t z) {
-  typeof(vector_duplicate_z) *vector_duplicate_z =
-    dlsym(RTLD_NEXT, "vector_duplicate_z");
-  return vector_duplicate_z(source, last_z = z);
+  return REAL(vector_duplicate_z)(source, last_z = z);
 }
 
 int main() {

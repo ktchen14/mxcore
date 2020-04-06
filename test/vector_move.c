@@ -3,12 +3,11 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
 static size_t last_z;
 void vector_move_z(vector_t vector, size_t target, size_t source, size_t z) {
-  typeof(vector_move_z) *vector_move_z =
-    dlsym(RTLD_NEXT, "vector_move_z");
-  vector_move_z(vector, target, source, last_z = z);
+  REAL(vector_move_z)(vector, target, source, last_z = z);
 }
 
 int main() {

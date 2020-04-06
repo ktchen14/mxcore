@@ -3,12 +3,11 @@
 #include <stdlib.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
 static size_t last_z;
 void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
-  typeof(vector_swap_z) *vector_swap_z =
-    dlsym(RTLD_NEXT, "vector_swap_z");
-  vector_swap_z(vector, i, j, last_z = z);
+  REAL(vector_swap_z)(vector, i, j, last_z = z);
 }
 
 int main() {
