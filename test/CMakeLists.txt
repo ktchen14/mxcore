@@ -8,7 +8,7 @@ option(CODE_COVERAGE "Generate code coverage report" OFF)
 include(CheckLinkerFlag)
 check_linker_flag(-flat_namespace FLAT_NAMESPACE_FLAG)
 if (FLAT_NAMESPACE_FLAG)
-  target_link_options(mxcore PRIVATE -flat_namespace)
+  target_link_options(vector PRIVATE -flat_namespace)
 endif ()
 
 # Replace malloc, realloc, and free with stub_malloc, stub_realloc, and
@@ -19,12 +19,12 @@ target_compile_definitions(stub INTERFACE
   realloc=stub_realloc
   free=stub_free)
 cmake_policy(SET CMP0079 NEW)
-target_link_libraries(mxcore PRIVATE stub)
+target_link_libraries(vector PRIVATE stub)
 
 # Add the --coverage option if code coverage is on
 if (CODE_COVERAGE)
-  target_compile_options(mxcore PRIVATE --coverage)
-  target_link_options(mxcore PUBLIC --coverage)
+  target_compile_options(vector PRIVATE --coverage)
+  target_link_options(vector PUBLIC --coverage)
 endif ()
 
 # Define a test `name` from the file test/`name`.c
@@ -37,7 +37,7 @@ function(define_test name)
   target_compile_definitions(test_${name} PRIVATE -D_GNU_SOURCE)
   target_compile_options(test_${name} PRIVATE
     -Wall -Wextra -Werror)
-  target_link_libraries(test_${name} PRIVATE mxcore dl)
+  target_link_libraries(test_${name} PRIVATE vector dl)
 
   add_test(make_${name}
     "${CMAKE_COMMAND}"
@@ -68,7 +68,7 @@ define_test(vector_define)
 add_executable(test_vector_define_fail EXCLUDE_FROM_ALL vector_define.c)
 target_compile_options(test_vector_define_fail PRIVATE -Wall -Wextra -Werror)
 target_compile_definitions(test_vector_define_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_define_fail mxcore dl)
+target_link_libraries(test_vector_define_fail vector dl)
 add_test(make_vector_define_fail
   "${CMAKE_COMMAND}"
   --build "${CMAKE_BINARY_DIR}"
@@ -82,7 +82,7 @@ define_test(vector_at)
 add_executable(test_vector_at_fail EXCLUDE_FROM_ALL vector_at.c)
 target_compile_options(test_vector_at_fail PRIVATE -Wall -Wextra -Werror)
 target_compile_definitions(test_vector_at_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_at_fail mxcore dl)
+target_link_libraries(test_vector_at_fail vector dl)
 add_test(make_vector_at_fail
   "${CMAKE_COMMAND}"
   --build "${CMAKE_BINARY_DIR}"
@@ -96,7 +96,7 @@ define_test(vector_resize)
 add_executable(test_vector_resize_fail EXCLUDE_FROM_ALL vector_resize.c)
 target_compile_options(test_vector_resize_fail PRIVATE -Wall -Wextra -Werror)
 target_compile_definitions(test_vector_resize_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_resize_fail mxcore dl)
+target_link_libraries(test_vector_resize_fail vector dl)
 add_test(make_vector_resize_fail
   "${CMAKE_COMMAND}"
   --build "${CMAKE_BINARY_DIR}"

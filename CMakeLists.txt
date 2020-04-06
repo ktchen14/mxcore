@@ -21,22 +21,23 @@ if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif ()
 
 # Library
-add_library(mxcore
+add_library(vector
   "${CMAKE_CURRENT_SOURCE_DIR}/source/common.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h")
-set_property(TARGET mxcore PROPERTY
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.h")
+set_property(TARGET vector PROPERTY
   PUBLIC_HEADER source/common.h source/vector.h)
-set_property(TARGET mxcore PROPERTY
+set_property(TARGET vector PROPERTY
   VERSION ${PROJECT_VERSION})
-target_compile_features(mxcore PUBLIC c_std_11)
-target_compile_options(mxcore PRIVATE -Wall -Wextra)
+target_compile_features(vector PUBLIC c_std_11)
+target_compile_options(vector PRIVATE -Wall -Wextra)
 
 # Install
 include(GNUInstallDirs)
-install(TARGETS mxcore
+install(TARGETS vector
   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-  PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/mxcore")
+  PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vector")
 
 # Documentation
 find_package(Doxygen QUIET)
