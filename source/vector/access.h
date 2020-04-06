@@ -10,16 +10,16 @@
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>*elmt = vector[i]</code>.
  *
- * If @a i isn't an index in the @a vector then the behavior is undefined. If
- * @a elmt is @c NULL then the behavior is undefined. If @a elmt is an element
- * or a location in the @a vector then the behavior is undefined.
+ * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or @a elmt
+ * overlaps the element at index @a i in the @a vector, then the behavior is
+ * undefined.
  *
  * @param vector the vector to operate on
  * @param i the index of the element in the @a vector to copy from
  * @param elmt the location to copy the element to
  * @param z the element size of the @a vector
  *
- * @see vector_set()
+ * @see vector_set() - The inverse operation to copy data into the vector
  */
 inline __attribute__((nonnull))
 void vector_get(
@@ -38,16 +38,16 @@ void vector_get(
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>vector[i] = *elmt</code>.
  *
- * If @a i isn't an index in the @a vector then the behavior is undefined. If
- * @a elmt is @c NULL then the behavior is undefined. If @a elmt is an element
- * or a location in the @a vector then the behavior is undefined.
+ * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or @a elmt
+ * overlaps the element at index @a i in the @a vector, then the behavior is
+ * undefined.
  *
  * @param vector the vector to operate on
  * @param i the index of the element in the @a vector to copy to
  * @param elmt the location to copy the element from
  * @param z the element size of the @a vector
  *
- * @see vector_get()
+ * @see vector_set() - The inverse operation to copy data from the vector
  */
 inline __attribute__((nonnull))
 void vector_set(
