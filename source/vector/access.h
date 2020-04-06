@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <string.h>
 
-/// @addtogroup vector
+/// @addtogroup vector_module Vector
 /// @{
 
 /**

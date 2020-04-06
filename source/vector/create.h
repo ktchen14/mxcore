@@ -2,7 +2,7 @@
 
 #include <stddef.h>
 
-/// @addtogroup vector
+/// @addtogroup vector_module Vector
 /// @{
 
 /**
