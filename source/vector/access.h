@@ -51,7 +51,7 @@ void vector_get(
  * @param elmt the location to copy the element from
  * @param z the element size of the @a vector
  *
- * @see vector_set() - The inverse operation to copy data from the vector
+ * @see vector_get() - The inverse operation to copy data from the vector
  */
 inline __attribute__((nonnull))
 void vector_set(
