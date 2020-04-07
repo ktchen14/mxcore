@@ -77,18 +77,17 @@ add_test(make_vector_define_fail
 set_tests_properties(make_vector_define_fail PROPERTIES WILL_FAIL true)
 define_test(vector_duplicate)
 define_test(vector_delete)
-define_test(vector_at)
 
-add_executable(test_vector_at_fail EXCLUDE_FROM_ALL vector_at.c)
-target_compile_options(test_vector_at_fail PRIVATE -Wall -Wextra -Werror)
-target_compile_definitions(test_vector_at_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_at_fail vector dl)
-add_test(make_vector_at_fail
-  "${CMAKE_COMMAND}"
-  --build "${CMAKE_BINARY_DIR}"
-  --config "$<CONFIG>"
-  --target test_vector_at_fail)
-set_tests_properties(make_vector_at_fail PROPERTIES WILL_FAIL true)
+# add_executable(test_vector_at_fail EXCLUDE_FROM_ALL vector_at.c)
+# target_compile_options(test_vector_at_fail PRIVATE -Wall -Wextra -Werror)
+# target_compile_definitions(test_vector_at_fail PRIVATE MAKE_TEST_WILL_FAIL)
+# target_link_libraries(test_vector_at_fail vector dl)
+# add_test(make_vector_at_fail
+#   "${CMAKE_COMMAND}"
+#   --build "${CMAKE_BINARY_DIR}"
+#   --config "$<CONFIG>"
+#   --target test_vector_at_fail)
+# set_tests_properties(make_vector_at_fail PROPERTIES WILL_FAIL true)
 
 define_test(vector_access)
 define_test(vector_resize)

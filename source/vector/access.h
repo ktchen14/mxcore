@@ -14,6 +14,73 @@
 /// @{
 
 /**
+ * @brief Return a pointer to the element in the @a vector at index @a i
+ *
+ * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
+ * the explicit interface and takes the element size of the @a vector as @a z.
+ * This operation is redundant if the element type of the @a vector is known at
+ * compile time as it's identical to <code>vector + i</code>.
+ *
+ * If @a i is the length of the @a vector then this will return a pointer to
+ * just past the last element of the @a vector.
+ *
+ * This operation is @c const qualified on the @a vector. That is if the element
+ * type of the @a vector is @c const qualified (@a vector is compatible with a
+ * @ref vector_c) then this will return a <tt>const void *</tt>. Otherwise this
+ * will return a <tt>void *</tt>.
+ *
+ * This is the inverse of vector_index() such that:
+ * @code{.c}
+ *   vector_index(vector, vector_at(i)) == i
+ *   vector_at(vector, vector_index(elmt)) == elmt
+ * @endcode
+ *
+ * If @a i is neither an index in the @a vector or its length then the behavior
+ * is undefined.
+ *
+ * @see vector_index() - the inverse operation to get the index of an element in
+ *   a vector
+ */
+//= void *vector_at(vector_t vector, size_t i, size_t z)
+#define vector_at(vector, i, z) ({ \
+  /* Warn or fail if vector isn't a pointer. When this is absent if vector */ \
+  /* is a scalar no warning is issued due to the explicit cast to char *. */ \
+  const void *__vector = (vector); \
+  _Pragma("GCC diagnostic push") \
+  _Pragma("GCC diagnostic ignored \"-Wcast-align\"") \
+  _Pragma("GCC diagnostic ignored \"-Wcast-qual\"") \
+  (__typeof__((vector))) ((const char *) (__vector) + (i) * (z)); \
+  _Pragma("GCC diagnostic pop") \
+})
+
+/**
+ * @brief Return the index of the element at @a elmt in the @a vector
+ *
+ * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
+ * the explicit interface and takes the element size of the @a vector as @a z.
+ * This operation is redundant if the element type of the @a vector is known at
+ * compile time as it's identical to <code>elmt - vector</code>.
+ *
+ * This doesn't inspect the data at @a elmt or the elements in the @a vector;
+ * @a elmt must already be a pointer to an element in the @a vector.
+ *
+ * This is the inverse of vector_at() such that:
+ * @code{.c}
+ *   vector_at(vector, vector_index(elmt)) == elmt
+ *   vector_index(vector, vector_at(i)) == i
+ * @endcode
+ *
+ * If @a elmt is @c NULL or isn't a pointer to an element in the @a vector then
+ * the behavior is undefined. If @a elmt is a pointer to an offset in an element
+ * in the @a vector then the behavior is undefined.
+ *
+ * @see vector_at() - the inverse operation to get a pointer to an element in a
+ *   vector
+ */
+size_t vector_index(vector_c vector, const void *elmt, size_t z)
+  __attribute__((nonnull, pure));
+
+/**
  * @brief Copy the element at index @a i in the @a vector into @a elmt
  *
  * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
@@ -66,6 +133,11 @@ void vector_set(
   __attribute__((nonnull));
 
 #ifndef VECTOR_HIDE_INLINE_DEFINITION
+
+inline size_t vector_index(vector_c vector, const void *elmt, size_t z) {
+  // TODO: handle PTRDIFF_MAX
+  return (size_t) ((const char *) elmt - (const char *) vector) / z;
+}
 
 inline void vector_get(
     restrict vector_c vector,

@@ -78,13 +78,8 @@ size_t vector_length(vector_c vector) {
   return vector_to_header(vector)->length;
 }
 
-size_t vector_index(vector_c vector, const void *elmt, size_t z) {
-  // If the vector length is PTRDIFF_MAX then the maximum index of an element in
-  // the vector is PTRDIFF_MAX - 1.
-  return (size_t) ((const char *) elmt - (const char *) vector) / z;
-}
-
 // Access
+extern inline __typeof__(vector_index) vector_index;
 extern inline __typeof__(vector_get) vector_get;
 extern inline __typeof__(vector_set) vector_set;
 
