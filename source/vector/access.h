@@ -5,6 +5,8 @@
 
 /// @addtogroup vector_module Vector
 /// @{
+/// @name Access
+/// @{
 
 /**
  * @brief Copy the element at index @a i in the @a vector into @a elmt
@@ -23,13 +25,13 @@
  * @param elmt the location to copy the element to
  * @param z the element size of the @a vector
  *
- * @see vector_set() - The inverse operation to copy data into the vector
+ * @see vector_set() - The inverse operation to copy data into a vector
  */
 inline __attribute__((nonnull))
 void vector_get(
     restrict vector_c vector,
     size_t i,
-    void * restrict elmt,
+    void *restrict elmt,
     size_t z) {
   memcpy(elmt, vector_at(vector, i, z), z);
 }
@@ -51,15 +53,16 @@ void vector_get(
  * @param elmt the location to copy the element from
  * @param z the element size of the @a vector
  *
- * @see vector_get() - The inverse operation to copy data from the vector
+ * @see vector_get() - The inverse operation to copy data from a vector
  */
 inline __attribute__((nonnull))
 void vector_set(
     restrict vector_t vector,
     size_t i,
-    const void * restrict elmt,
+    const void *restrict elmt,
     size_t z) {
   memcpy(vector_at(vector, i, z), elmt, z);
 }
 
+/// @}
 /// @}

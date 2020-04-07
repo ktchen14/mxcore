@@ -40,34 +40,9 @@ static inline vector_t header_to_vector(header_t *header)
   _Pragma("GCC diagnostic pop") \
 })
 
-vector_t vector_create() {
-  header_t *header;
-
-  if ((header = malloc(sizeof(header_t))) == NULL)
-    return NULL;
-
-  header->volume = 0;
-  header->length = 0;
-
-  return header_to_vector(header);
-}
-
-vector_t vector_import_z(const void *data, size_t length, size_t z) {
-  header_t *header;
-
-  // Doesn't overflow because this is the size of data
-  size_t size = length * z;
-  if (__builtin_add_overflow(size, sizeof(header_t), &size))
-    return errno = ENOMEM, NULL;
-  if ((header = malloc(size)) == NULL)
-    return NULL;
-
-  header->volume = length;
-  header->length = length;
-  memcpy(header->data, data, length * z);
-
-  return header_to_vector(header);
-}
+// vector/create.h
+extern inline __typeof__(vector_create) vector_create;
+extern inline __typeof__(vector_import_z) vector_import_z;
 
 vector_t vector_duplicate_z(vector_c source, size_t z) {
   header_t *header;
@@ -184,35 +159,8 @@ vector_t vector_ensure_z(vector_t vector, size_t length, size_t z) {
   return vector_resize_z(vector, length, z);
 }
 
-vector_t
-vector_insert_z(restrict vector_t vector, size_t i, const void * restrict elmt, size_t z) {
-  return vector_inject_z(vector, i, elmt, 1, z);
-}
-
-vector_t vector_inject_z(
-    vector_t vector, size_t i, const void *elmt, size_t n, size_t z) {
-  size_t length = vector_length(vector);
-
-  if (__builtin_add_overflow(length, n, &length))
-    return errno = ENOMEM, NULL;
-
-  if ((vector = vector_ensure_z(vector, length, z)) == NULL)
-    return NULL;
-
-  // move the existing elements n elements toward the tail
-  void *target = vector_at(vector, i + n, z);
-  void *source = vector_at(vector, i + 0, z);
-  size_t size = (vector_length(vector) - i) * z;
-  memmove(target, source, size);
-
-  if (elmt != NULL)
-    memcpy(vector_at(vector, i, z), elmt, n * z);
-
-  // increase the length
-  vector_to_header(vector)->length = length;
-
-  return vector;
-}
+extern inline __typeof__(vector_insert_z) vector_insert_z;
+extern inline __typeof__(vector_inject_z) vector_inject_z;
 
 vector_t vector_remove_z(vector_t vector, size_t i, size_t z) {
   return vector_excise_z(vector, i, 1, z);
@@ -247,14 +195,8 @@ vector_t vector_truncate_z(vector_t vector, size_t length, size_t z) {
   return vector_excise_z(vector, vector_length(vector) - n, n, z);
 }
 
-vector_t vector_append_z(vector_t vector, const void *elmt, size_t z) {
-  return vector_inject_z(vector, vector_length(vector), elmt, 1, z);
-}
-
-vector_t
-vector_extend_z(vector_t vector, const void *elmt, size_t n, size_t z) {
-  return vector_inject_z(vector, vector_length(vector), elmt, n, z);
-}
+extern inline __typeof__(vector_append_z) vector_append_z;
+extern inline __typeof__(vector_extend_z) vector_extend_z;
 
 // void *vector_tail_z(vector_t vector, size_t z) {
 //   return vector_at(vector, vector_length(vector) - 1, z);

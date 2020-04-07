@@ -25,8 +25,10 @@ add_library(vector
   "${CMAKE_CURRENT_SOURCE_DIR}/source/common.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/common.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.h")
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.h")
 set_property(TARGET vector PROPERTY
   PUBLIC_HEADER source/common.h source/vector.h)
 set_property(TARGET vector PROPERTY

@@ -1,8 +1,6 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include "../source/vector.h"
-
 #define REAL(name) ((__typeof__((name)) *) dlsym(RTLD_NEXT, #name))
 
 // Assert that the data in and length of the vector is the same as the sequence

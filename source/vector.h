@@ -34,44 +34,7 @@
 
 #include "common.h"
 
-/**
- * @brief Return the element size of the @a vector
- *
- * The element size is determined from the type of @a vector itself with a
- * calculation similar to <code>sizeof((vector)[0])</code>. As such to use this
- * @a vector must already be a pointer to a complete type.
- *
- * The element size of a vector isn't recorded in the vector itself. This
- * calculates the element size of the @a vector from the pointer type of the @a
- * vector itself (similar to <code>sizeof((vector)[0])</code>). Thus @a vector
- * must be a pointer to a complete type.
- *
- * This is almost identical to <code>sizeof((vector)[0])</code>. However in GNU
- * C (and similar implementations) the @c sizeof(void) is @c 1 (despite the fact
- * that @c void is an incomplete type). Because a @ref vector_t is defined as
- * <code>void *</code> this raises a compiler error when @a vector is a
- * @ref vector_t.
- *
- * This macro doesn't evaluate @a vector.
- */
-#define VECTOR_Z(vector) sizeof({ __typeof__((vector)[0]) __x; __x; })
-
-/**
- * @brief Used to indicate a vector with an indeterminate element type
- *
- * This is intended to be used strictly when the element type of a vector is
- * indeterminate (such as when implementing this file) and shouldn't be used
- * otherwise. Instead a normal C pointer should be used. For example a vector
- * with element type @c size_t should be declared and created with:
- *
- * @code{.c}
- *   size_t *v_size = vector_create();
- * @endcode
- */
-typedef void * vector_t;
-
-/// A @ref vector_t with a @c const element type
-typedef void const * vector_c;
+#include "vector/common.h"
 
 #include "vector/create.h"
 
@@ -95,7 +58,7 @@ typedef void const * vector_c;
 vector_t vector_duplicate_z(vector_c source, size_t z)
   __attribute__((__malloc__, nonnull));
 
-/// @asimplicit{vector_duplicate_z()}
+/// @copydoc vector_duplicate_z()
 //= vector_t vector_duplicate(vector_c source)
 #define vector_duplicate(source) \
   vector_duplicate_z(source, VECTOR_Z((source)))
@@ -117,6 +80,9 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>vector + i</code>.
  *
+ * If @a i is the length of the @a vector then this will return a pointer to
+ * just past the last element of the @a vector.
+ *
  * This operation is @c const qualified on the @a vector. That is if the element
  * type of the @a vector is @c const qualified (@a vector is a @ref vector_c)
  * then this will return a <tt>const void *</tt>. Otherwise this will return a
@@ -128,9 +94,11 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
  *   vector_at(vector, vector_index(elmt)) == elmt
  * @endcode
  *
- * If @a i isn't an index in the @a vector then the behavior is undefined.
+ * If @a i is neither an index in the @a vector or its length then the behavior
+ * is undefined.
  *
- * @see vector_index() - The inverse operation
+ * @see vector_index() - the inverse operation to get the index of an element in
+ *   a vector
  */
 //= void *vector_at(vector_t vector, size_t i, size_t z)
 #define vector_at(vector, i, z) ({ \
@@ -370,67 +338,7 @@ vector_t vector_ensure_z(vector_t vector, size_t length, size_t z)
 #define vector_ensure(vector, length) \
   vector_ensure_z((vector), (length), sizeof((vector)[0]))
 
-/// @copybrief vector_insert()
-/// @see vector_insert()
-vector_t vector_insert_z(
-    restrict vector_t vector,
-    size_t i,
-    const void * restrict elmt,
-    size_t z)
-  __attribute__((nonnull(1), warn_unused_result));
-
-/**
- * @brief Insert the data at @a elmt into the @a vector at index @a i
- *
- * If @a elmt is @c NULL then the inserted element will be uninitialized.
- *
- * This will call vector_ensure(). If that fails then the @a vector will be
- * unmodified.
- *
- * If this fails then it will set @c errno to @c ENOMEM.
- *
- * If @a i isn't an index in the @a vector or the length of the @a vector then
- * the behavior is undefined. If @a elmt isn't @c NULL and its type isn't
- * compatible with the element type of the @a vector then the behavior is
- * undefined.
- *
- * @return the resultant vector on success; otherwise @c NULL
- */
-//= vector_t vector_insert(vector_t vector, size_t i, void *elmt)
-#define vector_insert(vector, i, elmt) \
-  vector_insert_z((vector), (i), (elmt), VECTOR_Z((vector)))
-
-/// @copydoc vector_inject()
-/// @see vector_inject()
-vector_t vector_inject_z(
-    restrict vector_t vector,
-    size_t i,
-    const void * restrict elmt,
-    size_t n,
-    size_t z)
-  __attribute__((nonnull(1), warn_unused_result));
-
-/**
- * @brief Insert @a n elements from @a elmt into the @a vector starting at index
- *        @a i
- *
- * If @a elmt is @c NULL then the inserted elements will be uninitialized.
- *
- * This will call vector_ensure(). If that fails then the @a vector will be
- * unmodified.
- *
- * This is more efficient than calling vector_insert() @a n times as the
- * elements after <code>i + n</code> will be shifted only once.
- *
- * If this fails then it will set @c errno to @c ENOMEM.
- *
- * If @a i isn't an index in the @a vector or the length of the @a vector then
- * the behavior is undefined.
- *
- * @return the resultant vector on success; otherwise @c NULL
- */
-#define vector_inject(vector, i, elmt, n) \
-  vector_inject_z((vector), (i), (elmt), (n), VECTOR_Z((vector)))
+#include "vector/insert.h"
 
 /**
  * @brief Remove the element at index @a i from the @a vector
@@ -486,47 +394,6 @@ vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
 
 #define vector_truncate(vector, length) \
   vector_truncate((vector), (length), sizeof((vector)[0]))
-
-/// @copydoc vector_append()
-/// @see vector_append()
-vector_t vector_append_z(vector_t vector, const void *elmt, size_t z)
-  __attribute__((nonnull(1), warn_unused_result));
-
-/**
- * @brief Insert the data at @a elmt as the last element in the @a vector
- *
- * If @a elmt is @c NULL then the appended element will be uninitialized.
- *
- * This will call vector_ensure() or its explicit interface equivalent. If
- * that fails then the @a vector will be unmodified.
- *
- * If this fails then it will set @c errno to @c ENOMEM.
- *
- * @return the resultant vector on success; otherwise @c NULL
- *
- * @see vector_insert() - To insert the element at a specified index
- * @see vector_append_z() - The explicit interface equivalent of this
- * operation
- */
-#define vector_append(vector, elmt) \
-  vector_append_z((vector), (elmt), sizeof((vector)[0]))
-
-/**
- * @brief Append @a n elements from @a elmt to the @a vector
- *
- * If @a elmt is @c NULL then random data will inserted.
- *
- * This will call vector_ensure(). If that fails then the @a vector will be
- * unmodified.
- *
- * @return the resultant vector on success; otherwise @c NULL
- */
-vector_t
-vector_extend_z(vector_t vector, const void *elmt, size_t n, size_t z)
-  __attribute__((nonnull(1), warn_unused_result));
-
-#define vector_extend(vector, elmt, n) \
-  vector_extend_z((vector), (elmt), (n), sizeof((vector)[0]))
 
 /** 
  * @brief Return a pointer to the last element in the @a vector
