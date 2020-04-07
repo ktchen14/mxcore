@@ -83,6 +83,11 @@ extern inline __typeof__(vector_index) vector_index;
 extern inline __typeof__(vector_get) vector_get;
 extern inline __typeof__(vector_set) vector_set;
 
+// vector/resize.h
+extern inline __typeof__(vector_resize_z) vector_resize_z;
+extern inline __typeof__(vector_ensure_z) vector_ensure_z;
+extern inline __typeof__(vector_shrink_z) vector_shrink_z;
+
 void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
   char *a = vector_at(vector, i, z);
   char *b = vector_at(vector, j, z);
@@ -108,54 +113,11 @@ void vector_move_z(vector_t vector, size_t target, size_t source, size_t z) {
   }
 }
 
-vector_t vector_resize_z(vector_t vector, size_t volume, size_t z) {
-  header_t *header = vector_to_header(vector);
-  size_t size;
-
-  // calculate size and test for overflow
-  if (__builtin_mul_overflow(volume, z, &size))
-    return errno = ENOMEM, NULL;
-  if (__builtin_add_overflow(size, sizeof(header_t), &size))
-    return errno = ENOMEM, NULL;
-
-  if ((header = realloc(header, size)) == NULL)
-    return NULL;
-
-  if ((header->volume = volume) < header->length)
-    header->length = volume;
-
-  return header_to_vector(header);
-}
-
-vector_t vector_shrink_z(vector_t vector, size_t z) {
-  vector_t shrunk;
-
-  shrunk = vector_resize_z(vector, vector_length(vector), z);
-
-  return shrunk != NULL ? shrunk : vector;
-}
-
-vector_t vector_ensure_z(vector_t vector, size_t length, size_t z) {
-  if (length <= vector_volume(vector))
-    return vector;
-
-  // just volume = (length * 8 + 3) / 5 avoiding intermediate overflow
-  size_t volume = length / 5 * 8 + ((length % 5) * 8 + 3) / 5;
-
-  // if the volume doesn't overflow then attempt to allocate it
-  if (volume > length) {
-    vector_t resize;
-    if ((resize = vector_resize_z(vector, volume, z)) != NULL)
-      return resize;
-  }
-
-  // if either the volume overflows or the allocation failed then attempt to
-  // resize to just the length
-  return vector_resize_z(vector, length, z);
-}
-
+// vector/insert.h
 extern inline __typeof__(vector_insert_z) vector_insert_z;
 extern inline __typeof__(vector_inject_z) vector_inject_z;
+extern inline __typeof__(vector_append_z) vector_append_z;
+extern inline __typeof__(vector_extend_z) vector_extend_z;
 
 vector_t vector_remove_z(vector_t vector, size_t i, size_t z) {
   return vector_excise_z(vector, i, 1, z);
@@ -189,9 +151,6 @@ vector_t vector_truncate_z(vector_t vector, size_t length, size_t z) {
   size_t n = vector_length(vector) - length;
   return vector_excise_z(vector, vector_length(vector) - n, n, z);
 }
-
-extern inline __typeof__(vector_append_z) vector_append_z;
-extern inline __typeof__(vector_extend_z) vector_extend_z;
 
 // void *vector_tail_z(vector_t vector, size_t z) {
 //   return vector_at(vector, vector_length(vector) - 1, z);
