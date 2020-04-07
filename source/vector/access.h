@@ -1,5 +1,10 @@
 /// @file vector/access.h
 
+#ifndef VECTOR_ACCESS_H
+#define VECTOR_ACCESS_H
+
+#include "common.h"
+
 #include <stddef.h>
 #include <string.h>
 
@@ -25,16 +30,14 @@
  * @param elmt the location to copy the element to
  * @param z the element size of the @a vector
  *
- * @see vector_set() - The inverse operation to copy data into a vector
+ * @see vector_set() - the inverse operation to copy data into a vector
  */
-inline __attribute__((nonnull))
 void vector_get(
     restrict vector_c vector,
     size_t i,
     void *restrict elmt,
-    size_t z) {
-  memcpy(elmt, vector_at(vector, i, z), z);
-}
+    size_t z)
+  __attribute__((nonnull));
 
 /**
  * @brief Copy the data at @a elmt into the @a vector at index @a i
@@ -53,10 +56,26 @@ void vector_get(
  * @param elmt the location to copy the element from
  * @param z the element size of the @a vector
  *
- * @see vector_get() - The inverse operation to copy data from a vector
+ * @see vector_get() - the inverse operation to copy data from a vector
  */
-inline __attribute__((nonnull))
 void vector_set(
+    restrict vector_t vector,
+    size_t i,
+    const void *restrict elmt,
+    size_t z)
+  __attribute__((nonnull));
+
+#ifndef VECTOR_HIDE_INLINE_DEFINITION
+
+inline void vector_get(
+    restrict vector_c vector,
+    size_t i,
+    void *restrict elmt,
+    size_t z) {
+  memcpy(elmt, vector_at(vector, i, z), z);
+}
+
+inline void vector_set(
     restrict vector_t vector,
     size_t i,
     const void *restrict elmt,
@@ -64,5 +83,9 @@ void vector_set(
   memcpy(vector_at(vector, i, z), elmt, z);
 }
 
+#endif /* VECTOR_HIDE_INLINE_DEFINITION */
+
 /// @}
 /// @}
+
+#endif /* VECTOR_ACCESS_H */
