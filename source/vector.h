@@ -139,50 +139,7 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z);
 
 #define vector_ne(a, b, eqf) vector_ne_z((a), (b), (eqf), sizeof((a)[0]))
 
-/**
- * @brief Find the first element in the @a vector for which @a eqf is @c true
- *
- * @return the index of the element on success; otherwise @c ABSENT
- */
-size_t vector_find_z(vector_t vector, eq_f eqf, void *data, size_t z);
-
-#define vector_find(vector, eqf, data) \
-  vector_find_z((vector), (eqf), (data), sizeof((vector)[0]))
-
-size_t
-vector_find_next_z(vector_t vector, size_t i, eq_f eqf, void *data, size_t z);
-
-#define vector_find_next(vector, eqf, data) \
-  vector_find_next_z((vector), (eqf), (data), sizeof((vector)[0]))
-
-size_t
-vector_find_last_z(vector_t vector, size_t i, eq_f eqf, void *data, size_t z);
-
-#define vector_find_last(vector, eqf, data) \
-  vector_find_last_z((vector), (eqf), (data), sizeof((vector)[0]))
-
-size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z);
-
-/**
- * @brief Find the first element in the @a vector equal to @a elmt according
- *        to @a cmpf
- *
- * The @a vector must be partitioned with respect to @a elmt according to @a
- * cmpf. That is, all the elements that compare less than must appear before all
- * the elements that compare equal to, and those must appear before all the
- * elements that compare greater than @a elmt according to @a cmpf. A vector
- * sorted by a previous call to vector_sort() with the same @a cmpf satisfies
- * these requirements.
- *
- * The behavior is undefined if the @a vector is not already partitioned with
- * respect to @a elmt in ascending order according to @a cmpf.
- *
- * @see vector_search_z() The equivalent operation in the explicit interface
- *
- * @return the index of the element on success; otherwise @c MX_ABSENT
- */
-#define vector_search(vector, ...) \
-  vector_search_z((vector), __VA_ARGS__, VECTOR_Z((vector)))
+#include "vector/search.h"
 
 /**
  * @brief Print debugging information about the @a vector

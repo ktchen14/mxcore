@@ -140,27 +140,10 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
   return !vector_eq_z(a, b, eqf, z);
 }
 
-size_t vector_find_z(vector_t vector, eq_f eqf, void *data, size_t z) {
-  return vector_find_next_z(vector, 0, eqf, data, z);
-}
-
-size_t
-vector_find_next_z(vector_t vector, size_t i, eq_f eqf, void *data, size_t z) {
-  for (; i < vector_length(vector); i++) {
-    if (eqf(vector_at(vector, i, z), data))
-      return i;
-  }
-  return MX_ABSENT;
-}
-
-size_t
-vector_find_last_z(vector_t vector, size_t i, eq_f eqf, void *data, size_t z) {
-  for (; i-- > 0;) {
-    if (eqf(vector_at(vector, i, z), data))
-      return i;
-  }
-  return MX_ABSENT;
-}
+// vector/search.h
+extern inline __typeof__(vector_find_z) vector_find_z;
+extern inline __typeof__(vector_find_next_z) vector_find_next_z;
+extern inline __typeof__(vector_find_last_z) vector_find_last_z;
 
 size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z) {
   size_t length = vector_length(vector);
