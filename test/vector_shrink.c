@@ -17,6 +17,8 @@ vector_t vector_shrink_z(vector_t vector, size_t z) {
   return REAL(vector_shrink_z)(vector, last_z = z);
 }
 
+#include <stdio.h>
+
 int main() {
   int *vector = vector_define(int, 0, 1, 2, 3, 4, 5, 6, 7);
   size_t length;

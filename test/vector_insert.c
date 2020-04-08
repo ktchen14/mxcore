@@ -3,8 +3,6 @@
 #include <errno.h>
 #include <stdlib.h>
 
-#define VECTOR_HIDE_INLINE_DEFINITION
-
 #include "../source/vector.h"
 #include "test.h"
 

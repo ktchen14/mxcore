@@ -161,7 +161,7 @@ inline vector_t vector_resize_z(vector_t vector, size_t volume, size_t z) {
 inline vector_t vector_shrink_z(vector_t vector, size_t z) {
   vector_t shrunk;
 
-  return vector_resize_z(vector, vector_length(vector), z);
+  shrunk = vector_resize_z(vector, vector_length(vector), z);
 
   return shrunk != NULL ? shrunk : vector;
 }
