@@ -78,7 +78,7 @@ size_t vector_length(vector_c vector) {
   return vector_to_header(vector)->length;
 }
 
-// Access
+// vector/access.h
 extern inline __typeof__(vector_index) vector_index;
 extern inline __typeof__(vector_get) vector_get;
 extern inline __typeof__(vector_set) vector_set;
@@ -88,30 +88,10 @@ extern inline __typeof__(vector_resize_z) vector_resize_z;
 extern inline __typeof__(vector_ensure_z) vector_ensure_z;
 extern inline __typeof__(vector_shrink_z) vector_shrink_z;
 
-void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
-  char *a = vector_at(vector, i, z);
-  char *b = vector_at(vector, j, z);
-
-  for (size_t k = 0; k < z; k++) {
-    char buffer;
-    buffer = a[k];
-    a[k] = b[k];
-    b[k] = buffer;
-  }
-}
-
-void vector_move_z(vector_t vector, size_t target, size_t source, size_t z) {
-  if (target == source)
-    return;
-
-  if (target < source) {
-    while (source-- > target)
-      vector_swap_z(vector, source, source + 1, z);
-  } else {
-    for (; source < target; source++)
-      vector_swap_z(vector, source, source + 1, z);
-  }
-}
+// vector/move.h
+extern inline __typeof__(vector_move_z) vector_move_z;
+extern inline __typeof__(vector_swap_z) vector_swap_z;
+extern inline __typeof__(vector_sort_z) vector_sort_z;
 
 // vector/insert.h
 extern inline __typeof__(vector_insert_z) vector_insert_z;
@@ -186,10 +166,6 @@ bool vector_eq_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
 
 bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
   return !vector_eq_z(a, b, eqf, z);
-}
-
-void vector_sort_z(vector_t vector, cmp_f cmpf, size_t z) {
-  qsort(vector, vector_length(vector), z, cmpf);
 }
 
 size_t vector_find_z(vector_t vector, eq_f eqf, void *data, size_t z) {
