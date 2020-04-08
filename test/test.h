@@ -1,6 +1,11 @@
 #ifndef TEST_H
 #define TEST_H
 
+// The _GNU_SOURCE feature test macro must be defined in order to obtain the
+// definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>
+#define _GNU_SOURCE
+#include <dlfcn.h>
+
 #define REAL(name) ((__typeof__((name)) *) dlsym(RTLD_NEXT, #name))
 
 // Assert that the data in and length of the vector is the same as the sequence

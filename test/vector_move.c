@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <dlfcn.h>
 #include <stdlib.h>
 
 #include "../source/vector.h"
