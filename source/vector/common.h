@@ -9,6 +9,29 @@
 /// @{
 
 /**
+ * @brief Used to indicate a vector with an indeterminate element type
+ *
+ * This is intended to be used strictly when the element type of a vector is
+ * indeterminate (such as when implementing this file) and shouldn't be used
+ * otherwise. Instead a normal C pointer should be used. For example a vector
+ * with element type @c size_t should be declared and created with:
+ *
+ * @code{.c}
+ *   size_t *v_size = vector_create();
+ * @endcode
+ */
+typedef void * vector_t;
+
+/// A @ref vector_t with a @c const element type
+typedef void const * vector_c;
+
+/// Return the volume of the @a vector
+size_t vector_volume(vector_c vector) __attribute__((nonnull, pure));
+
+/// Return the length of the @a vector
+size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
+
+/**
  * @brief Return the element size of the @a vector
  *
  * The element size is determined from the type of @a vector itself with a
@@ -29,23 +52,6 @@
  * This macro doesn't evaluate @a vector.
  */
 #define VECTOR_Z(vector) sizeof({ __typeof__((vector)[0]) __x; __x; })
-
-/**
- * @brief Used to indicate a vector with an indeterminate element type
- *
- * This is intended to be used strictly when the element type of a vector is
- * indeterminate (such as when implementing this file) and shouldn't be used
- * otherwise. Instead a normal C pointer should be used. For example a vector
- * with element type @c size_t should be declared and created with:
- *
- * @code{.c}
- *   size_t *v_size = vector_create();
- * @endcode
- */
-typedef void * vector_t;
-
-/// A @ref vector_t with a @c const element type
-typedef void const * vector_c;
 
 /// A vector header
 struct __vector_header_t {
@@ -73,6 +79,18 @@ struct __vector_header_t {
     )); \
   _Pragma("GCC diagnostic pop") \
 })
+
+#ifndef VECTOR_HIDE_INLINE_DEFINITION
+
+inline size_t vector_volume(vector_c vector) {
+  return __vector_to_header(vector)->volume;
+}
+
+inline size_t vector_length(vector_c vector) {
+  return __vector_to_header(vector)->length;
+}
+
+#endif /* VECTOR_HIDE_INLINE_DEFINITION */
 
 /// @}
 

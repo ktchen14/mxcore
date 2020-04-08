@@ -1,6 +1,5 @@
 /// @file vector.c
 
-#include <errno.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -10,50 +9,20 @@
 #include "common.h"
 #include "vector.h"
 
-typedef struct _header_t {
-  size_t volume;
-  size_t length;
-  char data[] __attribute__((aligned));
-} header_t;
-
-/// Return the vector associated with the @a header
-static inline vector_t header_to_vector(header_t *header)
-  __attribute__((const, nonnull, returns_nonnull));
-
-/**
- * @brief Return the header associated with the @a vector
- *
- * This function is @a const qualified on the @a vector. That is if the element
- * type of the @a vector is @c const qualified (@a vector is a @c vector_c)
- * then this will return a <tt>const header_t *</tt>. Otherwise this will return
- * a <tt>header_t *</tt>.
- */
-#define vector_to_header(vector) ({ \
-  _Pragma("GCC diagnostic push"); \
-  _Pragma("GCC diagnostic ignored \"-Wcast-align\""); \
-  _Pragma("GCC diagnostic ignored \"-Wcast-qual\""); \
-  _Generic((vector), vector_t: (/* */ header_t *) ( \
-      (/* */ char *) (vector) - offsetof(header_t, data) \
-    ), vector_c: (const header_t *) ( \
-      (const char *) (vector) - offsetof(header_t, data) \
-    )); \
-  _Pragma("GCC diagnostic pop") \
-})
-
 // vector/create.h
 extern inline __typeof__(vector_create) vector_create;
 extern inline __typeof__(vector_import_z) vector_import_z;
 
 vector_t vector_duplicate_z(vector_c source, size_t z) {
-  header_t *header;
+  struct __vector_header_t *header;
 
   size_t volume = vector_volume(source);
   size_t length = vector_length(source);
 
-  if ((header = malloc(sizeof(header_t) + volume * z)) == NULL) {
+  if ((header = malloc(sizeof(*header) + volume * z)) == NULL) {
     if (length == volume)
       return NULL;
-    if ((header = malloc(sizeof(header_t) + length * z)) == NULL)
+    if ((header = malloc(sizeof(*header) + length * z)) == NULL)
       return NULL;
     header->volume = length;
   } else
@@ -61,22 +30,16 @@ vector_t vector_duplicate_z(vector_c source, size_t z) {
 
   header->length = length;
 
-  memcpy(header->data, source, length * z);
-
-  return header_to_vector(header);
+  return memcpy(header->data, source, length * z);
 }
 
 void vector_delete(vector_t vector) {
-  free(vector_to_header(vector));
+  free(__vector_to_header(vector));
 }
 
-size_t vector_volume(vector_c vector) {
-  return vector_to_header(vector)->volume;
-}
-
-size_t vector_length(vector_c vector) {
-  return vector_to_header(vector)->length;
-}
+// vector/common.h
+extern inline __typeof__(vector_volume) vector_volume;
+extern inline __typeof__(vector_length) vector_length;
 
 // vector/access.h
 extern inline __typeof__(vector_index) vector_index;
@@ -162,7 +125,7 @@ size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z) {
 
 void vector_debug_z(
     vector_c vector, void (*elmt_debug)(const void *), size_t z) {
-  const header_t *header = vector_to_header(vector);
+  const struct __vector_header_t *header = __vector_to_header(vector);
   fprintf(stderr,
     "vector_t(data = %p, utilization = %zu/%zu)",
   header->data, header->length, header->volume);
@@ -176,8 +139,4 @@ void vector_debug_z(
     }
     fprintf(stderr, " ]");
   }
-}
-
-vector_t header_to_vector(header_t *header) {
-  return (vector_t) header->data;
 }

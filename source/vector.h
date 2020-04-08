@@ -63,12 +63,6 @@ vector_t vector_duplicate_z(vector_c source, size_t z)
 /// Deallocate the @a vector and return @c NULL
 void vector_delete(vector_t vector);
 
-/// Return the volume of the @a vector
-size_t vector_volume(vector_c vector) __attribute__((nonnull, pure));
-
-/// Return the length of the @a vector
-size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
-
 #include "vector/access.h"
 
 #include "vector/create.h"
@@ -78,7 +72,7 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 #include "vector/insert.h"
 #include "vector/remove.h"
 
-/** 
+/**
  * @brief Return a pointer to the last element in the @a vector
  *
  * If no last element is in the @a vector (the @a vector's length is zero) then
