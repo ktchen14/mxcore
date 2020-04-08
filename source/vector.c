@@ -16,18 +16,21 @@ extern inline __typeof__(vector_import_z) vector_import_z;
 vector_t vector_duplicate_z(vector_c source, size_t z) {
   struct __vector_header_t *header;
 
-  if ((header = malloc(sizeof(*header) + vector_volume(source) * z)) == NULL) {
-    if (vector_length(source) == vector_volume(source))
+  size_t volume = vector_volume(source);
+  size_t length = vector_length(source);
+
+  if ((header = malloc(sizeof(*header) + volume * z)) == NULL) {
+    if (length == volume)
       return NULL;
-    if ((header = malloc(sizeof(*header) + vector_length(source) * z)) == NULL)
+    if ((header = malloc(sizeof(*header) + length * z)) == NULL)
       return NULL;
-    header->volume = vector_length(source);
+    header->volume = length;
   } else
-    header->volume = vector_volume(source);
+    header->volume = volume;
 
-  header->length = vector_length(source);
+  header->length = length;
 
-  return memcpy(header->data, source, vector_length(source) * z);
+  return memcpy(header->data, source, length * z);
 }
 
 void vector_delete(vector_t vector) {
