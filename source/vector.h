@@ -76,61 +76,7 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 
 #include "vector/resize.h"
 #include "vector/insert.h"
-
-/**
- * @brief Remove the element at index @a i from the @a vector
- *
- * No matter what the element is first removed from the @a vector. Then if the
- * length of the @a vector is reduced such that:
- *   length <= (volume - 1) / 2
- * Then a deallocation will be attempted to reduce the volume to:
- *   volume = (length * 6 + 4) / 5
- * If this deallocation fails then the vector will be returned as is.
- *
- * @return the resultant vector
- */
-vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
-  __attribute__((nonnull, returns_nonnull, warn_unused_result));
-
-#define vector_remove(vector, i) \
-  vector_remove_z((vector), (i), sizeof((vector)[0]))
-
-/**
- * @brief Remove @a n elements at index @a i from the @a vector
- *
- * No matter what the elements are first removed from the @a vector. Then if the
- * length of the @a vector is reduced such that:
- *   length <= (volume - 1) / 2
- * Then a deallocation will be attempted to reduce the volume to:
- *   volume = (length * 6 + 4) / 5
- * If this deallocation fails then the vector will be returned as is.
- *
- * @return the resultant vector
- */
-vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
-  __attribute__((nonnull, returns_nonnull, warn_unused_result));
-
-#define vector_excise(vector, i, n) \
-  vector_excise_z((vector), (i), (n), VECTOR_Z((vector)))
-
-/**
- * @brief Reduce the length of the @a vector to @a length
- *
- * No matter what elements are first removed from the tail of the @a vector
- * until its length is @a length. Then if the length of the @a vector is reduced
- * such that:
- *   @f[ length \leq \frac{volume - 1}{2} @f]
- * Then a deallocation will be attempted to reduce the volume to:
- *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
- * If this deallocation fails then the vector will be returned as is.
- *
- * @return the resultant vector
- */
-vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
-  __attribute__((nonnull, returns_nonnull, warn_unused_result));
-
-#define vector_truncate(vector, length) \
-  vector_truncate((vector), (length), sizeof((vector)[0]))
+#include "vector/remove.h"
 
 /** 
  * @brief Return a pointer to the last element in the @a vector
