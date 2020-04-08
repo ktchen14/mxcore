@@ -5,11 +5,10 @@
 #include "../source/vector.h"
 #include "test.h"
 
-static int realloc_return = 0;
-
-void *stub_realloc(void *data, size_t size) {
-  if (realloc_return != 0)
-    return errno = realloc_return, NULL;
+static int realloc_errno = 0;
+__attribute__((used)) void *stub_realloc(void *data, size_t size) {
+  if (realloc_errno != 0)
+    return errno = realloc_errno, NULL;
   return realloc(data, size);
 }
 
@@ -52,12 +51,12 @@ int main() {
 
   // When the reallocation is unsuccessful it returns NULL with errno retained
   // from realloc()
-  realloc_return = ENOENT;
+  realloc_errno = ENOENT;
   errno = 0;
   assert(vector_resize(vector, 40) == NULL);
   assert(errno == ENOENT);
 
-  realloc_return = 0;
+  realloc_errno = 0;
 
   // With a volume greater than or equal to the vector's length, the vector's
   // length is unchanged

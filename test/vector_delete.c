@@ -5,7 +5,7 @@
 #include "../source/vector.h"
 
 static void *free_object = NULL;
-void stub_free(void *object) {
+__attribute__((used)) void stub_free(void *object) {
   free(free_object = object);
 }
 

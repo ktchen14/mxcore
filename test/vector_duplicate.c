@@ -6,7 +6,7 @@
 #include "test.h"
 
 static int *malloc_errno = NULL;
-void *stub_malloc(size_t size) {
+__attribute__((used)) void *stub_malloc(size_t size) {
   int e;
   if (malloc_errno == NULL || (e = *malloc_errno++) == 0)
     return malloc(size);

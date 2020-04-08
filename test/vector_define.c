@@ -7,7 +7,7 @@
 // TODO: review
 
 static int malloc_errno = 0;
-void *stub_malloc(size_t size) {
+__attribute__((used)) void *stub_malloc(size_t size) {
   if (malloc_errno != 0)
     return errno = malloc_errno, NULL;
   return malloc(size);
