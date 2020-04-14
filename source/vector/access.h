@@ -21,13 +21,16 @@
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>vector + i</code>.
  *
+ * @note This operation is implemented as a macro but documented as a function
+ * to clarify its intended usage.
+ *
  * If @a i is the length of the @a vector then this will return a pointer to
  * just past the last element of the @a vector.
  *
  * This operation is @c const qualified on the @a vector. That is if the element
  * type of the @a vector is @c const qualified (@a vector is compatible with a
- * @ref vector_c) then this will return a <tt>const void *</tt>. Otherwise this
- * will return a <tt>void *</tt>.
+ * @ref vector_c), this will return a <tt>const void *</tt>. Otherwise this will
+ * return a <tt>void *</tt>.
  *
  * This is the inverse of vector_index() such that:
  * @code{.c}

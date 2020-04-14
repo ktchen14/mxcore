@@ -53,7 +53,6 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
  */
 #define VECTOR_Z(vector) sizeof({ __typeof__((vector)[0]) __x; __x; })
 
-/// A vector header
 struct __vector_header_t {
   size_t volume;
   size_t length;
@@ -64,9 +63,9 @@ struct __vector_header_t {
  * @brief Return the header associated with the @a vector
  *
  * This function is @a const qualified on the @a vector. That is if the element
- * type of the @a vector is @c const qualified (@a vector is a @c vector_c)
- * then this will return a <tt>const struct __vector_header_t *</tt>. Otherwise
- * this will return a <tt>struct __vector_header_t *</tt>.
+ * type of the @a vector is @c const qualified (@a vector is compatible with a
+ * @ref vector_c), this will return a <tt>const struct __vector_header_t *</tt>.
+ * Otherwise this will return a <tt>struct __vector_header_t *</tt>.
  */
 #define __vector_to_header(vector) ({ \
   _Pragma("GCC diagnostic push"); \
