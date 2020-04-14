@@ -25,10 +25,16 @@ typedef void * vector_t;
 /// A @ref vector_t with a @c const element type
 typedef void const * vector_c;
 
-/// Return the volume of the @a vector
+/**
+ * @brief Return the volume of the @a vector
+ *
+ * A vector's volume is the number of elements that it can hold without a
+ * reallocation and should always be greater than or equal to the vector's
+ * @length.
+ */
 size_t vector_volume(vector_c vector) __attribute__((nonnull, pure));
 
-/// Return the length of the @a vector
+/// Return the length of (the number of elements in) the @a vector
 size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 
 /// @cond INTERNAL

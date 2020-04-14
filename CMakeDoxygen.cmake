@@ -105,7 +105,7 @@ set(DOXYGEN_SOURCE_TOOLTIPS YES)
 # tree, you can set this option to YES if you also set GENERATE_TREEVIEW to YES.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-set(DOXYGEN_DISABLE_INDEX YES)
+set(DOXYGEN_DISABLE_INDEX NO)
 
 # The GENERATE_TREEVIEW tag is used to specify whether a tree-like index
 # structure should be generated to display hierarchical information. If the tag
@@ -121,7 +121,7 @@ set(DOXYGEN_DISABLE_INDEX YES)
 # DISABLE_INDEX to YES when enabling this option.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-# set(DOXYGEN_GENERATE_TREEVIEW YES)
+set(DOXYGEN_GENERATE_TREEVIEW YES)
 
 # Use this tag to change the font size of LaTeX formulas included as images in
 # the HTML documentation. When you change the font size after a successful
@@ -176,11 +176,10 @@ set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
 set(DOXYGEN_PREDEFINED "__attribute__(x)=" "DOXYGEN")
 
 set(DOXYGEN_INPUT_FILTER "${PROJECT_SOURCE_DIR}/tool/documentation-filter")
-set(DOXYGEN_ALIASES "asimplicit{1}=\"@copybrief \\1^^ \
-@note Though this operation is implemented as a macro it's documented as a \
-function to clarify its intended usage.^^ \
-^^ \
-@copydetails \\1\"")
+set(DOXYGEN_ALIASES
+  length="@ref vector_length \\\"length\\\""
+  volume="@ref vector_volume \\\"volume\\\""
+)
 set(DOXYGEN_VERBATIM_VARS DOXYGEN_ALIASES)
 
 doxygen_add_docs(documentation WORKING_DIRECTORY source)
