@@ -31,6 +31,8 @@ size_t vector_volume(vector_c vector) __attribute__((nonnull, pure));
 /// Return the length of the @a vector
 size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 
+/// @cond INTERNAL
+
 /**
  * @brief Return the element size of the @a vector
  *
@@ -53,6 +55,7 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
  */
 #define VECTOR_Z(vector) sizeof({ __typeof__((vector)[0]) __x; __x; })
 
+/// The header of a @ref vector_t or @ref vector_c
 struct __vector_header_t {
   size_t volume;
   size_t length;
@@ -78,6 +81,8 @@ struct __vector_header_t {
     )); \
   _Pragma("GCC diagnostic pop") \
 })
+
+/// @endcond
 
 #ifndef VECTOR_HIDE_INLINE_DEFINITION
 
