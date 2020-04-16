@@ -91,9 +91,9 @@ size_t vector_index(vector_c vector, const void *elmt, size_t z)
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>*elmt = vector[i]</code>.
  *
- * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or @a elmt
- * overlaps the element at index @a i in the @a vector, then the behavior is
- * undefined.
+ * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or the type of
+ * the object at @a elmt is incompatible with the element type of the vector,
+ * then the behavior is undefined.
  *
  * @param vector the vector to operate on
  * @param i the index of the element in the @a vector to copy from
@@ -102,24 +102,20 @@ size_t vector_index(vector_c vector, const void *elmt, size_t z)
  *
  * @see vector_set() - the inverse operation to copy data into a vector
  */
-void vector_get(
-    restrict vector_c vector,
-    size_t i,
-    void *restrict elmt,
-    size_t z)
+void vector_get(vector_c vector, size_t i, void *elmt, size_t z)
   __attribute__((nonnull));
 
 /**
- * @brief Copy the data at @a elmt into the @a vector at index @a i
+ * @brief Copy the object at @a elmt into the @a vector at index @a i
  *
  * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
  * the explicit interface and takes the element size of the @a vector as @a z.
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>vector[i] = *elmt</code>.
  *
- * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or @a elmt
- * overlaps the element at index @a i in the @a vector, then the behavior is
- * undefined.
+ * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or the type of
+ * the object at @a elmt is incompatible with the element type of the vector,
+ * then the behavior is undefined.
  *
  * @param vector the vector to operate on
  * @param i the index of the element in the @a vector to copy to
@@ -128,11 +124,7 @@ void vector_get(
  *
  * @see vector_get() - the inverse operation to copy data from a vector
  */
-void vector_set(
-    restrict vector_t vector,
-    size_t i,
-    const void *restrict elmt,
-    size_t z)
+void vector_set(vector_t vector, size_t i, const void *elmt, size_t z)
   __attribute__((nonnull));
 
 #ifndef VECTOR_HIDE_INLINE_DEFINITION
@@ -142,19 +134,19 @@ inline size_t vector_index(vector_c vector, const void *elmt, size_t z) {
   return (size_t) ((const char *) elmt - (const char *) vector) / z;
 }
 
-inline void vector_get(
-    restrict vector_c vector,
-    size_t i,
-    void *restrict elmt,
-    size_t z) {
+inline void vector_get(vector_c vector, size_t i, void *elmt, size_t z) {
+  // This comparison is well defined regardless of whether elmt is an object in
+  // the vector
+  if (elmt == vector_at(vector, i, z))
+    return;
   memcpy(elmt, vector_at(vector, i, z), z);
 }
 
-inline void vector_set(
-    restrict vector_t vector,
-    size_t i,
-    const void *restrict elmt,
-    size_t z) {
+inline void vector_set(vector_t vector, size_t i, const void *elmt, size_t z) {
+  // This comparison is well defined regardless of whether elmt is an object in
+  // the vector
+  if (elmt == vector_at(vector, i, z))
+    return;
   memcpy(vector_at(vector, i, z), elmt, z);
 }
 
