@@ -11,10 +11,10 @@
 /// @{
 
 /**
- * @brief Resize the volume of the @a vector to @a volume
+ * @brief Resize the @volume of the @a vector to @a volume
  *
- * If @a volume is less than the length of the @a vector then the @a vector will
- * be truncated and have its length reduced to @a volume.
+ * If @a volume is less than the @length of the @a vector then the @a vector
+ * will be truncated and have its length reduced to @a volume.
  *
  * This will fail if the underlying realloc() returns @c NULL. The C standard
  * <b>doesn't</b> guarantee success of a realloc() to a smaller size, so this
@@ -32,10 +32,10 @@
 #define vector_resize(v, ...) vector_resize_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
- * @brief Resize the volume of the @a vector to @a volume
+ * @brief Resize the @volume of the @a vector to @a volume
  *
- * If @a volume is less than the length of the @a vector then the @a vector will
- * be truncated and have its length reduced to @a volume.
+ * If @a volume is less than the @length of the @a vector then the @a vector
+ * will be truncated and have its length reduced to @a volume.
  *
  * This will fail if the underlying realloc() returns @c NULL. The C standard
  * <b>doesn't</b> guarantee success of a realloc() to a smaller size, so this
@@ -54,53 +54,49 @@ vector_t vector_resize_z(vector_t vector, size_t volume, size_t z)
   __attribute__((nonnull, warn_unused_result));
 
 /**
- * @brief Ensure that the volume of the @a vector is no less than @a length
+ * @brief Ensure that the @volume of the @a vector is no less than @a length
  *
  * If the volume of the @a vector is less than @a length then vector_resize()
- * will be called. Preallocation will first be attempted in order to accomodate
- * further increases in length according to the formula:
+ * will be called. Preallocation is attempted to accomodate future increases in
+ * @length according to the formula:
  *   @f[ volume = \frac{length \times 8 + 3}{5} @f]
  * If this preallocation fails then a resize to @a length will be attempted. If
- * this also fails then the @a vector will be unmodified.
+ * that also fails then the @a vector will be unmodified.
  *
- * After a successful vector_ensure() subsequent vector_insert()s (and
- * vector_append()s) into the vector are guaranteed to be successful as long
- * as the resultant length doesn't exceed @a length.
- *
- * Note that the @a vector does not remember this @a length. As a result calling
- * any functions that can decrease the volume of the @a vector such as:
- *   vector_resize()
- *   vector_shrink()
- *   vector_remove()
- * Will invalidate this guarantee.
+ * On success, subsequent insertions (through vector_insert(), vector_append(),
+ * etc.) into the vector are guaranteed to be successful so long as the
+ * resultant length doesn't exceed @a length. Note that the @a vector doesn't
+ * remember this @a length. As a result calling any functions that can decrease
+ * the volume of the @a vector (like vector_resize(), vector_shrink(),
+ * vector_remove(), etc.) will invalidate this guarantee.
  *
  * @param vector the vector to operate on
+ * @param length the minimum length to accomodate in the @a vector
  * @return the resultant vector on success; otherwise @c NULL
  */
 //= vector_t vector_ensure(vector_t vector, size_t length)
 #define vector_ensure(v, ...) vector_ensure_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
- * @brief Ensure that the volume of the @a vector is at least @a length
+ * @brief Ensure that the @volume of the @a vector is at least @a length
  *
- * If the volume of the @a vector is less than @a length then vector_resize()
- * will be called. Preallocation will first be attempted in order to accomodate
- * further increases in length according to the formula:
- *   volume = (length * 8 + 3) / 5
+ * If the volume of the @a vector is less than @a length then vector_resize_z()
+ * will be called. Preallocation is attempted to accomodate future increases in
+ * @length according to the formula:
+ *   @f[ volume = \frac{length \times 8 + 3}{5} @f]
  * If this preallocation fails then a resize to @a length will be attempted. If
- * this also fails then the @a vector will be unmodified.
+ * that also fails then the @a vector will be unmodified.
  *
- * After a successful vector_ensure() subsequent vector_insert()s (and
- * vector_append()s) into the vector are guaranteed to be successful as long
- * as the resultant length doesn't exceed @a length.
+ * On success, subsequent insertions (through vector_insert_z(),
+ * vector_append_z(), etc.) into the vector are guaranteed to be successful so
+ * long as the resultant length doesn't exceed @a length. Note that the
+ * @a vector doesn't remember this @a length. As a result calling any functions
+ * that can decrease the volume of the @a vector (like vector_resize_z(),
+ * vector_shrink_z(), vector_remove_z(), etc.) will invalidate this guarantee.
  *
- * Note that the @a vector does not remember this @a length. As a result calling
- * any functions that can decrease the volume of the @a vector such as:
- *   vector_resize()
- *   vector_shrink()
- *   vector_remove()
- * Will invalidate this guarantee.
- *
+ * @param vector the vector to operate on
+ * @param length the minimum length to accomodate in the @a vector
+ * @param z the element size of the @a vector
  * @return the resultant vector on success; otherwise @c NULL
  */
 vector_t vector_ensure_z(vector_t vector, size_t length, size_t z)
