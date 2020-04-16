@@ -15,32 +15,42 @@
 /**
  * @brief Remove the element at index @a i from the @a vector
  *
- * No matter what the element is first removed from the @a vector. Then if the
- * length of the @a vector is reduced such that:
- *   length <= (volume - 1) / 2
- * Then a deallocation will be attempted to reduce the volume to:
- *   volume = (length * 6 + 4) / 5
- * If this deallocation fails then the vector will be returned as is.
+ * All elements at indices greater than @a i are shifted one element toward the
+ * head of the @a vector.
+ *
+ * Once the element is removed and subsequent elements are shifted, if the
+ * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
+ * 2</code>, a vector_resize() will be attempted to reduce the @volume to:
+ *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
+ * On success the shrunk vector will be returned. Otherwise the vector will be
+ * returned as is (without the element).
+ *
+ * If @a i isn't an index in the @a vector then the behavior is undefined.
  *
  * @param vector the vector to operate on
- * @param i the index of the element to remove
+ * @param i the index in the @a vector of the element to remove
  * @return the resultant vector
  */
-//= vector_t vector_remove_z(vector_t vector, size_t i)
+//= vector_t vector_remove(vector_t vector, size_t i)
 #define vector_remove(v, ...) vector_remove_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
  * @brief Remove the element at index @a i from the @a vector
  *
- * No matter what the element is first removed from the @a vector. Then if the
- * length of the @a vector is reduced such that:
- *   length <= (volume - 1) / 2
- * Then a deallocation will be attempted to reduce the volume to:
- *   volume = (length * 6 + 4) / 5
- * If this deallocation fails then the vector will be returned as is.
+ * All elements at indices greater than @a i are shifted one element toward the
+ * head of the @a vector.
+ *
+ * Once the element is removed and subsequent elements are shifted, if the
+ * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
+ * 2</code>, a vector_resize_z() will be attempted to reduce the @volume to:
+ *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
+ * On success the shrunk vector will be returned. Otherwise the vector will be
+ * returned as is (without the element).
+ *
+ * If @a i isn't an index in the @a vector then the behavior is undefined.
  *
  * @param vector the vector to operate on
- * @param i the index of the element to remove
+ * @param i the index in the @a vector of the element to remove
  * @param z the element size of the @a vector
  * @return the resultant vector
  */
@@ -50,39 +60,102 @@ vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
 /**
  * @brief Remove @a n elements at index @a i from the @a vector
  *
- * No matter what the elements are first removed from the @a vector. Then if the
- * length of the @a vector is reduced such that:
- *   length <= (volume - 1) / 2
- * Then a deallocation will be attempted to reduce the volume to:
- *   volume = (length * 6 + 4) / 5
- * If this deallocation fails then the vector will be returned as is.
+ * All elements at indices greater than <code>i + n</code> are shifted @a n
+ * elements toward the head of the @a vector.
  *
+ * Once the elements are removed and subsequent elements are shifted, if the
+ * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
+ * 2</code>, a vector_resize() will be attempted to reduce the @volume to:
+ *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
+ * On success the shrunk vector will be returned. Otherwise the vector will be
+ * returned as is (without the elements).
+ *
+ * If @a i or any index from @a i to <code>i + n</code> inclusive isn't an index
+ * in the @a vector then the behavior is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param i the index in the @a vector of the elements to remove
+ * @param n the number of elements to remove from the @a vector
+ * @return the resultant vector
+ */
+//= vector_t vector_excise(vector_t vector, size_t i, size_t n)
+#define vector_excise(vector, i, n) \
+  vector_excise_z((vector), (i), (n), VECTOR_Z((vector)))
+
+/**
+ * @brief Remove @a n elements at index @a i from the @a vector
+ *
+ * All elements at indices greater than <code>i + n</code> are shifted @a n
+ * elements toward the head of the @a vector.
+ *
+ * Once the elements are removed and subsequent elements are shifted, if the
+ * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
+ * 2</code>, a vector_resize_z() will be attempted to reduce the @volume to:
+ *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
+ * On success the shrunk vector will be returned. Otherwise the vector will be
+ * returned as is (without the elements).
+ *
+ * If @a i or any index from @a i to <code>i + n</code> inclusive isn't an index
+ * in the @a vector then the behavior is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param i the index in the @a vector of the elements to remove
+ * @param n the number of elements to remove from the @a vector
+ * @param z the element size of the @a vector
  * @return the resultant vector
  */
 vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
 
-#define vector_excise(vector, i, n) \
-  vector_excise_z((vector), (i), (n), VECTOR_Z((vector)))
+/**
+ * @brief Reduce the @length of the @a vector to @a length
+ *
+ * This will remove elements from the tail of the @a vector until its length is
+ * @a length. The number of elements removed is the difference between @a length
+ * and the length of the @a vector.
+ *
+ * Once the elements are removed, if the @length of the @a vector is reduced
+ * such that <code>length <= (volume - 1) / 2</code>, a vector_resize() will be
+ * attempted to reduce the @volume to:
+ *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
+ * On success the shrunk vector will be returned. Otherwise the vector will be
+ * returned as is (without the elements).
+ *
+ * If @a length is greater than the @a length of the @a vector then the behavior
+ * is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param length the length of the resultant vector
+ * @return the resultant vector
+ */
+//= vector_t vector_truncate(vector_t vector, size_t length)
+#define vector_truncate(vector, length) \
+  vector_truncate((vector), (length), sizeof((vector)[0]))
 
 /**
- * @brief Reduce the length of the @a vector to @a length
+ * @brief Reduce the @length of the @a vector to @a length
  *
- * No matter what elements are first removed from the tail of the @a vector
- * until its length is @a length. Then if the length of the @a vector is reduced
- * such that:
- *   @f[ length \leq \frac{volume - 1}{2} @f]
- * Then a deallocation will be attempted to reduce the volume to:
+ * This will remove elements from the tail of the @a vector until its length is
+ * @a length. The number of elements removed is the difference between @a length
+ * and the length of the @a vector.
+ *
+ * Once the elements are removed, if the @length of the @a vector is reduced
+ * such that <code>length <= (volume - 1) / 2</code>, a vector_resize_z() will
+ * be attempted to reduce the volume to:
  *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
- * If this deallocation fails then the vector will be returned as is.
+ * On success the shrunk vector will be returned. Otherwise the vector will be
+ * returned as is (without the elements).
  *
+ * If @a length is greater than the @a length of the @a vector then the behavior
+ * is undefined.
+ *
+ * @param vector the vector to operate on
+ * @param length the length of the resultant vector
+ * @param z the element size of the @a vector
  * @return the resultant vector
  */
 vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
-
-#define vector_truncate(vector, length) \
-  vector_truncate((vector), (length), sizeof((vector)[0]))
 
 #ifndef VECTOR_HIDE_INLINE_DEFINITION
 
