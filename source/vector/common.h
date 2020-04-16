@@ -3,6 +3,7 @@
 #ifndef VECTOR_COMMON_H
 #define VECTOR_COMMON_H
 
+#include <stdalign.h>
 #include <stddef.h>
 
 /// @addtogroup vector_module Vector
@@ -65,7 +66,7 @@ size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 struct __vector_header_t {
   size_t volume;
   size_t length;
-  char data[] __attribute__((aligned));
+  alignas(max_align_t) char data[];
 };
 
 /**

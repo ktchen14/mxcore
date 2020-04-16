@@ -61,6 +61,8 @@ function(define_compilation_test name symbol)
   set_tests_properties(test_${name}_compilation PROPERTIES WILL_FAIL true)
 endfunction(define_compilation_test)
 
+define_test(vector_common)
+
 define_test(vector_create)
 define_test(vector_define)
 add_executable(test_vector_define_fail EXCLUDE_FROM_ALL vector_define.c)
