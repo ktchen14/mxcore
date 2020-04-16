@@ -71,6 +71,9 @@
  * the behavior is undefined.
  *
  * @see vector_tail_z() - the explicit interface analogue
+ *
+ * @remark No <code>vector_head()</code> or <code>vector_head_z()</code> is
+ * available; a pointer to the first element in some vector is just @c vector.
  */
 //= void *vector_tail(vector_t vector)
 #define vector_tail(v) vector_tail_z((v), VECTOR_Z(v))
@@ -90,6 +93,9 @@
  * the behavior is undefined.
  *
  * @see vector_tail() - the implicit interface analogue
+ *
+ * @remark No <code>vector_head()</code> or <code>vector_head_z()</code> is
+ * available; a pointer to the first element in some vector is just @c vector.
  */
 //= void *vector_tail_z(vector_t vector, size_t z)
 #define vector_tail_z(v, z) vector_at((v), vector_length((v)) - 1, (z))
