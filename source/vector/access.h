@@ -57,6 +57,44 @@
 })
 
 /**
+ * @brief Return a pointer to the last element in the @a vector
+ *
+ * @note This operation is implemented as a macro but documented as a function
+ * to clarify its intended usage.
+ *
+ * This operation is @c const qualified on the @a vector. That is if the element
+ * type of the @a vector is @c const qualified (@a vector is compatible with a
+ * @ref vector_c) then this will return a <tt>const void *</tt>. Otherwise this
+ * will return a <tt>void *</tt>.
+ *
+ * If no last element is in the @a vector (the @a vector's @length is zero) then
+ * the behavior is undefined.
+ *
+ * @see vector_tail_z() - the explicit interface analogue
+ */
+//= void *vector_tail(vector_t vector)
+#define vector_tail(v) vector_tail_z((v), VECTOR_Z(v))
+
+/**
+ * @brief Return a pointer to the last element in the @a vector
+ *
+ * @note This operation is implemented as a macro but documented as a function
+ * to clarify its intended usage.
+ *
+ * This operation is @c const qualified on the @a vector. That is if the element
+ * type of the @a vector is @c const qualified (@a vector is compatible with a
+ * @ref vector_c) then this will return a <tt>const void *</tt>. Otherwise this
+ * will return a <tt>void *</tt>.
+ *
+ * If no last element is in the @a vector (the @a vector's @length is zero) then
+ * the behavior is undefined.
+ *
+ * @see vector_tail() - the implicit interface analogue
+ */
+//= void *vector_tail_z(vector_t vector, size_t z)
+#define vector_tail_z(v, z) vector_at((v), vector_length((v)) - 1, (z))
+
+/**
  * @brief Return the index of the element at @a elmt in the @a vector
  *
  * @note Though this operation doesn't have the @c _z suffix, it @b is a part of

@@ -72,22 +72,6 @@ void vector_delete(vector_t vector);
 #include "vector/insert.h"
 #include "vector/remove.h"
 
-/**
- * @brief Return a pointer to the last element in the @a vector
- *
- * If no last element is in the @a vector (the @a vector's length is zero) then
- * the behavior is undefined.
- *
- * This operation is @c const qualified on the @a vector. That is if the element
- * type of the @a vector is @c const qualified (@a vector is compatible with a
- * @ref vector_c) then this will return a <tt>const void *</tt>. Otherwise this
- * will return a <tt>void *</tt>.
- */
-#define vector_tail_z(vector, z) \
-  vector_at((vector), vector_length((vector)) - 1, (z))
-
-#define vector_tail(vector) vector_tail_z((vector), VECTOR_Z(vector))
-
 /// @copydoc vector_append()
 /// @see vector_append()
 #define vector_push vector_append
