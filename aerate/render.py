@@ -5,9 +5,6 @@ import unicodedata
 from lxml import etree
 
 
-with open("../xml/access_8h.xml") as file:
-    document = etree.parse(file)
-
 indent = 0
 
 def emit(*args, sep=" ", **kwargs):
@@ -25,8 +22,11 @@ class InlineRenderer:
     def render(cls, node, before=""):
         # The inline markup end-string must be separated by at least one character
         # from the start-string.
-        if not node.text or node.text.isspace():
+        if not node.text:
             return ""
+
+        if node.text.isspace():
+            return node.text
 
         # Inline markup start-strings must be immediately followed by
         # non-whitespace. Inline markup end-strings must be immediately preceded by
@@ -129,28 +129,3 @@ def render_para(node):
         if item.tag == "ref":
             output += render_ref(item, output)
     return output
-
-for function in document.xpath(r'//memberdef[@kind="function"]'):
-    (definition,) = function.xpath("./definition")
-    (argsstring,) = function.xpath("./argsstring")
-
-    indent = 0
-    emit()
-    emit(f".. c:function:: {definition.text}{argsstring.text}")
-    emit()
-    indent = 3
-
-    (briefdescription,) = function.xpath("./briefdescription")
-
-    paras = []
-    for para in briefdescription.xpath("./para"):
-        paras += [render_para(para)]
-    emit("\n\n".join(paras), end="\n\n")
-
-    (detaileddescription,) = function.xpath("./detaileddescription")
-    paras = []
-    for para in detaileddescription.xpath("./para"):
-        paras += [render_para(para)]
-    emit("\n\n".join(paras))
-
-    # print(function.get("id"))
