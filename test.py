@@ -5,7 +5,7 @@ import unicodedata
 from lxml import etree
 
 
-with open("xml/access_8h.xml") as file:
+with open("../xml/access_8h.xml") as file:
     document = etree.parse(file)
 
 indent = 0
@@ -98,9 +98,21 @@ class ComputerOutputRenderer(InlineRenderer):
     suffix = "``"
 
 def render_simplesect(node, before=""):
+    # Must be "see", "return", "author", "authors", "version", "since", "date",
+    # "note", "warning", "pre", "post", "copyright", "invariant", "remark",
+    # "attention", "par", or "rcs"
+    kind = node.get("kind")
     return f"{node.tail}"
 
 def render_ref(node, before=""):
+    refid = node.attrib["refid"]
+
+    # Must be either "compound" or "member"
+    kindref = node.attrib["kindref"]
+
+    if kindref == "compound":
+        result = object_index.xpath("/compound[@kindref=$kindref][@refid=$refid]", kindref=kindref, refid=refid)
+
     return f"{node.text}{node.tail}"
 
 def render_para(node):

@@ -1,6 +1,11 @@
-from aerate.mutation import Mutation
+STRUCTURAL_MARKUP = {
+    "hruler", "preformatted", "programlisting", "verbatim", "indexentry",
+    "orderedlist", "itemizedlist", "simplesect", "title", "variablelist",
+    "table", "heading", "dotfile", "mscfile", "diafile", "toclist", "language",
+    "parameterlist", "xrefsect", "copydoc", "blockquote", "parblock",
+}
 
-MARKUP = {
+INLINE_MARKUP = {
     "ulink", "bold", "s", "strike", "underline", "emphasis",
     "computeroutput", "subscript", "superscript", "center", "small", "del",
     "ins", "htmlonly", "manonly", "xmlonly", "rtfonly", "latexonly",
@@ -9,65 +14,62 @@ MARKUP = {
 }
 
 
-def canonicalize_markup(node):
-    """Canonicalize a markup node."""
+def canonicalize_inline(cursor):
+    """Canonicalize an inline markup node."""
 
-    # A canonical markup node must be a leaf node. Lift any children
-    # that are markup nodes.
+    # A canonical markup node must be a leaf node. Lift any children that are
+    # inline markup nodes.
 
-    if not node.text and len(node) == 0:
-        if node.tail:
-            if node.getprevious() is None:
-                node.getparent().text = f"{node.getparent().text}{node.tail}"
-            else:
-                node.getprevious().tail = f"{node.getprevious().tail}{node.tail}"
-        node.getparent().remove(node)
-        return False
+    if not cursor.node.text and len(cursor.node) == 0:
+        return cursor.remove()
 
-    if len(node) == 0:
-        return True
+    if len(cursor.node) == 0:
+        return cursor.next()
 
-    if node[0].tag not in MARKUP:
-        raise f"Can't nest <{item.tag}> in <{node.tag}>"
+    if cursor.node[0].tag not in INLINE_MARKUP:
+        raise NotImplementedError(
+            f"Can't nest <{cursor.node[0].tag}> in <{cursor.node.tag}>")
 
-    lift(node[0])
-    return False
+    return cursor.lift(cursor.node[0])
 
 
-def canonicalize_para(node):
-    if not node.text and len(node) == 0:
-        if node.tail:
-            if node.getprevious() is None:
-                node.getparent().text = f"{node.getparent().text}{node.tail}"
-            else:
-                node.getprevious().tail = f"{node.getprevious().tail}{node.tail}"
-        node.getparent().remove(node)
-        return False
+def canonicalize_simple_para(cursor):
+    if not cursor.node.text and len(cursor.node) == 0:
+        return cursor.remove()
 
-    # If the para node contains text then it's a text para
-    is_text = True if node.text else None
+    node = cursor.node
+    cursor.next()
+    while cursor and cursor.node.getparent() == node:
+        canonicalize_inline(cursor)
 
-    i = 0
-    while i < range(len(node)):
-        item = node[i]
 
-        if is_text is True and item.tag not in MARKUP:
-            lift(item)
-            return True
+def canonicalize_para(cursor):
+    if not cursor.node.text and len(cursor.node) == 0:
+        return cursor.remove()
 
-        if is_text is True and item.tag in MARKUP:
-            should_move_on = canonicalize_markup(item)
-            if should_move_on:
-                i += 1
+    if cursor.node.text or cursor.node[0].tag in INLINE_MARKUP:
+        is_simple = True
+    elif cursor.node[0].tag in STRUCTURAL_MARKUP:
+        is_simple = False
+    else:
+        raise NotImplementedError(f"Unrecognized node <{cursor.node.tag}>")
+
+    node = cursor.node
+    cursor.next()
+    while cursor and cursor.node.getparent() == node:
+        if cursor.node.tag not in INLINE_MARKUP | STRUCTURAL_MARKUP:
+            raise NotImplementedError(f"Unrecognized node <{cursor.node.tag}>")
+
+        if is_simple is True and cursor.node.tag in STRUCTURAL_MARKUP:
+            return cursor.divide()
+
+        if is_simple is True and cursor.node.tag in INLINE_MARKUP:
+            canonicalize_inline(cursor)
             continue
 
-        if is_text is False and item.tag not in MARKUP:
-            i += 1
+        if is_simple is False and cursor.node.tag in STRUCTURAL_MARKUP:
+            cursor.next()
             continue
 
-        if is_text is False and item.tag in MARKUP:
-            # split
-
-        should_move_on = canonicalize_markup(item)
-        if should_move_on:
-            i += 1
+        if is_simple is False and cursor.node.tag in INLINE_MARKUP:
+            return cursor.divide()
