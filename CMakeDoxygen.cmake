@@ -1,9 +1,11 @@
-# If the value of the EXAMPLE_PATH tag contains directories, you can use the
-# EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
-# *.h) to filter out the source-files in the directories. If left blank all
-# files are included.
+# The DOXYGEN_VERBATIM_VARS variable can be used to specify a list of Doxygen
+# variables (including the leading DOXYGEN_ prefix) which should not be quoted.
+# The project is then responsible for ensuring that those variables’ values make
+# sense when placed directly in the Doxygen input file. In the case of list
+# variables, list items are still separated by spaces, it is only the automatic
+# quoting that is skipped.
 
-# set(DOXYGEN_EXCLUDE_PATTERNS "*.c")
+set(DOXYGEN_VERBATIM_VARS DOXYGEN_ALIASES)
 
 #---------------------------------------------------------------------------
 # Project related configuration options
@@ -35,6 +37,20 @@ set(DOXYGEN_INLINE_SIMPLE_STRUCTS YES)
 
 set(DOXYGEN_TYPEDEF_HIDES_STRUCT YES)
 
+# This tag can be used to specify a number of aliases that act as commands in
+# the documentation. You can put \n's in the value part of an alias to insert
+# newlines (in the resulting output). You can put ^^ in the value part of an
+# alias to insert a newline as if a physical newline was in the original file.
+# When you need a literal { or } or , in the value part of an alias you have to
+# escape them by means of a backslash (\), this can lead to conflicts with the
+# commands \{ and \} for these it is advised to use the version @{ and @} or use
+# a double escape (\\{ and \\})
+
+set(DOXYGEN_ALIASES
+  length="@ref vector_length \\\"length\\\""
+  volume="@ref vector_volume \\\"volume\\\""
+)
+
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
 #---------------------------------------------------------------------------
@@ -44,6 +60,31 @@ set(DOXYGEN_TYPEDEF_HIDES_STRUCT YES)
 # messages are off.
 
 set(DOXYGEN_QUIET YES)
+
+#---------------------------------------------------------------------------
+# Configuration options related to the input files
+#---------------------------------------------------------------------------
+
+# The INPUT_FILTER tag can be used to specify a program that doxygen should
+# invoke to filter for each input file. Doxygen will invoke the filter program
+# by executing (via popen()) the command:
+#
+# <filter> <input-file>
+#
+# where <filter> is the value of the INPUT_FILTER tag, and <input-file> is the
+# name of an input file. Doxygen will then use the output that the filter
+# program writes to standard output. If FILTER_PATTERNS is specified, this tag
+# will be ignored.
+#
+# Note that the filter must not add or remove lines; it is applied before the
+# code is scanned, but not when the output code is generated. If lines are added
+# or removed, the anchors will not be placed correctly.
+#
+# Note that for custom extensions or not directly supported extensions you also
+# need to set EXTENSION_MAPPING for the extension otherwise the files are not
+# properly processed by doxygen.
+
+set(DOXYGEN_INPUT_FILTER "${PROJECT_SOURCE_DIR}/tool/documentation-filter")
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
@@ -95,7 +136,7 @@ set(DOXYGEN_SOURCE_TOOLTIPS YES)
 # page has loaded.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-# set(DOXYGEN_HTML_DYNAMIC_SECTIONS YES)
+set(DOXYGEN_HTML_DYNAMIC_SECTIONS NO)
 
 # If you want full control over the layout of the generated HTML pages it might
 # be necessary to disable the index and replace it with your own. The
@@ -175,11 +216,5 @@ set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
 
 set(DOXYGEN_PREDEFINED "__attribute__(x)=" "DOXYGEN")
 
-set(DOXYGEN_INPUT_FILTER "${PROJECT_SOURCE_DIR}/tool/documentation-filter")
-set(DOXYGEN_ALIASES
-  length="@ref vector_length \\\"length\\\""
-  volume="@ref vector_volume \\\"volume\\\""
-)
-set(DOXYGEN_VERBATIM_VARS DOXYGEN_ALIASES)
 
 doxygen_add_docs(documentation WORKING_DIRECTORY source)
