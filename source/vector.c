@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -113,7 +114,7 @@ size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z) {
   void *result;
 
   if ((result = bsearch(elmt, vector, length, z, cmpf)) == NULL)
-    return MX_ABSENT;
+    return SIZE_MAX;
 
   size_t i = vector_index(vector, result, z);
 
