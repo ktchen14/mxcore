@@ -30,6 +30,9 @@ add_library(vector
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c")
+set_source_files_properties(
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
+  PROPERTIES HEADER_FILE_ONLY ON)
 set_property(TARGET vector PROPERTY
   PUBLIC_HEADER source/common.h source/vector.h)
 set_property(TARGET vector PROPERTY

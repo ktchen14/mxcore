@@ -1,5 +1,8 @@
 /// @file vector/resize_source.h
 
+#include <errno.h>
+#include <stdlib.h>
+
 #include "common.h"
 #include "resize.h"
 
