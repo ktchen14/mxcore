@@ -32,8 +32,18 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "common.h"
 #include "vector/common.h"
+
+/**
+ * @brief The equality function type to return whether @a a and @a b are
+ *        equivalent
+ *
+ * An function of this type must return @c 0 if @a a and @a b aren't equivalent
+ * and any @c int other than @c 0 if @a a and @a b are equivalent.
+ */
+typedef int (*eq_f)(const void *a, const void *b);
+
+typedef int (*cmp_f)(const void *a, const void *b);
 
 /**
  * @brief Allocate and initialize a vector by duplicating @a source
