@@ -47,9 +47,12 @@ extern inline __typeof__(vector_get) vector_get;
 extern inline __typeof__(vector_set) vector_set;
 
 // vector/resize.h
+#include "vector/resize.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_resize_z) vector_resize_z;
 extern inline __typeof__(vector_ensure_z) vector_ensure_z;
 extern inline __typeof__(vector_shrink_z) vector_shrink_z;
+#endif /* VECTOR_TEST */
 
 // vector/move.h
 extern inline __typeof__(vector_move_z) vector_move_z;

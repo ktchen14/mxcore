@@ -21,6 +21,8 @@ target_compile_definitions(stub INTERFACE
 cmake_policy(SET CMP0079 NEW)
 target_link_libraries(vector PRIVATE stub)
 
+target_compile_definitions(vector PRIVATE VECTOR_TEST)
+
 # Add the --coverage option if code coverage is on
 if (CODE_COVERAGE)
   target_compile_options(vector PRIVATE --coverage)
@@ -39,7 +41,7 @@ function(define_test name)
   # included before "test.h", includes <dlfcn.h>
   target_compile_definitions(test_${name} PRIVATE _GNU_SOURCE)
 
-  target_compile_definitions(test_${name} PRIVATE VECTOR_HIDE_INLINE_DEFINITION)
+  target_compile_definitions(test_${name} PRIVATE VECTOR_HIDE_INLINE_DEFINITION VECTOR_TEST)
   target_compile_options(test_${name} PRIVATE
     -Wall -Wextra -Werror)
   target_link_libraries(test_${name} PRIVATE vector dl)
