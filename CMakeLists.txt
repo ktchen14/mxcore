@@ -22,7 +22,6 @@ endif ()
 
 # Library
 add_library(vector
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/common.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/common.h"

@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "common.h"
 #include "vector.h"
 
 // vector/create.h
