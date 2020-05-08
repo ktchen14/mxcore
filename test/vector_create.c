@@ -1,5 +1,7 @@
 #include <assert.h>
 #include <errno.h>
+#include <stddef.h>
+#include <stdint.h>
 #include <stdlib.h>
 
 #include "../source/vector.h"
