@@ -1,4 +1,4 @@
-/// @file vector/resize_source.h
+/// @file vector/resize.c
 
 #include <errno.h>
 #include <stdlib.h>
@@ -26,8 +26,7 @@ vector_t vector_resize_z(vector_t vector, size_t volume, size_t z) {
   return header->data;
 }
 
-VECTOR_INLINE
-vector_t vector_shrink_z(vector_t vector, size_t z) {
+VECTOR_INLINE vector_t vector_shrink_z(vector_t vector, size_t z) {
   vector_t shrunk;
 
   shrunk = vector_resize_z(vector, vector_length(vector), z);

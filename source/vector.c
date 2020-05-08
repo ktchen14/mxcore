@@ -60,10 +60,13 @@ extern inline __typeof__(vector_swap_z) vector_swap_z;
 extern inline __typeof__(vector_sort_z) vector_sort_z;
 
 // vector/insert.h
+#include "vector/insert.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_insert_z) vector_insert_z;
 extern inline __typeof__(vector_inject_z) vector_inject_z;
 extern inline __typeof__(vector_append_z) vector_append_z;
 extern inline __typeof__(vector_extend_z) vector_extend_z;
+#endif /* VECTOR_TEST */
 
 // vector/remove.h
 extern inline __typeof__(vector_remove_z) vector_remove_z;
