@@ -42,9 +42,12 @@ extern inline __typeof__(vector_volume) vector_volume;
 extern inline __typeof__(vector_length) vector_length;
 
 // vector/access.h
+#include "vector/access.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_index) vector_index;
 extern inline __typeof__(vector_get) vector_get;
 extern inline __typeof__(vector_set) vector_set;
+#endif /* VECTOR_TEST */
 
 // vector/resize.h
 #include "vector/resize.c"
