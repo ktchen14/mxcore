@@ -5,11 +5,6 @@
 #include "../source/vector.h"
 #include "test.h"
 
-static size_t last_remove_z;
-vector_t vector_remove_z(vector_t vector, size_t i, size_t z) {
-  return REAL(vector_remove_z)(vector, i, last_remove_z = z);
-}
-
 static vector_t last_vector;
 static size_t last_i;
 static size_t last_n;
@@ -23,32 +18,7 @@ vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z) {
   return last_result = REAL(vector_excise_z)(vector, i, n, z);
 }
 
-void test_vector_remove(void) {
-  int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
-  int number = 0;
-
-  // It evaluates its vector argument once
-  vector = vector_remove((number++, vector), 2);
-  assert(number == 1);
-
-  // It evaluates its index argument once
-  vector = vector_remove(vector, (number++, 2));
-  assert(number == 2);
-
-  // It calls vector_remove_z() with the element size of the vector
-  vector = vector_remove(vector, 2);
-  assert(last_remove_z == sizeof(vector[0]));
-
-  // It delegates to vector_excise_z() with length as 1
-  int *result = vector_remove(vector, 2);
-  assert(last_vector == vector);
-  assert(last_i == 2);
-  assert(last_n == 1);
-  assert(last_excise_z == sizeof(vector[0]));
-  assert(result == last_result);
-
-  vector_delete(vector);
-}
+// vector_excise(), vector_excise_z()
 
 void test_vector_excise(void) {
   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
@@ -103,7 +73,78 @@ void test_vector_excise(void) {
   vector_delete(vector);
 }
 
+// vector_remove(), vector_remove_z()
+
+static size_t last_remove_z;
+vector_t vector_remove_z(vector_t vector, size_t i, size_t z) {
+  return REAL(vector_remove_z)(vector, i, last_remove_z = z);
+}
+
+void test_vector_remove(void) {
+  int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
+  int number = 0;
+
+  // It evaluates its vector argument once
+  vector = vector_remove((number++, vector), 2);
+  assert(number == 1);
+
+  // It evaluates its index argument once
+  vector = vector_remove(vector, (number++, 2));
+  assert(number == 2);
+
+  // It calls vector_remove_z() with the element size of the vector
+  vector = vector_remove(vector, 2);
+  assert(last_remove_z == sizeof(vector[0]));
+
+  // It delegates to vector_excise_z() with length as 1
+  int *result = vector_remove(vector, 2);
+  assert(last_vector == vector);
+  assert(last_i == 2);
+  assert(last_n == 1);
+  assert(last_excise_z == sizeof(vector[0]));
+  assert(result == last_result);
+
+  vector_delete(vector);
+}
+
+// vector_truncate(), vector_truncate_z()
+
+static size_t last_truncate_z;
+vector_t vector_truncate_z(vector_t vector, size_t length, size_t z) {
+  return REAL(vector_truncate_z)(vector, length, last_truncate_z = z);
+}
+
+void test_vector_truncate(void) {
+  int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
+  int number = 0;
+
+  // It evaluates its vector argument once
+  vector = vector_truncate((number++, vector), vector_length(vector) - 1);
+  assert(number == 1);
+
+  // It evaluates its length argument once
+  vector = vector_truncate(vector, (number++, vector_length(vector) - 1));
+  assert(number == 2);
+
+  // It calls vector_truncate_z() with the element size of the vector
+  vector = vector_truncate(vector, vector_length(vector) - 1);
+  assert(last_truncate_z == sizeof(vector[0]));
+
+  // It delegates to vector_excise_z() with i and n calculated from length and
+  // the length of the vector
+  size_t length = vector_length(vector);
+  int *result = vector_truncate(vector, 3);
+  assert(last_vector == vector);
+  assert(last_i == 3);
+  assert(last_n == length - 3);
+  assert(last_excise_z == sizeof(vector[0]));
+  assert(result == last_result);
+
+  vector_delete(vector);
+}
+
 int main() {
   test_vector_remove();
   test_vector_excise();
+  test_vector_truncate();
 }
