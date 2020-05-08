@@ -41,7 +41,7 @@ function(define_test name)
   # included before "test.h", includes <dlfcn.h>
   target_compile_definitions(test_${name} PRIVATE _GNU_SOURCE)
 
-  target_compile_definitions(test_${name} PRIVATE VECTOR_HIDE_INLINE_DEFINITION VECTOR_TEST)
+  target_compile_definitions(test_${name} PRIVATE VECTOR_TEST)
   target_compile_options(test_${name} PRIVATE
     -Wall -Wextra -Werror)
   target_link_libraries(test_${name} PRIVATE vector dl)
