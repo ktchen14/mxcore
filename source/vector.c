@@ -119,9 +119,12 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
 }
 
 // vector/search.h
+#include "vector/search.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_find_z) vector_find_z;
 extern inline __typeof__(vector_find_next_z) vector_find_next_z;
 extern inline __typeof__(vector_find_last_z) vector_find_last_z;
+#endif /* VECTOR_TEST */
 
 size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z) {
   size_t length = vector_length(vector);

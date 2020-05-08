@@ -31,8 +31,12 @@ add_library(vector
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.h"
 )
 set_source_files_properties(
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
@@ -40,6 +44,7 @@ set_source_files_properties(
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.c"
   PROPERTIES HEADER_FILE_ONLY ON)
 set_property(TARGET vector PROPERTY
   PUBLIC_HEADER source/common.h source/vector.h)
