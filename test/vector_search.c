@@ -51,22 +51,21 @@ void test_vector_find_next(void) {
   result = vector_find_next(vector, vector_length(vector), eqintp, &data);
   assert(result == SIZE_MAX);
 
-  // When the equality function, when called on the element at the index,
-  // returns true, it returns the index itself
+  // When the element at the index in the vector satisfies the equality
+  // function, it returns the index
   data = 3;
   result = vector_find_next(vector, 4, eqintp, &data);
   assert(result == 4);
 
-  // When the equality function, when called on the element at the index,
-  // returns false, it returns the index of the first element after the index
-  // for which the equality function, when called with that element, returns
-  // true
+  // When the element at the index in the vector doesn't satisfy the equality
+  // function, it returns the index of the first element after the index in the
+  // vector that satisfies the equality function.
   data = 5;
   result = vector_find_next(vector, 2, eqintp, &data);
   assert(result == 6);
 
-  // When no elements in the vector at or after the index match, it returns
-  // SIZE_MAX
+  // When no elements at or after the index in the vector satisfy the equality
+  // function, it returns SIZE_MAX.
   data = 7;
   result = vector_find_next(vector, 0, eqintp, &data);
   assert(result == SIZE_MAX);
