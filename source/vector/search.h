@@ -172,8 +172,7 @@ size_t vector_find_next_z(
 #define vector_find_last(v, ...) \
   vector_find_last_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
-size_t
-vector_find_last_z(
+size_t vector_find_last_z(
     vector_c vector,
     size_t i,
     bool (*eqf)(const void *a, const void *b),

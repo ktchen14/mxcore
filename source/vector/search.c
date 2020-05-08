@@ -7,7 +7,7 @@
 #include "common.h"
 #include "access.h"
 
-inline size_t vector_find_z(
+VECTOR_INLINE size_t vector_find_z(
     vector_c vector,
     bool (*eqf)(const void *a, const void *b),
     const void *data,
@@ -15,7 +15,7 @@ inline size_t vector_find_z(
   return vector_find_next_z(vector, 0, eqf, data, z);
 }
 
-inline size_t vector_find_next_z(
+VECTOR_INLINE size_t vector_find_next_z(
     vector_c vector,
     size_t i,
     bool (*eqf)(const void *a, const void *b),
@@ -28,7 +28,7 @@ inline size_t vector_find_next_z(
   return SIZE_MAX;
 }
 
-inline size_t vector_find_last_z(
+VECTOR_INLINE size_t vector_find_last_z(
     vector_c vector,
     size_t i,
     bool (*eqf)(const void *a, const void *b),
