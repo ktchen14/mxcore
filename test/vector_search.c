@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 
 #include "../source/vector.h"
@@ -20,35 +21,55 @@ size_t vector_find_next_z(
 }
 
 void test_vector_find_next(void) {
-  int *vector = vector_define(int, 1, 2, 3, 5, 8, 13);
-  int i = 0;
+  int *vector = vector_define(int, 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5);
+  int data = 0;
   int number = 0;
   size_t result;
 
   // It evalutes its vector argument once
-  result = vector_find_next((number++, vector), 0, eqintp, &i);
+  result = vector_find_next((number++, vector), 0, eqintp, &data);
   assert(number == 1);
 
   // It evalutes its index argument once
-  result = vector_find_next(vector, (number++, 0), eqintp, &i);
+  result = vector_find_next(vector, (number++, 0), eqintp, &data);
   assert(number == 2);
 
   // It evalutes its equality function argument once
-  result = vector_find_next(vector, 0, (number++, eqintp), &i);
+  result = vector_find_next(vector, 0, (number++, eqintp), &data);
   assert(number == 3);
 
   // It evaluates its data argument once
-  result = vector_find_next(vector, 0, eqintp, (number++, &i));
+  result = vector_find_next(vector, 0, eqintp, (number++, &data));
   assert(number == 4);
 
   // It calls vector_find_next_z() with the element size of the vector
-  result = vector_find_next(vector, 0, eqintp, &i);
+  result = vector_find_next(vector, 0, eqintp, &data);
   assert(last_find_next_z == sizeof(vector[0]));
 
-  // It returns the index of the next element
-  i = 3;
-  result = vector_find_next(vector, 0, eqintp, &(i);
-  assert(result == 2);
+  // With an index greater than or equal to the vector's length, it returns
+  // SIZE_MAX
+  result = vector_find_next(vector, vector_length(vector), eqintp, &data);
+  assert(result == SIZE_MAX);
+
+  // When the equality function, when called on the element at the index,
+  // returns true, it returns the index itself
+  data = 3;
+  result = vector_find_next(vector, 4, eqintp, &data);
+  assert(result == 4);
+
+  // When the equality function, when called on the element at the index,
+  // returns false, it returns the index of the first element after the index
+  // for which the equality function, when called with that element, returns
+  // true
+  data = 5;
+  result = vector_find_next(vector, 2, eqintp, &data);
+  assert(result == 6);
+
+  // When no elements in the vector at or after the index match, it returns
+  // SIZE_MAX
+  data = 7;
+  result = vector_find_next(vector, 0, eqintp, &data);
+  assert(result == SIZE_MAX);
 
   vector_delete(vector);
 }
