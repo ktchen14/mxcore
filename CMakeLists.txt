@@ -24,9 +24,10 @@ endif ()
 add_library(vector
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/common.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.h"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.h"
@@ -34,8 +35,9 @@ add_library(vector
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.h"
 )
 set_source_files_properties(
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
   PROPERTIES HEADER_FILE_ONLY ON)
 set_property(TARGET vector PROPERTY

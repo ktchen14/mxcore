@@ -10,8 +10,11 @@
 #include "vector.h"
 
 // vector/create.h
+#include "vector/create.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_create) vector_create;
 extern inline __typeof__(vector_import_z) vector_import_z;
+#endif /* VECTOR_TEST */
 
 vector_t vector_duplicate_z(vector_c source, size_t z) {
   struct __vector_header_t *header;
