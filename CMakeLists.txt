@@ -38,6 +38,7 @@ set_source_files_properties(
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
   PROPERTIES HEADER_FILE_ONLY ON)
 set_property(TARGET vector PROPERTY

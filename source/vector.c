@@ -61,9 +61,12 @@ extern inline __typeof__(vector_shrink_z) vector_shrink_z;
 #endif /* VECTOR_TEST */
 
 // vector/move.h
+#include "vector/move.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_move_z) vector_move_z;
 extern inline __typeof__(vector_swap_z) vector_swap_z;
 extern inline __typeof__(vector_sort_z) vector_sort_z;
+#endif /* VECTOR_TEST */
 
 // vector/insert.h
 #include "vector/insert.c"
