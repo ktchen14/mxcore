@@ -9,6 +9,10 @@
 
 #include "vector.h"
 
+// vector/common.h
+extern inline __typeof__(vector_volume) vector_volume;
+extern inline __typeof__(vector_length) vector_length;
+
 // vector/create.h
 #include "vector/create.c"
 #ifndef VECTOR_TEST
@@ -39,10 +43,6 @@ vector_t vector_duplicate_z(vector_c source, size_t z) {
 void vector_delete(vector_t vector) {
   free(__vector_to_header(vector));
 }
-
-// vector/common.h
-extern inline __typeof__(vector_volume) vector_volume;
-extern inline __typeof__(vector_length) vector_length;
 
 // vector/access.h
 #include "vector/access.c"
@@ -78,9 +78,12 @@ extern inline __typeof__(vector_extend_z) vector_extend_z;
 #endif /* VECTOR_TEST */
 
 // vector/remove.h
+#include "vector/remove.c"
+#ifndef VECTOR_TEST
 extern inline __typeof__(vector_remove_z) vector_remove_z;
 extern inline __typeof__(vector_excise_z) vector_excise_z;
 extern inline __typeof__(vector_truncate_z) vector_truncate_z;
+#endif /* VECTOR_TEST */
 
 // void *vector_tail_z(vector_t vector, size_t z) {
 //   return vector_at(vector, vector_length(vector) - 1, z);

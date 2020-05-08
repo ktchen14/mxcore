@@ -91,8 +91,6 @@ struct __vector_header_t {
 
 /// @endcond
 
-#ifndef VECTOR_HIDE_INLINE_DEFINITION
-
 inline size_t vector_volume(vector_c vector) {
   return __vector_to_header(vector)->volume;
 }
@@ -100,8 +98,6 @@ inline size_t vector_volume(vector_c vector) {
 inline size_t vector_length(vector_c vector) {
   return __vector_to_header(vector)->length;
 }
-
-#endif /* VECTOR_HIDE_INLINE_DEFINITION */
 
 /// @}
 
