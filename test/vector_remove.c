@@ -141,7 +141,7 @@ void test_vector_truncate(void) {
   assert(last_excise_z == sizeof(vector[0]));
   assert(result == last_result);
 
-  vector_delete(vector);
+  vector_delete(result);
 }
 
 int main() {
