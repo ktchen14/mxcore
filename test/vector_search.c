@@ -10,17 +10,29 @@ bool eqintp(const void *a, const void *b) {
   return *(const int *) a == *(const int *) b;
 }
 
-// vector_find_next(), vector_find_next_z()
-
+static vector_c last_vector;
+static size_t last_i;
+static bool (*last_eqf)(const void *a, const void *b);
+static const void *last_data;
 static size_t last_find_next_z;
+static size_t last_result;
+
 size_t vector_find_next_z(
     vector_c vector,
     size_t i,
     bool (*eqf)(const void *a, const void *b),
     const void *data,
     size_t z) {
-  return REAL(vector_find_next_z)(vector, i, eqf, data, last_find_next_z = z);
+  last_vector = vector;
+  last_i = i;
+  last_eqf = eqf;
+  last_data = data;
+  last_find_next_z = z;
+
+  return last_result = REAL(vector_find_next_z)(vector, i, eqf, data, z);
 }
+
+// vector_find_next(), vector_find_next_z()
 
 void test_vector_find_next(void) {
   int *vector = vector_define(int, 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5);
@@ -66,6 +78,51 @@ void test_vector_find_next(void) {
   data = 7;
   result = vector_find_next(vector, 0, eqintp, &data);
   assert(result == SIZE_MAX);
+
+  vector_delete(vector);
+}
+
+// vector_find(), vector_find_z()
+
+static size_t last_find_z;
+size_t vector_find_z(
+    vector_c vector,
+    bool (*eqf)(const void *a, const void *b),
+    const void *data,
+    size_t z) {
+  return REAL(vector_find_z)(vector, eqf, data, last_find_z = z);
+}
+
+void test_vector_find(void) {
+  int *vector = vector_define(int, 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5);
+  int data = 0;
+  int number = 0;
+  size_t result;
+
+  // It evalutes its vector argument once
+  result = vector_find((number++, vector), eqintp, &data);
+  assert(number == 1);
+
+  // It evalutes its equality function argument once
+  result = vector_find(vector, (number++, eqintp), &data);
+  assert(number == 2);
+
+  // It evaluates its data argument once
+  result = vector_find(vector, eqintp, (number++, &data));
+  assert(number == 3);
+
+  // It calls vector_find_z() with the element size of the vector
+  result = vector_find(vector, eqintp, &data);
+  assert(last_find_z == sizeof(vector[0]));
+
+  // It delegates to vector_find_next_z() with index as 0
+  result = vector_find(vector, eqintp, &data);
+  assert(last_vector == vector);
+  assert(last_i == 0);
+  assert(last_eqf == eqintp);
+  assert(last_data == &data);
+  assert(last_find_next_z == sizeof(vector[0]));
+  assert(result == last_result);
 
   vector_delete(vector);
 }
@@ -134,5 +191,6 @@ void test_vector_find_last(void) {
 
 int main() {
   test_vector_find_next();
+  test_vector_find();
   test_vector_find_last();
 }
