@@ -60,6 +60,10 @@ void test_vector_find_next(void) {
   result = vector_find_next(vector, 0, eqintp, &data);
   assert(last_find_next_z == sizeof(vector[0]));
 
+  // When the index is the vector's length it returns SIZE_MAX
+  result = vector_find_next(vector, vector_length(vector), eqintp, &data);
+  assert(result == SIZE_MAX);
+
   // When the element at the index in the vector satisfies the equality
   // function, it returns the index
   data = 3;

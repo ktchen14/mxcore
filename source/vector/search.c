@@ -21,6 +21,9 @@ VECTOR_INLINE size_t vector_find_next_z(
     bool (*eqf)(const void *a, const void *b),
     const void *data,
     size_t z) {
+  if (i == vector_length(vector))
+    return SIZE_MAX;
+
   do {
     if (eqf(vector_at(vector, i, z), data))
       return i;
