@@ -48,6 +48,8 @@ int main() {
     assert(vector[i] == (int) i);
   assert(vector_volume(result) == volume);
 
+  vector = result;
+
   // When the resize is successful it sets the vector's volume equal to its
   // length. The data in the vector is unmodified.
   vector = vector_ensure(vector, 20);
@@ -55,7 +57,7 @@ int main() {
 
   vector = vector_shrink(vector);
 
-  assert(vector_length(result) == length);
+  assert(vector_length(vector) == length);
   for (size_t i = 0; i < vector_length(vector); i++)
     assert(vector[i] == (int) i);
   assert(vector_volume(vector) == length);
