@@ -79,8 +79,7 @@ vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
  * @return the resultant vector
  */
 //= vector_t vector_excise(vector_t vector, size_t i, size_t n)
-#define vector_excise(vector, i, n) \
-  vector_excise_z((vector), (i), (n), VECTOR_Z((vector)))
+#define vector_excise(v, ...) vector_excise_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
  * @brief Remove @a n elements at index @a i from the @a vector
@@ -129,8 +128,8 @@ vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
  * @return the resultant vector
  */
 //= vector_t vector_truncate(vector_t vector, size_t length)
-#define vector_truncate(vector, length) \
-  vector_truncate_z((vector), (length), VECTOR_Z((vector)));
+#define vector_truncate(v, ...) \
+  vector_truncate_z((v), __VA_ARGS__, VECTOR_Z((v)));
 
 /**
  * @brief Reduce the @length of the @a vector to @a length
