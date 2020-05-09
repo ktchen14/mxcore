@@ -31,6 +31,33 @@ blocks:
       - wget -N "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
       - cache store "CMake-$CMAKE_VERSION-Linux-x86_64" "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
 
+- name: Analysis
+  task:
+    jobs:
+    - name: Address
+      env_vars:
+      - name: CFLAGS
+        value: -fsanitize=address
+      commands:
+      - if [[ $CC = clang-* ]]; then sudo install-package "$CC"; fi
+      - cache restore "CMake-$CMAKE_VERSION-Linux-x86_64"
+      - sudo tar -C /usr/local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" --strip-components=1
+      - checkout
+      - cmake .
+      - ctest --output-on-failure
+
+    - name: Undefined Behavior
+      env_vars:
+      - name: CFLAGS
+        value: -fsanitize=undefined
+      commands:
+      - if [[ $CC = clang-* ]]; then sudo install-package "$CC"; fi
+      - cache restore "CMake-$CMAKE_VERSION-Linux-x86_64"
+      - sudo tar -C /usr/local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" --strip-components=1
+      - checkout
+      - cmake .
+      - ctest --output-on-failure
+
 - name: Unit Test
   task:
     jobs:
