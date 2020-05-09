@@ -36,8 +36,14 @@ blocks:
     jobs:
     - name: Address
       env_vars:
+      - name: CC
+        value: gcc-8
+      - name: ASAN_OPTIONS
+        value: "detect_stack_use_after_return=1,detect_invalid_pointer_pairs=1"
       - name: CFLAGS
-        value: -fsanitize=address
+        value: >
+          -fsanitize=address,pointer-compare,pointer-subtract
+          -fsanitize-address-use-after-scope
       commands:
       - if [[ $CC = clang-* ]]; then sudo install-package "$CC"; fi
       - cache restore "CMake-$CMAKE_VERSION-Linux-x86_64"
