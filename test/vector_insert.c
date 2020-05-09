@@ -26,6 +26,7 @@ static const void *last_elmt;
 static size_t last_n;
 static size_t last_inject_z;
 static vector_t last_result;
+
 vector_t vector_inject_z(
     vector_t vector, size_t i, const void *elmt, size_t n, size_t z) {
   last_vector = vector;
