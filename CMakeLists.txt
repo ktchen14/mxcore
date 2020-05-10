@@ -38,6 +38,7 @@ target_compile_options(vector PRIVATE -Wall -Wextra)
 # Install
 include(GNUInstallDirs)
 install(TARGETS vector
+  ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
   PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vector")
 
