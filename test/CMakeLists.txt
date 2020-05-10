@@ -1,3 +1,9 @@
+if (NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug CACHE STRING
+    "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
+    FORCE)
+endif ()
+
 option(CODE_COVERAGE "Generate code coverage report" OFF)
 
 define_vector_target(test_vector SHARED EXCLUDE_FROM_ALL)

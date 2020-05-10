@@ -10,19 +10,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 
-# If this project is the top level project then include CTest. If testing is on
-# then create shared libraries and specify the Debug build type.
-if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  # See https://stackoverflow.com/a/57240389 on this hack to hide CTest targets
-  set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
-  include(CTest)
-endif ()
-
-# Test
-if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-  set(CMAKE_BUILD_TYPE Debug)
-endif ()
-
 set(VECTOR_MODULE_LIST common access create insert move remove resize search)
 set(VECTOR_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
@@ -60,7 +47,14 @@ if (DOXYGEN_FOUND)
   include(CMakeDoxygen.cmake)
 endif ()
 
-# Test
-if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-  add_subdirectory(test)
+# If this project is the top level project then include CTest. If testing is on
+# then specify the Debug build type.
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  # See https://stackoverflow.com/a/57240389 on this hack to hide CTest targets
+  set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
+  include(CTest)
+
+  if (BUILD_TESTING)
+    add_subdirectory(test)
+  endif ()
 endif ()
