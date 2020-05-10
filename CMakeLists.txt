@@ -20,59 +20,32 @@ endif ()
 
 # Test
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-  set(BUILD_SHARED_LIBS ON)
   set(CMAKE_BUILD_TYPE Debug)
 endif ()
 
+set(VECTOR_MODULE_LIST common access create insert move remove resize search)
+set(VECTOR_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source")
+
+function(define_vector_target)
+  list(POP_FRONT ARGV NAME)
+
+  set(header_list "${VECTOR_SOURCE_DIR}/vector.h")
+  foreach (module IN LISTS VECTOR_MODULE_LIST)
+    list(APPEND header_list "${VECTOR_SOURCE_DIR}/vector/${module}.h")
+    list(APPEND header_list "${VECTOR_SOURCE_DIR}/vector/${module}.c")
+    set_source_files_properties("${VECTOR_SOURCE_DIR}/vector/${module}.c"
+      PROPERTIES HEADER_FILE_ONLY ON)
+  endforeach (module)
+
+  add_library("${NAME}" ${ARGV}
+    "${VECTOR_SOURCE_DIR}/vector.h" "${VECTOR_SOURCE_DIR}/vector.c"
+    ${header_list})
+  set_property(TARGET "${NAME}" PROPERTY PUBLIC_HEADER ${header_list})
+endfunction(define_vector_target)
+
 # Library
-add_library(vector
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/common.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/remove.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/remove.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.h"
-)
-set_source_files_properties(
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/remove.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.c"
-  PROPERTIES HEADER_FILE_ONLY ON)
-set_property(TARGET vector PROPERTY PUBLIC_HEADER
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/access.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/common.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/create.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/insert.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/move.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/remove.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/remove.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/resize.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.c"
-  "${CMAKE_CURRENT_SOURCE_DIR}/source/vector/search.h")
-set_property(TARGET vector PROPERTY
-  VERSION ${PROJECT_VERSION})
-target_compile_features(vector PUBLIC c_std_11)
+define_vector_target(vector)
+set_property(TARGET vector PROPERTY VERSION "${PROJECT_VERSION}")
 target_compile_options(vector PRIVATE -Wall -Wextra)
 
 # Install
