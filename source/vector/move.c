@@ -10,7 +10,11 @@
 #include "move.h"
 #include "access.h"
 
-VECTOR_INLINE
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
+inline
 void vector_move_z(vector_t vector, size_t target, size_t source, size_t z) {
   if (target == source)
     return;
@@ -24,8 +28,7 @@ void vector_move_z(vector_t vector, size_t target, size_t source, size_t z) {
   }
 }
 
-VECTOR_INLINE
-void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
+inline void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
   char *a = vector_at(vector, i, z);
   char *b = vector_at(vector, j, z);
 
@@ -37,12 +40,15 @@ void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
   }
 }
 
-VECTOR_INLINE
-void vector_sort_z(
+inline void vector_sort_z(
     vector_t vector,
     int (*cmpf)(const void *a, const void *b),
     size_t z) {
   qsort(vector, vector_length(vector), z, cmpf);
 }
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 #endif /* VECTOR_MOVE_C */

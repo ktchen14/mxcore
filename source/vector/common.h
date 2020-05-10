@@ -101,14 +101,8 @@ inline size_t vector_length(vector_c vector) {
 
 /// @}
 
-#ifndef VECTOR_TEST
-#define VECTOR_INLINE inline
-#else
-#define VECTOR_INLINE
-#endif /* VECTOR_TEST */
+#endif /* VECTOR_COMMON_H */
 
 #ifndef VECTOR_TEST
 #include "common.c"
 #endif /* VECTOR_TEST */
-
-#endif /* VECTOR_COMMON_H */
