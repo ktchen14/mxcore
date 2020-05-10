@@ -25,7 +25,7 @@ function(define_vector_target name)
   endforeach (module)
 
   add_library("${name}" ${ARGV}
-    "${VECTOR_SOURCE_DIR}/vector.h" "${VECTOR_SOURCE_DIR}/vector.c"
+    "${VECTOR_SOURCE_DIR}/vector.c"
     ${header_list})
   set_property(TARGET "${name}" PROPERTY PUBLIC_HEADER ${header_list})
 endfunction(define_vector_target)
