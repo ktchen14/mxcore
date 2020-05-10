@@ -3,10 +3,8 @@
 #ifndef VECTOR_ACCESS_H
 #define VECTOR_ACCESS_H
 
-#include "common.h"
-
 #include <stddef.h>
-#include <string.h>
+#include "common.h"
 
 /// @addtogroup vector_module Vector
 /// @{

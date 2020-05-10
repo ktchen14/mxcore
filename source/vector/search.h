@@ -4,6 +4,7 @@
 #define VECTOR_SEARCH_H
 
 #include <stdbool.h>
+#include <stddef.h>
 
 #include "common.h"
 
@@ -248,6 +249,7 @@ size_t vector_find_last_z(
  */
 #define vector_search(v, ...) vector_search_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
+typedef int (*cmp_f)(const void *a, const void *b);
 size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z);
 
 /// @}

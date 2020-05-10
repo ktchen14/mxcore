@@ -9,6 +9,8 @@
 
 #include "common.h"
 #include "insert.h"
+#include "access.h"
+#include "resize.h"
 
 VECTOR_INLINE vector_t vector_insert_z(
     restrict vector_t vector,

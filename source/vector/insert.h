@@ -3,11 +3,8 @@
 #ifndef VECTOR_INSERT_H
 #define VECTOR_INSERT_H
 
-#include "common.h"
-
-#include <errno.h>
 #include <stddef.h>
-#include <string.h>
+#include "common.h"
 
 /// @addtogroup vector_module Vector
 /// @{

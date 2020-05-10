@@ -3,8 +3,8 @@
 #ifndef VECTOR_MOVE_H
 #define VECTOR_MOVE_H
 
+#include <stddef.h>
 #include "common.h"
-#include "access.h"
 
 /// @addtogroup vector_module Vector
 /// @{

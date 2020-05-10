@@ -3,6 +3,7 @@
 #ifndef VECTOR_RESIZE_H
 #define VECTOR_RESIZE_H
 
+#include <stddef.h>
 #include "common.h"
 
 /// @addtogroup vector_module Vector
