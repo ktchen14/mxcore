@@ -22,7 +22,7 @@ endif ()
 
 # Replace malloc, realloc, and free with stub_malloc, stub_realloc, and
 # stub_free. Then link the stub into the test target.
-add_library(stub EXCLUDE_FROM_ALL "${CMAKE_CURRENT_SOURCE_DIR}/stub.c")
+add_library(stub SHARED EXCLUDE_FROM_ALL "${CMAKE_CURRENT_SOURCE_DIR}/stub.c")
 target_compile_definitions(stub INTERFACE
   malloc=stub_malloc
   realloc=stub_realloc
