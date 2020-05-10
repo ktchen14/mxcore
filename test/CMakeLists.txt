@@ -45,12 +45,11 @@ function(define_test name)
   # definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>. Define this here
   # (rather than in "test.h") so that it's effective even if an included file,
   # included before "test.h", includes <dlfcn.h>
-  target_compile_definitions("test_${name}" PRIVATE _GNU_SOURCE)
+  target_compile_definitions("test_${name}" PRIVATE _GNU_SOURCE VECTOR_TEST)
 
-  target_compile_definitions("test_${name}" PRIVATE VECTOR_TEST)
   target_compile_options("test_${name}" PRIVATE
     -Wall -Wextra -Werror)
-  target_link_libraries("test_${name}" PRIVATE test_vector dl)
+  target_link_libraries("test_${name}" PRIVATE dl test_vector)
 
   add_test("make_${name}"
     "${CMAKE_COMMAND}"
