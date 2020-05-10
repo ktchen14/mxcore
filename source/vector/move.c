@@ -1,8 +1,13 @@
 /// @file vector/move.c
 
+#ifndef VECTOR_MOVE_C
+#define VECTOR_MOVE_C
+
 #include <stddef.h>
+#include <stdlib.h>
 
 #include "common.h"
+#include "move.h"
 #include "access.h"
 
 VECTOR_INLINE
@@ -39,3 +44,5 @@ void vector_sort_z(
     size_t z) {
   qsort(vector, vector_length(vector), z, cmpf);
 }
+
+#endif /* VECTOR_MOVE_C */

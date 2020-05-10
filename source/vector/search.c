@@ -1,10 +1,14 @@
 /// @file vector/search.c
 
+#ifndef VECTOR_SEARCH_C
+#define VECTOR_SEARCH_C
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stddef.h>
 
 #include "common.h"
+#include "search.h"
 #include "access.h"
 
 VECTOR_INLINE size_t vector_find_z(
@@ -40,3 +44,5 @@ VECTOR_INLINE size_t vector_find_last_z(
   }
   return SIZE_MAX;
 }
+
+#endif /* VECTOR_SEARCH_C */

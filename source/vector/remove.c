@@ -1,9 +1,13 @@
 /// @file vector/remove.c
 
+#ifndef VECTOR_REMOVE_C
+#define VECTOR_REMOVE_C
+
 #include <stddef.h>
 #include <string.h>
 
 #include "common.h"
+#include "remove.h"
 #include "access.h"
 #include "resize.h"
 
@@ -39,3 +43,5 @@ vector_t vector_truncate_z(vector_t vector, size_t length, size_t z) {
   size_t n = vector_length(vector) - length;
   return vector_excise_z(vector, vector_length(vector) - n, n, z);
 }
+
+#endif /* VECTOR_REMOVE_C */

@@ -1,5 +1,8 @@
 /// @file vector/insert.c
 
+#ifndef VECTOR_INSERT_C
+#define VECTOR_INSERT_C
+
 #include <errno.h>
 #include <stddef.h>
 #include <string.h>
@@ -58,3 +61,5 @@ VECTOR_INLINE vector_t vector_extend_z(
     size_t z) {
   return vector_inject_z(vector, vector_length(vector), elmt, n, z);
 }
+
+#endif /* VECTOR_INSERT_C */

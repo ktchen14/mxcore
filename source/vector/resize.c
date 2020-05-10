@@ -1,5 +1,8 @@
 /// @file vector/resize.c
 
+#ifndef VECTOR_RESIZE_C
+#define VECTOR_RESIZE_C
+
 #include <errno.h>
 #include <stdlib.h>
 
@@ -53,3 +56,5 @@ vector_t vector_ensure_z(vector_t vector, size_t length, size_t z) {
   // resize to just the length
   return vector_resize_z(vector, length, z);
 }
+
+#endif /* VECTOR_RESIZE_C */

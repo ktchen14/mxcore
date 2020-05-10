@@ -7,9 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "vector.h"
-
 // vector/common.h
+#include "vector/common.h"
 extern inline __typeof__(vector_volume) vector_volume;
 extern inline __typeof__(vector_length) vector_length;
 
@@ -100,6 +99,10 @@ vector_t vector_shift_z(vector_t vector, void *elmt, size_t z) {
     vector_get(vector, 0, elmt, z);
   return vector_remove_z(vector, 0, z);
 }
+
+typedef int (*eq_f)(const void *a, const void *b);
+
+typedef int (*cmp_f)(const void *a, const void *b);
 
 bool vector_eq_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
   if (vector_length(a) != vector_length(b))

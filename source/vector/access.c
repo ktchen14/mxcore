@@ -1,9 +1,13 @@
 /// @file vector/access.c
 
+#ifndef VECTOR_ACCESS_C
+#define VECTOR_ACCESS_C
+
 #include <stddef.h>
 #include <string.h>
 
 #include "common.h"
+#include "access.h"
 
 VECTOR_INLINE size_t vector_index(vector_c vector, const void *elmt, size_t z) {
   // TODO: handle PTRDIFF_MAX
@@ -26,3 +30,5 @@ void vector_set(vector_t vector, size_t i, const void *elmt, size_t z) {
     return;
   memcpy(vector_at(vector, i, z), elmt, z);
 }
+
+#endif /* VECTOR_ACCESS_C */

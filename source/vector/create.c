@@ -1,11 +1,15 @@
 /// @file vector/create.c
 
+#ifndef VECTOR_CREATE_C
+#define VECTOR_CREATE_C
+
 #include <errno.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "common.h"
+#include "create.h"
 
 VECTOR_INLINE vector_t vector_create(void) {
   struct __vector_header_t *header;
@@ -33,3 +37,5 @@ vector_t vector_import_z(const void *data, size_t length, size_t z) {
   header->length = length;
   return memcpy(header->data, data, length * z);
 }
+
+#endif /* VECTOR_CREATE_C */
