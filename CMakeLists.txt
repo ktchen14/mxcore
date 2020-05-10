@@ -13,8 +13,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 set(VECTOR_MODULE_LIST common access create insert move remove resize search)
 set(VECTOR_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
-function(define_vector_target)
-  list(POP_FRONT ARGV NAME)
+function(define_vector_target name)
+  list(REMOVE_AT ARGV 0)
 
   set(header_list "${VECTOR_SOURCE_DIR}/vector.h")
   foreach (module IN LISTS VECTOR_MODULE_LIST)
@@ -24,10 +24,10 @@ function(define_vector_target)
       PROPERTIES HEADER_FILE_ONLY ON)
   endforeach (module)
 
-  add_library("${NAME}" ${ARGV}
+  add_library("${name}" ${ARGV}
     "${VECTOR_SOURCE_DIR}/vector.h" "${VECTOR_SOURCE_DIR}/vector.c"
     ${header_list})
-  set_property(TARGET "${NAME}" PROPERTY PUBLIC_HEADER ${header_list})
+  set_property(TARGET "${name}" PROPERTY PUBLIC_HEADER ${header_list})
 endfunction(define_vector_target)
 
 # Library
