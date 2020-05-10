@@ -159,8 +159,8 @@ vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
 /// @}
 /// @}
 
+#endif /* VECTOR_REMOVE_H */
+
 #ifndef VECTOR_TEST
 #include "remove.c"
 #endif /* VECTOR_TEST */
-
-#endif /* VECTOR_REMOVE_H */

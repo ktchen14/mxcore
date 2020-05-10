@@ -255,8 +255,8 @@ size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z);
 /// @}
 /// @}
 
+#endif /* VECTOR_SEARCH_H */
+
 #ifndef VECTOR_TEST
 #include "search.c"
 #endif /* VECTOR_TEST */
-
-#endif /* VECTOR_SEARCH_H */

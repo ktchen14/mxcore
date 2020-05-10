@@ -137,8 +137,8 @@ vector_t vector_shrink_z(vector_t vector, size_t z)
 /// @}
 /// @}
 
+#endif /* VECTOR_RESIZE_H */
+
 #ifndef VECTOR_TEST
 #include "resize.c"
 #endif /* VECTOR_TEST */
-
-#endif /* VECTOR_RESIZE_H */

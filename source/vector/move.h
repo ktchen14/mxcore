@@ -114,8 +114,8 @@ void vector_sort_z(
 /// @}
 /// @}
 
+#endif /* VECTOR_MOVE_H */
+
 #ifndef VECTOR_TEST
 #include "move.c"
 #endif /* VECTOR_TEST */
-
-#endif /* VECTOR_MOVE_H */
