@@ -9,14 +9,14 @@
 
 // vector/common.h
 #include "vector/common.h"
-extern inline __typeof__(vector_volume) vector_volume;
-extern inline __typeof__(vector_length) vector_length;
+extern __typeof__(vector_volume) vector_volume;
+extern __typeof__(vector_length) vector_length;
 
 // vector/create.h
 #include "vector/create.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_create) vector_create;
-extern inline __typeof__(vector_import_z) vector_import_z;
+extern __typeof__(vector_create) vector_create;
+extern __typeof__(vector_import_z) vector_import_z;
 #endif /* VECTOR_TEST */
 
 vector_t vector_duplicate_z(vector_c source, size_t z) {
@@ -46,42 +46,42 @@ void vector_delete(vector_t vector) {
 // vector/access.h
 #include "vector/access.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_index) vector_index;
-extern inline __typeof__(vector_get) vector_get;
-extern inline __typeof__(vector_set) vector_set;
+extern __typeof__(vector_index) vector_index;
+extern __typeof__(vector_get) vector_get;
+extern __typeof__(vector_set) vector_set;
 #endif /* VECTOR_TEST */
 
 // vector/resize.h
 #include "vector/resize.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_resize_z) vector_resize_z;
-extern inline __typeof__(vector_ensure_z) vector_ensure_z;
-extern inline __typeof__(vector_shrink_z) vector_shrink_z;
+extern __typeof__(vector_resize_z) vector_resize_z;
+extern __typeof__(vector_ensure_z) vector_ensure_z;
+extern __typeof__(vector_shrink_z) vector_shrink_z;
 #endif /* VECTOR_TEST */
 
 // vector/move.h
 #include "vector/move.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_move_z) vector_move_z;
-extern inline __typeof__(vector_swap_z) vector_swap_z;
-extern inline __typeof__(vector_sort_z) vector_sort_z;
+extern __typeof__(vector_move_z) vector_move_z;
+extern __typeof__(vector_swap_z) vector_swap_z;
+extern __typeof__(vector_sort_z) vector_sort_z;
 #endif /* VECTOR_TEST */
 
 // vector/insert.h
 #include "vector/insert.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_insert_z) vector_insert_z;
-extern inline __typeof__(vector_inject_z) vector_inject_z;
-extern inline __typeof__(vector_append_z) vector_append_z;
-extern inline __typeof__(vector_extend_z) vector_extend_z;
+extern __typeof__(vector_insert_z) vector_insert_z;
+extern __typeof__(vector_inject_z) vector_inject_z;
+extern __typeof__(vector_append_z) vector_append_z;
+extern __typeof__(vector_extend_z) vector_extend_z;
 #endif /* VECTOR_TEST */
 
 // vector/remove.h
 #include "vector/remove.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_remove_z) vector_remove_z;
-extern inline __typeof__(vector_excise_z) vector_excise_z;
-extern inline __typeof__(vector_truncate_z) vector_truncate_z;
+extern __typeof__(vector_remove_z) vector_remove_z;
+extern __typeof__(vector_excise_z) vector_excise_z;
+extern __typeof__(vector_truncate_z) vector_truncate_z;
 #endif /* VECTOR_TEST */
 
 // void *vector_tail_z(vector_t vector, size_t z) {
@@ -127,9 +127,9 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
 // vector/search.h
 #include "vector/search.c"
 #ifndef VECTOR_TEST
-extern inline __typeof__(vector_find_z) vector_find_z;
-extern inline __typeof__(vector_find_next_z) vector_find_next_z;
-extern inline __typeof__(vector_find_last_z) vector_find_last_z;
+extern __typeof__(vector_find_z) vector_find_z;
+extern __typeof__(vector_find_next_z) vector_find_next_z;
+extern __typeof__(vector_find_last_z) vector_find_last_z;
 #endif /* VECTOR_TEST */
 
 size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z) {
