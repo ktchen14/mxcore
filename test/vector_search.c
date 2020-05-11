@@ -193,8 +193,68 @@ void test_vector_find_last(void) {
   vector_delete(vector);
 }
 
+// vector_search(), vector_search_z()
+
+static int cmpintp_parity(const void *a, const void *b) {
+  int ra = *(const int *) a;
+  int rb = *(const int *) b;
+
+  if (ra % 2 == 0 && rb % 2 == 1)
+    return -1;
+  if (ra % 2 == 1 && rb % 2 == 0)
+    return 1;
+  return ra < rb ? -1 : (ra > rb ? 1 : 0);
+}
+
+static size_t last_search_z;
+size_t vector_search_z(
+    vector_c vector,
+    const void *elmt,
+    int (*cmpf)(const void *a, const void *b),
+    size_t z) {
+  return REAL(vector_search_z)(vector, elmt, cmpf, last_search_z = z);
+}
+
+void test_vector_search(void) {
+  int *vector = vector_define(int, 2, 2, 1, 3, 3, 3, 5, 5, 5, 5, 5);
+  int elmt = 4;
+  int number = 0;
+  size_t result;
+
+  // It evalutes its vector argument once
+  result = vector_search((number++, vector), &elmt, cmpintp_parity);
+  assert(number == 1);
+
+  // It evalutes its element argument once
+  result = vector_search(vector, (number++, &elmt), cmpintp_parity);
+  assert(number == 2);
+
+  // It evalutes its comparison function argument once
+  result = vector_search(vector, &elmt, (number++, cmpintp_parity));
+  assert(number == 3);
+
+  // It calls vector_search_z() with the element size of the vector
+  result = vector_search(vector, &elmt, cmpintp_parity);
+  assert(last_search_z == sizeof(vector[0]));
+
+  // It returns the index of the first element in the vector that compares equal
+  // to the element
+  elmt = 5;
+  result = vector_search(vector, &elmt, cmpintp_parity);
+  assert(result == 6);
+
+  // When no elements in the vector compare equal to the element it returns
+  // SIZE_MAX
+  elmt = 4;
+  result = vector_search(vector, &elmt, cmpintp_parity);
+  assert(result == SIZE_MAX);
+
+  vector_delete(vector);
+}
+
 int main() {
   test_vector_find_next();
   test_vector_find();
   test_vector_find_last();
+  test_vector_search();
 }

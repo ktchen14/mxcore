@@ -230,12 +230,11 @@ size_t vector_find_last_z(
   __attribute__((nonnull(1, 3), pure));
 
 /**
- * @brief Find the first element in the @a vector equal to @a elmt according
- *        to @a cmpf
+ * @brief Find the first element in the sorted @a vector equal to @a elmt
  *
- * The @a vector must be partitioned with respect to @a elmt according to @a
- * cmpf. That is, all the elements that compare less than must appear before all
- * the elements that compare equal to, and those must appear before all the
+ * The @a vector must be partitioned with respect to @a elmt according to
+ * @a cmpf. That is, all the elements that compare less than must appear before
+ * all the elements that compare equal to, and those must appear before all the
  * elements that compare greater than @a elmt according to @a cmpf. A vector
  * sorted by a previous call to vector_sort() with the same @a cmpf satisfies
  * these requirements.
@@ -243,14 +242,26 @@ size_t vector_find_last_z(
  * The behavior is undefined if the @a vector is not already partitioned with
  * respect to @a elmt in ascending order according to @a cmpf.
  *
- * @see vector_search_z() The equivalent operation in the explicit interface
- *
+ * @param vector the vector to operate on
+ * @param elmt the element to search for
+ * @param cmpf the function to use to determine equality
+ * @param z the element size of the @a vector
  * @return the index of the element on success; otherwise @c SIZE_MAX
+ *
+ * @see vector_search_z() The equivalent operation in the explicit interface
  */
+//= size_t vector_search_z(
+//=     vector_c vector,
+//=     const void *elmt,
+//=     int (*cmpf)(const void *a, const void *b))
 #define vector_search(v, ...) vector_search_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
-typedef int (*cmp_f)(const void *a, const void *b);
-size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z);
+size_t vector_search_z(
+    vector_c vector,
+    const void *elmt,
+    int (*cmpf)(const void *a, const void *b),
+    size_t z)
+  __attribute__((nonnull(1, 3), pure));
 
 /// @}
 /// @}
