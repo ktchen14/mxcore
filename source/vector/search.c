@@ -49,6 +49,25 @@ inline size_t vector_find_last_z(
   return SIZE_MAX;
 }
 
+size_t vector_search_z(
+    vector_c vector,
+    const void *elmt,
+    int (*cmpf)(const void *a, const void *b),
+    size_t z) {
+  size_t length = vector_length(vector);
+  void *result;
+
+  if ((result = bsearch(elmt, vector, length, z, cmpf)) == NULL)
+    return SIZE_MAX;
+
+  size_t i = vector_index(vector, result, z);
+
+  while (i > 0 && cmpf(vector_at(vector, i - 1, z), elmt) == 0)
+    i--;
+
+  return i;
+}
+
 #ifdef VECTOR_TEST
 #undef inline
 #endif /* VECTOR_TEST */

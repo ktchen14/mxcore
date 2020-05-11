@@ -117,21 +117,7 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
 extern __typeof__(vector_find_z) vector_find_z;
 extern __typeof__(vector_find_next_z) vector_find_next_z;
 extern __typeof__(vector_find_last_z) vector_find_last_z;
-
-size_t vector_search_z(vector_t vector, void *elmt, cmp_f cmpf, size_t z) {
-  size_t length = vector_length(vector);
-  void *result;
-
-  if ((result = bsearch(elmt, vector, length, z, cmpf)) == NULL)
-    return SIZE_MAX;
-
-  size_t i = vector_index(vector, result, z);
-
-  while (i > 0 && cmpf(vector_at(vector, i - 1, z), elmt) == 0)
-    i--;
-
-  return i;
-}
+extern __typeof__(vector_search_z) vector_search_z;
 
 void vector_debug_z(
     vector_c vector, void (*elmt_debug)(const void *), size_t z) {
