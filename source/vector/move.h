@@ -101,16 +101,6 @@ void vector_move_z(vector_t vector, size_t target, size_t source, size_t z)
 //= void vector_move(vector_t vector, size_t target, size_t source)
 #define vector_move(v, ...) vector_move_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
-//= void vector_sort(vector_t vector, int (*cmpf)(const void *a, const void *b))
-#define vector_sort(v, ...) vector_sort_z((v), __VA_ARGS__, VECTOR_Z((v)))
-
-/// Sort the @a vector according to @a cpmf
-void vector_sort_z(
-    vector_t vector,
-    int (*cmpf)(const void *a, const void *b),
-    size_t z)
-  __attribute__((nonnull));
-
 /// @}
 /// @}
 

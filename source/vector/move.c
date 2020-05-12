@@ -40,13 +40,6 @@ inline void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z) {
   }
 }
 
-inline void vector_sort_z(
-    vector_t vector,
-    int (*cmpf)(const void *a, const void *b),
-    size_t z) {
-  qsort(vector, vector_length(vector), z, cmpf);
-}
-
 #ifdef VECTOR_TEST
 #undef inline
 #endif /* VECTOR_TEST */

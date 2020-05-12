@@ -86,58 +86,7 @@ void test_vector_swap(void) {
   vector_delete(vector);
 }
 
-/* vector_sort(), vector_sort_z() */
-
-static size_t last_sort_z;
-void vector_sort_z(
-    vector_t vector,
-    int (*cmpf)(const void *a, const void *b),
-    size_t z) {
-  REAL(vector_sort_z)(vector, cmpf, last_sort_z = z);
-}
-
-static int cmpintp(const void *a, const void *b) {
-  int ra = *(const int *) a;
-  int rb = *(const int *) b;
-  return ra < rb ? -1 : (ra > rb ? 1 : 0);
-}
-
-static int cmpintp_parity(const void *a, const void *b) {
-  int ra = *(const int *) a;
-  int rb = *(const int *) b;
-
-  if (ra % 2 == 0 && rb % 2 == 1)
-    return -1;
-  if (ra % 2 == 1 && rb % 2 == 0)
-    return 1;
-  return cmpintp(a, b);
-}
-
-void test_vector_sort(void) {
-  int *vector = vector_define(int, 1, 2, 3, 5, 8, 13);
-  int number = 0;
-
-  // It evaluates its vector argument once
-  vector_sort((number++, vector), cmpintp);
-  assert(number == 1);
-
-  // It evaluates its comparison function argument once
-  vector_sort(vector, (number++, cmpintp));
-  assert(number == 2);
-
-  // It calls vector_sort_z() with the element size of the vector
-  vector_sort(vector, cmpintp);
-  assert(last_sort_z == sizeof(vector[0]));
-
-  // It sorts the vector with the comparison function
-  vector_sort(vector, cmpintp_parity);
-  assert_vector_data(vector, 2, 8, 1, 3, 5, 13);
-
-  vector_delete(vector);
-}
-
 int main() {
   test_vector_move();
   test_vector_swap();
-  test_vector_sort();
 }

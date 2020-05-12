@@ -128,6 +128,7 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z);
 #define vector_ne(a, b, eqf) vector_ne_z((a), (b), (eqf), sizeof((a)[0]))
 
 #include "vector/search.h"
+#include "vector/sort.h"
 
 /**
  * @brief Print debugging information about the @a vector

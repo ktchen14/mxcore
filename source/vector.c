@@ -57,7 +57,6 @@ extern __typeof__(vector_shrink_z) vector_shrink_z;
 #include "vector/move.c"
 extern __typeof__(vector_move_z) vector_move_z;
 extern __typeof__(vector_swap_z) vector_swap_z;
-extern __typeof__(vector_sort_z) vector_sort_z;
 
 // vector/insert.h
 #include "vector/insert.c"
@@ -118,6 +117,9 @@ extern __typeof__(vector_find_z) vector_find_z;
 extern __typeof__(vector_find_next_z) vector_find_next_z;
 extern __typeof__(vector_find_last_z) vector_find_last_z;
 extern __typeof__(vector_search_z) vector_search_z;
+
+#include "vector/sort.c"
+extern __typeof__(vector_sort_z) vector_sort_z;
 
 void vector_debug_z(
     vector_c vector, void (*elmt_debug)(const void *), size_t z) {
