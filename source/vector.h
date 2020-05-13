@@ -43,8 +43,6 @@
  */
 typedef int (*eq_f)(const void *a, const void *b);
 
-typedef int (*cmp_f)(const void *a, const void *b);
-
 /**
  * @brief Allocate and initialize a vector by duplicating @a source
  *

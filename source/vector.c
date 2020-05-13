@@ -89,8 +89,6 @@ vector_t vector_shift_z(vector_t vector, void *elmt, size_t z) {
 
 typedef int (*eq_f)(const void *a, const void *b);
 
-typedef int (*cmp_f)(const void *a, const void *b);
-
 bool vector_eq_z(vector_c a, vector_c b, eq_f eqf, size_t z) {
   if (vector_length(a) != vector_length(b))
     return false;
