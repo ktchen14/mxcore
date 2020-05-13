@@ -15,9 +15,9 @@
 
 inline void vector_sort_z(
     vector_t vector,
-    int (*cmpf)(const void *a, const void *b),
+    int (*cmp)(const void *a, const void *b),
     size_t z) {
-  qsort(vector, vector_length(vector), z, cmpf);
+  qsort(vector, vector_length(vector), z, cmp);
 }
 
 #ifdef VECTOR_TEST

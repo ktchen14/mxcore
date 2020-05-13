@@ -8,9 +8,9 @@
 static size_t last_sort_z;
 void vector_sort_z(
     vector_t vector,
-    int (*cmpf)(const void *a, const void *b),
+    int (*cmp)(const void *a, const void *b),
     size_t z) {
-  REAL(vector_sort_z)(vector, cmpf, last_sort_z = z);
+  REAL(vector_sort_z)(vector, cmp, last_sort_z = z);
 }
 
 static int cmpintp(const void *a, const void *b) {
@@ -38,7 +38,7 @@ int main() {
   vector_sort((number++, vector), cmpintp);
   assert(number == 1);
 
-  // It evaluates its comparison function argument once
+  // It evaluates its comparator argument once
   vector_sort(vector, (number++, cmpintp));
   assert(number == 2);
 
@@ -46,7 +46,7 @@ int main() {
   vector_sort(vector, cmpintp);
   assert(last_sort_z == sizeof(vector[0]));
 
-  // It sorts the vector with the comparison function
+  // It sorts the vector with the comparator
   vector_sort(vector, cmpintp_parity);
   assert_vector_data(vector, 2, 8, 1, 3, 5, 13);
 
