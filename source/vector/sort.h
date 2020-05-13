@@ -98,7 +98,7 @@ void vector_sort_z(
  *   - If @f$a < b@f$ then @f$b > a@f$
  *   - If @f$a < b@f$ and @f$b < c@f$ then @f$a < c@f$
  *   @endparblock
- * @param data contextual information to pass to @a cmp
+ * @param data contextual information to pass as the last argument to @a cmp
  */
 //= void vector_sort_with(
 //=     vector_t vector,
@@ -132,7 +132,7 @@ void vector_sort_z(
  *   - If @f$a < b@f$ then @f$b > a@f$
  *   - If @f$a < b@f$ and @f$b < c@f$ then @f$a < c@f$
  *   @endparblock
- * @param data contextual information to pass to @a cmp
+ * @param data contextual information to pass as the last argument to @a cmp
  * @param z the element size of the @a vector
  */
 void vector_sort_with_z(
