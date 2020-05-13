@@ -126,17 +126,6 @@ bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z);
 
 #include "vector/search.h"
 #include "vector/sort.h"
-
-/**
- * @brief Print debugging information about the @a vector
- *
- * If @a elmt_debug is not @c NULL then it will be used to print debugging
- * information about each element in the @a vector.
- */
-void vector_debug_z(
-    vector_c vector, void (*elmt_debug)(const void *), size_t z);
-
-#define vector_debug(vector, ...) \
-  vector_debug_z((vector), __VA_ARGS__, VECTOR_Z((vector)))
+#include "vector/debug.h"
 
 #endif /* VECTOR_H */

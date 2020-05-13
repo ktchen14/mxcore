@@ -10,8 +10,9 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 
-set(VECTOR_MODULE_LIST common access create insert move remove resize search
-  sort)
+set(VECTOR_MODULE_LIST
+  common access create debug insert move remove resize search sort
+)
 set(VECTOR_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 function(define_vector_target name)

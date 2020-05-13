@@ -2,8 +2,6 @@
 
 #include <stdbool.h>
 #include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -119,20 +117,5 @@ extern __typeof__(vector_search_z) vector_search_z;
 #include "vector/sort.c"
 extern __typeof__(vector_sort_z) vector_sort_z;
 
-void vector_debug_z(
-    vector_c vector, void (*elmt_debug)(const void *), size_t z) {
-  const struct __vector_header_t *header = __vector_to_header(vector);
-  fprintf(stderr,
-    "vector_t(data = %p, utilization = %zu/%zu)",
-  header->data, header->length, header->volume);
-
-  if (elmt_debug != NULL) {
-    fprintf(stderr, " [ ");
-    for (size_t i = 0; i < header->length; i++) {
-      if (i > 0)
-        fprintf(stderr, ", ");
-      elmt_debug(vector_at(vector, i, z));
-    }
-    fprintf(stderr, " ]");
-  }
-}
+#include "vector/debug.c"
+extern __typeof__(vector_debug_z) vector_debug_z;

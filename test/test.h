@@ -2,6 +2,7 @@
 #define TEST_H
 
 #include <dlfcn.h>
+#include <string.h>
 
 #define REAL(name) ((__typeof__((name)) *) dlsym(RTLD_NEXT, #name))
 
