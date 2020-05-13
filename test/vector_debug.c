@@ -1,39 +1,76 @@
 #include <assert.h>
 #include <stddef.h>
+#include <stdio.h>
+#include <unistd.h>
 
 #include "../source/vector.h"
+#include "test.h"
 
-void test_vector_header(void) {
-  // Its alignment requirement is as strict as that of a max_align_t
-  assert(alignof(struct __vector_header_t) >= alignof(max_align_t));
+static int backup_stderr;
 
-  // Its data member's offset is aligned to a max_align_t
-  size_t offset = offsetof(struct __vector_header_t, data);
-  assert(offset % alignof(max_align_t) == 0);
+static FILE *redirect_stderr(void) {
+  backup_stderr = dup(STDERR_FILENO);
+  FILE *stream = tmpfile();
+  setbuf(stream, NULL);
+  dup2(fileno(stream), STDERR_FILENO);
+  return stream;
+}
 
-  // The result of vector_create() is aligned to a max_align_t
-  int *source = vector_create();
-  assert((uintptr_t) source % alignof(max_align_t) == 0);
+static void undirect_stderr(FILE *stream, char *buffer, size_t size) {
+  fseek(stream, 0, SEEK_SET);
+  size_t length = fread(buffer, 1, size - 1, stream);
+  fclose(stream);
+  buffer[length] = '\0';
 
-  // The result of vector_duplicate() is aligned to a max_align_t
-  int *target = vector_duplicate(source);
-  assert((uintptr_t) target % alignof(max_align_t) == 0);
+  dup2(backup_stderr, STDERR_FILENO);
+  close(backup_stderr);
+}
 
-  vector_delete(source);
-  vector_delete(target);
+static size_t last_debug_z;
+void vector_debug_z(
+    vector_c vector, void (*elmt_debug)(const void *elmt), size_t z) {
+  return REAL(vector_debug_z)(vector, elmt_debug, last_debug_z = z);
+}
 
-  // The result of vector_import() is aligned to a max_align_t
-  int data[] = { 1, 2, 3, 5, 8, 13 };
-  int *vector = vector_import(data, sizeof(data) / sizeof(data[0]));
-  assert((uintptr_t) vector % alignof(max_align_t) == 0);
+void debugintp(const void *elmt) {
+  fprintf(stderr, "+%i", *(const int *) elmt);
+}
 
-  // The result of vector_resize() is aligned to a max_align_t
-  vector = vector_resize(vector, vector_volume(vector) + 20);
-  assert((uintptr_t) vector % alignof(max_align_t) == 0);
+void test_vector_debug(void) {
+  int *vector = vector_define(int, 1, 2, 3, 5);
+  int number = 0;
+  FILE *stderr_stream;
+  char buffer[4096];
+
+  // It evaluates its vector argument once
+  vector_debug((number++, vector), debugintp);
+  assert(number == 1);
+
+  // It evaluates its index argument once
+  vector_debug(vector, (number++, debugintp));
+  assert(number == 2);
+
+  // It calls vector_debug_z() with the element size of the vector
+  vector_debug(vector, debugintp);
+  assert(last_debug_z == sizeof(vector[0]));
+
+  // It prints debugging information about each element in the vector to stderr
+  stderr_stream = redirect_stderr();
+  vector_debug(vector, debugintp);
+  undirect_stderr(stderr_stream, buffer, sizeof(buffer));
+  assert(!strcmp(buffer, "[+1, +2, +3, +5]\n"));
+
+  // With an empty vector it prints "[]" to stderr
+  vector = vector_truncate(vector, 0);
+
+  stderr_stream = redirect_stderr();
+  vector_debug(vector, debugintp);
+  undirect_stderr(stderr_stream, buffer, sizeof(buffer));
+  assert(!strcmp(buffer, "[]\n"));
 
   vector_delete(vector);
 }
 
 int main() {
-  test_vector_header();
+  test_vector_debug();
 }
