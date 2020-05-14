@@ -1,4 +1,5 @@
 #include <assert.h>
+
 #include <vector.h>
 #include "test.h"
 

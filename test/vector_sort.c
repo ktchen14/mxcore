@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 #include "test.h"
 
 static size_t last_sort_z;

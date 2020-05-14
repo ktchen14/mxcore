@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 #include "test.h"
 
 static int backup_stderr;

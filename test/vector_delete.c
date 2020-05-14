@@ -2,7 +2,7 @@
 #include <errno.h>
 #include <stdlib.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 
 static void *free_object = NULL;
 __attribute__((used)) void stub_free(void *object) {

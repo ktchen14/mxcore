@@ -2,7 +2,7 @@
 #include <errno.h>
 #include <stdlib.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 
 // TODO: review
 

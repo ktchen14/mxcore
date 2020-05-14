@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 #include "test.h"
 
 /* vector_move(), vector_move_z() */

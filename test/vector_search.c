@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 #include "test.h"
 
 bool eqintp(const void *a, const void *b) {

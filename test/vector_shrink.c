@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <errno.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 #include "test.h"
 
 static int resize_errno = 0;

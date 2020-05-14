@@ -2,7 +2,7 @@
 #include <errno.h>
 #include <stdlib.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 #include "test.h"
 
 static int *malloc_errno = NULL;
