@@ -67,8 +67,7 @@ vector_t vector_duplicate_z(vector_c source, size_t z)
 #define vector_duplicate(source) \
   vector_duplicate_z(source, VECTOR_Z((source)))
 
-/// Deallocate the @a vector and return @c NULL
-void vector_delete(vector_t vector);
+#include "vector/delete.h"
 
 #include "vector/access.h"
 
