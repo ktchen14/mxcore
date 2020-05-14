@@ -13,22 +13,24 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 set(VECTOR_MODULE_LIST
   common access create debug insert move remove resize search sort
 )
-set(VECTOR_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 function(define_vector_target name)
   list(REMOVE_AT ARGV 0)
 
-  set(header_list "${VECTOR_SOURCE_DIR}/vector.h")
+  set(header_list "${PROJECT_SOURCE_DIR}/header/vector.h")
   foreach (module IN LISTS VECTOR_MODULE_LIST)
-    list(APPEND header_list "${VECTOR_SOURCE_DIR}/vector/${module}.h")
-    list(APPEND header_list "${VECTOR_SOURCE_DIR}/vector/${module}.c")
-    set_source_files_properties("${VECTOR_SOURCE_DIR}/vector/${module}.c"
-      PROPERTIES HEADER_FILE_ONLY ON)
+    list(APPEND header_list "${PROJECT_SOURCE_DIR}/header/vector/${module}.h")
+    list(APPEND header_list "${PROJECT_SOURCE_DIR}/header/vector/${module}.c")
+  endforeach (module)
+  set_source_files_properties(${header_list} PROPERTIES HEADER_FILE_ONLY ON)
+
+  set(source_list "${PROJECT_SOURCE_DIR}/source/vector.c")
+  foreach (module IN LISTS VECTOR_MODULE_LIST)
+    list(APPEND source_list "${PROJECT_SOURCE_DIR}/source/vector/${module}.c")
   endforeach (module)
 
-  add_library("${name}" ${ARGV}
-    "${VECTOR_SOURCE_DIR}/vector.c"
-    ${header_list})
+  add_library("${name}" ${ARGV} ${header_list} ${source_list})
+  target_include_directories("${name}" PUBLIC "${PROJECT_SOURCE_DIR}/header")
   set_property(TARGET "${name}" PROPERTY PUBLIC_HEADER ${header_list})
 endfunction(define_vector_target)
 

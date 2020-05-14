@@ -1,8 +1,6 @@
-/// @file vector/common.c
+/// @file source/vector/common.c
 
-#ifndef VECTOR_COMMON_C
-#define VECTOR_COMMON_C
+#include <vector/common.h>
 
-#include "common.h"
-
-#endif /* VECTOR_COMMON_C */
+extern __typeof__(vector_volume) vector_volume;
+extern __typeof__(vector_length) vector_length;
