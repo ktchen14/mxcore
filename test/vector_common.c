@@ -1,8 +1,9 @@
 #include <assert.h>
 #include <stdalign.h>
+#include <stddef.h>
 #include <stdint.h>
 
-#include "../source/vector.h"
+#include <vector.h>
 
 void test_vector_header(void) {
   // Its alignment requirement is as strict as that of a max_align_t
