@@ -11,7 +11,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Module")
 
 set(VECTOR_MODULE_LIST
-  common access create debug delete insert move remove resize search sort
+  common access create debug delete insert move remove resize search shift sort
 )
 
 include(GNUInstallDirs)

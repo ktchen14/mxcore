@@ -19,4 +19,10 @@
   assert(!memcmp(__vector, __data, sizeof(__data))); \
 } while (0)
 
+// Return the text of the argument in the source code itself as a C string
+#define SOURCE(x) #x
+
+// Return the text of the macro definition as a C string
+#define DEFINITION_SOURCE(x) SOURCE(x)
+
 #endif /* TEST_H */

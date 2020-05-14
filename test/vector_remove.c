@@ -42,7 +42,6 @@ void test_vector_excise(void) {
   assert(last_excise_z == sizeof(vector[0]));
 
   vector_delete(vector);
-
   vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
 
   // It removes length elements at the index from the vector
@@ -130,6 +129,9 @@ void test_vector_truncate(void) {
   // It calls vector_truncate_z() with the element size of the vector
   vector = vector_truncate(vector, vector_length(vector) - 1);
   assert(last_truncate_z == sizeof(vector[0]));
+
+  // It's expansion is an expression
+  assert(vector = vector_truncate(vector, vector_length(vector) - 1));
 
   // It delegates to vector_excise_z() with i and n calculated from length and
   // the length of the vector

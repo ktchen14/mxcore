@@ -137,9 +137,8 @@ inline size_t vector_index(vector_c vector, const void *elmt, size_t z)
  * This operation is redundant if the element type of the @a vector is known at
  * compile time as it's identical to <code>*elmt = vector[i]</code>.
  *
- * If @a i isn't an index in the @a vector, @a elmt is @c NULL, or the type of
- * the object at @a elmt is incompatible with the element type of the vector,
- * then the behavior is undefined.
+ * If @a i isn't an index in the @a vector or @a elmt is @c NULL then the
+ * behavior is undefined.
  *
  * @param vector the vector to operate on
  * @param i the index of the element in the @a vector to copy from

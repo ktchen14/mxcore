@@ -29,12 +29,6 @@ vector_t vector_duplicate_z(vector_c source, size_t z) {
   return memcpy(header->data, source, length * z);
 }
 
-vector_t vector_pull_z(vector_t vector, void *elmt, size_t z) {
-  if (elmt != NULL)
-    vector_get(vector, vector_length(vector) - 1, elmt, z);
-  return vector_remove_z(vector, vector_length(vector) - 1, z);
-}
-
 vector_t vector_shift_z(vector_t vector, void *elmt, size_t z) {
   if (elmt != NULL)
     vector_get(vector, 0, elmt, z);

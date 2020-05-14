@@ -133,7 +133,7 @@ inline vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
  */
 //= vector_t vector_truncate(vector_t vector, size_t length)
 #define vector_truncate(v, ...) \
-  vector_truncate_z((v), __VA_ARGS__, VECTOR_Z((v)));
+  vector_truncate_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
  * @brief Reduce the @length of the @a vector to @a length

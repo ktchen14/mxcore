@@ -78,22 +78,7 @@ vector_t vector_duplicate_z(vector_c source, size_t z)
 #include "vector/insert.h"
 #include "vector/remove.h"
 
-/// @copydoc vector_append()
-/// @see vector_append()
-#define vector_push vector_append
-
-/**
- * @brief Copy the last element in the @a vector to @a elmt and remove it
- *
- * If @a elmt is @c NULL then the element won't be copied before it's removed.
- *
- * @return the resultant vector on success; otherwise @c NULL
- */
-vector_t vector_pull_z(vector_t vector, void *elmt, size_t z)
-  __attribute__((nonnull(1), warn_unused_result));
-
-#define vector_pull(vector, elmt) \
-  vector_pull_z((vector), (elmt), sizeof((vector)[0]))
+#include "vector/shift.h"
 
 /// Copy the first element in the @a vector to @a elmt and remove it
 vector_t vector_shift_z(vector_t vector, void *elmt, size_t z)
