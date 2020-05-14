@@ -14,6 +14,8 @@ set(VECTOR_MODULE_LIST
   common access create debug delete insert move remove resize search sort
 )
 
+include(GNUInstallDirs)
+
 function(define_vector_target name)
   set(header_list "${PROJECT_SOURCE_DIR}/header/vector.h")
   foreach (module IN LISTS VECTOR_MODULE_LIST)
@@ -28,7 +30,9 @@ function(define_vector_target name)
   endforeach (module)
 
   add_library(${ARGV} ${header_list} ${source_list})
-  target_include_directories("${name}" PUBLIC "${PROJECT_SOURCE_DIR}/header")
+  target_include_directories("${name}" PUBLIC
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/header>")
   set_property(TARGET "${name}" PROPERTY PUBLIC_HEADER ${header_list})
 endfunction(define_vector_target)
 
@@ -38,7 +42,6 @@ set_property(TARGET vector PROPERTY VERSION "${PROJECT_VERSION}")
 target_compile_options(vector PRIVATE -Wall -Wextra)
 
 # Install
-include(GNUInstallDirs)
 install(TARGETS vector
   ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
