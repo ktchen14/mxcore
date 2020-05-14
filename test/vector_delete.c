@@ -17,6 +17,9 @@ int main() {
   vector_delete(vector);
   assert(free_object != NULL);
 
+  // It returns NULL
+  assert(vector_delete(vector_create()) == NULL);
+
   // It doesn't affect errno
   vector = vector_create();
   errno = ENOENT;
