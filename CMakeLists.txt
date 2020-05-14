@@ -15,8 +15,6 @@ set(VECTOR_MODULE_LIST
 )
 
 function(define_vector_target name)
-  list(REMOVE_AT ARGV 0)
-
   set(header_list "${PROJECT_SOURCE_DIR}/header/vector.h")
   foreach (module IN LISTS VECTOR_MODULE_LIST)
     list(APPEND header_list "${PROJECT_SOURCE_DIR}/header/vector/${module}.h")
@@ -29,7 +27,7 @@ function(define_vector_target name)
     list(APPEND source_list "${PROJECT_SOURCE_DIR}/source/vector/${module}.c")
   endforeach (module)
 
-  add_library("${name}" ${ARGV} ${header_list} ${source_list})
+  add_library(${ARGV} ${header_list} ${source_list})
   target_include_directories("${name}" PUBLIC "${PROJECT_SOURCE_DIR}/header")
   set_property(TARGET "${name}" PROPERTY PUBLIC_HEADER ${header_list})
 endfunction(define_vector_target)
