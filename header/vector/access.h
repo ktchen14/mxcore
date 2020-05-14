@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Access
@@ -122,7 +126,7 @@
  * @see vector_at() - the inverse operation to get a pointer to an element in a
  *   vector
  */
-size_t vector_index(vector_c vector, const void *elmt, size_t z)
+inline size_t vector_index(vector_c vector, const void *elmt, size_t z)
   __attribute__((nonnull, pure));
 
 /**
@@ -144,7 +148,7 @@ size_t vector_index(vector_c vector, const void *elmt, size_t z)
  *
  * @see vector_set() - the inverse operation to copy data into a vector
  */
-void vector_get(vector_c vector, size_t i, void *elmt, size_t z)
+inline void vector_get(vector_c vector, size_t i, void *elmt, size_t z)
   __attribute__((nonnull));
 
 /**
@@ -166,11 +170,15 @@ void vector_get(vector_c vector, size_t i, void *elmt, size_t z)
  *
  * @see vector_get() - the inverse operation to copy data from a vector
  */
-void vector_set(vector_t vector, size_t i, const void *elmt, size_t z)
+inline void vector_set(vector_t vector, size_t i, const void *elmt, size_t z)
   __attribute__((nonnull));
 
 /// @}
 /// @}
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 #endif /* VECTOR_ACCESS_H */
 

@@ -33,10 +33,10 @@ typedef void const * vector_c;
  * reallocation and should always be greater than or equal to the vector's
  * @length.
  */
-size_t vector_volume(vector_c vector) __attribute__((nonnull, pure));
+inline size_t vector_volume(vector_c vector) __attribute__((nonnull, pure));
 
 /// Return the length of (the number of elements in) the @a vector
-size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
+inline size_t vector_length(vector_c vector) __attribute__((nonnull, pure));
 
 /// @cond INTERNAL
 

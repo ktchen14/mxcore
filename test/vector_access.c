@@ -1,6 +1,8 @@
 #include <assert.h>
 
-#include "../source/vector.h"
+#include <vector/access.h>
+#include <vector/create.h>
+#include <vector.h>
 #include "test.h"
 
 void test_vector_at(void) {
