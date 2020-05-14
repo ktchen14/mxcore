@@ -67,7 +67,6 @@ foreach (module IN LISTS VECTOR_MODULE_LIST)
 endforeach (module)
 
 define_test(vector_define)
-define_test(vector_delete)
 define_test(vector_duplicate)
 define_test(vector_ensure)
 define_test(vector_shrink)

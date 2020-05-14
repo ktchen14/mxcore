@@ -29,10 +29,6 @@ vector_t vector_duplicate_z(vector_c source, size_t z) {
   return memcpy(header->data, source, length * z);
 }
 
-void vector_delete(vector_t vector) {
-  free(__vector_to_header(vector));
-}
-
 vector_t vector_pull_z(vector_t vector, void *elmt, size_t z) {
   if (elmt != NULL)
     vector_get(vector, vector_length(vector) - 1, elmt, z);
