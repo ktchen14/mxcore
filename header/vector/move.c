@@ -14,8 +14,8 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-inline
-void vector_move_z(vector_t vector, size_t target, size_t source, size_t z) {
+inline void vector_move_z(
+    vector_t vector, size_t target, size_t source, size_t z) {
   if (target == source)
     return;
 

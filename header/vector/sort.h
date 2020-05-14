@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Sorting
@@ -141,6 +145,10 @@ void vector_sort_with_z(
     void *data,
     size_t z)
   __attribute__((nonnull(1, 2)));
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 /// @}
 /// @}

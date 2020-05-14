@@ -8,6 +8,10 @@
 
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Search
@@ -262,6 +266,10 @@ size_t vector_search_z(
     int (*cmpf)(const void *a, const void *b),
     size_t z)
   __attribute__((nonnull(1, 3), pure));
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 /// @}
 /// @}

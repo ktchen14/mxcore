@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Creation
@@ -18,7 +22,7 @@
  *
  * @return the new vector on success; otherwise @c NULL
  */
-vector_t vector_create(void) __attribute__((__malloc__));
+inline vector_t vector_create(void) __attribute__((__malloc__));
 
 /**
  * @brief Allocate and initialize a vector from @a length elements of @a data
@@ -49,7 +53,7 @@ vector_t vector_create(void) __attribute__((__malloc__));
  *
  * @see vector_import() - the implicit interface analogue
  */
-vector_t vector_import_z(const void *data, size_t length, size_t z)
+inline vector_t vector_import_z(const void *data, size_t length, size_t z)
   __attribute__((__malloc__, nonnull));
 
 /**
@@ -86,6 +90,10 @@ vector_t vector_import_z(const void *data, size_t length, size_t z)
 
 /// @}
 /// @}
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 #endif /* VECTOR_CREATE_H */
 

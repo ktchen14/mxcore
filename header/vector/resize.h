@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Resize
@@ -51,7 +55,7 @@
  *
  * @see vector_resize() - the implicit interface analogue
  */
-vector_t vector_resize_z(vector_t vector, size_t volume, size_t z)
+inline vector_t vector_resize_z(vector_t vector, size_t volume, size_t z)
   __attribute__((nonnull, warn_unused_result));
 
 /**
@@ -100,7 +104,7 @@ vector_t vector_resize_z(vector_t vector, size_t volume, size_t z)
  * @param z the element size of the @a vector
  * @return the resultant vector on success; otherwise @c NULL
  */
-vector_t vector_ensure_z(vector_t vector, size_t length, size_t z)
+inline vector_t vector_ensure_z(vector_t vector, size_t length, size_t z)
   __attribute__((nonnull, warn_unused_result));
 
 /**
@@ -131,8 +135,12 @@ vector_t vector_ensure_z(vector_t vector, size_t length, size_t z)
  *
  * @see vector_shrink() - the implicit interface analogue
  */
-vector_t vector_shrink_z(vector_t vector, size_t z)
+inline vector_t vector_shrink_z(vector_t vector, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 /// @}
 /// @}

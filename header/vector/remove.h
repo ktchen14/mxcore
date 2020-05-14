@@ -3,6 +3,10 @@
 #ifndef VECTOR_REMOVE_H
 #define VECTOR_REMOVE_H
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Removal
@@ -54,7 +58,7 @@
  * @param z the element size of the @a vector
  * @return the resultant vector
  */
-vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
+inline vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
 
 /**
@@ -103,7 +107,7 @@ vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
  * @param z the element size of the @a vector
  * @return the resultant vector
  */
-vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
+inline vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
 
 /**
@@ -153,8 +157,12 @@ vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
  * @param z the element size of the @a vector
  * @return the resultant vector
  */
-vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
+inline vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
   __attribute__((nonnull, returns_nonnull, warn_unused_result));
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 /// @}
 /// @}

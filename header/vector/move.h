@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Ordering
@@ -40,7 +44,7 @@
  *
  * @see vector_swap() - The implicit interface analogue
  */
-void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z)
+inline void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z)
   __attribute__((nonnull));
 
 /**
@@ -69,7 +73,8 @@ void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z)
  *
  * @see vector_move() - The implicit interface analogue
  */
-void vector_move_z(vector_t vector, size_t target, size_t source, size_t z)
+inline void vector_move_z(
+    vector_t vector, size_t target, size_t source, size_t z)
   __attribute__((nonnull));
 
 /**
@@ -100,6 +105,10 @@ void vector_move_z(vector_t vector, size_t target, size_t source, size_t z)
  */
 //= void vector_move(vector_t vector, size_t target, size_t source)
 #define vector_move(v, ...) vector_move_z((v), __VA_ARGS__, VECTOR_Z((v)))
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 /// @}
 /// @}

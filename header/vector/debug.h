@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 
@@ -27,13 +31,17 @@
  *   information about each element in the @a vector
  * @param z the element size of the @a vector
  */
-void vector_debug_z(
+inline void vector_debug_z(
     vector_c vector,
     void (*elmt_debug)(const void *elmt),
     size_t z)
   __attribute__((nonnull));
 
 /// @}
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 #endif /* VECTOR_DEBUG_H */
 

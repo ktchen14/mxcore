@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include "common.h"
 
+#ifdef VECTOR_TEST
+#define inline
+#endif /* VECTOR_TEST */
+
 /// @addtogroup vector_module Vector
 /// @{
 /// @name Insertion and Extension
@@ -64,7 +68,7 @@
  *
  * @see vector_insert() - the implicit interface analogue
  */
-vector_t vector_insert_z(
+inline vector_t vector_insert_z(
     restrict vector_t vector,
     size_t i,
     const void *restrict elmt,
@@ -132,7 +136,7 @@ vector_t vector_insert_z(
  *
  * @see vector_inject() - the implicit interface analogue
  */
-vector_t vector_inject_z(
+inline vector_t vector_inject_z(
     restrict vector_t vector,
     size_t i,
     const void *restrict elmt,
@@ -185,7 +189,7 @@ vector_t vector_inject_z(
  *
  * @see vector_append_z() - the explicit interface analogue
  */
-vector_t vector_append_z(
+inline vector_t vector_append_z(
     restrict vector_t vector,
     const void *restrict elmt,
     size_t z)
@@ -238,7 +242,7 @@ vector_t vector_append_z(
  *
  * @see vector_extend_z() - the explicit interface analogue
  */
-vector_t vector_extend_z(
+inline vector_t vector_extend_z(
     restrict vector_t vector,
     const void *restrict elmt,
     size_t n,
@@ -247,6 +251,10 @@ vector_t vector_extend_z(
 
 /// @}
 /// @}
+
+#ifdef VECTOR_TEST
+#undef inline
+#endif /* VECTOR_TEST */
 
 #endif /* VECTOR_INSERT_H */
 
