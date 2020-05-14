@@ -1,7 +1,4 @@
 #include <assert.h>
-
-#include <vector/access.h>
-#include <vector/create.h>
 #include <vector.h>
 #include "test.h"
 
@@ -14,15 +11,15 @@ void test_vector_at(void) {
   assert(vector_at(vector, 4, sizeof(int)) == vector + 4);
   assert(vector_at(vector, 8, sizeof(int)) == vector + 8);
 
-  // It evalutes its vector argument once
+  // It evaluates its vector argument once
   vector_at((number++, vector), 1, sizeof(int));
   assert(number == 1);
 
-  // It evalutes its index argument once
+  // It evaluates its index argument once
   vector_at(vector, (number++, 1), sizeof(int));
   assert(number == 2);
 
-  // It evalutes its element size argument once
+  // It evaluates its element size argument once
   vector_at(vector, 1, (number++, sizeof(int)));
   assert(number == 3);
 
