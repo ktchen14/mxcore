@@ -1,4 +1,4 @@
-/// @file vector/resize.c
+/// @file header/vector/resize.c
 
 #ifndef VECTOR_RESIZE_C
 #define VECTOR_RESIZE_C

@@ -1,4 +1,4 @@
-/// @file vector/remove.c
+/// @file header/vector/remove.c
 
 #ifndef VECTOR_REMOVE_C
 #define VECTOR_REMOVE_C

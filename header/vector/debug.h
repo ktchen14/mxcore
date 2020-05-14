@@ -1,4 +1,4 @@
-/// @file vector/debug.h
+/// @file header/vector/debug.h
 
 #ifndef VECTOR_DEBUG_H
 #define VECTOR_DEBUG_H

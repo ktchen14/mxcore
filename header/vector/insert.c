@@ -1,4 +1,4 @@
-/// @file vector/insert.c
+/// @file header/vector/insert.c
 
 #ifndef VECTOR_INSERT_C
 #define VECTOR_INSERT_C

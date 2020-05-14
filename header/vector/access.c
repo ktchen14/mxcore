@@ -1,4 +1,4 @@
-/// @file vector/access.c
+/// @file header/vector/access.c
 
 #ifndef VECTOR_ACCESS_C
 #define VECTOR_ACCESS_C

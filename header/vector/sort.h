@@ -1,4 +1,4 @@
-/// @file vector/sort.h
+/// @file header/vector/sort.h
 
 #ifndef VECTOR_SORT_H
 #define VECTOR_SORT_H

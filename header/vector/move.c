@@ -1,4 +1,4 @@
-/// @file vector/move.c
+/// @file header/vector/move.c
 
 #ifndef VECTOR_MOVE_C
 #define VECTOR_MOVE_C

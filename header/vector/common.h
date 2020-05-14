@@ -1,4 +1,4 @@
-/// @file vector/common.h
+/// @file header/vector/common.h
 
 #ifndef VECTOR_COMMON_H
 #define VECTOR_COMMON_H

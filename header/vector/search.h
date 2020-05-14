@@ -1,4 +1,4 @@
-/// @file vector/search.h
+/// @file header/vector/search.h
 
 #ifndef VECTOR_SEARCH_H
 #define VECTOR_SEARCH_H
