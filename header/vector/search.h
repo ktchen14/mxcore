@@ -58,7 +58,7 @@
  * @param z the element size of the @a vector
  * @return the index of the element on success; otherwise @c SIZE_MAX
  */
-size_t vector_find_z(
+inline size_t vector_find_z(
     vector_c vector,
     bool (*eqf)(const void *elmt, const void *data),
     const void *data,
@@ -142,7 +142,7 @@ size_t vector_find_z(
  * @param z the element size of the @a vector
  * @return the index of the element on success; otherwise @c SIZE_MAX
  */
-size_t vector_find_next_z(
+inline size_t vector_find_next_z(
     vector_c vector,
     size_t i,
     bool (*eqf)(const void *elmt, const void *data),
@@ -225,7 +225,7 @@ size_t vector_find_next_z(
  * @param z the element size of the @a vector
  * @return the index of the element on success; otherwise @c SIZE_MAX
  */
-size_t vector_find_last_z(
+inline size_t vector_find_last_z(
     vector_c vector,
     size_t i,
     bool (*eqf)(const void *elmt, const void *data),
@@ -260,7 +260,7 @@ size_t vector_find_last_z(
 //=     int (*cmpf)(const void *a, const void *b))
 #define vector_search(v, ...) vector_search_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
-size_t vector_search_z(
+inline size_t vector_search_z(
     vector_c vector,
     const void *elmt,
     int (*cmpf)(const void *a, const void *b),
