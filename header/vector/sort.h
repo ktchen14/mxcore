@@ -71,7 +71,7 @@
  *   @endparblock
  * @param z the element size of the @a vector
  */
-void vector_sort_z(
+inline void vector_sort_z(
     vector_t vector,
     int (*cmp)(const void *a, const void *b),
     size_t z)

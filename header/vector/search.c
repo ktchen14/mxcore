@@ -50,7 +50,7 @@ inline size_t vector_find_last_z(
   return SIZE_MAX;
 }
 
-size_t vector_search_z(
+inline size_t vector_search_z(
     vector_c vector,
     const void *elmt,
     int (*cmpf)(const void *a, const void *b),
