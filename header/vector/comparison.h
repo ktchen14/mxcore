@@ -63,7 +63,8 @@ inline _Bool vector_eq_z(
   __attribute__((nonnull(3)));
 
 /**
- * @brief Return whether vector @a va is equivalent to vector @a vb
+ * @brief Return whether vector @a va is equivalent to vector @a vb with
+ *   contextual information
  *
  * Here "equivalent" means that both of @a va and @a vb are @c NULL, or neither
  * @a va or @a vb is @c NULL and:
@@ -88,7 +89,8 @@ inline _Bool vector_eq_z(
   vector_eq_with_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb))
 
 /**
- * @brief Return whether vector @a va is equivalent to vector @a vb
+ * @brief Return whether vector @a va is equivalent to vector @a vb with
+ *   contextual information
  *
  * Here "equivalent" means that both of @a va and @a vb are @c NULL, or neither
  * @a va or @a vb is @c NULL and:
