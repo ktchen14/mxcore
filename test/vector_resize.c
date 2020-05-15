@@ -36,7 +36,7 @@ int main() {
   assert(last_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_resize(vector, 10));
+  assert((vector = vector_resize(vector, 10)));
 
   // With a volume that causes the data size to overflow a size_t, it returns
   // NULL with errno = ENOMEM

@@ -38,7 +38,7 @@ void test_vector_excise(void) {
   assert(last_excise_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_excise(vector, 1, 0));
+  assert((vector = vector_excise(vector, 1, 0)));
 
   // It removes length elements at the index from the vector
   vector = vector_excise(vector, 2, 3);
@@ -91,7 +91,7 @@ void test_vector_remove(void) {
   assert(last_remove_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_remove(vector, 2));
+  assert((vector = vector_remove(vector, 2)));
 
   // It delegates to vector_excise_z() with length as 1
   int *result = vector_remove(vector, 2);

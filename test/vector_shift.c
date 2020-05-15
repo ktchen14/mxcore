@@ -28,7 +28,7 @@ void test_vector_pull(void) {
   assert(last_pull_z == sizeof(int));
 
   // Its expansion is an expression
-  assert(vector = vector_pull(vector, NULL));
+  assert((vector = vector_pull(vector, NULL)));
 
   vector_delete(vector);
   vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);

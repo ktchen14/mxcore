@@ -37,7 +37,7 @@ int main() {
   assert(last_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_ensure(vector, 4));
+  assert((vector = vector_ensure(vector, 4)));
 
   // With a length less than or equal to the vector's volume it returns the
   // vector unmodified

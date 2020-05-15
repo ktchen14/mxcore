@@ -67,7 +67,7 @@ void test_vector_insert(void) {
   assert(last_insert_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_insert(vector, 2, &data));
+  assert((vector = vector_insert(vector, 2, &data)));
 
   // It delegates to vector_inject_z() with length as 1
   int *result = vector_insert(vector, 2, &data);
@@ -103,7 +103,7 @@ void test_vector_inject(void) {
   assert(last_inject_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_inject(vector, 2, &data, data_length));
+  assert((vector = vector_inject(vector, 2, &data, data_length)));
 
   vector_delete(vector);
 
@@ -165,7 +165,7 @@ void test_vector_append(void) {
   assert(last_append_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_append(vector, &data));
+  assert((vector = vector_append(vector, &data)));
 
   // It delegates to vector_inject_z() with the length and element size of the
   // vector
@@ -200,7 +200,7 @@ void test_vector_extend(void) {
   assert(last_extend_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_extend(vector, &data, data_length));
+  assert((vector = vector_extend(vector, &data, data_length)));
 
   // It delegates to vector_inject_z() with the length and element size of the
   // vector

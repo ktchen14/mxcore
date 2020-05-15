@@ -32,7 +32,7 @@ int main() {
   assert(last_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_shrink(vector));
+  assert((vector = vector_shrink(vector)));
 
   // When the resize is unsuccessful the vector is unmodified with errno
   // retained from the resize operation
