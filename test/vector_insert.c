@@ -140,6 +140,7 @@ void test_vector_inject(void) {
   // vector at the index
   vector = vector_inject(vector, 4, NULL, 1);
   assert_vector_data(vector, 1, 2, 9, 11, 3, 3, 5);
+  // TODO
 
   // When the index is equal to the vector's length it appends length elements
   // onto the vector
@@ -169,10 +170,9 @@ void test_vector_append(void) {
 
   // It delegates to vector_inject_z() with the length and element size of the
   // vector
-  size_t length = vector_length(vector);
   int *result = vector_append(vector, &data);
   assert(last_vector == vector);
-  assert(last_i == length);
+  assert(last_i == vector_length(vector) - 1);
   assert(last_elmt == &data);
   assert(last_n == 1);
   assert(last_inject_z == sizeof(vector[0]));
@@ -204,10 +204,9 @@ void test_vector_extend(void) {
 
   // It delegates to vector_inject_z() with the length and element size of the
   // vector
-  size_t length = vector_length(vector);
   int *result = vector_extend(vector, &data, data_length);
   assert(last_vector == vector);
-  assert(last_i == length);
+  assert(last_i == vector_length(vector) - data_length);
   assert(last_elmt == &data);
   assert(last_n == data_length);
   assert(last_inject_z == sizeof(vector[0]));
