@@ -80,13 +80,6 @@ vector_t vector_duplicate_z(vector_c source, size_t z)
 
 #include "vector/shift.h"
 
-/// Copy the first element in the @a vector to @a elmt and remove it
-vector_t vector_shift_z(vector_t vector, void *elmt, size_t z)
-  __attribute__((nonnull(1), warn_unused_result));
-
-#define vector_shift(vector, ...) \
-  vector_shift_z((vector), __VA_ARGS__, VECTOR_Z((vector)))
-
 /**
  * @brief Return whether the elements in @a a and @a b are equal according to
  *        @a eqf

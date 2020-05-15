@@ -7,7 +7,6 @@
 
 #include <vector/common.h>
 #include <vector/access.h>
-#include <vector/remove.h>
 
 vector_t vector_duplicate_z(vector_c source, size_t z) {
   struct __vector_header_t *header;
@@ -27,12 +26,6 @@ vector_t vector_duplicate_z(vector_c source, size_t z) {
   header->length = length;
 
   return memcpy(header->data, source, length * z);
-}
-
-vector_t vector_shift_z(vector_t vector, void *elmt, size_t z) {
-  if (elmt != NULL)
-    vector_get(vector, 0, elmt, z);
-  return vector_remove_z(vector, 0, z);
 }
 
 typedef int (*eq_f)(const void *a, const void *b);

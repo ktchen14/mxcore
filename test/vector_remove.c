@@ -134,7 +134,7 @@ void test_vector_truncate(void) {
   assert(last_truncate_z == sizeof(vector[0]));
 
   // Its expansion is an expression
-  assert(vector = vector_truncate(vector, vector_length(vector) - 1));
+  assert((vector = vector_truncate(vector, vector_length(vector) - 1)));
 
   // It delegates to vector_excise_z() with i and n calculated from length and
   // the length of the vector
