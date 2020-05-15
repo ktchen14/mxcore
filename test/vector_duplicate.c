@@ -21,9 +21,9 @@ vector_t vector_duplicate_z(vector_c source, size_t z) {
 int main() {
   int *source = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
   int *result;
+  int number = 0;
 
   // It evaluates its vector argument once
-  int number = 0;
   result = vector_duplicate((number++, source));
   assert(number == 1);
   vector_delete(result);
@@ -31,6 +31,9 @@ int main() {
   // It calls vector_duplicate_z() with the element size of the vector
   vector_delete(vector_duplicate(source));
   assert(last_z == sizeof(int));
+
+  // Its expansion is an expression
+  assert(vector_delete(vector_duplicate(source)) == NULL);
 
   // When malloc() with the source's volume is unsuccessful, and the source's
   // length is the same as its volume, it returns NULL with errno = ENOMEM

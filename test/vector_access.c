@@ -24,6 +24,9 @@ void test_vector_at(void) {
   vector_at(vector, 1, (number++, sizeof(int)));
   assert(number == 3);
 
+  // Its expansion is an expression
+  assert(vector_at(vector, 0, sizeof(int)));
+
   vector_delete(vector);
 
   // With a const int * its result type is const int *

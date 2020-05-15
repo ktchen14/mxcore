@@ -14,6 +14,24 @@ __attribute__((used)) void *stub_malloc(size_t size) {
 }
 
 int main() {
+  int number = 0;
+
+  // It evaluates each argument once
+  vector_delete(vector_define(int, (number++, 1), 2, 3, 5));
+  assert(number == 1);
+
+  vector_delete(vector_define(int, 1, (number++, 2), 3, 5));
+  assert(number == 2);
+
+  vector_delete(vector_define(int, 1, 2, (number++, 3), 5));
+  assert(number == 3);
+
+  vector_delete(vector_define(int, 1, 2, 3, (number++, 5)));
+  assert(number == 4);
+
+  // Its expansion is an expression
+  assert(vector_delete(vector_define(int, 1)) == NULL);
+
   // When the allocation is unsuccessful it returns NULL with errno retained
   // from malloc()
   malloc_errno = ENOENT;

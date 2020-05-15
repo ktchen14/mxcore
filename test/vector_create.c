@@ -58,6 +58,9 @@ void test_vector_import(void) {
   vector_delete(vector_import(data, length));
   assert(last_z == sizeof(int));
 
+  // Its expansion is an expression
+  assert(vector_delete(vector_import(data, length)) == NULL);
+
   // With a length that causes the vector size, when added to the header size,
   // to overflow a size_t; it returns NULL with errno = ENOMEM.
   errno = 0;

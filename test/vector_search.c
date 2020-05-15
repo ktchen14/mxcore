@@ -36,7 +36,7 @@ size_t vector_find_next_z(
 
 void test_vector_find_next(void) {
   int *vector = vector_define(int, 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5);
-  int data = 0;
+  int data = 2;
   int number = 0;
   size_t result;
 
@@ -59,6 +59,9 @@ void test_vector_find_next(void) {
   // It calls vector_find_next_z() with the element size of the vector
   result = vector_find_next(vector, 0, eqintp, &data);
   assert(last_find_next_z == sizeof(vector[0]));
+
+  // Its expansion is an expression
+  assert(vector_find_next(vector, 0, eqintp, &data));
 
   // When the index is the vector's length it returns SIZE_MAX
   result = vector_find_next(vector, vector_length(vector), eqintp, &data);
@@ -99,7 +102,7 @@ size_t vector_find_z(
 
 void test_vector_find(void) {
   int *vector = vector_define(int, 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5);
-  int data = 0;
+  int data = 2;
   int number = 0;
   size_t result;
 
@@ -118,6 +121,9 @@ void test_vector_find(void) {
   // It calls vector_find_z() with the element size of the vector
   result = vector_find(vector, eqintp, &data);
   assert(last_find_z == sizeof(vector[0]));
+
+  // Its expansion is an expression
+  assert(vector_find(vector, eqintp, &data));
 
   // It delegates to vector_find_next_z() with index as 0
   result = vector_find(vector, eqintp, &data);
@@ -145,7 +151,7 @@ size_t vector_find_last_z(
 
 void test_vector_find_last(void) {
   int *vector = vector_define(int, 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5);
-  int data = 0;
+  int data = 2;
   int number = 0;
   size_t result;
 
@@ -168,6 +174,9 @@ void test_vector_find_last(void) {
   // It calls vector_find_last_z() with the element size of the vector
   result = vector_find_last(vector, 0, eqintp, &data);
   assert(last_find_last_z == sizeof(vector[0]));
+
+  // Its expansion is an expression
+  assert(vector_find_last(vector, vector_length(vector), eqintp, &data));
 
   // With index 0 it returns SIZE_MAX
   assert(vector_find_last(vector, 0, eqintp, &data) == SIZE_MAX);
@@ -217,7 +226,7 @@ size_t vector_search_z(
 
 void test_vector_search(void) {
   int *vector = vector_define(int, 2, 2, 1, 3, 3, 3, 5, 5, 5, 5, 5);
-  int elmt = 4;
+  int elmt = 1;
   int number = 0;
   size_t result;
 
@@ -236,6 +245,9 @@ void test_vector_search(void) {
   // It calls vector_search_z() with the element size of the vector
   result = vector_search(vector, &elmt, cmpintp_parity);
   assert(last_search_z == sizeof(vector[0]));
+
+  // Its expansion is an expression
+  assert(vector_search(vector, &elmt, cmpintp_parity));
 
   // It returns the index of the first element in the vector that compares equal
   // to the element

@@ -46,6 +46,9 @@ int main() {
   vector_sort(vector, cmpintp);
   assert(last_sort_z == sizeof(vector[0]));
 
+  // Its expansion is an expression
+  assert((vector_sort(vector, cmpintp), 1));
+
   // It sorts the vector with the comparator
   vector_sort(vector, cmpintp_parity);
   assert_vector_data(vector, 2, 8, 1, 3, 5, 13);

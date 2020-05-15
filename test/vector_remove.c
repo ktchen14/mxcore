@@ -26,23 +26,23 @@ void test_vector_excise(void) {
   int number = 0;
 
   // It evaluates its vector argument once
-  vector = vector_excise((number++, vector), 1, 2);
+  vector = vector_excise((number++, vector), 1, 0);
   assert(number == 1);
 
   // It evaluates its index argument once
-  vector = vector_excise(vector, (number++, 1), 2);
+  vector = vector_excise(vector, (number++, 1), 0);
   assert(number == 2);
 
   // It evaluates its length argument once
-  vector = vector_excise(vector, 1, (number++, 2));
+  vector = vector_excise(vector, 1, (number++, 0));
   assert(number == 3);
 
   // It calls vector_excise_z() with the element size of the vector
-  vector = vector_excise(vector, 1, 2);
+  vector = vector_excise(vector, 1, 0);
   assert(last_excise_z == sizeof(vector[0]));
 
-  vector_delete(vector);
-  vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
+  // Its expansion is an expression
+  assert(vector = vector_excise(vector, 1, 0));
 
   // It removes length elements at the index from the vector
   vector = vector_excise(vector, 2, 3);
@@ -96,6 +96,9 @@ void test_vector_remove(void) {
   vector = vector_remove(vector, 2);
   assert(last_remove_z == sizeof(vector[0]));
 
+  // Its expansion is an expression
+  assert(vector = vector_remove(vector, 2));
+
   // It delegates to vector_excise_z() with length as 1
   int *result = vector_remove(vector, 2);
   assert(last_vector == vector);
@@ -130,7 +133,7 @@ void test_vector_truncate(void) {
   vector = vector_truncate(vector, vector_length(vector) - 1);
   assert(last_truncate_z == sizeof(vector[0]));
 
-  // It's expansion is an expression
+  // Its expansion is an expression
   assert(vector = vector_truncate(vector, vector_length(vector) - 1));
 
   // It delegates to vector_excise_z() with i and n calculated from length and

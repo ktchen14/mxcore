@@ -29,6 +29,9 @@ int main() {
   vector_swap(vector, 0, 3);
   assert(last_z == sizeof(int));
 
+  // Its expansion is an expression
+  assert((vector_swap(vector, 0, 0), 1));
+
   // It swaps the element at index i with the element at index j in the vector.
   // No other elements in the vector are modified.
   vector_swap(vector, 1, 4);

@@ -54,6 +54,9 @@ void test_vector_debug(void) {
   vector_debug(vector, debugintp);
   assert(last_debug_z == sizeof(vector[0]));
 
+  // Its expansion is an expression
+  assert((vector_debug(vector, debugintp), 1));
+
   // It prints debugging information about each element in the vector to stderr
   stderr_stream = redirect_stderr();
   vector_debug(vector, debugintp);

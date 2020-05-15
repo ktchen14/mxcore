@@ -29,7 +29,7 @@ void test_vector_pull(void) {
   vector = vector_pull(vector, NULL);
   assert(last_pull_z == sizeof(int));
 
-  // It's expansion is an expression
+  // Its expansion is an expression
   assert(vector = vector_pull(vector, NULL));
 
   vector_delete(vector);

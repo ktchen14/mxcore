@@ -16,20 +16,23 @@ void test_vector_move(void) {
   int number = 0;
 
   // It evaluates its vector argument once
-  vector_move((number++, vector), 0, 3);
+  vector_move((number++, vector), 0, 0);
   assert(number == 1);
 
   // It evaluates its index i argument once
-  vector_move(vector, (number++, 0), 3);
+  vector_move(vector, (number++, 0), 0);
   assert(number == 2);
 
   // It evaluates its index j argument once
-  vector_move(vector, 0, (number++, 3));
+  vector_move(vector, 0, (number++, 0));
   assert(number == 3);
 
   // It calls vector_move_z() with the element size of the vector
-  vector_move(vector, 0, 3);
+  vector_move(vector, 0, 0);
   assert(last_move_z == sizeof(vector[0]));
+
+  // Its expansion is an expression
+  assert((vector_move(vector, 0, 0), 1));
 
   // When the source index is before the target index, it moves the element at
   // the source index to the target index in the vector.
@@ -60,20 +63,23 @@ void test_vector_swap(void) {
   int number = 0;
 
   // It evaluates its vector argument once
-  vector_swap((number++, vector), 0, 3);
+  vector_swap((number++, vector), 0, 0);
   assert(number == 1);
 
   // It evaluates its index i argument once
-  vector_swap(vector, (number++, 0), 3);
+  vector_swap(vector, (number++, 0), 0);
   assert(number == 2);
 
   // It evaluates its index j argument once
-  vector_swap(vector, 0, (number++, 3));
+  vector_swap(vector, 0, (number++, 0));
   assert(number == 3);
 
   // It calls vector_swap_z() with the element size of the vector
-  vector_swap(vector, 0, 3);
+  vector_swap(vector, 0, 0);
   assert(last_swap_z == sizeof(vector[0]));
+
+  // Its expansion is an expression
+  assert((vector_swap(vector, 0, 0), 1));
 
   // It swaps the element at index i with the element at index j
   vector_swap(vector, 1, 5);
