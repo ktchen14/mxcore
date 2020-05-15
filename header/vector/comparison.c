@@ -3,7 +3,6 @@
 #ifndef VECTOR_COMPARISON_C
 #define VECTOR_COMPARISON_C
 
-#include <stdbool.h>
 #include <stddef.h>
 
 #include "common.h"
@@ -14,36 +13,37 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-inline static __attribute__((nonnull(1, 2), unused))
-bool __vector_data_as_eq(const void *a, const void *b, void *data) {
-  return ((bool (*)(const void *a, const void *b)) data)(a, b);
+static inline __attribute__((nonnull(1, 2), unused))
+_Bool __vector_data_as_eq(const void *a, const void *b, void *data) {
+  _Bool (*eq)(const void *a, const void *b) __attribute__((nonnull)) = data;
+  return eq(a, b);
 }
 
-inline bool vector_eq_z(
+inline _Bool vector_eq_z(
     vector_c va,
     vector_c vb,
-    bool (*eq)(const void *a, const void *b),
+    _Bool (*eq)(const void *a, const void *b),
     size_t za,
     size_t zb) {
   return vector_eq_with_z(va, vb, __vector_data_as_eq, eq, za, zb);
 }
 
-inline bool vector_eq_with_z(
+inline _Bool vector_eq_with_z(
     vector_c va,
     vector_c vb,
-    bool (*eq)(const void *a, const void *b, void *data),
+    _Bool (*eq)(const void *a, const void *b, void *data),
     void *data,
     size_t za,
     size_t zb) {
   if (vector_length(va) != vector_length(vb))
-    return false;
+    return 0;
 
   for (size_t i = 0; i < vector_length(va); i++) {
     if (!eq(vector_at(va, i, za), vector_at(vb, i, zb), data))
-      return false;
+      return 0;
   }
 
-  return true;
+  return 1;
 }
 
 #ifdef VECTOR_TEST

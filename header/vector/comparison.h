@@ -18,7 +18,8 @@
 /**
  * @brief Return whether vector @a va is equivalent to vector @a vb
  *
- * Here equivalence means that:
+ * Here "equivalent" means that both of @a va and @a vb are @c NULL, or neither
+ * @a va or @a vb is @c NULL and:
  *
  * - @a va and @a vb have the same length, and
  * - @a eq returns @c true when called on each element in @a va and the element
@@ -30,15 +31,16 @@
  *   element in @a va is equivalent to an element in @a vb
  * @return whether vector @a va is equivalent to vector @a vb
  */
-//= bool vector_eq(
-//=     vector_c va, vector_c vb, bool (*eq)(const void *a, const void *b))
+//= _Bool vector_eq(
+//=     vector_c va, vector_c vb, _Bool (*eq)(const void *a, const void *b))
 #define vector_eq(va, vb, ...) \
   vector_eq_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb))
 
 /**
  * @brief Return whether vector @a va is equivalent to vector @a vb
  *
- * Here equivalence means that:
+ * Here "equivalent" means that both of @a va and @a vb are @c NULL, or neither
+ * @a va or @a vb is @c NULL and:
  *
  * - @a va and @a vb have the same length, and
  * - @a eq returns @c true when called on each element in @a va and the element
@@ -52,17 +54,19 @@
  * @param zb the element size of @a vb
  * @return whether vector @a va is equivalent to vector @a vb
  */
-inline bool vector_eq_z(
+inline _Bool vector_eq_z(
     vector_c va,
     vector_c vb,
-    bool (*eq)(const void *a, const void *b),
+    _Bool (*eq)(const void *a, const void *b) __attribute__((nonnull)),
     size_t za,
-    size_t zb);
+    size_t zb)
+  __attribute__((nonnull(3)));
 
 /**
  * @brief Return whether vector @a va is equivalent to vector @a vb
  *
- * Here equivalence means that:
+ * Here "equivalent" means that both of @a va and @a vb are @c NULL, or neither
+ * @a va or @a vb is @c NULL and:
  *
  * - @a va and @a vb have the same length, and
  * - @a eq returns @c true when called on each element in @a va and the element
@@ -75,10 +79,10 @@ inline bool vector_eq_z(
  * @param data contextual information to pass as the last argument to @a eq
  * @return whether vector @a va is equivalent to vector @a vb
  */
-//= bool vector_eq_with(
+//= _Bool vector_eq_with(
 //=     vector_c va,
 //=     vector_c vb,
-//=     bool (*eq)(const void *a, const void *b, void *data),
+//=     _Bool (*eq)(const void *a, const void *b, void *data),
 //=     void *data)
 #define vector_eq_with(va, vb, ...) \
   vector_eq_with_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb))
@@ -86,7 +90,8 @@ inline bool vector_eq_z(
 /**
  * @brief Return whether vector @a va is equivalent to vector @a vb
  *
- * Here equivalence means that:
+ * Here "equivalent" means that both of @a va and @a vb are @c NULL, or neither
+ * @a va or @a vb is @c NULL and:
  *
  * - @a va and @a vb have the same length, and
  * - @a eq returns @c true when called on each element in @a va and the element
@@ -101,13 +106,15 @@ inline bool vector_eq_z(
  * @param zb the element size of @a vb
  * @return whether vector @a va is equivalent to vector @a vb
  */
-inline bool vector_eq_with_z(
+inline _Bool vector_eq_with_z(
     vector_c va,
     vector_c vb,
-    bool (*eq)(const void *a, const void *b, void *data),
+    _Bool (*eq)(const void *a, const void *b, void *data)
+      __attribute__((nonnull(1, 2))),
     void *data,
     size_t za,
-    size_t zb);
+    size_t zb)
+  __attribute__((nonnull(3)));
 
 //= int vector_cmp(
 //=     vector_c va, vector_c vb, int (*cmp)(const void *a, const void *b))
