@@ -78,7 +78,7 @@ void test_vector_insert(void) {
   assert(last_inject_z == sizeof(vector[0]));
   assert(result == last_result);
 
-  vector_delete(vector);
+  vector_delete(result);
 }
 
 void test_vector_inject(void) {
@@ -178,7 +178,7 @@ void test_vector_append(void) {
   assert(last_inject_z == sizeof(vector[0]));
   assert(result == last_result);
 
-  vector_delete(vector);
+  vector_delete(result);
 }
 
 void test_vector_extend(void) {
@@ -213,7 +213,7 @@ void test_vector_extend(void) {
   assert(last_inject_z == sizeof(vector[0]));
   assert(result == last_result);
 
-  vector_delete(vector);
+  vector_delete(result);
 }
 
 int main() {

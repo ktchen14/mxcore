@@ -101,7 +101,7 @@ void test_vector_remove(void) {
   assert(last_excise_z == sizeof(vector[0]));
   assert(result == last_result);
 
-  vector_delete(vector);
+  vector_delete(result);
 }
 
 // vector_truncate(), vector_truncate_z()
