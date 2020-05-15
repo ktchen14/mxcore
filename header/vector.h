@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file header/vector.h
  *
  * A vector is a dynamic array that behaves similar to a C array. In fact a
  * vector and a C array.
@@ -28,19 +28,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#include <stdbool.h>
 #include <stddef.h>
 
 #include "vector/common.h"
-
-/**
- * @brief The equality function type to return whether @a a and @a b are
- *        equivalent
- *
- * An function of this type must return @c 0 if @a a and @a b aren't equivalent
- * and any @c int other than @c 0 if @a a and @a b are equivalent.
- */
-typedef int (*eq_f)(const void *a, const void *b);
 
 /**
  * @brief Allocate and initialize a vector by duplicating @a source
@@ -67,42 +57,16 @@ vector_t vector_duplicate_z(vector_c source, size_t z)
 #define vector_duplicate(source) \
   vector_duplicate_z(source, VECTOR_Z((source)))
 
-#include "vector/delete.h"
-
 #include "vector/access.h"
-
 #include "vector/create.h"
-#include "vector/move.h"
-
-#include "vector/resize.h"
-#include "vector/insert.h"
-#include "vector/remove.h"
-
-#include "vector/shift.h"
-
-/**
- * @brief Return whether the elements in @a a and @a b are equal according to
- *        @a eqf
- *
- * If the element type of @a a differs from the element type of @a b then the
- * behavior is undefined.
- */
-bool vector_eq_z(
-    vector_c a,
-    vector_c b,
-    int (*eqf)(const void *a, const void *b),
-    size_t z)
-  __attribute__((nonnull(1, 2)));
-
-#define vector_eq(a, ...) vector_eq_z((a), __VA_ARGS__, VECTOR_Z((a)))
-
-/// Return whether the elements in @a a and @a b differ according to @a eqf
-bool vector_ne_z(vector_c a, vector_c b, eq_f eqf, size_t z);
-
-#define vector_ne(a, b, eqf) vector_ne_z((a), (b), (eqf), sizeof((a)[0]))
-
-#include "vector/search.h"
-#include "vector/sort.h"
 #include "vector/debug.h"
+#include "vector/delete.h"
+#include "vector/insert.h"
+#include "vector/move.h"
+#include "vector/remove.h"
+#include "vector/resize.h"
+#include "vector/search.h"
+#include "vector/shift.h"
+#include "vector/sort.h"
 
 #endif /* VECTOR_H */
