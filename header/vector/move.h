@@ -25,6 +25,10 @@
  * If either @a i or @a j isn't an index in the @a vector then the behavior of
  * this operation is undefined.
  *
+ * @param vector the vector to operate on
+ * @param i the index of an element in the @a vector to swap
+ * @param j the index of an element in the @a vector to swap
+ *
  * @see vector_swap_z() - The explicit interface analogue
  */
 //= void vector_swap(vector_t vector, size_t i, size_t j)
@@ -69,13 +73,11 @@ inline void vector_swap_z(vector_t vector, size_t i, size_t j, size_t z)
  * @param vector the vector to operate on
  * @param target the index in the @a vector to move the element to
  * @param source the index of the element in the @a vector to move
- * @param z the element size of the @a vector
  *
- * @see vector_move() - The implicit interface analogue
+ * @see vector_move_z() - The explicit interface analogue
  */
-inline void vector_move_z(
-    vector_t vector, size_t target, size_t source, size_t z)
-  __attribute__((nonnull));
+//= void vector_move(vector_t vector, size_t target, size_t source)
+#define vector_move(v, ...) vector_move_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
  * @brief Move the element at index @a source to index @a target in the
@@ -101,10 +103,11 @@ inline void vector_move_z(
  * @param source the index of the element in the @a vector to move
  * @param z the element size of the @a vector
  *
- * @see vector_move_z() - The explicit interface analogue
+ * @see vector_move() - The implicit interface analogue
  */
-//= void vector_move(vector_t vector, size_t target, size_t source)
-#define vector_move(v, ...) vector_move_z((v), __VA_ARGS__, VECTOR_Z((v)))
+inline void vector_move_z(
+    vector_t vector, size_t target, size_t source, size_t z)
+  __attribute__((nonnull));
 
 #ifdef VECTOR_TEST
 #undef inline

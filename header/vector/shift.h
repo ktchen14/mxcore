@@ -40,7 +40,7 @@
  * @param elmt the location to copy the element to or @c NULL
  * @return the resultant vector
  */
-//= vector_t vector_pull_z(vector_t vector, void *elmt, size_t z)
+//= vector_t vector_pull(vector_t vector, void *elmt)
 #define vector_pull(v, ...) vector_pull_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**
@@ -88,7 +88,7 @@ inline vector_t vector_pull_z(vector_t vector, void *elmt, size_t z)
  * @param elmt the location to copy the element to or @c NULL
  * @return the resultant vector
  */
-//= vector_t vector_shift_z(vector_t vector, void *elmt, size_t z)
+//= vector_t vector_shift(vector_t vector, void *elmt)
 #define vector_shift(v, ...) vector_shift_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**

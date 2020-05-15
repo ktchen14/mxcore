@@ -249,12 +249,11 @@ inline size_t vector_find_last_z(
  * @param vector the vector to operate on
  * @param elmt the element to search for
  * @param cmpf the function to use to determine equality
- * @param z the element size of the @a vector
  * @return the index of the element on success; otherwise @c SIZE_MAX
  *
  * @see vector_search_z() The equivalent operation in the explicit interface
  */
-//= size_t vector_search_z(
+//= size_t vector_search(
 //=     vector_c vector,
 //=     const void *elmt,
 //=     int (*cmpf)(const void *a, const void *b))

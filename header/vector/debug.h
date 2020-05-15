@@ -20,7 +20,7 @@
  * @param elmt_debug the function that will be called to print debugging
  *   information about each element in the @a vector
  */
-//= void vector_debug_z(vector_c vector, void (*elmt_debug)(const void *elmt))
+//= void vector_debug(vector_c vector, void (*elmt_debug)(const void *elmt))
 #define vector_debug(v, ...) vector_debug_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
 /**

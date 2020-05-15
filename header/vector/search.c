@@ -18,7 +18,7 @@
 
 inline size_t vector_find_z(
     vector_c vector,
-    bool (*eqf)(const void *a, const void *b),
+    bool (*eqf)(const void *elmt, const void *data),
     const void *data,
     size_t z) {
   return vector_find_next_z(vector, 0, eqf, data, z);
@@ -27,7 +27,7 @@ inline size_t vector_find_z(
 inline size_t vector_find_next_z(
     vector_c vector,
     size_t i,
-    bool (*eqf)(const void *a, const void *b),
+    bool (*eqf)(const void *elmt, const void *data),
     const void *data,
     size_t z) {
   for (; i < vector_length(vector); i++) {
@@ -40,7 +40,7 @@ inline size_t vector_find_next_z(
 inline size_t vector_find_last_z(
     vector_c vector,
     size_t i,
-    bool (*eqf)(const void *a, const void *b),
+    bool (*eqf)(const void *elmt, const void *data),
     const void *data,
     size_t z) {
   while (i-- > 0) {
