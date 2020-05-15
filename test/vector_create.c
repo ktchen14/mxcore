@@ -44,12 +44,10 @@ void test_vector_import(void) {
   size_t length = sizeof(data) / sizeof(data[0]);
   int number = 0;
 
-  // It evaluates its data argument once
+  // It evaluates each argument once
   vector = vector_import((number++, data), length);
   assert(number == 1);
   vector_delete(vector);
-
-  // It evaluates its length argument once
   vector = vector_import(data, (number++, length));
   assert(number == 2);
   vector_delete(vector);

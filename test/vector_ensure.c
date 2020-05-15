@@ -26,11 +26,9 @@ int main() {
   int number = 0;
   size_t volume;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_ensure((number++, vector), 10);
   assert(number == 1);
-
-  // It evaluates its volume argument once
   vector = vector_ensure(vector, (number++, 12));
   assert(number == 2);
 

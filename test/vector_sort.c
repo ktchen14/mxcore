@@ -34,11 +34,9 @@ int main() {
   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector_sort((number++, vector), cmpintp);
   assert(number == 1);
-
-  // It evaluates its comparator argument once
   vector_sort(vector, (number++, cmpintp));
   assert(number == 2);
 

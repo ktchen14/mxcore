@@ -19,13 +19,10 @@ int main() {
   // It evaluates each argument once
   vector_delete(vector_define(int, (number++, 1), 2, 3, 5));
   assert(number == 1);
-
   vector_delete(vector_define(int, 1, (number++, 2), 3, 5));
   assert(number == 2);
-
   vector_delete(vector_define(int, 1, 2, (number++, 3), 5));
   assert(number == 3);
-
   vector_delete(vector_define(int, 1, 2, 3, (number++, 5)));
   assert(number == 4);
 

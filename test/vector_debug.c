@@ -42,11 +42,9 @@ void test_vector_debug(void) {
   FILE *stderr_stream;
   char buffer[4096];
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector_debug((number++, vector), debugintp);
   assert(number == 1);
-
-  // It evaluates its index argument once
   vector_debug(vector, (number++, debugintp));
   assert(number == 2);
 

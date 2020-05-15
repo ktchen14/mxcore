@@ -23,7 +23,7 @@ int main() {
   size_t length;
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_shrink((number++, vector));
   assert(number == 1);
 

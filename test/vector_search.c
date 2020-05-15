@@ -40,19 +40,13 @@ void test_vector_find_next(void) {
   int number = 0;
   size_t result;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   result = vector_find_next((number++, vector), 0, eqintp, &data);
   assert(number == 1);
-
-  // It evaluates its index argument once
   result = vector_find_next(vector, (number++, 0), eqintp, &data);
   assert(number == 2);
-
-  // It evaluates its equality function argument once
   result = vector_find_next(vector, 0, (number++, eqintp), &data);
   assert(number == 3);
-
-  // It evaluates its data argument once
   result = vector_find_next(vector, 0, eqintp, (number++, &data));
   assert(number == 4);
 
@@ -106,15 +100,11 @@ void test_vector_find(void) {
   int number = 0;
   size_t result;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   result = vector_find((number++, vector), eqintp, &data);
   assert(number == 1);
-
-  // It evaluates its equality function argument once
   result = vector_find(vector, (number++, eqintp), &data);
   assert(number == 2);
-
-  // It evaluates its data argument once
   result = vector_find(vector, eqintp, (number++, &data));
   assert(number == 3);
 
@@ -155,19 +145,13 @@ void test_vector_find_last(void) {
   int number = 0;
   size_t result;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   result = vector_find_last((number++, vector), 0, eqintp, &data);
   assert(number == 1);
-
-  // It evaluates its index argument once
   result = vector_find_last(vector, (number++, 0), eqintp, &data);
   assert(number == 2);
-
-  // It evaluates its equality function argument once
   result = vector_find_last(vector, 0, (number++, eqintp), &data);
   assert(number == 3);
-
-  // It evaluates its data argument once
   result = vector_find_last(vector, 0, eqintp, (number++, &data));
   assert(number == 4);
 
@@ -230,15 +214,11 @@ void test_vector_search(void) {
   int number = 0;
   size_t result;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   result = vector_search((number++, vector), &elmt, cmpintp_parity);
   assert(number == 1);
-
-  // It evaluates its element argument once
   result = vector_search(vector, (number++, &elmt), cmpintp_parity);
   assert(number == 2);
-
-  // It evaluates its comparison function argument once
   result = vector_search(vector, &elmt, (number++, cmpintp_parity));
   assert(number == 3);
 

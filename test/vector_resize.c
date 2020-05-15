@@ -25,11 +25,9 @@ int main() {
   size_t length;
   size_t volume;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_resize((number++, vector), 10);
   assert(number == 1);
-
-  // It evaluates its volume argument once
   vector = vector_resize(vector, (number++, 12));
   assert(number == 2);
 

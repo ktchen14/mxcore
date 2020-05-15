@@ -25,15 +25,11 @@ void test_vector_excise(void) {
   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_excise((number++, vector), 1, 0);
   assert(number == 1);
-
-  // It evaluates its index argument once
   vector = vector_excise(vector, (number++, 1), 0);
   assert(number == 2);
-
-  // It evaluates its length argument once
   vector = vector_excise(vector, 1, (number++, 0));
   assert(number == 3);
 
@@ -84,11 +80,9 @@ void test_vector_remove(void) {
   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_remove((number++, vector), 2);
   assert(number == 1);
-
-  // It evaluates its index argument once
   vector = vector_remove(vector, (number++, 2));
   assert(number == 2);
 
@@ -121,11 +115,9 @@ void test_vector_truncate(void) {
   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_truncate((number++, vector), vector_length(vector) - 1);
   assert(number == 1);
-
-  // It evaluates its length argument once
   vector = vector_truncate(vector, (number++, vector_length(vector) - 1));
   assert(number == 2);
 

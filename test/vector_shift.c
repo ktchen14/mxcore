@@ -17,11 +17,9 @@ void test_vector_pull(void) {
   int elmt;
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_pull((number++, vector), NULL);
   assert(number == 1);
-
-  // It evaluates its element argument once
   vector = vector_pull(vector, (number++, NULL));
   assert(number == 2);
 
@@ -65,11 +63,9 @@ void test_vector_shift(void) {
   int elmt;
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_shift((number++, vector), NULL);
   assert(number == 1);
-
-  // It evaluates its element argument once
   vector = vector_shift(vector, (number++, NULL));
   assert(number == 2);
 

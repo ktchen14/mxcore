@@ -23,7 +23,7 @@ int main() {
   int *result;
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   result = vector_duplicate((number++, source));
   assert(number == 1);
   vector_delete(result);

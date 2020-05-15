@@ -7,25 +7,21 @@ void test_vector_at(void) {
   int *vector = vector_define(int, 1, 2, 3, 4, 5, 6, 7, 8);
   int number = 0;
 
-  // Its result is equivalent to pointer addition on the vector
-  assert(vector_at(vector, 0, sizeof(int)) == vector + 0);
-  assert(vector_at(vector, 4, sizeof(int)) == vector + 4);
-  assert(vector_at(vector, 8, sizeof(int)) == vector + 8);
-
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector_at((number++, vector), 1, sizeof(int));
   assert(number == 1);
-
-  // It evaluates its index argument once
   vector_at(vector, (number++, 1), sizeof(int));
   assert(number == 2);
-
-  // It evaluates its element size argument once
   vector_at(vector, 1, (number++, sizeof(int)));
   assert(number == 3);
 
   // Its expansion is an expression
   assert(vector_at(vector, 0, sizeof(int)));
+
+  // Its result is equivalent to pointer addition on the vector
+  assert(vector_at(vector, 0, sizeof(int)) == vector + 0);
+  assert(vector_at(vector, 4, sizeof(int)) == vector + 4);
+  assert(vector_at(vector, 8, sizeof(int)) == vector + 8);
 
   vector_delete(vector);
 

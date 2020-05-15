@@ -54,15 +54,11 @@ void test_vector_insert(void) {
   int data = 13;
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_insert((number++, vector), 2, &data);
   assert(number == 1);
-
-  // It evaluates its index argument once
   vector = vector_insert(vector, (number++, 2), &data);
   assert(number == 2);
-
-  // It evaluates its element argument once
   vector = vector_insert(vector, 2, (number++, &data));
   assert(number == 3);
 
@@ -92,19 +88,13 @@ void test_vector_inject(void) {
   size_t data_length = sizeof(data) / sizeof(data[0]);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_inject((number++, vector), 2, &data, data_length);
   assert(number == 1);
-
-  // It evaluates its index argument once
   vector = vector_inject(vector, (number++, 2), &data, data_length);
   assert(number == 2);
-
-  // It evaluates its element argument once
   vector = vector_inject(vector, 2, (number++, &data), data_length);
   assert(number == 3);
-
-  // It evaluates its length argument once
   vector = vector_inject(vector, 2, &data, (number++, data_length));
   assert(number == 4);
 
@@ -164,11 +154,9 @@ void test_vector_append(void) {
   int data = 13;
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_append((number++, vector), &data);
   assert(number == 1);
-
-  // It evaluates its element argument once
   vector = vector_append(vector, (number++, &data));
   assert(number == 2);
 
@@ -199,15 +187,11 @@ void test_vector_extend(void) {
   size_t data_length = sizeof(data) / sizeof(data[0]);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector = vector_extend((number++, vector), &data, data_length);
   assert(number == 1);
-
-  // It evaluates its element argument once
   vector = vector_extend(vector, (number++, &data), data_length);
   assert(number == 2);
-
-  // It evaluates its length argument once
   vector = vector_extend(vector, &data, (number++, data_length));
   assert(number == 3);
 

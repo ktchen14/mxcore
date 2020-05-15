@@ -13,15 +13,11 @@ int main() {
   int *vector = vector_define(int, 1, 2, 3, 5, 8, 13);
   int number = 0;
 
-  // It evaluates its vector argument once
+  // It evaluates each argument once
   vector_swap((number++, vector), 0, 3);
   assert(number == 1);
-
-  // It evaluates its index i argument once
   vector_swap(vector, (number++, 0), 3);
   assert(number == 2);
-
-  // It evaluates its index j argument once
   vector_swap(vector, 0, (number++, 3));
   assert(number == 3);
 
