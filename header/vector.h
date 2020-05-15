@@ -58,6 +58,7 @@ vector_t vector_duplicate_z(vector_c source, size_t z)
   vector_duplicate_z(source, VECTOR_Z((source)))
 
 #include "vector/access.h"
+#include "vector/comparison.h"
 #include "vector/create.h"
 #include "vector/debug.h"
 #include "vector/delete.h"

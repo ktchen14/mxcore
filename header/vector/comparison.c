@@ -35,6 +35,11 @@ inline _Bool vector_eq_with_z(
     void *data,
     size_t za,
     size_t zb) {
+  if (va == NULL && vb == NULL)
+    return 1;
+  if (va == NULL || vb == NULL)
+    return 0;
+
   if (vector_length(va) != vector_length(vb))
     return 0;
 

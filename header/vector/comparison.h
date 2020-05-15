@@ -34,7 +34,7 @@
 //= _Bool vector_eq(
 //=     vector_c va, vector_c vb, _Bool (*eq)(const void *a, const void *b))
 #define vector_eq(va, vb, ...) \
-  vector_eq_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb))
+  vector_eq_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb)))
 
 /**
  * @brief Return whether vector @a va is equivalent to vector @a vb
@@ -86,7 +86,7 @@ inline _Bool vector_eq_z(
 //=     _Bool (*eq)(const void *a, const void *b, void *data),
 //=     void *data)
 #define vector_eq_with(va, vb, ...) \
-  vector_eq_with_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb))
+  vector_eq_with_z((va), (vb), __VA_ARGS__, VECTOR_Z((va)), VECTOR_Z((vb)))
 
 /**
  * @brief Return whether vector @a va is equivalent to vector @a vb with
