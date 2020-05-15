@@ -14,7 +14,7 @@
 
 inline void vector_debug_z(
     vector_c vector,
-    void (*elmt_debug)(const void *),
+    void (*elmt_debug)(const void *elmt),
     size_t z) {
   putc('[', stderr);
   for (size_t i = 0; i < vector_length(vector); i++) {
