@@ -111,7 +111,7 @@ void test_vector_inject(void) {
   // it returns NULL with errno = ENOMEM. The vector is unmodified.
   vector = vector_define(int, 1, 2, 3, 5);
 
-  int maximum_length = SIZE_MAX - vector_length(vector);
+  size_t maximum_length = SIZE_MAX - vector_length(vector);
   errno = 0;
   result = vector_inject(vector, 2, &data, maximum_length + 1);
   assert(result == NULL);
