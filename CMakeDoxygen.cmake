@@ -217,4 +217,4 @@ set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
 set(DOXYGEN_PREDEFINED "__attribute__(x)=" "DOXYGEN")
 
 
-doxygen_add_docs(documentation WORKING_DIRECTORY source)
+doxygen_add_docs(documentation)
