@@ -1,4 +1,4 @@
-/// @file header/vector/access.h
+/// @file header/vector/remove.h
 
 #ifndef VECTOR_REMOVE_H
 #define VECTOR_REMOVE_H

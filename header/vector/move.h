@@ -1,4 +1,4 @@
-/// @file header/vector/resize.h
+/// @file header/vector/move.h
 
 #ifndef VECTOR_MOVE_H
 #define VECTOR_MOVE_H

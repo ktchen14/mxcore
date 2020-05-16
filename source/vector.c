@@ -1,4 +1,4 @@
-/// @file vector.c
+/// @file source/vector.c
 
 #include <stddef.h>
 #include <stdlib.h>
