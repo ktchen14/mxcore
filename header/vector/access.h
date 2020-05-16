@@ -151,6 +151,27 @@ inline void vector_get(vector_c vector, size_t i, void *elmt, size_t z)
   __attribute__((nonnull));
 
 /**
+ * @brief Copy @a n elements from the @a vector starting at index @a i into @a
+ * elmt
+ *
+ * If @a i isn't an index in the @a vector or @a elmt is @c NULL then the
+ * behavior is undefined.
+ *
+ * If <code>i + n</code> is greater than the length of the @a vector, then the
+ * behavior is undefined.
+ * If <code>(i + n) * z</code> is greater than the size of @a elmt, the
+ * behavior is undefined
+ *
+ * @param vector the vector to operate on
+ * @param i the starting index of the elements in the @a vector to be copied
+ * @param elmt the location to copy the @a n elements to
+ * @param z the element size of the @a vector
+ *
+ */
+inline void vector_retrieve(vector_c vector, size_t i, void *elmt, size_t n, size_t z)
+  __attribute__((nonnull));
+
+/**
  * @brief Copy the object at @a elmt into the @a vector at index @a i
  *
  * @note Though this operation doesn't have the @c _z suffix, it @b is a part of
