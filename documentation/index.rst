@@ -5,8 +5,9 @@ Welcome to Vector's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   common
-
+   vector/common
+   vector/access
+   resize
 
 Indices and tables
 ==================

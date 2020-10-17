@@ -1,5 +1,7 @@
-Common
-======
+Common Definitions
+==================
+
+**Definitions:**
 
 .. list-table::
    :widths: auto
