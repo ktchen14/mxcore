@@ -12,6 +12,7 @@ Welcome to Vector's documentation!
    vector/resize
    vector/insert
    vector/remove
+   vector/move
 
 .. toctree::
    :hidden:
@@ -74,6 +75,11 @@ Welcome to Vector's documentation!
    * - `vector_truncate()`
      - Reduce the `length <vector_length>` of the *vector* to *length*
 
+   * - `vector_swap()`
+     - Swap the element at index *i* with the element at index *j* in the *vector*
+   * - `vector_move()`
+     - Move the element at index *source* to index *target* in the *vector*
+
 .. rubric:: Explicit Interface
 .. list-table::
    :widths: auto
@@ -115,6 +121,11 @@ Welcome to Vector's documentation!
      - Remove *n* elements at index *i* from the *vector*
    * - `vector_truncate_z()`
      - Reduce the `length <vector_length>` of the *vector* to *length*
+
+   * - `vector_swap_z()`
+     - Swap the element at index *i* with the element at index *j* in the *vector*
+   * - `vector_move_z()`
+     - Move the element at index *source* to index *target* in the *vector*
 
 Indices and tables
 ==================
