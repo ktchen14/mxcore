@@ -14,6 +14,7 @@ Welcome to Vector's documentation!
    vector/insert
    vector/remove
    vector/move
+   vector/shift
 
 .. toctree::
    :hidden:
@@ -84,6 +85,13 @@ Welcome to Vector's documentation!
    * - `vector_move()`
      - Move the element at index *source* to index *target* in the *vector*
 
+   * - `vector_push()`
+     - Insert the data at *elmt* as the last element in the *vector*
+   * - `vector_pull()`
+     - Copy the last element in the *vector* to *elmt* and remove it
+   * - `vector_shift()`
+     - Copy the first element in the *vector* to *elmt* and remove it
+
 .. rubric:: Explicit Interface
 .. list-table::
    :widths: auto
@@ -133,6 +141,13 @@ Welcome to Vector's documentation!
      - Swap the element at index *i* with the element at index *j* in the *vector*
    * - `vector_move_z()`
      - Move the element at index *source* to index *target* in the *vector*
+
+   * - `vector_push()`
+     - Insert the data at *elmt* as the last element in the *vector*
+   * - `vector_pull()`
+     - Copy the last element in the *vector* to *elmt* and remove it
+   * - `vector_shift()`
+     - Copy the first element in the *vector* to *elmt* and remove it
 
 Indices and tables
 ==================
