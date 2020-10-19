@@ -8,6 +8,8 @@ Welcome to Vector's documentation!
    vector/common
    vector/access
    vector/resize
+   vector/delete
+   vector/create
 
 .. toctree::
    :hidden:

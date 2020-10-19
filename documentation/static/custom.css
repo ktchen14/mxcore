@@ -1,3 +1,9 @@
 dl.function > dt {
   padding: 6px 10px;
 }
+
+dl.macro > dt {
+  margin: 25px 0px 10px 0px;
+  padding: 6px 10px;
+  background-color: #F5F5F5;
+}
