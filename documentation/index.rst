@@ -11,6 +11,7 @@ Welcome to Vector's documentation!
    vector/access
    vector/resize
    vector/insert
+   vector/remove
 
 .. toctree::
    :hidden:
@@ -66,6 +67,13 @@ Welcome to Vector's documentation!
    * - `vector_extend()`
      - Append *n* elements from *elmt* to the tail of the *vector*
 
+   * - `vector_remove()`
+     - Remove the element at index *i* from the *vector*
+   * - `vector_excise()`
+     - Remove *n* elements at index *i* from the *vector*
+   * - `vector_truncate()`
+     - Reduce the `length <vector_length>` of the *vector* to *length*
+
 .. rubric:: Explicit Interface
 .. list-table::
    :widths: auto
@@ -100,6 +108,13 @@ Welcome to Vector's documentation!
      - Insert the data at *elmt* as the last element in the *vector*
    * - `vector_extend_z()`
      - Append *n* elements from *elmt* to the tail of the *vector*
+
+   * - `vector_remove_z()`
+     - Remove the element at index *i* from the *vector*
+   * - `vector_excise_z()`
+     - Remove *n* elements at index *i* from the *vector*
+   * - `vector_truncate_z()`
+     - Reduce the `length <vector_length>` of the *vector* to *length*
 
 Indices and tables
 ==================
