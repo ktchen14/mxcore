@@ -1,5 +1,5 @@
-Element Ordering
-================
+Element Reordering
+==================
 
 .. rubric:: Implicit Interface
 .. list-table::
