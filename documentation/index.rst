@@ -5,9 +5,14 @@ Welcome to Vector's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   vector/common
-   vector/access
+   common
+   access
    resize
+
+.. toctree::
+   :hidden:
+
+   source/index
 
 Indices and tables
 ==================

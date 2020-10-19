@@ -1,19 +1,8 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+# Configuration file for the Sphinx documentation builder
 
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../aerate'))
-
 
 # -- Project information -----------------------------------------------------
 
@@ -32,12 +21,10 @@ release = '0.0.1'
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     "aerate",
 ]
 aerate_doxygen_root = os.path.abspath("../xml")
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = []
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -62,17 +49,15 @@ default_role = 'any'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for a
 # list of builtin themes.
-html_theme = 'nature'
-# html_theme = 'alabaster'
 import sphinx_readable_theme
-
 html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
 html_theme = 'readable'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = []
+html_static_path = ["static"]
+html_css_files = ["custom.css"]
 
 # The default language to highlight source code in.
 
