@@ -7,11 +7,6 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-/// @addtogroup vector_module Vector
-/// @{
-/// @name Removal
-/// @{
-
 #include "common.h"
 
 #include <stddef.h>
@@ -23,8 +18,9 @@
  * head of the @a vector.
  *
  * Once the element is removed and subsequent elements are shifted, if the
- * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
- * 2</code>, a vector_resize() will be attempted to reduce the @volume to:
+ * @length of the @a vector is reduced such that @f$ length \le
+ * \frac{1}{2}(volume - 1) @f$, a vector_resize() will be attempted to reduce
+ * the @volume to:
  *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
  * On success the shrunk vector will be returned. Otherwise the vector will be
  * returned as is (without the element).
@@ -45,8 +41,9 @@
  * head of the @a vector.
  *
  * Once the element is removed and subsequent elements are shifted, if the
- * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
- * 2</code>, a vector_resize_z() will be attempted to reduce the @volume to:
+ * @length of the @a vector is reduced such that @f$ length \le
+ * \frac{1}{2}(volume - 1) @f$, a vector_resize_z() will be attempted to reduce
+ * the @volume to:
  *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
  * On success the shrunk vector will be returned. Otherwise the vector will be
  * returned as is (without the element).
@@ -68,8 +65,9 @@ inline vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
  * elements toward the head of the @a vector.
  *
  * Once the elements are removed and subsequent elements are shifted, if the
- * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
- * 2</code>, a vector_resize() will be attempted to reduce the @volume to:
+ * @length of the @a vector is reduced such that @f$ length \le
+ * \frac{1}{2}(volume - 1) @f$, a vector_resize() will be attempted to reduce
+ * the @volume to:
  *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
  * On success the shrunk vector will be returned. Otherwise the vector will be
  * returned as is (without the elements).
@@ -92,8 +90,9 @@ inline vector_t vector_remove_z(vector_t vector, size_t i, size_t z)
  * elements toward the head of the @a vector.
  *
  * Once the elements are removed and subsequent elements are shifted, if the
- * @length of the @a vector is reduced such that <code>length <= (volume - 1) /
- * 2</code>, a vector_resize_z() will be attempted to reduce the @volume to:
+ * @length of the @a vector is reduced such that @f$ length \le
+ * \frac{1}{2}(volume - 1) @f$, a vector_resize_z() will be attempted to reduce
+ * the @volume to:
  *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
  * On success the shrunk vector will be returned. Otherwise the vector will be
  * returned as is (without the elements).
@@ -115,14 +114,8 @@ inline vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
  *
  * This will remove elements from the tail of the @a vector until its length is
  * @a length. The number of elements removed is the difference between @a length
- * and the length of the @a vector.
- *
- * Once the elements are removed, if the @length of the @a vector is reduced
- * such that <code>length <= (volume - 1) / 2</code>, a vector_resize() will be
- * attempted to reduce the @volume to:
- *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
- * On success the shrunk vector will be returned. Otherwise the vector will be
- * returned as is (without the elements).
+ * and the length of the @a vector. The resultant @volume of the @a vector will
+ * follow the rule in vector_excise().
  *
  * If @a length is greater than the @a length of the @a vector then the behavior
  * is undefined.
@@ -140,14 +133,8 @@ inline vector_t vector_excise_z(vector_t vector, size_t i, size_t n, size_t z)
  *
  * This will remove elements from the tail of the @a vector until its length is
  * @a length. The number of elements removed is the difference between @a length
- * and the length of the @a vector.
- *
- * Once the elements are removed, if the @length of the @a vector is reduced
- * such that <code>length <= (volume - 1) / 2</code>, a vector_resize_z() will
- * be attempted to reduce the volume to:
- *   @f[ volume = \frac{length \times 6 + 4}{5} @f]
- * On success the shrunk vector will be returned. Otherwise the vector will be
- * returned as is (without the elements).
+ * and the length of the @a vector. The resultant @volume of the @a vector will
+ * follow the rule in vector_excise_z().
  *
  * If @a length is greater than the @a length of the @a vector then the behavior
  * is undefined.
@@ -163,9 +150,6 @@ inline vector_t vector_truncate_z(vector_t vector, size_t length, size_t z)
 #ifdef VECTOR_TEST
 #undef inline
 #endif /* VECTOR_TEST */
-
-/// @}
-/// @}
 
 #endif /* VECTOR_REMOVE_H */
 
