@@ -10,6 +10,11 @@
 #define inline
 #endif /* VECTOR_TEST */
 
+/// @addtogroup vector_module Vector
+/// @{
+/// @name Access
+/// @{
+
 /**
  * @brief Return a pointer to the element in the @a vector at index @a i
  *
@@ -166,6 +171,9 @@ inline void vector_get(vector_c vector, size_t i, void *elmt, size_t z)
  */
 inline void vector_set(vector_t vector, size_t i, const void *elmt, size_t z)
   __attribute__((nonnull));
+
+/// @}
+/// @}
 
 #ifdef VECTOR_TEST
 #undef inline

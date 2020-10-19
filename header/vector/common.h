@@ -6,6 +6,9 @@
 #include <stdalign.h>
 #include <stddef.h>
 
+/// @addtogroup vector_module Vector
+/// @{
+
 /**
  * @brief Used to indicate a vector with an indeterminate element type
  *
@@ -95,6 +98,8 @@ inline size_t vector_volume(vector_c vector) {
 inline size_t vector_length(vector_c vector) {
   return __vector_to_header(vector)->length;
 }
+
+/// @}
 
 #endif /* VECTOR_COMMON_H */
 
