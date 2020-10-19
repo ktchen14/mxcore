@@ -10,11 +10,6 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-/// @addtogroup vector_module Vector
-/// @{
-/// @name Shifting and Pushing
-/// @{
-
 /// @copydoc vector_append()
 #define vector_push vector_append
 
@@ -116,9 +111,6 @@ inline vector_t vector_pull_z(vector_t vector, void *elmt, size_t z)
  */
 inline vector_t vector_shift_z(vector_t vector, void *elmt, size_t z)
   __attribute__((nonnull(1), warn_unused_result));
-
-/// @}
-/// @}
 
 #ifdef VECTOR_TEST
 #undef inline

@@ -10,11 +10,6 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-/// @addtogroup vector_module Vector
-/// @{
-/// @name Insertion and Extension
-/// @{
-
 /**
  * @brief Insert the data at @a elmt into the @a vector at index @a i
  *
@@ -248,9 +243,6 @@ inline vector_t vector_extend_z(
     size_t n,
     size_t z)
   __attribute__((nonnull(1), warn_unused_result));
-
-/// @}
-/// @}
 
 #ifdef VECTOR_TEST
 #undef inline

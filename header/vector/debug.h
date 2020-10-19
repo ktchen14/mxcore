@@ -10,9 +10,6 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-/// @addtogroup vector_module Vector
-/// @{
-
 /**
  * @brief Print debugging information about the @a vector to @c stderr
  *
@@ -36,8 +33,6 @@ inline void vector_debug_z(
     void (*elmt_debug)(const void *elmt),
     size_t z)
   __attribute__((nonnull));
-
-/// @}
 
 #ifdef VECTOR_TEST
 #undef inline

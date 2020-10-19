@@ -10,11 +10,6 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-/// @addtogroup vector_module Vector
-/// @{
-/// @name Ordering
-/// @{
-
 /**
  * @brief Swap the element at index @a i with the element at index @a j in the
  * @a vector
@@ -112,9 +107,6 @@ inline void vector_move_z(
 #ifdef VECTOR_TEST
 #undef inline
 #endif /* VECTOR_TEST */
-
-/// @}
-/// @}
 
 #endif /* VECTOR_MOVE_H */
 
