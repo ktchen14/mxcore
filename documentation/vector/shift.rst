@@ -1,5 +1,5 @@
-Element Shifting
-================
+Stack-Like/Queue-Like Operations
+================================
 
 .. TODO!!!
 

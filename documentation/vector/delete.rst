@@ -1,5 +1,5 @@
-Deletion
-========
+Vector Deletion
+===============
 
 .. rubric:: Common Interface
 .. list-table::

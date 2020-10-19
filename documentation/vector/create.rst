@@ -1,5 +1,5 @@
-Creation
-========
+Vector Allocation and Creation
+==============================
 
 .. rubric:: Common Interface
 .. list-table::

@@ -1,5 +1,5 @@
-Resize
-======
+Vector Expansion and Contraction
+================================
 
 .. rubric:: Implicit Interface
 .. list-table::

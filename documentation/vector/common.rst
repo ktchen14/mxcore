@@ -1,5 +1,5 @@
-Common Definitions
-==================
+Core Definitions and Operations
+===============================
 
 .. rubric:: Common Interface
 .. list-table::

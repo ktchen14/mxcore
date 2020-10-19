@@ -1,5 +1,5 @@
-Removal
-=======
+Element Removal
+===============
 
 .. rubric:: Implicit Interface
 .. list-table::

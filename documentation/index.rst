@@ -13,8 +13,8 @@ Welcome to Vector's documentation!
    vector/resize
    vector/insert
    vector/remove
-   vector/move
    vector/shift
+   vector/move
 
 .. toctree::
    :hidden:
@@ -80,17 +80,17 @@ Welcome to Vector's documentation!
    * - `vector_truncate()`
      - Reduce the `length <vector_length>` of the *vector* to *length*
 
-   * - `vector_swap()`
-     - Swap the element at index *i* with the element at index *j* in the *vector*
-   * - `vector_move()`
-     - Move the element at index *source* to index *target* in the *vector*
-
    * - `vector_push()`
      - Insert the data at *elmt* as the last element in the *vector*
    * - `vector_pull()`
      - Copy the last element in the *vector* to *elmt* and remove it
    * - `vector_shift()`
      - Copy the first element in the *vector* to *elmt* and remove it
+
+   * - `vector_swap()`
+     - Swap the element at index *i* with the element at index *j* in the *vector*
+   * - `vector_move()`
+     - Move the element at index *source* to index *target* in the *vector*
 
 .. rubric:: Explicit Interface
 .. list-table::
@@ -137,17 +137,17 @@ Welcome to Vector's documentation!
    * - `vector_truncate_z()`
      - Reduce the `length <vector_length>` of the *vector* to *length*
 
-   * - `vector_swap_z()`
-     - Swap the element at index *i* with the element at index *j* in the *vector*
-   * - `vector_move_z()`
-     - Move the element at index *source* to index *target* in the *vector*
-
    * - `vector_push()`
      - Insert the data at *elmt* as the last element in the *vector*
    * - `vector_pull()`
      - Copy the last element in the *vector* to *elmt* and remove it
    * - `vector_shift()`
      - Copy the first element in the *vector* to *elmt* and remove it
+
+   * - `vector_swap_z()`
+     - Swap the element at index *i* with the element at index *j* in the *vector*
+   * - `vector_move_z()`
+     - Move the element at index *source* to index *target* in the *vector*
 
 Indices and tables
 ==================
