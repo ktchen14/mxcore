@@ -10,11 +10,6 @@
 #define inline
 #endif /* VECTOR_TEST */
 
-/// @addtogroup vector_module Vector
-/// @{
-/// @name Resize
-/// @{
-
 /**
  * @brief Resize the @volume of the @a vector to @a volume
  *
@@ -141,9 +136,6 @@ inline vector_t vector_shrink_z(vector_t vector, size_t z)
 #ifdef VECTOR_TEST
 #undef inline
 #endif /* VECTOR_TEST */
-
-/// @}
-/// @}
 
 #endif /* VECTOR_RESIZE_H */
 
