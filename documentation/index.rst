@@ -9,6 +9,7 @@ Welcome to Vector's documentation!
    vector/create
    vector/delete
    vector/access
+   vector/debug
    vector/resize
    vector/insert
    vector/remove
@@ -51,6 +52,9 @@ Welcome to Vector's documentation!
 
    * - `vector_tail()`
      - Return a pointer to the last element in the *vector*
+
+   * - `vector_debug()`
+     - Print debugging information about the *vector* to ``stderr``
 
    * - `vector_resize()`
      - Resize the `volume <vector_volume>` of the *vector* to *volume*
@@ -98,6 +102,9 @@ Welcome to Vector's documentation!
      - Copy the element at index *i* in the *vector* into *elmt*
    * - `vector_set()`
      - Copy the object at *elmt* into the *vector* at index *i*
+
+   * - `vector_debug_z()`
+     - Print debugging information about the *vector* to ``stderr``
 
    * - `vector_resize_z()`
      - Resize the `volume <vector_volume>` of the *vector* to *volume*
