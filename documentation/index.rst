@@ -16,6 +16,66 @@ Welcome to Vector's documentation!
 
    source/index
 
+.. rubric:: Common Interface
+.. list-table::
+   :widths: auto
+   :width: 100%
+
+   * - `vector_t`
+     - Used to indicate a vector with an indeterminate element type
+   * - `vector_c`
+     - A `vector_t` with a ``const`` element type
+   * - `vector_length()`
+     - Return the length of the *vector*
+   * - `vector_volume()`
+     - Return the volume of the *vector*
+   * - `vector_create()`
+     - Allocate and initialize a zero length vector
+   * - `vector_delete()`
+     - Deallocate the *vector* and return ``NULL``
+
+.. rubric:: Implicit Interface
+.. list-table::
+   :widths: auto
+   :width: 100%
+
+   * - `vector_import()`
+     - Allocate and initialize a vector from *length* elements of *data*
+   * - `vector_define`
+     - Allocate and initialize a vector from the argument list
+   * - `vector_tail()`
+     - Return a pointer to the last element in the *vector*
+   * - `vector_resize()`
+     - Resize the `volume <vector_volume>` of the *vector* to *volume*
+   * - `vector_ensure()`
+     - Ensure that the `volume <vector_volume>` of the *vector* is no less than *length*
+   * - `vector_shrink()`
+     - Reduce the volume of the *vector* to its length
+
+.. rubric:: Explicit Interface
+.. list-table::
+   :widths: auto
+   :width: 100%
+
+   * - `vector_import_z()`
+     - Allocate and initialize a vector from *length* elements of *data*
+   * - `vector_at()`
+     - Return a pointer to the element in the *vector* at index *i*
+   * - `vector_tail_z()`
+     - Return a pointer to the last element in the *vector*
+   * - `vector_index()`
+     - Return the index of the element at *elmt* in the *vector*
+   * - `vector_get()`
+     - Copy the element at index *i* in the *vector* into *elmt*
+   * - `vector_set()`
+     - Copy the object at *elmt* into the *vector* at index *i*
+   * - `vector_resize_z()`
+     - Resize the `volume <vector_volume>` of the *vector* to *volume*
+   * - `vector_ensure_z()`
+     - Ensure that the `volume <vector_volume>` of the *vector* is no less than *length*
+   * - `vector_shrink_z()`
+     - Reduce the volume of the *vector* to its length
+
 Indices and tables
 ==================
 

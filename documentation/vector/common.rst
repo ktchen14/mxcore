@@ -1,8 +1,7 @@
 Common Definitions
 ==================
 
-**Definitions:**
-
+.. rubric:: Common Interface
 .. list-table::
    :widths: auto
    :width: 100%

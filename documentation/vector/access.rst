@@ -1,8 +1,7 @@
 Element Access and Lookup
 =========================
 
-**Implicit Interface**:
-
+.. rubric:: Implicit Interface
 .. list-table::
    :widths: auto
    :width: 100%
@@ -10,8 +9,7 @@ Element Access and Lookup
    * - `vector_tail()`
      - Return a pointer to the last element in the *vector*
 
-**Explicit Interface**:
-
+.. rubric:: Explicit Interface
 .. list-table::
    :widths: auto
    :width: 100%

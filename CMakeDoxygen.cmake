@@ -216,5 +216,7 @@ set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
 
 set(DOXYGEN_PREDEFINED "__attribute__(x)=" "DOXYGEN")
 
+set(DOXYGEN_GENERATE_XML YES)
 
-doxygen_add_docs(documentation)
+
+doxygen_add_docs(documentation header source)
