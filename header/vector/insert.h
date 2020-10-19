@@ -52,8 +52,8 @@
  *
  * If the resultant length of the @a vector would overflow a @c size_t then this
  * will set @c errno to @c ENOMEM and return @c NULL. Otherwise this will call
- * vector_ensure(). If that fails then the @a vector will be unmodified and the
- * value of @c errno set by realloc() will be retained.
+ * vector_ensure_z(). If that fails then the @a vector will be unmodified and
+ * the value of @c errno set by realloc() will be retained.
  *
  * If @a i is neither an index in the @a vector or its length then the behavior
  * is undefined. If @a elmt isn't @c NULL and its type is incompatible with the
@@ -114,13 +114,13 @@ inline vector_t vector_insert_z(
  * The index of the first inserted element will be @a i. If @a i is the length
  * of the @a vector then this will append the elements to the @a vector. If
  * @a elmt is @c NULL then the inserted elements will be uninitialized. This is
- * more efficient than calling vector_insert() @a n times as the elements after
- * <code>i + n</code> will be shifted only once.
+ * more efficient than calling vector_insert_z() @a n times as the elements
+ * after <code>i + n</code> will be shifted only once.
  *
  * If the resultant length of the @a vector would overflow a @c size_t then this
  * will set @c errno to @c ENOMEM and return @c NULL. Otherwise this will call
- * vector_ensure(). If that fails then the @a vector will be unmodified and the
- * value of @c errno set by realloc() will be retained.
+ * vector_ensure_z(). If that fails then the @a vector will be unmodified and
+ * the value of @c errno set by realloc() will be retained.
  *
  * If @a i is neither an index in the @a vector or its length then the behavior
  * is undefined. If @a elmt isn't @c NULL and its type is incompatible with the
@@ -175,8 +175,8 @@ inline vector_t vector_inject_z(
  *
  * If the resultant length of the @a vector would overflow a @c size_t then this
  * will set @c errno to @c ENOMEM and return @c NULL. Otherwise this will call
- * vector_ensure(). If that fails then the @a vector will be unmodified and the
- * value of @c errno set by realloc() will be retained.
+ * vector_ensure_z(). If that fails then the @a vector will be unmodified and
+ * the value of @c errno set by realloc() will be retained.
  *
  * If @a elmt isn't @c NULL and its type is incompatible with the element type
  * of the @a vector then the behavior is undefined. If @a elmt is a location in
@@ -227,8 +227,8 @@ inline vector_t vector_append_z(
  *
  * If the resultant length of the @a vector would overflow a @c size_t then this
  * will set @c errno to @c ENOMEM and return @c NULL. Otherwise this will call
- * vector_ensure(). If that fails then the @a vector will be unmodified and the
- * value of @c errno set by realloc() will be retained.
+ * vector_ensure_z(). If that fails then the @a vector will be unmodified and
+ * the value of @c errno set by realloc() will be retained.
  *
  * If @a elmt isn't @c NULL and its type is incompatible with the element type
  * of the @a vector then the behavior is undefined. If @a elmt is a location in
