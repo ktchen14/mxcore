@@ -1,6 +1,6 @@
 /// @file source/vector/search.c
 
-#include <vector/search.c>
+#include <vector/search_impl.h>
 
 extern __typeof__(vector_find_z) vector_find_z;
 extern __typeof__(vector_find_next_z) vector_find_next_z;

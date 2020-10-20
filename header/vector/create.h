@@ -90,5 +90,5 @@ inline vector_t vector_import_z(const void *data, size_t length, size_t z)
 #endif /* VECTOR_CREATE_H */
 
 #ifndef VECTOR_TEST
-#include "create.c"
+#include "create_impl.h"
 #endif /* VECTOR_TEST */

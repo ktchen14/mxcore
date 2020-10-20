@@ -1,6 +1,6 @@
 /// @file source/vector/insert.c
 
-#include <vector/insert.c>
+#include <vector/insert_impl.h>
 
 extern __typeof__(vector_insert_z) vector_insert_z;
 extern __typeof__(vector_inject_z) vector_inject_z;

@@ -99,5 +99,5 @@ inline size_t vector_length(vector_c vector) {
 #endif /* VECTOR_COMMON_H */
 
 #ifndef VECTOR_TEST
-#include "common.c"
+#include "common_impl.h"
 #endif /* VECTOR_TEST */

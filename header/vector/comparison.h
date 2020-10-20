@@ -156,5 +156,5 @@ inline int vector_cmp_with_z(
 #endif /* VECTOR_COMPARISON_H */
 
 #ifndef VECTOR_TEST
-#include "comparison.c"
+#include "comparison_impl.h"
 #endif /* VECTOR_TEST */

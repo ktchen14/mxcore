@@ -111,5 +111,5 @@ inline void vector_move_z(
 #endif /* VECTOR_MOVE_H */
 
 #ifndef VECTOR_TEST
-#include "move.c"
+#include "move_impl.h"
 #endif /* VECTOR_TEST */
