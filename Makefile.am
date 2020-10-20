@@ -2,7 +2,7 @@ include_HEADERS = header/vector/access.c \
 		  header/vector/access.h \
 		  header/vector/common.c \
 		  header/vector/common.h \
-		  header/vector/common.o \
+		  header/vector/common.c \
 		  header/vector/comparison.c \
 		  header/vector/comparison.h \
 		  header/vector/create.c \
