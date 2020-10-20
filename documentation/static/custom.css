@@ -7,3 +7,7 @@ dl.macro > dt {
   padding: 6px 10px;
   background-color: #F5F5F5;
 }
+
+dl.macro > dt > code.descname::before {
+  content: "#define ";
+}
