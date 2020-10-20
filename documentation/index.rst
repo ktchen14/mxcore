@@ -16,6 +16,7 @@ Welcome to Vector's documentation!
    vector/shift
    vector/move
    vector/sort
+   vector/comparison
 
 .. toctree::
    :hidden:
