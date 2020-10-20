@@ -18,11 +18,6 @@ Welcome to Vector's documentation!
    vector/sort
    vector/comparison
 
-.. toctree::
-   :hidden:
-
-   source/index
-
 .. rubric:: Common Interface
 .. list-table::
    :widths: auto
