@@ -15,6 +15,7 @@ Welcome to Vector's documentation!
    vector/remove
    vector/shift
    vector/move
+   vector/sort
 
 .. toctree::
    :hidden:
@@ -92,6 +93,11 @@ Welcome to Vector's documentation!
    * - `vector_move()`
      - Move the element at index *source* to index *target* in the *vector*
 
+   * - `vector_sort()`
+     - Sort the *vector* in ascending order on a comparator
+   * - `vector_sort_with()`
+     - Sort the *vector* in ascending order on a contextual comparator
+
 .. rubric:: Explicit Interface
 .. list-table::
    :widths: auto
@@ -148,6 +154,11 @@ Welcome to Vector's documentation!
      - Swap the element at index *i* with the element at index *j* in the *vector*
    * - `vector_move_z()`
      - Move the element at index *source* to index *target* in the *vector*
+
+   * - `vector_sort_z()`
+     - Sort the *vector* in ascending order on a comparator
+   * - `vector_sort_with_z()`
+     - Sort the *vector* in ascending order on a contextual comparator
 
 Indices and tables
 ==================

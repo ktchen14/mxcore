@@ -33,7 +33,7 @@
  *   the vector.
  *
  *   This function must encode a <b>strict total order</b> of the elements in
- *   the @a vector. That is, for any elements @c a, @c b, and @c c:
+ *   the @a vector. That is, for any elements @c a, @c b, and <tt>c</tt>:
  *
  *   - @f$a = a@f$
  *   - If @f$a = b@f$ and @f$b = c@f$ then @f$a = c@f$
@@ -62,7 +62,7 @@
  *   the vector.
  *
  *   This function must encode a <b>strict total order</b> of the elements in
- *   the @a vector. That is, for any elements @c a, @c b, and @c c:
+ *   the @a vector. That is, for any elements @c a, @c b, and <tt>c</tt>:
  *
  *   - @f$a = a@f$
  *   - If @f$a = b@f$ and @f$b = c@f$ then @f$a = c@f$
@@ -95,7 +95,7 @@ inline void vector_sort_z(
  *   the vector.
  *
  *   This function must encode a <b>strict total order</b> of the elements in
- *   the @a vector. That is, for any elements @c a, @c b, and @c c:
+ *   the @a vector. That is, for any elements @c a, @c b, and <tt>c</tt>:
  *
  *   - @f$a = a@f$
  *   - If @f$a = b@f$ and @f$b = c@f$ then @f$a = c@f$
@@ -129,7 +129,7 @@ inline void vector_sort_z(
  *   the vector.
  *
  *   This function must encode a <b>strict total order</b> of the elements in
- *   the @a vector. That is, for any elements @c a, @c b, and @c c:
+ *   the @a vector. That is, for any elements @c a, @c b, and <tt>c</tt>:
  *
  *   - @f$a = a@f$
  *   - If @f$a = b@f$ and @f$b = c@f$ then @f$a = c@f$
