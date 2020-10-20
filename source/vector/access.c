@@ -1,6 +1,6 @@
 /// @file source/vector/access.c
 
-#include <vector/access_impl.h>
+#include <vector/access.c>
 
 extern __typeof__(vector_index) vector_index;
 extern __typeof__(vector_get) vector_get;

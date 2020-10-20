@@ -19,5 +19,5 @@ inline void *vector_delete(vector_t vector);
 #endif /* VECTOR_DELETE_H */
 
 #ifndef VECTOR_TEST
-#include "delete_impl.h"
+#include "delete.c"
 #endif /* VECTOR_TEST */

@@ -156,5 +156,5 @@ void vector_sort_with_z(
 #endif /* VECTOR_SORT_H */
 
 #ifndef VECTOR_TEST
-#include "sort_impl.h"
+#include "sort.c"
 #endif /* VECTOR_TEST */

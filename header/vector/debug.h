@@ -41,5 +41,5 @@ inline void vector_debug_z(
 #endif /* VECTOR_DEBUG_H */
 
 #ifndef VECTOR_TEST
-#include "debug_impl.h"
+#include "debug.c"
 #endif /* VECTOR_TEST */

@@ -119,5 +119,5 @@ inline vector_t vector_shift_z(vector_t vector, void *elmt, size_t z)
 #endif /* VECTOR_SHIFT_H */
 
 #ifndef VECTOR_TEST
-#include "shift_impl.h"
+#include "shift.c"
 #endif /* VECTOR_TEST */

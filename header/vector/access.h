@@ -174,5 +174,5 @@ inline void vector_set(vector_t vector, size_t i, const void *elmt, size_t z)
 #endif /* VECTOR_ACCESS_H */
 
 #ifndef VECTOR_TEST
-#include "access_impl.h"
+#include "access.c"
 #endif /* VECTOR_TEST */

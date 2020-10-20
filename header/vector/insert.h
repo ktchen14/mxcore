@@ -251,5 +251,5 @@ inline vector_t vector_extend_z(
 #endif /* VECTOR_INSERT_H */
 
 #ifndef VECTOR_TEST
-#include "insert_impl.h"
+#include "insert.c"
 #endif /* VECTOR_TEST */
