@@ -11,11 +11,12 @@ doxygen_add_docs(documentation
   USE_STAMP_FILE
   WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}")
 
+find_package(Sphinx REQUIRED)
 add_custom_target(sphinx
-  COMMAND sphinx-build
+  COMMAND "${SPHINX_EXECUTABLE}"
     -b html
     -Daerate_doxygen_root="${CMAKE_CURRENT_BINARY_DIR}/xml"
     "${CMAKE_CURRENT_SOURCE_DIR}"
     "${CMAKE_CURRENT_BINARY_DIR}/sphinx"
-  WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-  COMMENT "Generating documentation with Sphinx")
+  DEPENDS documentation
+  WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
