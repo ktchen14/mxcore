@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2insert_8c" kind="file" language="C++">
+    <compoundname>insert.c</compoundname>
+    <includes local="no">vector/insert.c</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>source/vector/insert.c</label>
+        <link refid="source_2vector_2insert_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector/insert.c</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/insert.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/insert.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2insert_8c_1a99838caa28553e7237ba9e0693b0e790" kindref="member">vector_insert_z</ref>)<sp/><ref refid="header_2vector_2insert_8c_1a99838caa28553e7237ba9e0693b0e790" kindref="member">vector_insert_z</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2insert_8c_1aba8d8fd225d02701f9803ce61989290e" kindref="member">vector_inject_z</ref>)<sp/><ref refid="header_2vector_2insert_8c_1aba8d8fd225d02701f9803ce61989290e" kindref="member">vector_inject_z</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2insert_8c_1a52006f26b6f5a04e2961b3dc667b90a3" kindref="member">vector_append_z</ref>)<sp/><ref refid="header_2vector_2insert_8c_1a52006f26b6f5a04e2961b3dc667b90a3" kindref="member">vector_append_z</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2insert_8c_1af3a00f1cf9b7d97899239f6d22e8bf51" kindref="member">vector_extend_z</ref>)<sp/><ref refid="header_2vector_2insert_8c_1af3a00f1cf9b7d97899239f6d22e8bf51" kindref="member">vector_extend_z</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/insert.c"/>
+  </compounddef>
+</doxygen>

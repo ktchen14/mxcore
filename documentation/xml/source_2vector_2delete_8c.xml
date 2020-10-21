@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2delete_8c" kind="file" language="C++">
+    <compoundname>delete.c</compoundname>
+    <includes local="no">vector/delete.c</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>source/vector/delete.c</label>
+        <link refid="source_2vector_2delete_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector/delete.c</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/delete.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/delete.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2delete_8c_1a2e7a925bf9ae13b797b641f937c3d754" kindref="member">vector_delete</ref>)<sp/><ref refid="header_2vector_2delete_8c_1a2e7a925bf9ae13b797b641f937c3d754" kindref="member">vector_delete</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/delete.c"/>
+  </compounddef>
+</doxygen>

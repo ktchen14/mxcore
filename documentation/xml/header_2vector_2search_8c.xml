@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="header_2vector_2search_8c" kind="file" language="C++">
+    <compoundname>search.c</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="search_8h" local="yes">search.h</includes>
+    <includes refid="access_8h" local="yes">access.h</includes>
+    <includedby refid="search_8h" local="yes">header/vector/search.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="11">
+        <label>access.c</label>
+        <link refid="header_2vector_2access_8c"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>access.h</label>
+        <link refid="access_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>stdalign.h</label>
+      </node>
+      <node id="1">
+        <label>header/vector/search.c</label>
+        <link refid="header_2vector_2search_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>search.h</label>
+        <link refid="search_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="5">
+        <label>stdlib.h</label>
+      </node>
+      <node id="3">
+        <label>stddef.h</label>
+      </node>
+      <node id="12">
+        <label>string.h</label>
+      </node>
+      <node id="8">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>header/vector.h</label>
+        <link refid="vector_8h"/>
+      </node>
+      <node id="1">
+        <label>header/vector/search.c</label>
+        <link refid="header_2vector_2search_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>header/vector/search.h</label>
+        <link refid="search_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="header_2vector_2search_8c_1a0b7a4c6f9ee7ff985cbfffb58006fd9b" prot="public" static="no">
+        <name>VECTOR_SEARCH_C</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/search.c" line="4" column="9" bodyfile="header/vector/search.c" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t vector_find_z</definition>
+        <argsstring>(vector_c vector, bool(*eqf)(const void *elmt, const void *data), const void *data, size_t z)</argsstring>
+        <name>vector_find_z</name>
+        <param>
+          <type><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>bool(*)(const void *elmt, const void *data)</type>
+          <declname>eqf</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Find the first element in the <emphasis>vector</emphasis> equal to <emphasis>data</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will return the index of the first element in the <emphasis>vector</emphasis> for which the expression <computeroutput>eqf(elmt, data)</computeroutput> is <computeroutput>true</computeroutput> where <emphasis>elmt</emphasis> is the location of an element in the <emphasis>vector</emphasis>.</para>
+<para>If no such element is in the <emphasis>vector</emphasis> then this will return <computeroutput>SIZE_MAX</computeroutput>. Note that the largest possible index into an array of any type is <computeroutput>SIZE_MAX - 1</computeroutput> so <computeroutput>SIZE_MAX</computeroutput> is an unambiguous indication that no such element is in the <emphasis>vector</emphasis>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eqf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to use to determine equality </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to pass to <emphasis>eqf</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the index of the element on success; otherwise <computeroutput>SIZE_MAX</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/search.c" line="19" column="15" bodyfile="header/vector/search.c" bodystart="19" bodyend="25"/>
+        <references refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" compoundref="header_2vector_2search_8c" startline="27" endline="38">vector_find_next_z</references>
+        <referencedby refid="group__vector__module_1ga6179808aafb668e4287de4d030173ba9" compoundref="search_8h" startline="41" endline="41">vector_find</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t vector_find_next_z</definition>
+        <argsstring>(vector_c vector, size_t i, bool(*eqf)(const void *elmt, const void *data), const void *data, size_t z)</argsstring>
+        <name>vector_find_next_z</name>
+        <param>
+          <type><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>bool(*)(const void *elmt, const void *data)</type>
+          <declname>eqf</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Find the first element at or after index <emphasis>i</emphasis> in the <emphasis>vector</emphasis> equal to <emphasis>data</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will return the index of the first element in the <emphasis>vector</emphasis> at or after index <emphasis>i</emphasis> for which the expression <computeroutput>eqf(elmt, data)</computeroutput> is <computeroutput>true</computeroutput> where <emphasis>elmt</emphasis> is the location of an element in the <emphasis>vector</emphasis>. Index <emphasis>i</emphasis> is <bold>inclusive</bold> so if the element at that index is equal to <emphasis>data</emphasis>, then <emphasis>i</emphasis> itself will be returned.</para>
+<para>To iterate through all elements in the <emphasis>vector</emphasis> equal to <emphasis>data</emphasis> do: <programlisting filename=".c"><codeline><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/><ref refid="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" kindref="member">vector_find_z</ref>(vector,<sp/>eqf,<sp/>data,<sp/>z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/><ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>(vector))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/><ref refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" kindref="member">vector_find_next_z</ref>(vector,<sp/>i<sp/>+<sp/>1,<sp/>eqf,<sp/>data,<sp/>z);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>If no such element is in the <emphasis>vector</emphasis> at or after index <emphasis>i</emphasis>, then this will return <computeroutput>SIZE_MAX</computeroutput>. Note that the largest possible index into an array of any type is <computeroutput>SIZE_MAX - 1</computeroutput> so <computeroutput>SIZE_MAX</computeroutput> is an unambiguous indication that no such element is in the <emphasis>vector</emphasis>.</para>
+<para>If <emphasis>i</emphasis> is neither an index in the <emphasis>vector</emphasis> or its <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> then the behavior is undefined. As a special case if <emphasis>i</emphasis> is the <emphasis>vector</emphasis>&apos;s length, then will return <computeroutput>SIZE_MAX</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lowest index in the <emphasis>vector</emphasis> to consider </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eqf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to use to determine equality </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to pass to <emphasis>eqf</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the index of the element on success; otherwise <computeroutput>SIZE_MAX</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/search.c" line="27" column="15" bodyfile="header/vector/search.c" bodystart="27" bodyend="38"/>
+        <references refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" compoundref="common_8h" startline="95" endline="97">vector_length</references>
+        <references refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" compoundref="access_8h" startline="45" endline="45">vector_at</references>
+        <referencedby refid="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" compoundref="header_2vector_2search_8c" startline="19" endline="25">vector_find_z</referencedby>
+        <referencedby refid="group__vector__module_1gaf1add13716135b33cf3e21f679f7ba17" compoundref="search_8h" startline="107" endline="107">vector_find_next</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t vector_find_last_z</definition>
+        <argsstring>(vector_c vector, size_t i, bool(*eqf)(const void *elmt, const void *data), const void *data, size_t z)</argsstring>
+        <name>vector_find_last_z</name>
+        <param>
+          <type><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>bool(*)(const void *elmt, const void *data)</type>
+          <declname>eqf</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Find the last element before index <emphasis>i</emphasis> in the <emphasis>vector</emphasis> equal to <emphasis>data</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will return the index of the last element in the <emphasis>vector</emphasis> before index <emphasis>i</emphasis> for which the expression <computeroutput>eqf(elmt, data)</computeroutput> is <computeroutput>true</computeroutput> where <emphasis>elmt</emphasis> is the location of an element in the <emphasis>vector</emphasis>. Index <emphasis>i</emphasis> is <bold>exclusive</bold> so this will never return <emphasis>i</emphasis> itself.</para>
+<para>To iterate in reverse order through all elements in the <emphasis>vector</emphasis> equal to <emphasis>data</emphasis> do: <programlisting filename=".c"><codeline><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/><ref refid="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" kindref="member">vector_find_last_z</ref>(vector,<sp/><ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>(vector),<sp/>eqf,<sp/>data,<sp/>z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/>SIZE_MAX)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>i<sp/>=<sp/><ref refid="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" kindref="member">vector_find_last_z</ref>(vector,<sp/>i,<sp/>eqf,<sp/>data,<sp/>z);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>If no such element is in the <emphasis>vector</emphasis> before index <emphasis>i</emphasis>, then this will return <computeroutput>SIZE_MAX</computeroutput>. Note that the largest possible index into an array of any type is <computeroutput>SIZE_MAX - 1</computeroutput> so <computeroutput>SIZE_MAX</computeroutput> is an unambiguous indication that no such element is in the <emphasis>vector</emphasis>.</para>
+<para>If <emphasis>i</emphasis> is neither an index in the <emphasis>vector</emphasis> or its <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in or just after the <emphasis>vector</emphasis> to search before </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eqf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function to use to determine equality </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to pass to <emphasis>eqf</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the index of the element on success; otherwise <computeroutput>SIZE_MAX</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/search.c" line="40" column="15" bodyfile="header/vector/search.c" bodystart="40" bodyend="51"/>
+        <references refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" compoundref="access_8h" startline="45" endline="45">vector_at</references>
+        <referencedby refid="group__vector__module_1ga99fa8624e711c5592b80bf2a4b40952d" compoundref="search_8h" startline="191" endline="191">vector_find_last</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group__vector__module_1gad34720a16704a4572047cf9efb8cc990" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t vector_search_z</definition>
+        <argsstring>(vector_c vector, const void *elmt, int(*cmpf)(const void *a, const void *b), size_t z)</argsstring>
+        <name>vector_search_z</name>
+        <param>
+          <type><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>elmt</declname>
+        </param>
+        <param>
+          <type>int(*)(const void *a, const void *b)</type>
+          <declname>cmpf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/search.c" line="53" column="15" bodyfile="header/vector/search.c" bodystart="53" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>header/vector/search.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_SEARCH_C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECTOR_SEARCH_C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="search_8h" kindref="compound">search.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="access_8h" kindref="compound">access.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" kindref="member">vector_find_z</ref>(</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref><sp/>vector,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>(*eqf)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*elmt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" kindref="member">vector_find_next_z</ref>(vector,<sp/>0,<sp/>eqf,<sp/>data,<sp/>z);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" kindref="member">vector_find_next_z</ref>(</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref><sp/>vector,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>(*eqf)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*elmt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data),</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(;<sp/>i<sp/>&lt;<sp/><ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>(vector);<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(eqf(<ref refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" kindref="member">vector_at</ref>(vector,<sp/>i,<sp/>z),<sp/>data))</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SIZE_MAX;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" kindref="member">vector_find_last_z</ref>(</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref><sp/>vector,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>(*eqf)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*elmt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data),</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(i--<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(eqf(<ref refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" kindref="member">vector_at</ref>(vector,<sp/>i,<sp/>z),<sp/>data))</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SIZE_MAX;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>vector_search_z(</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref><sp/>vector,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*elmt,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>(*cmpf)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*b),</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length<sp/>=<sp/><ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>(vector);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*result;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((result<sp/>=<sp/>bsearch(elmt,<sp/>vector,<sp/>length,<sp/>z,<sp/>cmpf))<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SIZE_MAX;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/><ref refid="access_8h_1a424115d4c612e3e8070e31e88158ba58" kindref="member">vector_index</ref>(vector,<sp/>result,<sp/>z);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(i<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>cmpf(<ref refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" kindref="member">vector_at</ref>(vector,<sp/>i<sp/>-<sp/>1,<sp/>z),<sp/>elmt)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>i--;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_SEARCH_C<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="header/vector/search.c"/>
+  </compounddef>
+</doxygen>

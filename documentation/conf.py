@@ -24,7 +24,6 @@ extensions = [
     "sphinx.ext.autosummary",
     "aerate",
 ]
-aerate_doxygen_root = os.path.abspath("../xml")
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -62,8 +61,3 @@ html_css_files = ["custom.css"]
 # The default language to highlight source code in.
 
 highlight_language = 'c'
-
-import subprocess, os
-read_the_docs_build = os.environ.get("READTHEDOCS", None) == "True"
-if read_the_docs_build:
-    subprocess.call("cd ..; cmake . -DDOCUMENTATION=on; make documentation", shell=True)

@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="vector_8c" kind="file" language="C++">
+    <compoundname>vector.c</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes refid="common_8h" local="no">vector/common.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>stdalign.h</label>
+      </node>
+      <node id="3">
+        <label>stdlib.h</label>
+      </node>
+      <node id="1">
+        <label>source/vector.c</label>
+        <link refid="vector_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>string.h</label>
+      </node>
+      <node id="7">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>vector/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="vector_8c_1a28458b3a0c0444009b78fe53a4d42ebc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_duplicate_z</definition>
+        <argsstring>(vector_c source, size_t z)</argsstring>
+        <name>vector_duplicate_z</name>
+        <param>
+          <type><ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref></type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Allocate and initialize a vector by duplicating <emphasis>source</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Attempt to create a vector with the same volume and length as <emphasis>source</emphasis>. If this fails and the length of <emphasis>source</emphasis> is less than its volume then attempt to create a vector with the same length as <emphasis>source</emphasis>.</para>
+<para>If either of these are successful then memcpy() each element in <emphasis>source</emphasis> into the new vector.</para>
+<para>If this fails then it will set <computeroutput>errno</computeroutput> to <computeroutput>ENOMEM</computeroutput>.</para>
+<para><simplesect kind="return"><para>the vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="vector_8h_1a3bf16868a790b080aec82fa674991d38" kindref="member">vector_duplicate()</ref> - The implicit interface analogue </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="vector_8h_1a28458b3a0c0444009b78fe53a4d42ebc" kindref="member">vector_duplicate_z()</ref> - The explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="source/vector.c" line="9" column="10" bodyfile="source/vector.c" bodystart="9" bodyend="27"/>
+        <references refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" compoundref="common_8h" startline="95" endline="97">vector_length</references>
+        <references refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" compoundref="common_8h" startline="91" endline="93">vector_volume</references>
+        <referencedby refid="vector_8h_1a3bf16868a790b080aec82fa674991d38" compoundref="vector_8h" startline="57" endline="57">vector_duplicate</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="common_8h" kindref="compound">vector/common.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="vector_8c_1a28458b3a0c0444009b78fe53a4d42ebc" refkind="member"><highlight class="normal"><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="vector_8c_1a28458b3a0c0444009b78fe53a4d42ebc" kindref="member">vector_duplicate_z</ref>(<ref refid="common_8h_1ae2e5ca5c0f41f2b0bce39bf1b6631122" kindref="member">vector_c</ref><sp/>source,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">__vector_header_t<sp/>*header;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>volume<sp/>=<sp/><ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">vector_volume</ref>(source);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length<sp/>=<sp/><ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>(source);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((header<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*header)<sp/>+<sp/>volume<sp/>*<sp/>z))<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>==<sp/>volume)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((header<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*header)<sp/>+<sp/>length<sp/>*<sp/>z))<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>header-&gt;volume<sp/>=<sp/>length;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>header-&gt;volume<sp/>=<sp/>volume;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>header-&gt;length<sp/>=<sp/>length;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>memcpy(header-&gt;data,<sp/>source,<sp/>length<sp/>*<sp/>z);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="source/vector.c"/>
+  </compounddef>
+</doxygen>

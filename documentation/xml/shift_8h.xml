@@ -1,0 +1,578 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="shift_8h" kind="file" language="C++">
+    <compoundname>shift.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="header_2vector_2shift_8c" local="yes">shift.c</includes>
+    <includedby refid="vector_8h" local="yes">header/vector.h</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>access.c</label>
+        <link refid="header_2vector_2access_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>access.h</label>
+        <link refid="access_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdalign.h</label>
+      </node>
+      <node id="15">
+        <label>stdlib.h</label>
+      </node>
+      <node id="14">
+        <label>errno.h</label>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="11">
+        <label>remove.c</label>
+        <link refid="header_2vector_2remove_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>remove.h</label>
+        <link refid="remove_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>shift.c</label>
+        <link refid="header_2vector_2shift_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/shift.h</label>
+        <link refid="shift_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>string.h</label>
+      </node>
+      <node id="5">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>resize.c</label>
+        <link refid="header_2vector_2resize_8c"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>resize.h</label>
+        <link refid="resize_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>header/vector.h</label>
+        <link refid="vector_8h"/>
+      </node>
+      <node id="1">
+        <label>header/vector/shift.h</label>
+        <link refid="shift_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="shift_8h_1aea04cb576cc1b8087a55252148eca322" prot="public" static="no">
+        <name>vector_push</name>
+        <initializer><ref refid="insert_8h_1a10329d51d7a29d4ebbffefd425986b44" kindref="member">vector_append</ref></initializer>
+        <briefdescription>
+<para>Insert the data at <emphasis>elmt</emphasis> as the last element in the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>elmt</emphasis> is <computeroutput>NULL</computeroutput> then the inserted element will be uninitialized.</para>
+<para>If the resultant length of the <emphasis>vector</emphasis> would overflow a <computeroutput>size_t</computeroutput> then this will set <computeroutput>errno</computeroutput> to <computeroutput>ENOMEM</computeroutput> and return <computeroutput>NULL</computeroutput>. Otherwise this will call <ref refid="resize_8h_1a0f974d0998a52475443461258ac1ebce" kindref="member">vector_ensure()</ref>. If that fails then the <emphasis>vector</emphasis> will be unmodified and the value of <computeroutput>errno</computeroutput> set by realloc() will be retained.</para>
+<para>If <emphasis>elmt</emphasis> isn&apos;t <computeroutput>NULL</computeroutput> and its type is incompatible with the element type of the <emphasis>vector</emphasis> then the behavior is undefined. If <emphasis>elmt</emphasis> is a location in the <emphasis>vector</emphasis> itself then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location of the element to append </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="insert_8h_1a52006f26b6f5a04e2961b3dc667b90a3" kindref="member">vector_append_z()</ref> - the explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/shift.h" line="14" column="9" bodyfile="header/vector/shift.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="shift_8h_1aa62109a331db46955cadfef936eac37c" prot="public" static="no">
+        <name>vector_push_z</name>
+        <initializer><ref refid="header_2vector_2insert_8c_1a52006f26b6f5a04e2961b3dc667b90a3" kindref="member">vector_append_z</ref></initializer>
+        <briefdescription>
+<para>Insert the data at <emphasis>elmt</emphasis> as the last element in the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>elmt</emphasis> is <computeroutput>NULL</computeroutput> then the inserted element will be uninitialized.</para>
+<para>If the resultant length of the <emphasis>vector</emphasis> would overflow a <computeroutput>size_t</computeroutput> then this will set <computeroutput>errno</computeroutput> to <computeroutput>ENOMEM</computeroutput> and return <computeroutput>NULL</computeroutput>. Otherwise this will call <ref refid="resize_8h_1aca602cd1c36467c4ab8a8a2aa480a4e2" kindref="member">vector_ensure_z()</ref>. If that fails then the <emphasis>vector</emphasis> will be unmodified and the value of <computeroutput>errno</computeroutput> set by realloc() will be retained.</para>
+<para>If <emphasis>elmt</emphasis> isn&apos;t <computeroutput>NULL</computeroutput> and its type is incompatible with the element type of the <emphasis>vector</emphasis> then the behavior is undefined. If <emphasis>elmt</emphasis> is a location in the <emphasis>vector</emphasis> itself then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location of the element to append </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="insert_8h_1a52006f26b6f5a04e2961b3dc667b90a3" kindref="member">vector_append_z()</ref> - the explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/shift.h" line="17" column="9" bodyfile="header/vector/shift.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="shift_8h_1a53e32ba91d44371a672ba262533ba134" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_pull</definition>
+        <argsstring>(vector_t vector, void *elmt)</argsstring>
+        <name>vector_pull</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>elmt</declname>
+        </param>
+        <briefdescription>
+<para>Copy the last element in the <emphasis>vector</emphasis> to <emphasis>elmt</emphasis> and remove it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>elmt</emphasis> is <computeroutput>NULL</computeroutput> then the element won&apos;t be copied before it&apos;s removed.</para>
+<para>Once the element is removed, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <computeroutput>length &lt;= (volume - 1) / 2</computeroutput>, a <ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the element).</para>
+<para>If no last element is in the <emphasis>vector</emphasis> (the <emphasis>vector&apos;s</emphasis> <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> is zero) then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location to copy the element to or <computeroutput>NULL</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/shift.h" line="39" column="10" bodyfile="header/vector/shift.h" bodystart="39" bodyend="39"/>
+        <references refid="shift_8h_1a2328c81eefb3798ffc7c591f22ffe590" compoundref="header_2vector_2shift_8c" startline="16" endline="20">vector_pull_z</references>
+      </memberdef>
+      <memberdef kind="function" id="shift_8h_1a2328c81eefb3798ffc7c591f22ffe590" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_pull_z</definition>
+        <argsstring>(vector_t vector, void *elmt, size_t z)</argsstring>
+        <name>vector_pull_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>elmt</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Copy the last element in the <emphasis>vector</emphasis> to <emphasis>elmt</emphasis> and remove it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>elmt</emphasis> is <computeroutput>NULL</computeroutput> then the element won&apos;t be copied before it&apos;s removed.</para>
+<para>Once the element is removed, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <computeroutput>length &lt;= (volume - 1) / 2</computeroutput>, a <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the element).</para>
+<para>If no last element is in the <emphasis>vector</emphasis> (the <emphasis>vector&apos;s</emphasis> <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> is zero) then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location to copy the element to or <computeroutput>NULL</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/shift.h" line="61" column="17" bodyfile="header/vector/shift.c" bodystart="16" bodyend="20" declfile="header/vector/shift.h" declline="61" declcolumn="17"/>
+        <references refid="access_8h_1a19da575edf003c344ce9fa183f3a2eb2" compoundref="header_2vector_2access_8c" startline="21" endline="27">vector_get</references>
+        <references refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" compoundref="common_8h" startline="95" endline="97">vector_length</references>
+        <references refid="remove_8h_1a2738a6125160c41fe8d9d81606cb3fac" compoundref="header_2vector_2remove_8c" startline="18" endline="20">vector_remove_z</references>
+        <referencedby refid="shift_8h_1a53e32ba91d44371a672ba262533ba134" compoundref="shift_8h" startline="39" endline="39">vector_pull</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="shift_8h_1a40d547275106f5953325c143e637feec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_shift</definition>
+        <argsstring>(vector_t vector, void *elmt)</argsstring>
+        <name>vector_shift</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>elmt</declname>
+        </param>
+        <briefdescription>
+<para>Copy the first element in the <emphasis>vector</emphasis> to <emphasis>elmt</emphasis> and remove it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All elements after the first are shifted one element toward the head of the <emphasis>vector</emphasis>.</para>
+<para>If <emphasis>elmt</emphasis> is <computeroutput>NULL</computeroutput> then the element won&apos;t be copied before it&apos;s removed.</para>
+<para>Once the element is removed and subsequent elements are shifted, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <computeroutput>length &lt;= (volume - 1) / 2</computeroutput>, a <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the element).</para>
+<para>If no first element is in the <emphasis>vector</emphasis> (the <emphasis>vector&apos;s</emphasis> <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> is zero) then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location to copy the element to or <computeroutput>NULL</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/shift.h" line="87" column="10" bodyfile="header/vector/shift.h" bodystart="87" bodyend="87"/>
+        <references refid="shift_8h_1ac03c1ef96fee473e9f9b858cc64293dc" compoundref="header_2vector_2shift_8c" startline="22" endline="26">vector_shift_z</references>
+      </memberdef>
+      <memberdef kind="function" id="shift_8h_1ac03c1ef96fee473e9f9b858cc64293dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_shift_z</definition>
+        <argsstring>(vector_t vector, void *elmt, size_t z)</argsstring>
+        <name>vector_shift_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>elmt</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Copy the first element in the <emphasis>vector</emphasis> to <emphasis>elmt</emphasis> and remove it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All elements after the first are shifted one element toward the head of the <emphasis>vector</emphasis>.</para>
+<para>If <emphasis>elmt</emphasis> is <computeroutput>NULL</computeroutput> then the element won&apos;t be copied before it&apos;s removed.</para>
+<para>Once the element is removed and subsequent elements are shifted, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <computeroutput>length &lt;= (volume - 1) / 2</computeroutput>, a <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the element).</para>
+<para>If no first element is in the <emphasis>vector</emphasis> (the <emphasis>vector&apos;s</emphasis> <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> is zero) then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location to copy the element to or <computeroutput>NULL</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/shift.h" line="112" column="17" bodyfile="header/vector/shift.c" bodystart="22" bodyend="26" declfile="header/vector/shift.h" declline="112" declcolumn="17"/>
+        <references refid="access_8h_1a19da575edf003c344ce9fa183f3a2eb2" compoundref="header_2vector_2access_8c" startline="21" endline="27">vector_get</references>
+        <references refid="remove_8h_1a2738a6125160c41fe8d9d81606cb3fac" compoundref="header_2vector_2remove_8c" startline="18" endline="20">vector_remove_z</references>
+        <referencedby refid="shift_8h_1a40d547275106f5953325c143e637feec" compoundref="shift_8h" startline="87" endline="87">vector_shift</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>header/vector/shift.h</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_SHIFT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECTOR_SHIFT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="13"><highlight class="comment">///<sp/>@copydoc<sp/>vector_append()</highlight></codeline>
+<codeline lineno="14" refid="shift_8h_1aea04cb576cc1b8087a55252148eca322" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>vector_push<sp/>vector_append</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="16"><highlight class="comment">///<sp/>@copydoc<sp/>vector_append_z()</highlight></codeline>
+<codeline lineno="17" refid="shift_8h_1aa62109a331db46955cadfef936eac37c" refkind="member"><highlight class="comment"></highlight><highlight class="preprocessor">#define<sp/>vector_push_z<sp/>vector_append_z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Copy<sp/>the<sp/>last<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>elmt<sp/>and<sp/>remove<sp/>it</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>elmt<sp/>is<sp/>@c<sp/>NULL<sp/>then<sp/>the<sp/>element<sp/>won&apos;t<sp/>be<sp/>copied<sp/>before<sp/>it&apos;s<sp/>removed.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>element<sp/>is<sp/>removed,<sp/>if<sp/>the<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>that<sp/>&lt;code&gt;length<sp/>&lt;=<sp/>(volume<sp/>-<sp/>1)<sp/>/<sp/>2&lt;/code&gt;,<sp/>a<sp/>vector_resize()<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>attempted<sp/>to<sp/>reduce<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>element).</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>If<sp/>no<sp/>last<sp/>element<sp/>is<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>(the<sp/>@a<sp/>vector&apos;s<sp/>@length<sp/>is<sp/>zero)<sp/>then</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@param<sp/>elmt<sp/>the<sp/>location<sp/>to<sp/>copy<sp/>the<sp/>element<sp/>to<sp/>or<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_pull(vector_t<sp/>vector,<sp/>void<sp/>*elmt)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="shift_8h_1a53e32ba91d44371a672ba262533ba134" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_pull(v,<sp/>...)<sp/>vector_pull_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Copy<sp/>the<sp/>last<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>elmt<sp/>and<sp/>remove<sp/>it</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>elmt<sp/>is<sp/>@c<sp/>NULL<sp/>then<sp/>the<sp/>element<sp/>won&apos;t<sp/>be<sp/>copied<sp/>before<sp/>it&apos;s<sp/>removed.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>element<sp/>is<sp/>removed,<sp/>if<sp/>the<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>that<sp/>&lt;code&gt;length<sp/>&lt;=<sp/>(volume<sp/>-<sp/>1)<sp/>/<sp/>2&lt;/code&gt;,<sp/>a<sp/>vector_resize_z()<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>attempted<sp/>to<sp/>reduce<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>element).</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>If<sp/>no<sp/>last<sp/>element<sp/>is<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>(the<sp/>@a<sp/>vector&apos;s<sp/>@length<sp/>is<sp/>zero)<sp/>then</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@param<sp/>elmt<sp/>the<sp/>location<sp/>to<sp/>copy<sp/>the<sp/>element<sp/>to<sp/>or<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="shift_8h_1a2328c81eefb3798ffc7c591f22ffe590" kindref="member">vector_pull_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*elmt,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>__attribute__((nonnull(1),<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="64"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Copy<sp/>the<sp/>first<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>elmt<sp/>and<sp/>remove<sp/>it</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>All<sp/>elements<sp/>after<sp/>the<sp/>first<sp/>are<sp/>shifted<sp/>one<sp/>element<sp/>toward<sp/>the<sp/>head<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>elmt<sp/>is<sp/>@c<sp/>NULL<sp/>then<sp/>the<sp/>element<sp/>won&apos;t<sp/>be<sp/>copied<sp/>before<sp/>it&apos;s<sp/>removed.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>element<sp/>is<sp/>removed<sp/>and<sp/>subsequent<sp/>elements<sp/>are<sp/>shifted,<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such<sp/>that<sp/>&lt;code&gt;length<sp/>&lt;=<sp/>(volume<sp/>-<sp/>1)<sp/>/</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>2&lt;/code&gt;,<sp/>a<sp/>vector_resize_z()<sp/>will<sp/>be<sp/>attempted<sp/>to<sp/>reduce<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>element).</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>If<sp/>no<sp/>first<sp/>element<sp/>is<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>(the<sp/>@a<sp/>vector&apos;s<sp/>@length<sp/>is<sp/>zero)</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>then<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>@param<sp/>elmt<sp/>the<sp/>location<sp/>to<sp/>copy<sp/>the<sp/>element<sp/>to<sp/>or<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_shift(vector_t<sp/>vector,<sp/>void<sp/>*elmt)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="shift_8h_1a40d547275106f5953325c143e637feec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_shift(v,<sp/>...)<sp/>vector_shift_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="89"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Copy<sp/>the<sp/>first<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>elmt<sp/>and<sp/>remove<sp/>it</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>All<sp/>elements<sp/>after<sp/>the<sp/>first<sp/>are<sp/>shifted<sp/>one<sp/>element<sp/>toward<sp/>the<sp/>head<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>elmt<sp/>is<sp/>@c<sp/>NULL<sp/>then<sp/>the<sp/>element<sp/>won&apos;t<sp/>be<sp/>copied<sp/>before<sp/>it&apos;s<sp/>removed.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>element<sp/>is<sp/>removed<sp/>and<sp/>subsequent<sp/>elements<sp/>are<sp/>shifted,<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such<sp/>that<sp/>&lt;code&gt;length<sp/>&lt;=<sp/>(volume<sp/>-<sp/>1)<sp/>/</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>2&lt;/code&gt;,<sp/>a<sp/>vector_resize_z()<sp/>will<sp/>be<sp/>attempted<sp/>to<sp/>reduce<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>element).</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>If<sp/>no<sp/>first<sp/>element<sp/>is<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>(the<sp/>@a<sp/>vector&apos;s<sp/>@length<sp/>is<sp/>zero)</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>then<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>@param<sp/>elmt<sp/>the<sp/>location<sp/>to<sp/>copy<sp/>the<sp/>element<sp/>to<sp/>or<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="shift_8h_1ac03c1ef96fee473e9f9b858cc64293dc" kindref="member">vector_shift_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*elmt,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>__attribute__((nonnull(1),<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_SHIFT_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="source_2vector_2shift_8c" kindref="compound">shift.c</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="header/vector/shift.h"/>
+  </compounddef>
+</doxygen>

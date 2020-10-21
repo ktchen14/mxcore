@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2access_8c" kind="file" language="C++">
+    <compoundname>access.c</compoundname>
+    <includes local="no">vector/access.c</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>source/vector/access.c</label>
+        <link refid="source_2vector_2access_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector/access.c</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/access.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/access.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2access_8c_1a424115d4c612e3e8070e31e88158ba58" kindref="member">vector_index</ref>)<sp/><ref refid="header_2vector_2access_8c_1a424115d4c612e3e8070e31e88158ba58" kindref="member">vector_index</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2access_8c_1a19da575edf003c344ce9fa183f3a2eb2" kindref="member">vector_get</ref>)<sp/><ref refid="header_2vector_2access_8c_1a19da575edf003c344ce9fa183f3a2eb2" kindref="member">vector_get</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2access_8c_1ad8e87d0c382b03ae3f8c5f9658a52ed0" kindref="member">vector_set</ref>)<sp/><ref refid="header_2vector_2access_8c_1ad8e87d0c382b03ae3f8c5f9658a52ed0" kindref="member">vector_set</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/access.c"/>
+  </compounddef>
+</doxygen>

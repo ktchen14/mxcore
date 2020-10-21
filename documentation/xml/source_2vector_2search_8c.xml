@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2search_8c" kind="file" language="C++">
+    <compoundname>search.c</compoundname>
+    <includes local="no">vector/search.c</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>source/vector/search.c</label>
+        <link refid="source_2vector_2search_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector/search.c</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/search.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/search.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" kindref="member">vector_find_z</ref>)<sp/><ref refid="group__vector__module_1gaa886a904776e7c0cc6bdec4eefacd04a" kindref="member">vector_find_z</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" kindref="member">vector_find_next_z</ref>)<sp/><ref refid="group__vector__module_1gac688a8f438657eb30088adccc3a14bb6" kindref="member">vector_find_next_z</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" kindref="member">vector_find_last_z</ref>)<sp/><ref refid="group__vector__module_1ga49accb1745baaa317db375e67e62eb38" kindref="member">vector_find_last_z</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(vector_search_z)<sp/>vector_search_z;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/search.c"/>
+  </compounddef>
+</doxygen>

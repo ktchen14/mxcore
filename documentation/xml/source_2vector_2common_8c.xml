@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2common_8c" kind="file" language="C++">
+    <compoundname>common.c</compoundname>
+    <includes refid="common_8h" local="no">vector/common.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>stdalign.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>source/vector/common.c</label>
+        <link refid="source_2vector_2common_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/common.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="common_8h" kindref="compound">vector/common.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">vector_volume</ref>)<sp/><ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">vector_volume</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>)<sp/><ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">vector_length</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/common.c"/>
+  </compounddef>
+</doxygen>

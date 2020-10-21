@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_0b3169e7342c9c4771e3c073dd110e3f" kind="dir">
+    <compoundname>source/vector</compoundname>
+    <innerfile refid="source_2vector_2access_8c">access.c</innerfile>
+    <innerfile refid="source_2vector_2common_8c">common.c</innerfile>
+    <innerfile refid="source_2vector_2comparison_8c">comparison.c</innerfile>
+    <innerfile refid="source_2vector_2create_8c">create.c</innerfile>
+    <innerfile refid="source_2vector_2debug_8c">debug.c</innerfile>
+    <innerfile refid="source_2vector_2delete_8c">delete.c</innerfile>
+    <innerfile refid="source_2vector_2insert_8c">insert.c</innerfile>
+    <innerfile refid="source_2vector_2move_8c">move.c</innerfile>
+    <innerfile refid="source_2vector_2remove_8c">remove.c</innerfile>
+    <innerfile refid="source_2vector_2resize_8c">resize.c</innerfile>
+    <innerfile refid="source_2vector_2search_8c">search.c</innerfile>
+    <innerfile refid="source_2vector_2shift_8c">shift.c</innerfile>
+    <innerfile refid="source_2vector_2sort_8c">sort.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="source/vector/"/>
+  </compounddef>
+</doxygen>

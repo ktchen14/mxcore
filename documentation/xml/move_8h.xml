@@ -1,0 +1,494 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="move_8h" kind="file" language="C++">
+    <compoundname>move.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="header_2vector_2move_8c" local="yes">move.c</includes>
+    <includedby refid="vector_8h" local="yes">header/vector.h</includedby>
+    <includedby refid="header_2vector_2move_8c" local="yes">header/vector/move.c</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>access.c</label>
+        <link refid="header_2vector_2access_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>access.h</label>
+        <link refid="access_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdalign.h</label>
+      </node>
+      <node id="7">
+        <label>stdlib.h</label>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="10">
+        <label>string.h</label>
+      </node>
+      <node id="5">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>move.c</label>
+        <link refid="header_2vector_2move_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/move.h</label>
+        <link refid="move_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>header/vector.h</label>
+        <link refid="vector_8h"/>
+      </node>
+      <node id="3">
+        <label>header/vector/move.c</label>
+        <link refid="header_2vector_2move_8c"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/move.h</label>
+        <link refid="move_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="move_8h_1a6e7bed6fda37e60ce625a5dffd7f2050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vector_swap</definition>
+        <argsstring>(vector_t vector, size_t i, size_t j)</argsstring>
+        <name>vector_swap</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+<para>Swap the element at index <emphasis>i</emphasis> with the element at index <emphasis>j</emphasis> in the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Though this is implemented as a macro it&apos;s documented as a function to clarify its intended usage.</para>
+</simplesect>
+If either <emphasis>i</emphasis> or <emphasis>j</emphasis> isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior of this operation is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of an element in the <emphasis>vector</emphasis> to swap </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of an element in the <emphasis>vector</emphasis> to swap</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="move_8h_1ad66c0d75de6d68e696f0299805ec2747" kindref="member">vector_swap_z()</ref> - The explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/move.h" line="30" column="6" bodyfile="header/vector/move.h" bodystart="30" bodyend="30"/>
+        <references refid="move_8h_1ad66c0d75de6d68e696f0299805ec2747" compoundref="header_2vector_2move_8c" startline="31" endline="41">vector_swap_z</references>
+      </memberdef>
+      <memberdef kind="function" id="move_8h_1ad66c0d75de6d68e696f0299805ec2747" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void vector_swap_z</definition>
+        <argsstring>(vector_t vector, size_t i, size_t j, size_t z)</argsstring>
+        <name>vector_swap_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Swap the element at index <emphasis>i</emphasis> with the element at index <emphasis>j</emphasis> in the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If either <emphasis>i</emphasis> or <emphasis>j</emphasis> isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior of this operation is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of an element in the <emphasis>vector</emphasis> to swap </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of an element in the <emphasis>vector</emphasis> to swap </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="move_8h_1a6e7bed6fda37e60ce625a5dffd7f2050" kindref="member">vector_swap()</ref> - The implicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/move.h" line="46" column="13" bodyfile="header/vector/move.c" bodystart="31" bodyend="41" declfile="header/vector/move.h" declline="46" declcolumn="13"/>
+        <references refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" compoundref="access_8h" startline="45" endline="45">vector_at</references>
+        <referencedby refid="header_2vector_2move_8c_1af6935769f6a14a3b70954c75f82b6e41" compoundref="header_2vector_2move_8c" startline="17" endline="29">vector_move_z</referencedby>
+        <referencedby refid="move_8h_1a6e7bed6fda37e60ce625a5dffd7f2050" compoundref="move_8h" startline="30" endline="30">vector_swap</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="move_8h_1a821fb05071b92ee598e9327b6ff58b33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vector_move</definition>
+        <argsstring>(vector_t vector, size_t target, size_t source)</argsstring>
+        <name>vector_move</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Move the element at index <emphasis>source</emphasis> to index <emphasis>target</emphasis> in the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will move the element at index <emphasis>source</emphasis> to be at index <emphasis>target</emphasis>, the element previously at index <emphasis>target</emphasis> to index <computeroutput>target + 1</computeroutput>, and so on. When complete the length of the <emphasis>vector</emphasis> is unchanged and (with the exception of the element at <emphasis>source</emphasis>) the relative order of each element in the <emphasis>vector</emphasis> is unchanged. For example:</para>
+<para><programlisting filename=".c"><codeline><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*sample<sp/>=<sp/><ref refid="create_8h_1a215761b56747dfca86cf08ac9178ff15" kindref="member">vector_define</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/>2,<sp/>4,<sp/>6,<sp/>8,<sp/>10,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="move_8h_1a821fb05071b92ee598e9327b6ff58b33" kindref="member">vector_move</ref>(sample,<sp/>4,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal">sample<sp/>==<sp/>{<sp/>2,<sp/>4,<sp/>10,<sp/>6,<sp/>8,<sp/>12<sp/>};</highlight></codeline>
+</programlisting></para>
+<para>If <emphasis>target</emphasis> or <emphasis>source</emphasis> isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in the <emphasis>vector</emphasis> to move the element to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the element in the <emphasis>vector</emphasis> to move</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="move_8h_1af6935769f6a14a3b70954c75f82b6e41" kindref="member">vector_move_z()</ref> - The explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/move.h" line="75" column="6" bodyfile="header/vector/move.h" bodystart="75" bodyend="75"/>
+        <references refid="move_8h_1af6935769f6a14a3b70954c75f82b6e41" compoundref="header_2vector_2move_8c" startline="17" endline="29">vector_move_z</references>
+      </memberdef>
+      <memberdef kind="function" id="move_8h_1af6935769f6a14a3b70954c75f82b6e41" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void vector_move_z</definition>
+        <argsstring>(vector_t vector, size_t target, size_t source, size_t z)</argsstring>
+        <name>vector_move_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Move the element at index <emphasis>source</emphasis> to index <emphasis>target</emphasis> in the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will move the element at index <emphasis>source</emphasis> to be at index <emphasis>target</emphasis>, the element previously at index <emphasis>target</emphasis> to index <computeroutput>target + 1</computeroutput>, and so on. When complete the length of the <emphasis>vector</emphasis> is unchanged and (with the exception of the element at <emphasis>source</emphasis>) the relative order of each element in the <emphasis>vector</emphasis> is unchanged. For example:</para>
+<para><programlisting filename=".c"><codeline><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*sample<sp/>=<sp/><ref refid="create_8h_1a215761b56747dfca86cf08ac9178ff15" kindref="member">vector_define</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/>2,<sp/>4,<sp/>6,<sp/>8,<sp/>10,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="move_8h_1a821fb05071b92ee598e9327b6ff58b33" kindref="member">vector_move</ref>(sample,<sp/>4,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal">sample<sp/>==<sp/>{<sp/>2,<sp/>4,<sp/>10,<sp/>6,<sp/>8,<sp/>12<sp/>};</highlight></codeline>
+</programlisting></para>
+<para>If <emphasis>target</emphasis> or <emphasis>source</emphasis> isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in the <emphasis>vector</emphasis> to move the element to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the element in the <emphasis>vector</emphasis> to move </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="move_8h_1a821fb05071b92ee598e9327b6ff58b33" kindref="member">vector_move()</ref> - The implicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/move.h" line="103" column="13" bodyfile="header/vector/move.c" bodystart="17" bodyend="29" declfile="header/vector/move.h" declline="103" declcolumn="13"/>
+        <references refid="header_2vector_2move_8c_1ad66c0d75de6d68e696f0299805ec2747" compoundref="header_2vector_2move_8c" startline="31" endline="41">vector_swap_z</references>
+        <referencedby refid="move_8h_1a821fb05071b92ee598e9327b6ff58b33" compoundref="move_8h" startline="75" endline="75">vector_move</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>header/vector/move.h</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_MOVE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECTOR_MOVE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="13"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Swap<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>i<sp/>with<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>j<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>@note<sp/>Though<sp/>this<sp/>is<sp/>implemented<sp/>as<sp/>a<sp/>macro<sp/>it&apos;s<sp/>documented<sp/>as<sp/>a<sp/>function<sp/>to</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>clarify<sp/>its<sp/>intended<sp/>usage.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>If<sp/>either<sp/>@a<sp/>i<sp/>or<sp/>@a<sp/>j<sp/>isn&apos;t<sp/>an<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior<sp/>of</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>this<sp/>operation<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@param<sp/>i<sp/>the<sp/>index<sp/>of<sp/>an<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>swap</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@param<sp/>j<sp/>the<sp/>index<sp/>of<sp/>an<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>swap</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_swap_z()<sp/>-<sp/>The<sp/>explicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>void<sp/>vector_swap(vector_t<sp/>vector,<sp/>size_t<sp/>i,<sp/>size_t<sp/>j)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="move_8h_1a6e7bed6fda37e60ce625a5dffd7f2050" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_swap(v,<sp/>...)<sp/>vector_swap_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Swap<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>i<sp/>with<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>j<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>If<sp/>either<sp/>@a<sp/>i<sp/>or<sp/>@a<sp/>j<sp/>isn&apos;t<sp/>an<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior<sp/>of</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>this<sp/>operation<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@param<sp/>i<sp/>the<sp/>index<sp/>of<sp/>an<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>swap</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@param<sp/>j<sp/>the<sp/>index<sp/>of<sp/>an<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>swap</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_swap()<sp/>-<sp/>The<sp/>implicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="move_8h_1ad66c0d75de6d68e696f0299805ec2747" kindref="member">vector_swap_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>__attribute__((nonnull));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Move<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>source<sp/>to<sp/>index<sp/>@a<sp/>target<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>move<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>source<sp/>to<sp/>be<sp/>at<sp/>index<sp/>@a<sp/>target,<sp/>the</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>element<sp/>previously<sp/>at<sp/>index<sp/>@a<sp/>target<sp/>to<sp/>index<sp/>&lt;code&gt;target<sp/>+<sp/>1&lt;/code&gt;,<sp/>and</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>so<sp/>on.<sp/>When<sp/>complete<sp/>the<sp/>length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>unchanged<sp/>and<sp/>(with<sp/>the</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>exception<sp/>of<sp/>the<sp/>element<sp/>at<sp/>@a<sp/>source)<sp/>the<sp/>relative<sp/>order<sp/>of<sp/>each<sp/>element<sp/>in</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>unchanged.<sp/>For<sp/>example:</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>\code{.c}</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>int<sp/>*sample<sp/>=<sp/>vector_define(int,<sp/>2,<sp/>4,<sp/>6,<sp/>8,<sp/>10,<sp/>12);</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>vector_move(sample,<sp/>4,<sp/>2);</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>sample<sp/>==<sp/>{<sp/>2,<sp/>4,<sp/>10,<sp/>6,<sp/>8,<sp/>12<sp/>};</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>\endcode</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>target<sp/>or<sp/>@a<sp/>source<sp/>isn&apos;t<sp/>an<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@param<sp/>target<sp/>the<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>move<sp/>the<sp/>element<sp/>to</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@param<sp/>source<sp/>the<sp/>index<sp/>of<sp/>the<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>move</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_move_z()<sp/>-<sp/>The<sp/>explicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>void<sp/>vector_move(vector_t<sp/>vector,<sp/>size_t<sp/>target,<sp/>size_t<sp/>source)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="move_8h_1a821fb05071b92ee598e9327b6ff58b33" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_move(v,<sp/>...)<sp/>vector_move_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Move<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>source<sp/>to<sp/>index<sp/>@a<sp/>target<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>move<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>source<sp/>to<sp/>be<sp/>at<sp/>index<sp/>@a<sp/>target,<sp/>the</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>element<sp/>previously<sp/>at<sp/>index<sp/>@a<sp/>target<sp/>to<sp/>index<sp/>&lt;code&gt;target<sp/>+<sp/>1&lt;/code&gt;,<sp/>and</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>so<sp/>on.<sp/>When<sp/>complete<sp/>the<sp/>length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>unchanged<sp/>and<sp/>(with<sp/>the</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>exception<sp/>of<sp/>the<sp/>element<sp/>at<sp/>@a<sp/>source)<sp/>the<sp/>relative<sp/>order<sp/>of<sp/>each<sp/>element<sp/>in</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>unchanged.<sp/>For<sp/>example:</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>\code{.c}</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>int<sp/>*sample<sp/>=<sp/>vector_define(int,<sp/>2,<sp/>4,<sp/>6,<sp/>8,<sp/>10,<sp/>12);</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>vector_move(sample,<sp/>4,<sp/>2);</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>sample<sp/>==<sp/>{<sp/>2,<sp/>4,<sp/>10,<sp/>6,<sp/>8,<sp/>12<sp/>};</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>\endcode</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>target<sp/>or<sp/>@a<sp/>source<sp/>isn&apos;t<sp/>an<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@param<sp/>target<sp/>the<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>move<sp/>the<sp/>element<sp/>to</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@param<sp/>source<sp/>the<sp/>index<sp/>of<sp/>the<sp/>element<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>move</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_move()<sp/>-<sp/>The<sp/>implicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="move_8h_1af6935769f6a14a3b70954c75f82b6e41" kindref="member">vector_move_z</ref>(</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>target,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>source,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>__attribute__((nonnull));</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_MOVE_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="source_2vector_2move_8c" kindref="compound">move.c</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="header/vector/move.h"/>
+  </compounddef>
+</doxygen>

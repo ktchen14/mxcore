@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2debug_8c" kind="file" language="C++">
+    <compoundname>debug.c</compoundname>
+    <includes local="no">vector/debug.c</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>vector/debug.c</label>
+      </node>
+      <node id="1">
+        <label>source/vector/debug.c</label>
+        <link refid="source_2vector_2debug_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/debug.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/debug.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2debug_8c_1a32f99733e4c0b0fa96eedf1c15b8b249" kindref="member">vector_debug_z</ref>)<sp/><ref refid="header_2vector_2debug_8c_1a32f99733e4c0b0fa96eedf1c15b8b249" kindref="member">vector_debug_z</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/debug.c"/>
+  </compounddef>
+</doxygen>

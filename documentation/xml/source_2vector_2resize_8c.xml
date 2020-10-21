@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2resize_8c" kind="file" language="C++">
+    <compoundname>resize.c</compoundname>
+    <includes local="no">vector/resize.c</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>source/vector/resize.c</label>
+        <link refid="source_2vector_2resize_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector/resize.c</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/resize.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/resize.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2resize_8c_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z</ref>)<sp/><ref refid="header_2vector_2resize_8c_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2resize_8c_1aca602cd1c36467c4ab8a8a2aa480a4e2" kindref="member">vector_ensure_z</ref>)<sp/><ref refid="header_2vector_2resize_8c_1aca602cd1c36467c4ab8a8a2aa480a4e2" kindref="member">vector_ensure_z</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2resize_8c_1ae01643697d1f29ca15775f32bc62b525" kindref="member">vector_shrink_z</ref>)<sp/><ref refid="header_2vector_2resize_8c_1ae01643697d1f29ca15775f32bc62b525" kindref="member">vector_shrink_z</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/resize.c"/>
+  </compounddef>
+</doxygen>

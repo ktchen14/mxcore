@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="remove_8h" kind="file" language="C++">
+    <compoundname>remove.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes refid="header_2vector_2remove_8c" local="yes">remove.c</includes>
+    <includedby refid="vector_8h" local="yes">header/vector.h</includedby>
+    <includedby refid="header_2vector_2remove_8c" local="yes">header/vector/remove.c</includedby>
+    <includedby refid="header_2vector_2shift_8c" local="yes">header/vector/shift.c</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>access.c</label>
+        <link refid="header_2vector_2access_8c"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>access.h</label>
+        <link refid="access_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdalign.h</label>
+      </node>
+      <node id="13">
+        <label>stdlib.h</label>
+      </node>
+      <node id="12">
+        <label>errno.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>remove.c</label>
+        <link refid="header_2vector_2remove_8c"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/remove.h</label>
+        <link refid="remove_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>string.h</label>
+      </node>
+      <node id="5">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>resize.c</label>
+        <link refid="header_2vector_2resize_8c"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>resize.h</label>
+        <link refid="resize_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>header/vector.h</label>
+        <link refid="vector_8h"/>
+      </node>
+      <node id="3">
+        <label>header/vector/remove.c</label>
+        <link refid="header_2vector_2remove_8c"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/remove.h</label>
+        <link refid="remove_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>header/vector/shift.c</label>
+        <link refid="header_2vector_2shift_8c"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>header/vector/shift.h</label>
+        <link refid="shift_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="remove_8h_1a8b925fa6bad2eee1c956886ccbbd8a2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_remove</definition>
+        <argsstring>(vector_t vector, size_t i)</argsstring>
+        <name>vector_remove</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Remove the element at index <emphasis>i</emphasis> from the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All elements at indices greater than <emphasis>i</emphasis> are shifted one element toward the head of the <emphasis>vector</emphasis>.</para>
+<para>Once the element is removed and subsequent elements are shifted, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <formula id="0">$ length \le \frac{1}{2}(volume - 1) $</formula>, a <ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the element).</para>
+<para>If <emphasis>i</emphasis> isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in the <emphasis>vector</emphasis> of the element to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/remove.h" line="35" column="10" bodyfile="header/vector/remove.h" bodystart="35" bodyend="35"/>
+        <references refid="remove_8h_1a2738a6125160c41fe8d9d81606cb3fac" compoundref="header_2vector_2remove_8c" startline="18" endline="20">vector_remove_z</references>
+      </memberdef>
+      <memberdef kind="function" id="remove_8h_1a2738a6125160c41fe8d9d81606cb3fac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_remove_z</definition>
+        <argsstring>(vector_t vector, size_t i, size_t z)</argsstring>
+        <name>vector_remove_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Remove the element at index <emphasis>i</emphasis> from the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All elements at indices greater than <emphasis>i</emphasis> are shifted one element toward the head of the <emphasis>vector</emphasis>.</para>
+<para>Once the element is removed and subsequent elements are shifted, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <formula id="0">$ length \le \frac{1}{2}(volume - 1) $</formula>, a <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the element).</para>
+<para>If <emphasis>i</emphasis> isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in the <emphasis>vector</emphasis> of the element to remove </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/remove.h" line="58" column="17" bodyfile="header/vector/remove.c" bodystart="18" bodyend="20" declfile="header/vector/remove.h" declline="58" declcolumn="17"/>
+        <references refid="header_2vector_2remove_8c_1a337078e9e3a9d47d5cec16808fe9afcc" compoundref="header_2vector_2remove_8c" startline="22" endline="44">vector_excise_z</references>
+        <referencedby refid="header_2vector_2shift_8c_1a2328c81eefb3798ffc7c591f22ffe590" compoundref="header_2vector_2shift_8c" startline="16" endline="20">vector_pull_z</referencedby>
+        <referencedby refid="remove_8h_1a8b925fa6bad2eee1c956886ccbbd8a2d" compoundref="remove_8h" startline="35" endline="35">vector_remove</referencedby>
+        <referencedby refid="header_2vector_2shift_8c_1ac03c1ef96fee473e9f9b858cc64293dc" compoundref="header_2vector_2shift_8c" startline="22" endline="26">vector_shift_z</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="remove_8h_1a67d9f9d3d9367bb743218a1a617d681c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_excise</definition>
+        <argsstring>(vector_t vector, size_t i, size_t n)</argsstring>
+        <name>vector_excise</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Remove <emphasis>n</emphasis> elements at index <emphasis>i</emphasis> from the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All elements at indices greater than <computeroutput>i + n</computeroutput> are shifted <emphasis>n</emphasis> elements toward the head of the <emphasis>vector</emphasis>.</para>
+<para>Once the elements are removed and subsequent elements are shifted, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <formula id="0">$ length \le \frac{1}{2}(volume - 1) $</formula>, a <ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the elements).</para>
+<para>If <emphasis>i</emphasis> or any index from <emphasis>i</emphasis> to <computeroutput>i + n</computeroutput> inclusive isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in the <emphasis>vector</emphasis> of the elements to remove </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of elements to remove from the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/remove.h" line="84" column="10" bodyfile="header/vector/remove.h" bodystart="84" bodyend="84"/>
+        <references refid="remove_8h_1a337078e9e3a9d47d5cec16808fe9afcc" compoundref="header_2vector_2remove_8c" startline="22" endline="44">vector_excise_z</references>
+      </memberdef>
+      <memberdef kind="function" id="remove_8h_1a337078e9e3a9d47d5cec16808fe9afcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_excise_z</definition>
+        <argsstring>(vector_t vector, size_t i, size_t n, size_t z)</argsstring>
+        <name>vector_excise_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Remove <emphasis>n</emphasis> elements at index <emphasis>i</emphasis> from the <emphasis>vector</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All elements at indices greater than <computeroutput>i + n</computeroutput> are shifted <emphasis>n</emphasis> elements toward the head of the <emphasis>vector</emphasis>.</para>
+<para>Once the elements are removed and subsequent elements are shifted, if the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> is reduced such that <formula id="0">$ length \le \frac{1}{2}(volume - 1) $</formula>, a <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> will be attempted to reduce the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> to: <formula id="1">\[ volume = \frac{length \times 6 + 4}{5} \]</formula> On success the shrunk vector will be returned. Otherwise the vector will be returned as is (without the elements).</para>
+<para>If <emphasis>i</emphasis> or any index from <emphasis>i</emphasis> to <computeroutput>i + n</computeroutput> inclusive isn&apos;t an index in the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index in the <emphasis>vector</emphasis> of the elements to remove </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of elements to remove from the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/remove.h" line="109" column="17" bodyfile="header/vector/remove.c" bodystart="22" bodyend="44" declfile="header/vector/remove.h" declline="109" declcolumn="17"/>
+        <references refid="access_8h_1a3d34a65010e7b668473c10be6f6f72e1" compoundref="access_8h" startline="45" endline="45">vector_at</references>
+        <references refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" compoundref="common_8h" startline="95" endline="97">vector_length</references>
+        <references refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" compoundref="header_2vector_2resize_8c" startline="16" endline="33">vector_resize_z</references>
+        <references refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" compoundref="common_8h" startline="91" endline="93">vector_volume</references>
+        <referencedby refid="remove_8h_1a67d9f9d3d9367bb743218a1a617d681c" compoundref="remove_8h" startline="84" endline="84">vector_excise</referencedby>
+        <referencedby refid="header_2vector_2remove_8c_1a2738a6125160c41fe8d9d81606cb3fac" compoundref="header_2vector_2remove_8c" startline="18" endline="20">vector_remove_z</referencedby>
+        <referencedby refid="header_2vector_2remove_8c_1a0858e4516313dfe2716b272e0ad6569f" compoundref="header_2vector_2remove_8c" startline="46" endline="49">vector_truncate_z</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="remove_8h_1a09045c2cafcc57c6e57ff1ea81a7633f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_truncate</definition>
+        <argsstring>(vector_t vector, size_t length)</argsstring>
+        <name>vector_truncate</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Reduce the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> to <emphasis>length</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will remove elements from the tail of the <emphasis>vector</emphasis> until its length is <emphasis>length</emphasis>. The number of elements removed is the difference between <emphasis>length</emphasis> and the length of the <emphasis>vector</emphasis>. The resultant <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> of the <emphasis>vector</emphasis> will follow the rule in <ref refid="remove_8h_1a67d9f9d3d9367bb743218a1a617d681c" kindref="member">vector_excise()</ref>.</para>
+<para>If <emphasis>length</emphasis> is greater than the <emphasis>length</emphasis> of the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the length of the resultant vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/remove.h" line="128" column="10" bodyfile="header/vector/remove.h" bodystart="128" bodyend="128"/>
+        <references refid="remove_8h_1a0858e4516313dfe2716b272e0ad6569f" compoundref="header_2vector_2remove_8c" startline="46" endline="49">vector_truncate_z</references>
+      </memberdef>
+      <memberdef kind="function" id="remove_8h_1a0858e4516313dfe2716b272e0ad6569f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_truncate_z</definition>
+        <argsstring>(vector_t vector, size_t length, size_t z)</argsstring>
+        <name>vector_truncate_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Reduce the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> to <emphasis>length</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will remove elements from the tail of the <emphasis>vector</emphasis> until its length is <emphasis>length</emphasis>. The number of elements removed is the difference between <emphasis>length</emphasis> and the length of the <emphasis>vector</emphasis>. The resultant <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> of the <emphasis>vector</emphasis> will follow the rule in <ref refid="remove_8h_1a337078e9e3a9d47d5cec16808fe9afcc" kindref="member">vector_excise_z()</ref>.</para>
+<para>If <emphasis>length</emphasis> is greater than the <emphasis>length</emphasis> of the <emphasis>vector</emphasis> then the behavior is undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the length of the resultant vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/remove.h" line="147" column="17" bodyfile="header/vector/remove.c" bodystart="46" bodyend="49" declfile="header/vector/remove.h" declline="147" declcolumn="17"/>
+        <references refid="header_2vector_2remove_8c_1a337078e9e3a9d47d5cec16808fe9afcc" compoundref="header_2vector_2remove_8c" startline="22" endline="44">vector_excise_z</references>
+        <references refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" compoundref="common_8h" startline="95" endline="97">vector_length</references>
+        <referencedby refid="remove_8h_1a09045c2cafcc57c6e57ff1ea81a7633f" compoundref="remove_8h" startline="128" endline="128">vector_truncate</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>header/vector/remove.h</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_REMOVE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECTOR_REMOVE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Remove<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>i<sp/>from<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>All<sp/>elements<sp/>at<sp/>indices<sp/>greater<sp/>than<sp/>@a<sp/>i<sp/>are<sp/>shifted<sp/>one<sp/>element<sp/>toward<sp/>the</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>head<sp/>of<sp/>the<sp/>@a<sp/>vector.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>element<sp/>is<sp/>removed<sp/>and<sp/>subsequent<sp/>elements<sp/>are<sp/>shifted,<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such<sp/>that<sp/>@f$<sp/>length<sp/>\le</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>\frac{1}{2}(volume<sp/>-<sp/>1)<sp/>@f$,<sp/>a<sp/>vector_resize()<sp/>will<sp/>be<sp/>attempted<sp/>to<sp/>reduce</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>element).</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>i<sp/>isn&apos;t<sp/>an<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@param<sp/>i<sp/>the<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>of<sp/>the<sp/>element<sp/>to<sp/>remove</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_remove(vector_t<sp/>vector,<sp/>size_t<sp/>i)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="remove_8h_1a8b925fa6bad2eee1c956886ccbbd8a2d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_remove(v,<sp/>...)<sp/>vector_remove_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="37"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Remove<sp/>the<sp/>element<sp/>at<sp/>index<sp/>@a<sp/>i<sp/>from<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>All<sp/>elements<sp/>at<sp/>indices<sp/>greater<sp/>than<sp/>@a<sp/>i<sp/>are<sp/>shifted<sp/>one<sp/>element<sp/>toward<sp/>the</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>head<sp/>of<sp/>the<sp/>@a<sp/>vector.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>element<sp/>is<sp/>removed<sp/>and<sp/>subsequent<sp/>elements<sp/>are<sp/>shifted,<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such<sp/>that<sp/>@f$<sp/>length<sp/>\le</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>\frac{1}{2}(volume<sp/>-<sp/>1)<sp/>@f$,<sp/>a<sp/>vector_resize_z()<sp/>will<sp/>be<sp/>attempted<sp/>to<sp/>reduce</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>element).</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>i<sp/>isn&apos;t<sp/>an<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@param<sp/>i<sp/>the<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>of<sp/>the<sp/>element<sp/>to<sp/>remove</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="remove_8h_1a2738a6125160c41fe8d9d81606cb3fac" kindref="member">vector_remove_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>__attribute__((nonnull,<sp/>returns_nonnull,<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Remove<sp/>@a<sp/>n<sp/>elements<sp/>at<sp/>index<sp/>@a<sp/>i<sp/>from<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>All<sp/>elements<sp/>at<sp/>indices<sp/>greater<sp/>than<sp/>&lt;code&gt;i<sp/>+<sp/>n&lt;/code&gt;<sp/>are<sp/>shifted<sp/>@a<sp/>n</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>elements<sp/>toward<sp/>the<sp/>head<sp/>of<sp/>the<sp/>@a<sp/>vector.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>elements<sp/>are<sp/>removed<sp/>and<sp/>subsequent<sp/>elements<sp/>are<sp/>shifted,<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such<sp/>that<sp/>@f$<sp/>length<sp/>\le</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>\frac{1}{2}(volume<sp/>-<sp/>1)<sp/>@f$,<sp/>a<sp/>vector_resize()<sp/>will<sp/>be<sp/>attempted<sp/>to<sp/>reduce</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>elements).</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>i<sp/>or<sp/>any<sp/>index<sp/>from<sp/>@a<sp/>i<sp/>to<sp/>&lt;code&gt;i<sp/>+<sp/>n&lt;/code&gt;<sp/>inclusive<sp/>isn&apos;t<sp/>an<sp/>index</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@param<sp/>i<sp/>the<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>of<sp/>the<sp/>elements<sp/>to<sp/>remove</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@param<sp/>n<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>to<sp/>remove<sp/>from<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_excise(vector_t<sp/>vector,<sp/>size_t<sp/>i,<sp/>size_t<sp/>n)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="remove_8h_1a67d9f9d3d9367bb743218a1a617d681c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_excise(v,<sp/>...)<sp/>vector_excise_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Remove<sp/>@a<sp/>n<sp/>elements<sp/>at<sp/>index<sp/>@a<sp/>i<sp/>from<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>All<sp/>elements<sp/>at<sp/>indices<sp/>greater<sp/>than<sp/>&lt;code&gt;i<sp/>+<sp/>n&lt;/code&gt;<sp/>are<sp/>shifted<sp/>@a<sp/>n</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>elements<sp/>toward<sp/>the<sp/>head<sp/>of<sp/>the<sp/>@a<sp/>vector.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>Once<sp/>the<sp/>elements<sp/>are<sp/>removed<sp/>and<sp/>subsequent<sp/>elements<sp/>are<sp/>shifted,<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>reduced<sp/>such<sp/>that<sp/>@f$<sp/>length<sp/>\le</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>\frac{1}{2}(volume<sp/>-<sp/>1)<sp/>@f$,<sp/>a<sp/>vector_resize_z()<sp/>will<sp/>be<sp/>attempted<sp/>to<sp/>reduce</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>the<sp/>@volume<sp/>to:</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>6<sp/>+<sp/>4}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>On<sp/>success<sp/>the<sp/>shrunk<sp/>vector<sp/>will<sp/>be<sp/>returned.<sp/>Otherwise<sp/>the<sp/>vector<sp/>will<sp/>be</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>returned<sp/>as<sp/>is<sp/>(without<sp/>the<sp/>elements).</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>i<sp/>or<sp/>any<sp/>index<sp/>from<sp/>@a<sp/>i<sp/>to<sp/>&lt;code&gt;i<sp/>+<sp/>n&lt;/code&gt;<sp/>inclusive<sp/>isn&apos;t<sp/>an<sp/>index</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>@param<sp/>i<sp/>the<sp/>index<sp/>in<sp/>the<sp/>@a<sp/>vector<sp/>of<sp/>the<sp/>elements<sp/>to<sp/>remove</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>@param<sp/>n<sp/>the<sp/>number<sp/>of<sp/>elements<sp/>to<sp/>remove<sp/>from<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="remove_8h_1a337078e9e3a9d47d5cec16808fe9afcc" kindref="member">vector_excise_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>__attribute__((nonnull,<sp/>returns_nonnull,<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reduce<sp/>the<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>length</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>remove<sp/>elements<sp/>from<sp/>the<sp/>tail<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>until<sp/>its<sp/>length<sp/>is</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@a<sp/>length.<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>removed<sp/>is<sp/>the<sp/>difference<sp/>between<sp/>@a<sp/>length</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>and<sp/>the<sp/>length<sp/>of<sp/>the<sp/>@a<sp/>vector.<sp/>The<sp/>resultant<sp/>@volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>will</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>follow<sp/>the<sp/>rule<sp/>in<sp/>vector_excise().</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>length<sp/>is<sp/>greater<sp/>than<sp/>the<sp/>@a<sp/>length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>@param<sp/>length<sp/>the<sp/>length<sp/>of<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_truncate(vector_t<sp/>vector,<sp/>size_t<sp/>length)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="remove_8h_1a09045c2cafcc57c6e57ff1ea81a7633f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_truncate(v,<sp/>...)<sp/>\</highlight></codeline>
+<codeline lineno="129"><highlight class="preprocessor"><sp/><sp/>vector_truncate_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="131"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reduce<sp/>the<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>length</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>remove<sp/>elements<sp/>from<sp/>the<sp/>tail<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>until<sp/>its<sp/>length<sp/>is</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*<sp/>@a<sp/>length.<sp/>The<sp/>number<sp/>of<sp/>elements<sp/>removed<sp/>is<sp/>the<sp/>difference<sp/>between<sp/>@a<sp/>length</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*<sp/>and<sp/>the<sp/>length<sp/>of<sp/>the<sp/>@a<sp/>vector.<sp/>The<sp/>resultant<sp/>@volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>will</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*<sp/>follow<sp/>the<sp/>rule<sp/>in<sp/>vector_excise_z().</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>length<sp/>is<sp/>greater<sp/>than<sp/>the<sp/>@a<sp/>length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>behavior</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>is<sp/>undefined.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*<sp/>@param<sp/>length<sp/>the<sp/>length<sp/>of<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="remove_8h_1a0858e4516313dfe2716b272e0ad6569f" kindref="member">vector_truncate_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>__attribute__((nonnull,<sp/>returns_nonnull,<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_REMOVE_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="source_2vector_2remove_8c" kindref="compound">remove.c</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="header/vector/remove.h"/>
+  </compounddef>
+</doxygen>

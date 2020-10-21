@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2shift_8c" kind="file" language="C++">
+    <compoundname>shift.c</compoundname>
+    <includes local="no">vector/shift.c</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>vector/shift.c</label>
+      </node>
+      <node id="1">
+        <label>source/vector/shift.c</label>
+        <link refid="source_2vector_2shift_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/shift.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/shift.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2shift_8c_1a2328c81eefb3798ffc7c591f22ffe590" kindref="member">vector_pull_z</ref>)<sp/><ref refid="header_2vector_2shift_8c_1a2328c81eefb3798ffc7c591f22ffe590" kindref="member">vector_pull_z</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2shift_8c_1ac03c1ef96fee473e9f9b858cc64293dc" kindref="member">vector_shift_z</ref>)<sp/><ref refid="header_2vector_2shift_8c_1ac03c1ef96fee473e9f9b858cc64293dc" kindref="member">vector_shift_z</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/shift.c"/>
+  </compounddef>
+</doxygen>

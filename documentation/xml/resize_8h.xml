@@ -1,0 +1,580 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="resize_8h" kind="file" language="C++">
+    <compoundname>resize.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="header_2vector_2resize_8c" local="yes">resize.c</includes>
+    <includedby refid="vector_8h" local="yes">header/vector.h</includedby>
+    <includedby refid="header_2vector_2insert_8c" local="yes">header/vector/insert.c</includedby>
+    <includedby refid="header_2vector_2remove_8c" local="yes">header/vector/remove.c</includedby>
+    <includedby refid="header_2vector_2resize_8c" local="yes">header/vector/resize.c</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>stdalign.h</label>
+      </node>
+      <node id="8">
+        <label>stdlib.h</label>
+      </node>
+      <node id="7">
+        <label>errno.h</label>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>common.c</label>
+        <link refid="header_2vector_2common_8c"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>resize.c</label>
+        <link refid="header_2vector_2resize_8c"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/resize.h</label>
+        <link refid="resize_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>header/vector.h</label>
+        <link refid="vector_8h"/>
+      </node>
+      <node id="5">
+        <label>header/vector/remove.c</label>
+        <link refid="header_2vector_2remove_8c"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>header/vector/remove.h</label>
+        <link refid="remove_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>header/vector/insert.c</label>
+        <link refid="header_2vector_2insert_8c"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>header/vector/insert.h</label>
+        <link refid="insert_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>header/vector/shift.c</label>
+        <link refid="header_2vector_2shift_8c"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>header/vector/shift.h</label>
+        <link refid="shift_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>header/vector/resize.c</label>
+        <link refid="header_2vector_2resize_8c"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>header/vector/resize.h</label>
+        <link refid="resize_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="resize_8h_1a676455639015f60171bd43ffa095b960" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_resize</definition>
+        <argsstring>(vector_t vector, size_t volume)</argsstring>
+        <name>vector_resize</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>volume</declname>
+        </param>
+        <briefdescription>
+<para>Resize the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> of the <emphasis>vector</emphasis> to <emphasis>volume</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>volume</emphasis> is less than the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> then the <emphasis>vector</emphasis> will be truncated and have its length reduced to <emphasis>volume</emphasis>.</para>
+<para>This will fail if the underlying realloc() returns <computeroutput>NULL</computeroutput>. The C standard <bold>doesn&apos;t</bold> guarantee success of a realloc() to a smaller size, so this can fail even if <emphasis>volume</emphasis> is less than the volume of the <emphasis>vector</emphasis>. In either case if the realloc() fails then the <emphasis>vector</emphasis> will be unmodified and the value of <computeroutput>errno</computeroutput> set by realloc() will be retained.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>volume</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the volume to resize the <emphasis>vector</emphasis> to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resized vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> - the explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/resize.h" line="32" column="10" bodyfile="header/vector/resize.h" bodystart="32" bodyend="32"/>
+        <references refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" compoundref="header_2vector_2resize_8c" startline="16" endline="33">vector_resize_z</references>
+      </memberdef>
+      <memberdef kind="function" id="resize_8h_1a41c3b52c91171f84f426708a124b9106" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_resize_z</definition>
+        <argsstring>(vector_t vector, size_t volume, size_t z)</argsstring>
+        <name>vector_resize_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>volume</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Resize the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> of the <emphasis>vector</emphasis> to <emphasis>volume</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>volume</emphasis> is less than the <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> of the <emphasis>vector</emphasis> then the <emphasis>vector</emphasis> will be truncated and have its length reduced to <emphasis>volume</emphasis>.</para>
+<para>This will fail if the underlying realloc() returns <computeroutput>NULL</computeroutput>. The C standard <bold>doesn&apos;t</bold> guarantee success of a realloc() to a smaller size, so this can fail even if <emphasis>volume</emphasis> is less than the volume of the <emphasis>vector</emphasis>. In either case if the realloc() fails then the <emphasis>vector</emphasis> will be unmodified and the value of <computeroutput>errno</computeroutput> set by realloc() will be retained.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>volume</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the volume to resize the <emphasis>vector</emphasis> to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resized vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref> - the implicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/resize.h" line="53" column="17" bodyfile="header/vector/resize.c" bodystart="16" bodyend="33" declfile="header/vector/resize.h" declline="53" declcolumn="17"/>
+        <referencedby refid="header_2vector_2resize_8c_1aca602cd1c36467c4ab8a8a2aa480a4e2" compoundref="header_2vector_2resize_8c" startline="43" endline="60">vector_ensure_z</referencedby>
+        <referencedby refid="header_2vector_2remove_8c_1a337078e9e3a9d47d5cec16808fe9afcc" compoundref="header_2vector_2remove_8c" startline="22" endline="44">vector_excise_z</referencedby>
+        <referencedby refid="resize_8h_1a676455639015f60171bd43ffa095b960" compoundref="resize_8h" startline="32" endline="32">vector_resize</referencedby>
+        <referencedby refid="header_2vector_2resize_8c_1ae01643697d1f29ca15775f32bc62b525" compoundref="header_2vector_2resize_8c" startline="35" endline="41">vector_shrink_z</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="resize_8h_1a0f974d0998a52475443461258ac1ebce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_ensure</definition>
+        <argsstring>(vector_t vector, size_t length)</argsstring>
+        <name>vector_ensure</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Ensure that the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> of the <emphasis>vector</emphasis> is no less than <emphasis>length</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the volume of the <emphasis>vector</emphasis> is less than <emphasis>length</emphasis> then <ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref> will be called. Preallocation is attempted to accomodate future increases in <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> according to the formula: <formula id="2">\[ volume = \frac{length \times 8 + 3}{5} \]</formula> If this preallocation fails then a resize to <emphasis>length</emphasis> will be attempted. If that also fails then the <emphasis>vector</emphasis> will be unmodified.</para>
+<para>On success, subsequent insertions (through <ref refid="insert_8h_1aa374654eeb6260651eeefaf41672088d" kindref="member">vector_insert()</ref>, <ref refid="insert_8h_1a10329d51d7a29d4ebbffefd425986b44" kindref="member">vector_append()</ref>, etc.) into the vector are guaranteed to be successful so long as the resultant length doesn&apos;t exceed <emphasis>length</emphasis>. Note that the <emphasis>vector</emphasis> doesn&apos;t remember this <emphasis>length</emphasis>. As a result calling any functions that can decrease the volume of the <emphasis>vector</emphasis> (like <ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref>, <ref refid="resize_8h_1a231d716a9dd4b59271a043a0b64de291" kindref="member">vector_shrink()</ref>, <ref refid="remove_8h_1a8b925fa6bad2eee1c956886ccbbd8a2d" kindref="member">vector_remove()</ref>, etc.) will invalidate this guarantee.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum length to accomodate in the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/resize.h" line="78" column="10" bodyfile="header/vector/resize.h" bodystart="78" bodyend="78"/>
+        <references refid="resize_8h_1aca602cd1c36467c4ab8a8a2aa480a4e2" compoundref="header_2vector_2resize_8c" startline="43" endline="60">vector_ensure_z</references>
+      </memberdef>
+      <memberdef kind="function" id="resize_8h_1aca602cd1c36467c4ab8a8a2aa480a4e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_ensure_z</definition>
+        <argsstring>(vector_t vector, size_t length, size_t z)</argsstring>
+        <name>vector_ensure_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Ensure that the <ref refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" kindref="member">volume</ref> of the <emphasis>vector</emphasis> is at least <emphasis>length</emphasis>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the volume of the <emphasis>vector</emphasis> is less than <emphasis>length</emphasis> then <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> will be called. Preallocation is attempted to accomodate future increases in <ref refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" kindref="member">length</ref> according to the formula: <formula id="2">\[ volume = \frac{length \times 8 + 3}{5} \]</formula> If this preallocation fails then a resize to <emphasis>length</emphasis> will be attempted. If that also fails then the <emphasis>vector</emphasis> will be unmodified.</para>
+<para>On success, subsequent insertions (through <ref refid="insert_8h_1a99838caa28553e7237ba9e0693b0e790" kindref="member">vector_insert_z()</ref>, <ref refid="insert_8h_1a52006f26b6f5a04e2961b3dc667b90a3" kindref="member">vector_append_z()</ref>, etc.) into the vector are guaranteed to be successful so long as the resultant length doesn&apos;t exceed <emphasis>length</emphasis>. Note that the <emphasis>vector</emphasis> doesn&apos;t remember this <emphasis>length</emphasis>. As a result calling any functions that can decrease the volume of the <emphasis>vector</emphasis> (like <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref>, <ref refid="resize_8h_1ae01643697d1f29ca15775f32bc62b525" kindref="member">vector_shrink_z()</ref>, <ref refid="remove_8h_1a2738a6125160c41fe8d9d81606cb3fac" kindref="member">vector_remove_z()</ref>, etc.) will invalidate this guarantee.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum length to accomodate in the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the resultant vector on success; otherwise <computeroutput>NULL</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/resize.h" line="102" column="17" bodyfile="header/vector/resize.c" bodystart="43" bodyend="60" declfile="header/vector/resize.h" declline="102" declcolumn="17"/>
+        <references refid="header_2vector_2resize_8c_1a41c3b52c91171f84f426708a124b9106" compoundref="header_2vector_2resize_8c" startline="16" endline="33">vector_resize_z</references>
+        <references refid="common_8h_1aa15669c7ce377e2da885ecace1d69242" compoundref="common_8h" startline="91" endline="93">vector_volume</references>
+        <referencedby refid="resize_8h_1a0f974d0998a52475443461258ac1ebce" compoundref="resize_8h" startline="78" endline="78">vector_ensure</referencedby>
+        <referencedby refid="header_2vector_2insert_8c_1aba8d8fd225d02701f9803ce61989290e" compoundref="header_2vector_2insert_8c" startline="27" endline="54">vector_inject_z</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="resize_8h_1a231d716a9dd4b59271a043a0b64de291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_shrink</definition>
+        <argsstring>(vector_t vector)</argsstring>
+        <name>vector_shrink</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+<para>Reduce the volume of the <emphasis>vector</emphasis> to its length. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is almost a <ref refid="resize_8h_1a676455639015f60171bd43ffa095b960" kindref="member">vector_resize()</ref> to the vector&apos;s length. However if the resize fails then <emphasis>vector</emphasis> will be returned umodified and the value of <computeroutput>errno</computeroutput> set by realloc() will be retained.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the shrunk vector on success; otherwise the unmodified <emphasis>vector</emphasis> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="resize_8h_1ae01643697d1f29ca15775f32bc62b525" kindref="member">vector_shrink_z()</ref> - the explicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/resize.h" line="118" column="10" bodyfile="header/vector/resize.h" bodystart="118" bodyend="118"/>
+        <references refid="resize_8h_1ae01643697d1f29ca15775f32bc62b525" compoundref="header_2vector_2resize_8c" startline="35" endline="41">vector_shrink_z</references>
+      </memberdef>
+      <memberdef kind="function" id="resize_8h_1ae01643697d1f29ca15775f32bc62b525" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+        <definition>vector_t vector_shrink_z</definition>
+        <argsstring>(vector_t vector, size_t z)</argsstring>
+        <name>vector_shrink_z</name>
+        <param>
+          <type><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref></type>
+          <declname>vector</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Reduce the volume of the <emphasis>vector</emphasis> to its length. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is almost a <ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z()</ref> to the vector&apos;s length. However if the resize fails then the <emphasis>vector</emphasis> will be returned umodified and the value of <computeroutput>errno</computeroutput> set by realloc() will be retained.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector to operate on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element size of the <emphasis>vector</emphasis> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the shrunk vector on success; otherwise the unmodified <emphasis>vector</emphasis> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="resize_8h_1a231d716a9dd4b59271a043a0b64de291" kindref="member">vector_shrink()</ref> - the implicit interface analogue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="header/vector/resize.h" line="133" column="17" bodyfile="header/vector/resize.c" bodystart="35" bodyend="41" declfile="header/vector/resize.h" declline="133" declcolumn="17"/>
+        <references refid="common_8h_1a587cb79957c36c5a87216ec27ab5fdbb" compoundref="common_8h" startline="95" endline="97">vector_length</references>
+        <references refid="header_2vector_2resize_8c_1a41c3b52c91171f84f426708a124b9106" compoundref="header_2vector_2resize_8c" startline="16" endline="33">vector_resize_z</references>
+        <referencedby refid="resize_8h_1a231d716a9dd4b59271a043a0b64de291" compoundref="resize_8h" startline="118" endline="118">vector_shrink</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>header/vector/resize.h</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_RESIZE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECTOR_RESIZE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="13"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Resize<sp/>the<sp/>@volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>volume</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>volume<sp/>is<sp/>less<sp/>than<sp/>the<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>will<sp/>be<sp/>truncated<sp/>and<sp/>have<sp/>its<sp/>length<sp/>reduced<sp/>to<sp/>@a<sp/>volume.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>fail<sp/>if<sp/>the<sp/>underlying<sp/>realloc()<sp/>returns<sp/>@c<sp/>NULL.<sp/>The<sp/>C<sp/>standard</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>&lt;b&gt;doesn&apos;t&lt;/b&gt;<sp/>guarantee<sp/>success<sp/>of<sp/>a<sp/>realloc()<sp/>to<sp/>a<sp/>smaller<sp/>size,<sp/>so<sp/>this</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>can<sp/>fail<sp/>even<sp/>if<sp/>@a<sp/>volume<sp/>is<sp/>less<sp/>than<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector.<sp/>In</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>either<sp/>case<sp/>if<sp/>the<sp/>realloc()<sp/>fails<sp/>then<sp/>the<sp/>@a<sp/>vector<sp/>will<sp/>be<sp/>unmodified<sp/>and</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>the<sp/>value<sp/>of<sp/>@c<sp/>errno<sp/>set<sp/>by<sp/>realloc()<sp/>will<sp/>be<sp/>retained.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@param<sp/>volume<sp/>the<sp/>volume<sp/>to<sp/>resize<sp/>the<sp/>@a<sp/>vector<sp/>to</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resized<sp/>vector<sp/>on<sp/>success;<sp/>otherwise<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_resize_z()<sp/>-<sp/>the<sp/>explicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_resize(vector_t<sp/>vector,<sp/>size_t<sp/>volume)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="resize_8h_1a676455639015f60171bd43ffa095b960" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_resize(v,<sp/>...)<sp/>vector_resize_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="34"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Resize<sp/>the<sp/>@volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>@a<sp/>volume</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>If<sp/>@a<sp/>volume<sp/>is<sp/>less<sp/>than<sp/>the<sp/>@length<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>then<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>will<sp/>be<sp/>truncated<sp/>and<sp/>have<sp/>its<sp/>length<sp/>reduced<sp/>to<sp/>@a<sp/>volume.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>This<sp/>will<sp/>fail<sp/>if<sp/>the<sp/>underlying<sp/>realloc()<sp/>returns<sp/>@c<sp/>NULL.<sp/>The<sp/>C<sp/>standard</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>&lt;b&gt;doesn&apos;t&lt;/b&gt;<sp/>guarantee<sp/>success<sp/>of<sp/>a<sp/>realloc()<sp/>to<sp/>a<sp/>smaller<sp/>size,<sp/>so<sp/>this</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>can<sp/>fail<sp/>even<sp/>if<sp/>@a<sp/>volume<sp/>is<sp/>less<sp/>than<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector.<sp/>In</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>either<sp/>case<sp/>if<sp/>the<sp/>realloc()<sp/>fails<sp/>then<sp/>the<sp/>@a<sp/>vector<sp/>will<sp/>be<sp/>unmodified<sp/>and</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>the<sp/>value<sp/>of<sp/>@c<sp/>errno<sp/>set<sp/>by<sp/>realloc()<sp/>will<sp/>be<sp/>retained.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@param<sp/>volume<sp/>the<sp/>volume<sp/>to<sp/>resize<sp/>the<sp/>@a<sp/>vector<sp/>to</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resized<sp/>vector<sp/>on<sp/>success;<sp/>otherwise<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_resize()<sp/>-<sp/>the<sp/>implicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="resize_8h_1a41c3b52c91171f84f426708a124b9106" kindref="member">vector_resize_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>volume,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>__attribute__((nonnull,<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Ensure<sp/>that<sp/>the<sp/>@volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>no<sp/>less<sp/>than<sp/>@a<sp/>length</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>If<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>less<sp/>than<sp/>@a<sp/>length<sp/>then<sp/>vector_resize()</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>will<sp/>be<sp/>called.<sp/>Preallocation<sp/>is<sp/>attempted<sp/>to<sp/>accomodate<sp/>future<sp/>increases<sp/>in</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@length<sp/>according<sp/>to<sp/>the<sp/>formula:</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>8<sp/>+<sp/>3}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>If<sp/>this<sp/>preallocation<sp/>fails<sp/>then<sp/>a<sp/>resize<sp/>to<sp/>@a<sp/>length<sp/>will<sp/>be<sp/>attempted.<sp/>If</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>that<sp/>also<sp/>fails<sp/>then<sp/>the<sp/>@a<sp/>vector<sp/>will<sp/>be<sp/>unmodified.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>On<sp/>success,<sp/>subsequent<sp/>insertions<sp/>(through<sp/>vector_insert(),<sp/>vector_append(),</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>etc.)<sp/>into<sp/>the<sp/>vector<sp/>are<sp/>guaranteed<sp/>to<sp/>be<sp/>successful<sp/>so<sp/>long<sp/>as<sp/>the</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>resultant<sp/>length<sp/>doesn&apos;t<sp/>exceed<sp/>@a<sp/>length.<sp/>Note<sp/>that<sp/>the<sp/>@a<sp/>vector<sp/>doesn&apos;t</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>remember<sp/>this<sp/>@a<sp/>length.<sp/>As<sp/>a<sp/>result<sp/>calling<sp/>any<sp/>functions<sp/>that<sp/>can<sp/>decrease</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>(like<sp/>vector_resize(),<sp/>vector_shrink(),</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>vector_remove(),<sp/>etc.)<sp/>will<sp/>invalidate<sp/>this<sp/>guarantee.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@param<sp/>length<sp/>the<sp/>minimum<sp/>length<sp/>to<sp/>accomodate<sp/>in<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector<sp/>on<sp/>success;<sp/>otherwise<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_ensure(vector_t<sp/>vector,<sp/>size_t<sp/>length)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="resize_8h_1a0f974d0998a52475443461258ac1ebce" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_ensure(v,<sp/>...)<sp/>vector_ensure_z((v),<sp/>__VA_ARGS__,<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="80"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Ensure<sp/>that<sp/>the<sp/>@volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>at<sp/>least<sp/>@a<sp/>length</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>If<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>is<sp/>less<sp/>than<sp/>@a<sp/>length<sp/>then<sp/>vector_resize_z()</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>will<sp/>be<sp/>called.<sp/>Preallocation<sp/>is<sp/>attempted<sp/>to<sp/>accomodate<sp/>future<sp/>increases<sp/>in</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@length<sp/>according<sp/>to<sp/>the<sp/>formula:</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/><sp/><sp/>@f[<sp/>volume<sp/>=<sp/>\frac{length<sp/>\times<sp/>8<sp/>+<sp/>3}{5}<sp/>@f]</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>If<sp/>this<sp/>preallocation<sp/>fails<sp/>then<sp/>a<sp/>resize<sp/>to<sp/>@a<sp/>length<sp/>will<sp/>be<sp/>attempted.<sp/>If</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>that<sp/>also<sp/>fails<sp/>then<sp/>the<sp/>@a<sp/>vector<sp/>will<sp/>be<sp/>unmodified.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>On<sp/>success,<sp/>subsequent<sp/>insertions<sp/>(through<sp/>vector_insert_z(),</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>vector_append_z(),<sp/>etc.)<sp/>into<sp/>the<sp/>vector<sp/>are<sp/>guaranteed<sp/>to<sp/>be<sp/>successful<sp/>so</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>long<sp/>as<sp/>the<sp/>resultant<sp/>length<sp/>doesn&apos;t<sp/>exceed<sp/>@a<sp/>length.<sp/>Note<sp/>that<sp/>the</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@a<sp/>vector<sp/>doesn&apos;t<sp/>remember<sp/>this<sp/>@a<sp/>length.<sp/>As<sp/>a<sp/>result<sp/>calling<sp/>any<sp/>functions</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>that<sp/>can<sp/>decrease<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>(like<sp/>vector_resize_z(),</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>vector_shrink_z(),<sp/>vector_remove_z(),<sp/>etc.)<sp/>will<sp/>invalidate<sp/>this<sp/>guarantee.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@param<sp/>length<sp/>the<sp/>minimum<sp/>length<sp/>to<sp/>accomodate<sp/>in<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>resultant<sp/>vector<sp/>on<sp/>success;<sp/>otherwise<sp/>@c<sp/>NULL</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="resize_8h_1aca602cd1c36467c4ab8a8a2aa480a4e2" kindref="member">vector_ensure_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>__attribute__((nonnull,<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reduce<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>its<sp/>length</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>almost<sp/>a<sp/>vector_resize()<sp/>to<sp/>the<sp/>vector&apos;s<sp/>length.<sp/>However<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>resize<sp/>fails<sp/>then<sp/>@a<sp/>vector<sp/>will<sp/>be<sp/>returned<sp/>umodified<sp/>and<sp/>the<sp/>value<sp/>of</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@c<sp/>errno<sp/>set<sp/>by<sp/>realloc()<sp/>will<sp/>be<sp/>retained.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>shrunk<sp/>vector<sp/>on<sp/>success;<sp/>otherwise<sp/>the<sp/>unmodified<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_shrink_z()<sp/>-<sp/>the<sp/>explicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//=<sp/>vector_t<sp/>vector_shrink(vector_t<sp/>vector)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="resize_8h_1a231d716a9dd4b59271a043a0b64de291" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>vector_shrink(v)<sp/>vector_shrink_z((v),<sp/>VECTOR_Z((v)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="120"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reduce<sp/>the<sp/>volume<sp/>of<sp/>the<sp/>@a<sp/>vector<sp/>to<sp/>its<sp/>length</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>almost<sp/>a<sp/>vector_resize_z()<sp/>to<sp/>the<sp/>vector&apos;s<sp/>length.<sp/>However<sp/>if<sp/>the</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>resize<sp/>fails<sp/>then<sp/>the<sp/>@a<sp/>vector<sp/>will<sp/>be<sp/>returned<sp/>umodified<sp/>and<sp/>the<sp/>value<sp/>of</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>@c<sp/>errno<sp/>set<sp/>by<sp/>realloc()<sp/>will<sp/>be<sp/>retained.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>@param<sp/>vector<sp/>the<sp/>vector<sp/>to<sp/>operate<sp/>on</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>@param<sp/>z<sp/>the<sp/>element<sp/>size<sp/>of<sp/>the<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>@return<sp/>the<sp/>shrunk<sp/>vector<sp/>on<sp/>success;<sp/>otherwise<sp/>the<sp/>unmodified<sp/>@a<sp/>vector</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>@see<sp/>vector_shrink()<sp/>-<sp/>the<sp/>implicit<sp/>interface<sp/>analogue</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/><ref refid="resize_8h_1ae01643697d1f29ca15775f32bc62b525" kindref="member">vector_shrink_z</ref>(<ref refid="common_8h_1a5b7d6c2eb384dea49554e889ad2740ad" kindref="member">vector_t</ref><sp/>vector,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>__attribute__((nonnull,<sp/>returns_nonnull,<sp/>warn_unused_result));</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_RESIZE_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="source_2vector_2resize_8c" kindref="compound">resize.c</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECTOR_TEST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="header/vector/resize.h"/>
+  </compounddef>
+</doxygen>

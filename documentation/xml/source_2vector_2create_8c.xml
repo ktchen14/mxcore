@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="source_2vector_2create_8c" kind="file" language="C++">
+    <compoundname>create.c</compoundname>
+    <includes local="no">vector/create.c</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>vector/create.c</label>
+      </node>
+      <node id="1">
+        <label>source/vector/create.c</label>
+        <link refid="source_2vector_2create_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">///<sp/>@file<sp/>source/vector/create.c</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector/create.c&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2create_8c_1ac29016ecf0082276463502be10ac632f" kindref="member">vector_create</ref>)<sp/><ref refid="header_2vector_2create_8c_1ac29016ecf0082276463502be10ac632f" kindref="member">vector_create</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>__typeof__(<ref refid="header_2vector_2create_8c_1a73938d98c5b8ca0944b5f3fd056b8679" kindref="member">vector_import_z</ref>)<sp/><ref refid="header_2vector_2create_8c_1a73938d98c5b8ca0944b5f3fd056b8679" kindref="member">vector_import_z</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="source/vector/create.c"/>
+  </compounddef>
+</doxygen>
