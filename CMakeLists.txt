@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.12)
 
-project("MX Core"
-  VERSION 0.0.1
-  HOMEPAGE_URL https://github.com/ktchen14/mxcore
+project("Vector"
+  VERSION 0.1.0
+  HOMEPAGE_URL https://github.com/ktchen14/vector
   LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
