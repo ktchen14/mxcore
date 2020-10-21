@@ -1,4 +1,4 @@
 git+https://github.com/ktchen14/aerate.git
 lxml
-sphinx
+sphinx>=3.2
 sphinx-readable-theme
