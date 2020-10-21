@@ -1,11 +1,13 @@
 #! /bin/bash
 
+CMAKE_VERSION=3.18.4
+DOWNLOAD="https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
+
 cd ..
 
-CMAKE_VERSION=3.18.4
-
-wget -N "https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
-mkdir .local
-tar -C .local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" --strip-components=1
+wget -N "$DOWNLOAD"
+mkdir -p .local
+tar -C .local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" \
+  --strip-components=1
 ./.local/bin/cmake . -DDOCUMENTATION=on
 make documentation
