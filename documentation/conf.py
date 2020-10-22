@@ -4,6 +4,10 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../../aerate'))
 
+if os.environ.get("READTHEDOCS"):
+    import subprocess
+    subprocess.check_call("./before-rtd")
+
 # -- Project information -----------------------------------------------------
 
 project = 'Vector'
@@ -61,8 +65,3 @@ html_css_files = ["custom.css"]
 # The default language to highlight source code in.
 
 highlight_language = 'c'
-
-import subprocess, os
-read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
-if read_the_docs_build:
-    subprocess.call("./before-rtd", shell=True)
