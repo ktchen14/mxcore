@@ -6,7 +6,7 @@ retrieve_latest_cmake() {
   while IFS=$'\t' read -r _ revision; do
     revision="${revision#refs/tags/v}"
     [[ $revision = *-rc* ]] && continue
-    wget -N "https://github.com/Kitware/CMake/releases/download/v$revision/cmake-$revision-Linux-x86_64.tar.gz"
+    wget -N --progress=dot:mega "https://github.com/Kitware/CMake/releases/download/v$revision/cmake-$revision-Linux-x86_64.tar.gz"
     case $? in
       0) break ;; 8) continue ;; *) return 1 ;;
     esac
