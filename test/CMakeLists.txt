@@ -56,7 +56,8 @@ set(CMAKE_BUILD_COMMAND "${CMAKE_COMMAND}" --build "${CMAKE_BINARY_DIR}"
 function(define_veto name)
   add_executable("test_${name}" EXCLUDE_FROM_ALL test.h "${name}.c")
   target_link_libraries("test_${name}" PRIVATE test_vector)
-  add_test("test_${name}" "${CMAKE_BUILD_COMMAND}" --target "test_${name}")
+  add_test(NAME "veto_${name}" COMMAND "${CMAKE_COMMAND}"
+    --build "${CMAKE_BINARY_DIR}" --config "$<CONFIG>" --target "test_${name}")
   set_tests_properties("make_${name}" PROPERTIES WILL_FAIL on)
 endfunction(define_veto)
 
