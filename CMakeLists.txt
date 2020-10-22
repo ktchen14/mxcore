@@ -10,9 +10,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tool")
 
-set(VECTOR_MODULE_LIST
-  common access create comparison debug delete insert move remove resize search shift sort
-)
+file(STRINGS Module.list VECTOR_MODULE_LIST)
 
 # Construct the header list
 set(VECTOR_HEADER_LIST "${PROJECT_SOURCE_DIR}/header/vector.h")
