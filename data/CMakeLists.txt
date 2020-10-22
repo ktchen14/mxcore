@@ -1,0 +1,13 @@
+set(PACKAGE_NAME "${PROJECT_NAME}")
+set(PACKAGE_DESCRIPTION "${PROJECT_DESCRIPTION}")
+set(PACKAGE_URL "${PROJECT_HOMEPAGE_URL}")
+set(PACKAGE_VERSION "${PROJECT_VERSION}")
+
+set(prefix "${CMAKE_INSTALL_PREFIX}")
+set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
+set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
+set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
+
+configure_file(vector.pc.in vector.pc @ONLY)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vector.pc"
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")

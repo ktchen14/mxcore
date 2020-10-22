@@ -3,6 +3,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tool")
 
 project("Vector"
   VERSION 0.1.0
+  DESCRIPTION "An unobtrusive vector implementation in C"
   HOMEPAGE_URL https://github.com/ktchen14/vector
   LANGUAGES C)
 
@@ -32,9 +33,10 @@ install(TARGETS vector
   ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
+add_subdirectory(data)
 add_subdirectory(documentation)
 
-# Include test we're in the top level project
+# Include test if we're in the main project
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   add_subdirectory(test)
 endif ()
