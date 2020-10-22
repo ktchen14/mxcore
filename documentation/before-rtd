@@ -17,14 +17,17 @@ retrieve_latest_cmake() {
     https://gitlab.kitware.com/cmake/cmake.git \
     "v$CMAKE_MINOR_VERSION.*")
 
-  local file="cmake-$revision-Linux-x86_64.tar.gz" 
-
+  file="cmake-$revision-Linux-x86_64.tar.gz"
   [ -e "$file" ] || return 1
-  echo "Downloaded CMake $revision" 1>&2
+  echo "Downloaded CMake $revision to $file" 1>&2
   mkdir -p .local
   tar -C .local -xzf "$file" --strip-components=1
 }
 
-retrieve_latest_cmake 3.18
-./.local/bin/cmake . -DDOCUMENTATION=on
+if [ ! -x .local/bin/cmake ]; then
+  retrieve_latest_cmake 3.18
+fi
+if [ ! -e Makefile ]; then
+  ./.local/bin/cmake . -DDOCUMENTATION=on
+fi
 make documentation
