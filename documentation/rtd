@@ -1,13 +1,30 @@
 #! /bin/bash
 
-CMAKE_VERSION=3.18.4
-DOWNLOAD="https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz"
+retrieve_latest_cmake() {
+  local CMAKE_MINOR_VERSION="$1" _ revision file
 
-cd ..
+  while IFS=$'\t' read -r _ revision; do
+    revision="${revision#refs/tags/v}"
+    [[ $revision = *-rc* ]] && continue
+    wget -N "https://github.com/Kitware/CMake/releases/download/v$revision/cmake-$revision-Linux-x86_64.tar.gz"
+    case $? in
+      0) break ;; 8) continue ;; *) return 1 ;;
+    esac
+  done < <(git ls-remote \
+    --tags \
+    --refs \
+    --sort=-version:refname \
+    https://gitlab.kitware.com/cmake/cmake.git \
+    "v$CMAKE_MINOR_VERSION.*")
 
-wget -N "$DOWNLOAD"
-mkdir -p .local
-tar -C .local -xzf "cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz" \
-  --strip-components=1
+  local file="cmake-$revision-Linux-x86_64.tar.gz" 
+
+  [ -e "$file" ] || return 1
+  echo "Downloaded CMake $revision" 1>&2
+  mkdir -p .local
+  tar -C .local -xzf "$file" --strip-components=1
+}
+
+retrieve_latest_cmake 3.18
 ./.local/bin/cmake . -DDOCUMENTATION=on
 make documentation
