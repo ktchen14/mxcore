@@ -11,7 +11,7 @@ doxygen_add_docs(documentation
   USE_STAMP_FILE
   WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}")
 
-find_package(Sphinx 3.2 REQUIRED)
+find_package(Sphinx REQUIRED)
 add_custom_target(sphinx
   COMMAND "${SPHINX_EXECUTABLE}"
     -b html
