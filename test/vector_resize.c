@@ -73,9 +73,4 @@ int main() {
   assert(vector_length(vector) == vector_volume(vector));
 
   vector_delete(vector);
-
-#ifdef MAKE_TEST_WILL_FAIL
-  // It emits a compiler warning if its result is unused
-  vector_resize(vector, 20);
-#endif /* MAKE_TEST_WILL_FAIL */
 }

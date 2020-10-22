@@ -122,9 +122,5 @@ int main() {
   vector_delete(vector_p);
 
   // It rejects an incomplete type
-
-#ifdef MAKE_TEST_WILL_FAIL
-  // It emits a compiler error when its type argument isn't an actual type
-  vector_define(1, 2, 3, 4);
-#endif /* MAKE_TEST_WILL_FAIL */
+  // TODO
 }

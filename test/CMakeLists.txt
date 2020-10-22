@@ -14,10 +14,10 @@ add_library(stub SHARED EXCLUDE_FROM_ALL stub.c)
 target_compile_definitions(stub INTERFACE
   malloc=stub_malloc realloc=stub_realloc free=stub_free)
 
-define_vector_target(test_vector SHARED EXCLUDE_FROM_ALL)
-target_compile_definitions(test_vector PUBLIC VECTOR_TEST)
-target_compile_options(test_vector PUBLIC -Wall -Wextra -Werror)
-target_link_libraries(test_vector PRIVATE stub)
+define_vector_target(vector_test SHARED EXCLUDE_FROM_ALL)
+target_compile_definitions(vector_test PUBLIC VECTOR_TEST)
+target_compile_options(vector_test PUBLIC -Wall -Wextra -Werror)
+target_link_libraries(vector_test PRIVATE stub)
 
 # On macOS with `dyld`: Alters how symbols are resolved at build time and
 # runtime. With -flat_namespace, the linker searches all dylibs on the command
@@ -27,13 +27,13 @@ target_link_libraries(test_vector PRIVATE stub)
 include(CheckLinkerFlag)
 check_linker_flag(-flat_namespace FLAT_NAMESPACE_FLAG)
 if (FLAT_NAMESPACE_FLAG)
-  target_link_options(test_vector PRIVATE -flat_namespace)
+  target_link_options(vector_test PRIVATE -flat_namespace)
 endif ()
 
 # Add the --coverage option if code coverage is on
 if (CODE_COVERAGE)
-  target_compile_options(test_vector PRIVATE --coverage)
-  target_link_options(test_vector PUBLIC --coverage)
+  target_compile_options(vector_test PRIVATE --coverage)
+  target_link_options(vector_test PUBLIC --coverage)
 endif ()
 
 function(define_test name)
@@ -41,7 +41,7 @@ function(define_test name)
   # The _GNU_SOURCE feature test macro must be defined in order to obtain the
   # definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>.
   target_compile_definitions("test_${name}" PRIVATE _GNU_SOURCE)
-  target_link_libraries("test_${name}" PRIVATE dl test_vector)
+  target_link_libraries("test_${name}" PRIVATE dl vector_test)
   add_test(NAME "${name}" COMMAND "${CMAKE_CTEST_COMMAND}"
     --build-and-test "${CMAKE_SOURCE_DIR}" "${CMAKE_BINARY_DIR}"
     --build-generator "${CMAKE_GENERATOR}"
@@ -49,16 +49,12 @@ function(define_test name)
     --test-command "$<TARGET_FILE:test_${name}>")
 endfunction(define_test)
 
-# The CMake command line that will build this project
-set(CMAKE_BUILD_COMMAND "${CMAKE_COMMAND}" --build "${CMAKE_BINARY_DIR}"
-  --config "$<CONFIG>")
-
-function(define_veto name)
+function(define_veto name regexp)
   add_executable("test_${name}" EXCLUDE_FROM_ALL test.h "${name}.c")
-  target_link_libraries("test_${name}" PRIVATE test_vector)
-  add_test(NAME "veto_${name}" COMMAND "${CMAKE_COMMAND}"
+  target_link_libraries("test_${name}" PRIVATE vector_test)
+  add_test(NAME "test_${name}" COMMAND "${CMAKE_COMMAND}"
     --build "${CMAKE_BINARY_DIR}" --config "$<CONFIG>" --target "test_${name}")
-  set_tests_properties("make_${name}" PROPERTIES WILL_FAIL on)
+  set_property(TEST "test_${name}" PROPERTY PASS_REGULAR_EXPRESSION "${regexp}")
 endfunction(define_veto)
 
 foreach (module IN LISTS VECTOR_MODULE_LIST)
@@ -71,46 +67,6 @@ define_test(vector_ensure)
 define_test(vector_shrink)
 define_test(vector_swap)
 
-function(define_compilation_test name symbol)
-  add_executable(test_${name}_compilation_${symbol} EXCLUDE_FROM_ALL "${name}.c")
-  target_compile_definitions(test_${name}_compilation PRIVATE MAKE_TEST_WILL_FAIL)
-  add_test(make_${name}_compilation
-    "${CMAKE_COMMAND}"
-    --build "${CMAKE_BINARY_DIR}"
-    --config "$<CONFIG>"
-    --target test_${name}_compilation_${symbol})
-  set_tests_properties(test_${name}_compilation PROPERTIES WILL_FAIL true)
-endfunction(define_compilation_test)
-
-add_executable(test_vector_define_fail EXCLUDE_FROM_ALL vector_define.c)
-target_compile_options(test_vector_define_fail PRIVATE -Wall -Wextra -Werror)
-target_compile_definitions(test_vector_define_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_define_fail test_vector dl)
-add_test(make_vector_define_fail
-  "${CMAKE_COMMAND}"
-  --build "${CMAKE_BINARY_DIR}"
-  --config "$<CONFIG>"
-  --target test_vector_define_fail)
-set_tests_properties(make_vector_define_fail PROPERTIES WILL_FAIL true)
-
-# add_executable(test_vector_at_fail EXCLUDE_FROM_ALL vector_at.c)
-# target_compile_options(test_vector_at_fail PRIVATE -Wall -Wextra -Werror)
-# target_compile_definitions(test_vector_at_fail PRIVATE MAKE_TEST_WILL_FAIL)
-# target_link_libraries(test_vector_at_fail vector dl)
-# add_test(make_vector_at_fail
-#   "${CMAKE_COMMAND}"
-#   --build "${CMAKE_BINARY_DIR}"
-#   --config "$<CONFIG>"
-#   --target test_vector_at_fail)
-# set_tests_properties(make_vector_at_fail PROPERTIES WILL_FAIL true)
-
-add_executable(test_vector_resize_fail EXCLUDE_FROM_ALL vector_resize.c)
-target_compile_options(test_vector_resize_fail PRIVATE -Wall -Wextra -Werror)
-target_compile_definitions(test_vector_resize_fail PRIVATE MAKE_TEST_WILL_FAIL)
-target_link_libraries(test_vector_resize_fail test_vector dl)
-add_test(make_vector_resize_fail
-  "${CMAKE_COMMAND}"
-  --build "${CMAKE_BINARY_DIR}"
-  --config "$<CONFIG>"
-  --target test_vector_resize_fail)
-set_tests_properties(make_vector_resize_fail PROPERTIES WILL_FAIL true)
+define_veto(vector_define_veto_1 "expected a type")
+define_veto(vector_at_veto_1 "incompatible integer to pointer conversion")
+define_veto(vector_resize_veto_1 "ignoring return value of function")

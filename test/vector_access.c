@@ -52,12 +52,6 @@ void test_vector_at(void) {
     "result type should be void *");
 
   vector_delete(vector_m);
-
-#ifdef MAKE_TEST_WILL_FAIL
-  // It emits a compiler warning if its vector argument isn't a pointer
-  size_t scalar = 1;
-  vector_at(scalar, 0, sizeof(size_t));
-#endif /* MAKE_TEST_WILL_FAIL */
 }
 
 void test_vector_get(void) {
