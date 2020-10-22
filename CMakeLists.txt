@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.12)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tool")
 
 project("Vector"
   VERSION 0.1.0
   HOMEPAGE_URL https://github.com/ktchen14/vector
   LANGUAGES C)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tool")
+include(GNUInstallDirs)
 
 file(STRINGS Module.list VECTOR_MODULE_LIST)
 
@@ -21,8 +22,6 @@ set(VECTOR_SOURCE_LIST "${PROJECT_SOURCE_DIR}/source/vector.c")
 foreach (module IN LISTS VECTOR_MODULE_LIST)
   list(APPEND VECTOR_SOURCE_LIST "${PROJECT_SOURCE_DIR}/source/vector/${module}.c")
 endforeach (module)
-
-include(GNUInstallDirs)
 
 function(define_vector_target name)
   # Construct the header list. Mark each header file with HEADER_FILE_ONLY.
