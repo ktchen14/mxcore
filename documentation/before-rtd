@@ -29,6 +29,6 @@ if [ ! -x .local/bin/cmake ]; then
   retrieve_latest_cmake 3.18
 fi
 if [ ! -e Makefile ]; then
-  ./.local/bin/cmake . -DDOCUMENTATION=on
+  ./.local/bin/cmake . -DDOCUMENTATION=on -DDOXYGEN_GENERATE_HTML=no
 fi
 make documentation
