@@ -6,16 +6,18 @@ if (NOT BUILD_TESTING)
   return()
 endif ()
 
-if (NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Debug CACHE STRING
-    "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
-    FORCE)
-endif ()
-
 option(CODE_COVERAGE "Generate code coverage report" OFF)
 
+# Define malloc, realloc, and free to stub_malloc, stub_realloc, and stub_free
+# in a target that links to the stub.
+add_library(stub SHARED EXCLUDE_FROM_ALL stub.c)
+target_compile_definitions(stub INTERFACE
+  malloc=stub_malloc realloc=stub_realloc free=stub_free)
+
 define_vector_target(test_vector SHARED EXCLUDE_FROM_ALL)
-target_compile_definitions(test_vector PRIVATE VECTOR_TEST)
+target_compile_definitions(test_vector PUBLIC VECTOR_TEST)
+target_compile_options(test_vector PUBLIC -Wall -Wextra -Werror)
+target_link_libraries(test_vector PRIVATE stub)
 
 # On macOS with `dyld`: Alters how symbols are resolved at build time and
 # runtime. With -flat_namespace, the linker searches all dylibs on the command
@@ -28,49 +30,34 @@ if (FLAT_NAMESPACE_FLAG)
   target_link_options(test_vector PRIVATE -flat_namespace)
 endif ()
 
-# Replace malloc, realloc, and free with stub_malloc, stub_realloc, and
-# stub_free. Then link the stub into the test target.
-add_library(stub SHARED EXCLUDE_FROM_ALL "${CMAKE_CURRENT_SOURCE_DIR}/stub.c")
-target_compile_definitions(stub INTERFACE
-  malloc=stub_malloc
-  realloc=stub_realloc
-  free=stub_free)
-target_link_libraries(test_vector PRIVATE stub)
-
 # Add the --coverage option if code coverage is on
 if (CODE_COVERAGE)
   target_compile_options(test_vector PRIVATE --coverage)
   target_link_options(test_vector PUBLIC --coverage)
 endif ()
 
-# Define a test `name` from the file test/`name`.c
 function(define_test name)
-  add_executable("test_${name}" EXCLUDE_FROM_ALL
-    "${CMAKE_CURRENT_SOURCE_DIR}/test.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/${name}.c")
-
+  add_executable("test_${name}" EXCLUDE_FROM_ALL test.h "${name}.c")
   # The _GNU_SOURCE feature test macro must be defined in order to obtain the
-  # definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>. Define this here
-  # (rather than in "test.h") so that it's effective even if an included file,
-  # included before "test.h", includes <dlfcn.h>
-  target_compile_definitions("test_${name}" PRIVATE _GNU_SOURCE VECTOR_TEST)
-
-  target_compile_options("test_${name}" PRIVATE
-    -Wall -Wextra -Werror)
+  # definitions of RTLD_DEFAULT and RTLD_NEXT from <dlfcn.h>.
+  target_compile_definitions("test_${name}" PRIVATE _GNU_SOURCE)
   target_link_libraries("test_${name}" PRIVATE dl test_vector)
-
-  add_test("make_${name}"
-    "${CMAKE_COMMAND}"
-    --build "${CMAKE_BINARY_DIR}"
-    --config "$<CONFIG>"
-    --target "test_${name}")
-  set_tests_properties("make_${name}" PROPERTIES FIXTURES_SETUP "${name}")
-
-  add_test("${name}" "test_${name}")
-  set_tests_properties("${name}" PROPERTIES FIXTURES_REQUIRED "${name}")
+  add_test(NAME "${name}" COMMAND "${CMAKE_CTEST_COMMAND}"
+    --build-and-test "${CMAKE_SOURCE_DIR}" "${CMAKE_BINARY_DIR}"
+    --build-generator "${CMAKE_GENERATOR}"
+    --build-target "test_${name}" --build-nocmake --build-noclean
+    --test-command "$<TARGET_FILE:test_${name}>")
 endfunction(define_test)
 
+# The CMake command line that will build this project
+set(CMAKE_BUILD_COMMAND "${CMAKE_COMMAND}" --build "${CMAKE_BINARY_DIR}"
+  --config "$<CONFIG>")
+
 function(define_veto name)
+  add_executable("test_${name}" EXCLUDE_FROM_ALL test.h "${name}.c")
+  target_link_libraries("test_${name}" PRIVATE test_vector)
+  add_test("test_${name}" "${CMAKE_BUILD_COMMAND}" --target "test_${name}")
+  set_tests_properties("make_${name}" PROPERTIES WILL_FAIL on)
 endfunction(define_veto)
 
 foreach (module IN LISTS VECTOR_MODULE_LIST)
