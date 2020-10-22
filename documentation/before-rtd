@@ -23,6 +23,8 @@ retrieve_latest_cmake() {
   tar -C .local -xzf "$file" --strip-components=1
 }
 
+cd ..
+
 if [ ! -x .local/bin/cmake ]; then
   retrieve_latest_cmake 3.18
 fi
