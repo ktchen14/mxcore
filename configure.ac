@@ -8,7 +8,10 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects no-dist-gzip dist-xz])
 AM_PROG_AR
 LT_INIT
 
+PKG_INSTALLDIR
+
 AC_PROG_CC
 AC_PROG_RANLIB
 
+AC_CONFIG_FILES([data/vector.pc])
 AC_OUTPUT([Makefile])

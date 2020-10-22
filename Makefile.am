@@ -42,6 +42,9 @@ VECTOR_SOURCE_LIST = source/vector/access.c \
 		     source/vector.c
 
 include_HEADERS = $(VECTOR_HEADER_LIST)
+
 lib_LTLIBRARIES = libvector.la
 libvector_la_SOURCES = $(VECTOR_SOURCE_LIST)
 libvector_la_CFLAGS = -I$(top_srcdir)/header
+
+pkgconfig_DATA = data/vector.pc
