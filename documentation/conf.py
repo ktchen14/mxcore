@@ -65,4 +65,4 @@ highlight_language = 'c'
 import subprocess, os
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 if read_the_docs_build:
-    subprocess.call("./rtd", shell=True)
+    subprocess.call("./before-rtd", shell=True)
