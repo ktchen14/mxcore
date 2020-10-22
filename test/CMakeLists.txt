@@ -1,3 +1,11 @@
+# See https://stackoverflow.com/a/57240389 on this hack to hide CTest targets
+set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
+include(CTest)
+
+if (NOT BUILD_TESTING)
+  return()
+endif ()
+
 if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug CACHE STRING
     "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
