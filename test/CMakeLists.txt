@@ -70,6 +70,9 @@ function(define_test name)
   set_tests_properties("${name}" PROPERTIES FIXTURES_REQUIRED "${name}")
 endfunction(define_test)
 
+function(define_veto name)
+endfunction(define_veto)
+
 foreach (module IN LISTS VECTOR_MODULE_LIST)
   define_test("vector_${module}")
 endforeach (module)

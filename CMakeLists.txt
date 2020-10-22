@@ -15,15 +15,15 @@ add_subdirectory(header)
 add_subdirectory(source)
 
 function(define_vector_target name)
-  set_source_files_properties(${VECTOR_HEADER_LIST} PROPERTIES
-    HEADER_FILE_ONLY ON)
   add_library(${ARGV} ${VECTOR_HEADER_LIST} ${VECTOR_SOURCE_LIST})
   target_compile_features("${name}" PUBLIC c_std_11)
   target_compile_options("${name}" PRIVATE -Wall)
   target_include_directories("${name}" PUBLIC
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/header>"
     "$<INSTALL_INTERFACE:include>")
-  set_property(TARGET vector PROPERTY VERSION "${Vector_VERSION}")
+  set_source_files_properties(${VECTOR_HEADER_LIST} PROPERTIES
+    HEADER_FILE_ONLY ON)
+  set_property(TARGET "${name}" PROPERTY VERSION "${Vector_VERSION}")
 endfunction(define_vector_target)
 
 # Main target
