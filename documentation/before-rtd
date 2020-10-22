@@ -11,11 +11,10 @@ retrieve_latest_cmake() {
       0) break ;; 8) continue ;; *) return 1 ;;
     esac
   done < <(git ls-remote \
-    --tags \
-    --refs \
-    --sort=-version:refname \
+    --tags --refs \
     https://gitlab.kitware.com/cmake/cmake.git \
-    "v$CMAKE_MINOR_VERSION.*")
+    "v$CMAKE_MINOR_VERSION.*" \
+  | sort -t$'\t' -k2 -r --version-sort)
 
   file="cmake-$revision-Linux-x86_64.tar.gz"
   [ -e "$file" ] || return 1
