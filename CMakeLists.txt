@@ -5,9 +5,6 @@ project("Vector"
   HOMEPAGE_URL https://github.com/ktchen14/vector
   LANGUAGES C)
 
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tool")
 
 file(STRINGS Module.list VECTOR_MODULE_LIST)
@@ -43,6 +40,7 @@ function(define_vector_target name)
   endforeach (module)
 
   add_library(${ARGV} ${header_list} ${source_list})
+  target_compile_features("${name}" PUBLIC c_std_11)
   target_include_directories("${name}" PUBLIC
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/header>")
