@@ -1,6 +1,9 @@
 AC_PREREQ([2.67])
 
-AC_INIT([Vector], [0.1.0], [ktchen14@gmail.com], [vector],
+AC_INIT([Vector],
+        m4_include([VERSION]),
+        [ktchen14@gmail.com],
+        [vector],
         [https://github.com/ktchen14/vector])
 AC_CONFIG_MACRO_DIRS([tool])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects no-dist-gzip dist-xz])
