@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.12)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tool")
 
+file(READ VERSION PROJECT_VERSION)
+string(STRIP "${PROJECT_VERSION}" PROJECT_VERSION)
 project("Vector"
-  VERSION 0.1.0
+  VERSION "${PROJECT_VERSION}"
   DESCRIPTION "An unobtrusive vector implementation in C"
   HOMEPAGE_URL https://github.com/ktchen14/vector
   LANGUAGES C)

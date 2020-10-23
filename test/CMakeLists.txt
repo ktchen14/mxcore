@@ -5,6 +5,7 @@ include(CTest)
 if (NOT BUILD_TESTING)
   return()
 endif ()
+cmake_minimum_required(VERSION 3.13) # target_link_options()
 
 option(CODE_COVERAGE "Generate code coverage report" OFF)
 
