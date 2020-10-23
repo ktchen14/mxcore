@@ -73,16 +73,17 @@ struct __vector_header_t {
  * @ref vector_c), this will return a <tt>const struct __vector_header_t *</tt>.
  * Otherwise this will return a <tt>struct __vector_header_t *</tt>.
  */
-#define __vector_to_header(vector) ( \
-  _Pragma("GCC diagnostic push") \
-  _Pragma("GCC diagnostic ignored \"-Wcast-align\"") \
-  _Pragma("GCC diagnostic ignored \"-Wcast-qual\"") \
+#define __vector_to_header(vector) ({ \
+  _Pragma("GCC diagnostic push"); \
+  _Pragma("GCC diagnostic ignored \"-Wcast-align\""); \
+  _Pragma("GCC diagnostic ignored \"-Wcast-qual\""); \
   _Generic((vector), vector_t: (struct __vector_header_t *) ( \
       (/* */ char *) (vector) - offsetof(struct __vector_header_t, data) \
     ), vector_c: (const struct __vector_header_t *) ( \
       (const char *) (vector) - offsetof(struct __vector_header_t, data) \
-    )) \
-  _Pragma("GCC diagnostic pop"))
+    )); \
+  _Pragma("GCC diagnostic pop") \
+})
 
 /// @endcond
 
