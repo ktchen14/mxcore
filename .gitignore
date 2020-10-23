@@ -90,11 +90,11 @@ autom4te.cache
 
 # http://www.gnu.org/software/m4/
 
-m4/libtool.m4
-m4/ltoptions.m4
-m4/ltsugar.m4
-m4/ltversion.m4
-m4/lt~obsolete.m4
+tool/libtool.m4
+tool/ltoptions.m4
+tool/ltsugar.m4
+tool/ltversion.m4
+tool/lt~obsolete.m4
 
 # Generated Makefile 
 # (meta build system like autotools, 
