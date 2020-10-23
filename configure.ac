@@ -1,7 +1,7 @@
 AC_PREREQ([2.67])
 
 AC_INIT([Vector],
-        m4_include([VERSION]),
+        m4_normalize(m4_include([VERSION])),
         [ktchen14@gmail.com],
         [vector],
         [https://github.com/ktchen14/vector])
