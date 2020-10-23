@@ -1,3 +1,5 @@
+ACLOCAL_AMFLAGS = -I tool
+
 SUBDIRS = header
 
 lib_LTLIBRARIES = libvector.la
