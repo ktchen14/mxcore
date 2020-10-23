@@ -16,7 +16,7 @@ author = 'Kaiting Chen'
 
 # The full version, including alpha/beta/rc tags
 with open("../VERSION") as file:
-    release = os.environ.get("READTHEDOCS_VERSION", file.read().strip())
+    release = file.read().strip()
 
 
 # -- General configuration ---------------------------------------------------
