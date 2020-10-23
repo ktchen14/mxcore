@@ -29,7 +29,7 @@ static void undirect_stderr(FILE *stream, char *buffer, size_t size) {
 static size_t last_debug_z;
 void vector_debug_z(
     vector_c vector, void (*elmt_debug)(const void *elmt), size_t z) {
-  return REAL(vector_debug_z)(vector, elmt_debug, last_debug_z = z);
+  REAL(vector_debug_z)(vector, elmt_debug, last_debug_z = z);
 }
 
 void debugintp(const void *elmt) {
