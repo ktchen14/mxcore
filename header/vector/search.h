@@ -3,7 +3,6 @@
 #ifndef VECTOR_SEARCH_H
 #define VECTOR_SEARCH_H
 
-#include <stdbool.h>
 #include <stddef.h>
 
 #include "common.h"
@@ -36,7 +35,7 @@
  */
 //= size_t vector_find(
 //=   vector_c vector,
-//=   bool (*eqf)(const void *elmt, const void *data),
+//=   _Bool (*eqf)(const void *elmt, const void *data),
 //=   const void *data)
 #define vector_find(v, ...) vector_find_z((v), __VA_ARGS__, VECTOR_Z((v)))
 
@@ -60,7 +59,7 @@
  */
 inline size_t vector_find_z(
     vector_c vector,
-    bool (*eqf)(const void *elmt, const void *data),
+    _Bool (*eqf)(const void *elmt, const void *data),
     const void *data,
     size_t z)
   __attribute__((nonnull(1, 2), pure));
@@ -102,7 +101,7 @@ inline size_t vector_find_z(
 //= size_t vector_find_next(
 //=   vector_c vector,
 //=   size_t i,
-//=   bool (*eqf)(const void *elmt, const void *data),
+//=   _Bool (*eqf)(const void *elmt, const void *data),
 //=   const void *data)
 #define vector_find_next(v, ...) \
   vector_find_next_z((v), __VA_ARGS__, VECTOR_Z((v)))
@@ -145,7 +144,7 @@ inline size_t vector_find_z(
 inline size_t vector_find_next_z(
     vector_c vector,
     size_t i,
-    bool (*eqf)(const void *elmt, const void *data),
+    _Bool (*eqf)(const void *elmt, const void *data),
     const void *data,
     size_t z)
   __attribute__((nonnull(1, 3), pure));
@@ -186,7 +185,7 @@ inline size_t vector_find_next_z(
 //= size_t vector_find_last(
 //=   vector_c vector,
 //=   size_t i,
-//=   bool (*eqf)(const void *elmt, const void *data),
+//=   _Bool (*eqf)(const void *elmt, const void *data),
 //=   const void *data)
 #define vector_find_last(v, ...) \
   vector_find_last_z((v), __VA_ARGS__, VECTOR_Z((v)))
@@ -228,7 +227,7 @@ inline size_t vector_find_next_z(
 inline size_t vector_find_last_z(
     vector_c vector,
     size_t i,
-    bool (*eqf)(const void *elmt, const void *data),
+    _Bool (*eqf)(const void *elmt, const void *data),
     const void *data,
     size_t z)
   __attribute__((nonnull(1, 3), pure));
