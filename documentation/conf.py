@@ -15,7 +15,8 @@ copyright = '2020, Kaiting Chen'
 author = 'Kaiting Chen'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+with open("../VERSION") as file:
+    release = os.env.get("READTHEDOCS_VERSION", file.read().strip())
 
 
 # -- General configuration ---------------------------------------------------
