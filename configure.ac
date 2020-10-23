@@ -1,3 +1,6 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
 AC_PREREQ([2.67])
 
 AC_INIT([Vector],
@@ -5,6 +8,7 @@ AC_INIT([Vector],
         [ktchen14@gmail.com],
         [vector],
         [https://github.com/ktchen14/vector])
+AC_CONFIG_SRCDIR([header/vector.h])
 AC_CONFIG_AUX_DIR([tool])
 AC_CONFIG_MACRO_DIRS([tool])
 
