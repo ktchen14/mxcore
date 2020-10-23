@@ -129,7 +129,3 @@ Doxyfile.documentation
 
 # CTest
 DartConfiguration.tcl
-
-# Doxygen
-
-/html
