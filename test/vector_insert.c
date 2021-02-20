@@ -108,14 +108,14 @@ void test_vector_inject(void) {
   vector_delete(vector);
 
   // With a length that, when added to the vector's length, overflows a size_t;
-  // it returns NULL with errno = ENOMEM. The vector is unmodified.
+  // it returns NULL with errno = EOVERFLOW. The vector is unmodified.
   vector = vector_define(int, 1, 2, 3, 5);
 
   size_t maximum_length = SIZE_MAX - vector_length(vector);
   errno = 0;
   result = vector_inject(vector, 2, &data, maximum_length + 1);
   assert(result == NULL);
-  assert(errno == ENOMEM);
+  assert(errno == EOVERFLOW);
 
   assert_vector_data(vector, 1, 2, 3, 5);
 

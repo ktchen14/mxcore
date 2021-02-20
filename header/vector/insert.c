@@ -33,7 +33,7 @@ inline vector_t vector_inject_z(
   size_t length = vector_length(vector);
 
   if (__builtin_add_overflow(length, n, &length))
-    return errno = ENOMEM, NULL;
+    return errno = EOVERFLOW, NULL;
 
   if ((vector = vector_ensure_z(vector, length, z)) == NULL)
     return NULL;

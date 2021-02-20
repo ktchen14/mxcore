@@ -26,6 +26,15 @@ inline void vector_get(vector_c vector, size_t i, void *elmt, size_t z) {
   memcpy(elmt, vector_at(vector, i, z), z);
 }
 
+inline void vector_retrieve(
+    vector_c vector,
+    size_t i,
+    void *elmt,
+    size_t n,
+    size_t z) {
+  memmove(elmt, vector_at(vector, i, z), z * n);
+}
+
 inline void vector_set(vector_t vector, size_t i, const void *elmt, size_t z) {
   // This comparison is well defined regardless of whether elmt is an object in
   // the vector
